@@ -1,0 +1,78 @@
+<h2>Create New </h2>
+
+<%= form_for @school do|f|%>
+
+<div class="field">
+  <%= f.label :school_name %><br />
+  <%= f.text_field :school_name, autofocus: true %>
+</div>
+
+<div class="field">
+  <%= f.label :admin_name %><br />
+  <%= f.text_field :admin_name, autofocus: true %>
+</div>
+
+<div class="field">
+  <%= f.label :address_line_1 %> <br />
+  <%= f.text_field :address1, autocomplete: "off" %>
+</div>
+
+<div class="field">
+  <%= f.label :address_line_2 %> <br />
+  <%= f.text_field :address2, autocomplete: "off" %>
+</div>
+
+<div class="field">
+  <%= f.label :address_line_3 %> <br />
+  <%= f.text_field :address3, autocomplete: "off" %>
+</div>
+
+<div class="field">
+  <%= f.label :country %> <br />
+  <%= f.country_select :country, {priority: %w(US CA), prompt: 'Please select a country'} %>
+</div>
+
+
+<div class="field">
+  <%= f.label :state %> <br />
+  <%= render partial: 'subregion_select', locals: {parent_region: f.object.country} %>
+  
+</div>
+
+<div class="field">
+  <%= f.label :city %> <br />
+  <%= f.text_field :city, autocomplete: "off" %>
+</div>
+
+
+<div class="field">
+  <%= f.label :zip %> <br />
+  <%= f.text_field :zip, autocomplete: "off" %>
+</div>
+
+<div class="field">
+  <%= f.label :primary_phone %> <br />
+  <%= f.text_field :phone, autocomplete: "off" %>
+</div>
+
+<div class="field">
+  <%= f.label :email %><br />
+  <%= f.email_field :email, autofocus: true %>
+</div>
+
+<div class="field">
+  <%= f.label :academic_term %><br />
+  <%= f.select :academic_term, [["semester", 1], ["quarter", 0]] %>
+</div>
+
+<div class="field">
+  <%= f.label :grading_scale %><br />
+  <%= f.select :grading_scale, [["7", 3], ["8", 2], ["9", 1], ["10", 0]] %>
+</div>
+
+<div class="actions">
+  <%= f.submit "Create" %>
+</div>
+<% end %>
+
+

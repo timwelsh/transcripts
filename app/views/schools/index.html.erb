@@ -1,0 +1,4 @@
+<% @school.each do |s|%>
+<%= s.school_name%> 
+<%= link_to 'View' ,  school_path(s)%><br>
+<%end%>

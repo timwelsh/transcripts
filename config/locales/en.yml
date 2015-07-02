@@ -1,0 +1,24 @@
+en:
+  activerecord:
+    attributes:
+      user:
+        email: "E-mail address"
+      school:
+        email: "E-mail address"
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "Please enter an email address"
+              taken: "Please use a different email address"
+              invalid: "Please enter a correct email address"
+            password:
+              blank: "Password can't be blank"
+              invalid: "Password is invalid"
+        school:
+          attributes:
+            email:
+              blank: "Please enter an email address"
+              taken: "Please use a different email address"
+              invalid: "Please enter a correct email address"

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  plan_end_date: 2015-06-16 17:45:39
+  status: false
+  user_id: 
+  plan_id: 
+
+two:
+  plan_end_date: 2015-06-16 17:45:39
+  status: false
+  user_id: 
+  plan_id: 
