@@ -5,9 +5,9 @@ class CreateStudents < ActiveRecord::Migration
       t.string :middle_name
       t.string :last_name
       t.string :dob
-      t.text :address1
-      t.text :address2
-      t.text :address3
+      t.string :address1
+      t.string :address2
+      t.string :address3
       t.string :city
       t.string :state
       t.integer :zip
