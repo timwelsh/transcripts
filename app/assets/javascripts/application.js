@@ -31,6 +31,7 @@ $(document).ready(function(){
 	});	
 });
 function printpage()
-	{
-		window.print()
-	}
+{
+	window.print()
+}
+

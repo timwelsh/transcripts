@@ -6,6 +6,12 @@ ActiveAdmin.setup do |config|
   #
   STATUS = [["Active",1], ["Deactive",0]]
   config.site_title = "Educational Record"
+  TERM = [["Quarter",'Quarter'], ["Semester",'Semester']]
+  SCALE = [["7",7], ["8",8],["9",9], ["10",10]]
+  config.site_title = "Educational Record"
+  config.register_javascript 'ckeditor/init.js'
+  config.register_javascript 'ckeditor/ckeditor.js' 
+  config.comments = false
 
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.

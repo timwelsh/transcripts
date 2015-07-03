@@ -12,11 +12,13 @@ ActiveAdmin.register User do
 
   index do
     selectable_column
-    id_column
-    column :email
     column :first_name
     column :last_name
-    column :created_at
+    column :email
+    column :created_at do |resource|
+      resource.created_at.strftime("%B %d, %Y")
+    end
+
     #actions
     actions :defaults => true do |resource|
       if resource[:status]=='0'
@@ -24,6 +26,7 @@ ActiveAdmin.register User do
       else
         link_to "Deactive", {:action => 'disapprove', :id => resource }, :method => :put
       end 
+      link_to "View School", "schools?user_id=#{resource[:id]}"
     end
   end
 
@@ -78,26 +81,23 @@ ActiveAdmin.register User do
   end
   controller do
 
-  def update
-    if params[:user][:password].blank? #&& params[:user][:password_confirmation].blank?
-      params[:user].delete("password")
-      # params[:user].delete("password_confirmation")
+    def update
+      if params[:user][:password].blank? #&& params[:user][:password_confirmation].blank?
+        params[:user].delete("password")
+      end
+      super
     end
-    super
-  end
+    def approve
+      @user = User.find(params[:id])
+      @user.update_attributes(status:'1')
+      redirect_to admin_users_path, :notice => "User has been activated"
+    end
 
-  def approve
-    @user = User.find(params[:id])
-    @user.update_attributes(status:'1')
-    redirect_to admin_users_path, :notice => "User has been activated"
+    def disapprove
+      @user = User.find(params[:id])
+      @user.update_attributes(status:'0')
+      redirect_to admin_users_path, :notice => "User has been deactivated"
+    end
   end
-
-  def disapprove
-    @user = User.find(params[:id])
-    @user.update_attributes(status:'0')
-    redirect_to admin_users_path, :notice => "User has been deactivated"
-  end
-
-end
 
 end

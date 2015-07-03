@@ -1,43 +1,44 @@
 $(function (){
-	$('#student_dob').datepicker({
-		changeYear: true,
-		changeMonth: true,
-		yearRange: "1950:2050"
-		// onClose: function(dateText, inst) {
-		// 	$('#year').val(dateText.split('/')[2]);
-		// 	$('#month').val(dateText.split('/')[0]);
-		// 	$('#day').val(dateText.split('/')[1]);
-		// }
-  });
-	$('#student_enroll_date').datepicker({
-		changeYear: true,
-		changeMonth: true,
-		yearRange: "1950:2050"
-	});
-	$('#student_graduation_date').datepicker({
-		changeYear: true,
-		changeMonth: true,
-		yearRange: "1950:2050"
-	});
+    $('#student_dob').datepicker({
+        changeYear: true,
+        changeMonth: true,
+        yearRange: "1950:2050"
+        // onClose: function(dateText, inst) {
+        //  $('#year').val(dateText.split('/')[2]);
+        //  $('#month').val(dateText.split('/')[0]);
+        //  $('#day').val(dateText.split('/')[1]);
+        // }
+    });
+    $('#student_enroll_date').datepicker({
+        changeYear: true,
+        changeMonth: true,
+        yearRange: "1950:2050"
+    });
+    $('#student_graduation_date').datepicker({
+        changeYear: true,
+        changeMonth: true,
+        yearRange: "1950:2050"
+    });
 
 });
 
 $(document).ready(function(){
 
-	$('select#student_country').change(function(){
-		select_wrapper = $('#order_state_code_wrapper');
-		$('select', select_wrapper).attr('disabled', true);
-		country_code = $(this).val();
-		url = "/schools/2/students/subregion_options?parent_region="+country_code;
-		select_wrapper.load(url);
-	});
+    $('select#student_country').change(function(){
+        select_wrapper = $('#order_state_code_wrapper');
+        $('select', select_wrapper).attr('disabled', true);
+        country_code = $(this).val();
+        url = "/schools/2/students/subregion_options?parent_region="+country_code;
+        select_wrapper.load(url);
+    });
 
-	var wrapper         = $(".input_fields_wrap"); //Fields wrapper
+    var wrapper         = $(".input_fields_wrap"); //Fields wrapper
     var add_button      = $(".add_field_button"); //Add button ID
     var x = 1;    
     var xval = $("#xval").val();
     $(add_button).click(function(e){ //on add input button click
         e.preventDefault();
+        // debugger
         if (typeof xval !== 'undefined' )
         {
             alert($("#xval").val()) ;

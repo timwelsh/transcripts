@@ -69,9 +69,9 @@ ActiveRecord::Schema.define(version: 20150626091114) do
   create_table "schools", force: :cascade do |t|
     t.string   "school_name"
     t.string   "admin_name"
-    t.text     "address1"
-    t.text     "address2"
-    t.text     "address3"
+    t.string   "address1"
+    t.string   "address2"
+    t.string   "address3"
     t.string   "city"
     t.string   "state"
     t.integer  "zip"
