@@ -1,7 +1,6 @@
 ActiveAdmin.register AdminUser do
   permit_params :email, :password, :password_confirmation
-
-  
+  actions :all, :except => [:destroy]
   index do
     selectable_column
     column :email
@@ -10,7 +9,7 @@ ActiveAdmin.register AdminUser do
     column :created_at do |resource|
       resource.created_at.strftime("%B %d, %Y")
     end
-    actions :all, :except => [:destroy]
+    actions
   end
 
   filter :email
