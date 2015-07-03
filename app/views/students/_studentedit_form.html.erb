@@ -1,0 +1,163 @@
+<input type= checkbox , class = 'submittable'> Copy schools details
+<br>
+
+<%= form_for [@school, @student] ,method: :patch do|f|%>
+<div class="field">
+  <%= f.label :first_name %><br />
+  <%= f.text_field :first_name, autofocus: true %>
+</div>
+
+<div class="field">
+  <%= f.label :middle_name %><br />
+  <%= f.text_field :middle_name, autofocus: true %>
+</div>
+
+<div class="field">
+  <%= f.label :last_name %><br />
+  <%= f.text_field :last_name, autofocus: true %>
+</div>
+
+<div class="field">
+  <%= f.label :dob %><br />
+  <%= f.text_field :dob, autofocus: true %>
+</div>
+
+<div class="field">
+  <%= f.label :address_line_1 %> <br />
+  <%= f.text_field :address1, autocomplete: "off" %>
+</div>
+
+<div class="field">
+  <%= f.label :address_line_2 %> <br />
+  <%= f.text_field :address2, autocomplete: "off" %>
+</div>
+
+<div class="field">
+  <%= f.label :address_line_3 %> <br />
+  <%= f.text_field :address3, autocomplete: "off" %>
+</div>
+
+<div class="field">
+  <%= f.label :country %> <br />
+  <%= f.country_select :country, {priority: %w(US CA), prompt: 'Please select a country'} %>
+</div>
+
+
+<div class="field">
+  <%= f.label :state %> <br />
+  <%= render partial: 'students/subregion_select', locals: {parent_region: f.object.country} %>
+  
+</div>
+
+<div class="field">
+  <%= f.label :city %> <br />
+  <%= f.text_field :city, autocomplete: "off" %>
+</div>
+
+
+<div class="field">
+  <%= f.label :zip %> <br />
+  <%= f.text_field :zip, autocomplete: "off" %>
+</div>
+
+<div class="field">
+  <%= f.label :primary_phone %> <br />
+  <%= f.text_field :phone, autocomplete: "off" %>
+</div>
+
+<div class="field">
+  <%= f.label :email %><br />
+  <%= f.email_field :email, autofocus: true %>
+</div>
+
+<div class="field">
+  <%= f.label :enroll_date %><br />
+  <%= f.text_field :enroll_date %>
+</div>
+
+<div class="field">
+  <%= f.label :graduation_date %><br />
+  <%= f.text_field :graduation_date %>
+</div>
+
+<br><br>
+
+<h2>Academic details </h2>
+
+<div class="input_fields_wrap">
+  <% x=0%>
+  <input type="button" class="add_field_button" value="Add More Fields">
+  
+  <% @student.subject.each do |stu|%>
+      <div>
+        <h3>Educational Detail <%= x+1%></h3>
+        <div class="field">
+          <label for="grad_name">Graduation Name</label><br>
+          <%#byebug%>
+          <%#= f.text_field :grad_name %>
+          <input type="text" name="grad_name[]" value= "<%=@student.grad_name[x]%>">
+        </div>
+
+        <div class="field">
+          <label for="completion_year">Completion Year</label><br>
+          <input type="text" name="completion_year[]" value= "<%= @student.completion_year[x] %>">
+        </div>
+
+        <div class="field">
+          <label for="description">Description</label><br>
+          <input type="text" name="description[]" value= "<%= @student.description[x] %>">
+        </div>
+
+        <div class="field">
+          <label for="subject">Subject</label><br>
+          <input type="text" name="subject[]" value= "<%= @student.subject[x] %>">
+        </div>
+
+        <div class="field">
+          <label for="course_name">Course Name</label><br>
+          <input type="text" name="course_name[]" value= "<%= @student.course_name[x] %>">
+        </div>
+
+        <div class="field">
+          <label for="honors">Honors</label><br>
+          <input type="text" name="honors[]" value= "<%= @student.honors[x] %>">
+        </div>
+
+        <div class="field">
+          <label for="grade">Grade</label><br>
+          <input type="text" name="grade[]" value= "<%= @student.grade[x] %>">
+        </div>
+
+        <div class="field">
+          <label for="credits">Credits</label><br>
+          <input type="text" name="credits[]" value= "<%= @student.credits[x] %>">
+        </div>
+
+        <div class="field">
+          <label for="total_credit">Total Credit</label><br>
+          <input type="text" name="total_credit[]" value= "<%= @student.total_credit[x] %>">
+        </div>
+
+        <div class="field">
+          <label for="gpa_credit">Gpa Credit</label><br>
+          <input type="text" name="gpa_credit[]" value= "<%= @student.gpa_credit[x] %>">
+        </div>
+
+        <div class="field">
+          <label for="gpa_points">Gpa Points</label><br>
+          <input type="text" name="gpa_points[]" value= "<%= @student.gpa_points[x] %>">
+        </div>
+
+        <div class="field">
+          <label for="cumulative_gpa">Cumulative Gpa</label><br>
+          <input type="text" name="cumulative_gpa[]" value= "<%= @student.cumulative_gpa[x] %>">
+        </div>
+      </div>
+      <% x=x+1%>
+  <%end%>
+</div>
+<input type= "hidden" value= "<%=x%>" id="xval">
+<div class="actions">
+  <%= f.submit "Update" %>
+</div>
+<%end%>
