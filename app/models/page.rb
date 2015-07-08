@@ -1,3 +1,3 @@
 class Page < ActiveRecord::Base
-	validates :name,  :uniqueness , :presence => {:message => "Please enter the page title" }
+	validates :name,  uniqueness: true, :presence => {:message => "Please enter the page title" }
 end
