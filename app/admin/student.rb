@@ -22,13 +22,12 @@ ActiveAdmin.register Student do
   end
 
   filter :first_name
-  filter :last_name
   filter :email
   filter :created_at
 
 
 controller do
-  layout 'active_admin' , :except => [:index]
+  layout 'active_admin' , :except => [:index, :destroy]
   def scoped_collection
     if params[:user_id]
       sql = "user_id =  '#{params[:user_id]}'"
@@ -62,11 +61,6 @@ controller do
     else
       render 'edit'
     end
-  end
-  def destroy
-    @student = Student.find(params[:id])
-    @student.destroy
-    redirect_to admin_students_path 
   end
 
   private
