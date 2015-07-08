@@ -24,7 +24,14 @@
         <tr>
           <% @subregions = @country.subregions %>
           <% @state = @subregions.coded(@school.state) %>
-          <th>State</th><td><%=@state.name%></td>
+          <th>State</th>
+          <td>
+            <%if @state.blank?%>
+              <%= @school.state%>        
+            <%else%>
+              <%=@state.name%>
+            <%end%>
+          </td>
         </tr>
         <tr>
           <th>City</th><td><%=@school.city%></td>
