@@ -73,5 +73,5 @@ ActiveAdmin.register School do
       end
     end
   end
-  
+
 end

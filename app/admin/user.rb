@@ -80,7 +80,6 @@ ActiveAdmin.register User do
     f.actions
   end
   controller do
-    
 
     def update
       if params[:user][:password].blank? #&& params[:user][:password_confirmation].blank?
@@ -99,7 +98,6 @@ ActiveAdmin.register User do
       @user.update_attributes(status:'0')
       redirect_to admin_users_path, :notice => "User has been deactivated"
     end
-
   end
 
 end

@@ -11,7 +11,19 @@
  * file per style scope.
  *
  *= require_self
- *= require fancybox
- *= require bootstrap-datepicker
+ *= require font-awesome
+ *= require animate
+ *= require fancybox-buttons
+ *= require fancybox-thumbs
+ *= require reset
+ *= require main
  *= require_tree .
  */
+@import "bootstrap-sprockets";
+@import "bootstrap" ;
+.login-main{width:32%; padding:15px; background:#efefef; border:1px solid #ddd; border-radius:4px; margin:0 auto;}
+.login-main h2{font-size:22px; font-weight:600;}
+.login-flds{margin:12px 0px;}
+.login-flds label{width:25%; float:left;}
+.login-flds input{width:55% !important;}
+

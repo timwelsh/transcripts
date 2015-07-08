@@ -5,6 +5,7 @@ ActiveAdmin.setup do |config|
   # for each of the active admin pages.
   #
   STATUS = [["Active",1], ["Deactive",0]]
+  config.site_title = "Educational Record"
   TERM = [["Quarter",'Quarter'], ["Semester",'Semester']]
   SCALE = [["7",7], ["8",8],["9",9], ["10",10]]
   config.site_title = "Educational Record"

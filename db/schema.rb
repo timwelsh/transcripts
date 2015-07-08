@@ -11,30 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150619093807) do
+ActiveRecord::Schema.define(version: 20150626091114) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "academics", force: :cascade do |t|
-    t.string   "grad_name",       default: [],              array: true
-    t.integer  "completion_year", default: [],              array: true
-    t.text     "description",     default: [],              array: true
-    t.string   "subject",         default: [],              array: true
-    t.string   "course_name",     default: [],              array: true
-    t.string   "honors",          default: [],              array: true
-    t.string   "grade",           default: [],              array: true
-    t.string   "credits",         default: [],              array: true
-    t.string   "total_credit",    default: [],              array: true
-    t.string   "gpa_credit",      default: [],              array: true
-    t.string   "gpa_points",      default: [],              array: true
-    t.string   "cumulative_gpa",  default: [],              array: true
-    t.integer  "student_id"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-  end
-
-  add_index "academics", ["student_id"], name: "index_academics_on_student_id", using: :btree
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -111,21 +91,33 @@ ActiveRecord::Schema.define(version: 20150619093807) do
     t.string   "first_name"
     t.string   "middle_name"
     t.string   "last_name"
-    t.datetime "dob"
-    t.text     "address1"
-    t.text     "address2"
-    t.text     "address3"
+    t.string   "dob"
+    t.string   "address1"
+    t.string   "address2"
+    t.string   "address3"
     t.string   "city"
     t.string   "state"
     t.integer  "zip"
     t.string   "country"
     t.string   "phone"
     t.string   "email"
-    t.datetime "enroll_date"
-    t.datetime "graduation_date"
+    t.string   "enroll_date"
+    t.string   "graduation_date"
+    t.string   "grad_name",       default: [],              array: true
+    t.integer  "completion_year", default: [],              array: true
+    t.text     "description",     default: [],              array: true
+    t.string   "subject",         default: [],              array: true
+    t.string   "course_name",     default: [],              array: true
+    t.string   "honors",          default: [],              array: true
+    t.string   "grade",           default: [],              array: true
+    t.string   "credits",         default: [],              array: true
+    t.string   "total_credit",    default: [],              array: true
+    t.string   "gpa_credit",      default: [],              array: true
+    t.string   "gpa_points",      default: [],              array: true
+    t.string   "cumulative_gpa",  default: [],              array: true
     t.integer  "school_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   add_index "students", ["school_id"], name: "index_students_on_school_id", using: :btree
@@ -171,7 +163,6 @@ ActiveRecord::Schema.define(version: 20150619093807) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  add_foreign_key "academics", "students"
   add_foreign_key "schools", "users"
   add_foreign_key "students", "schools"
   add_foreign_key "user_plans", "plans"

@@ -14,6 +14,7 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+gem "font-awesome-rails"
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -25,13 +26,23 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'devise'
 gem 'cancancan'
+
+
+#gem 'pdfkit'
+
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
+
 gem 'bootstrap-sass', '~> 3.2.0'
+gem 'autoprefixer-rails'
+
 
 gem 'activeadmin', '~> 1.0.0.pre1'
 gem 'carmen-rails', '~> 1.0.0'
 gem 'bootstrap-datepicker-rails'
 
 gem 'fancybox2-rails', '~> 0.2.8'
+
 gem 'activeadmin-ckeditor'
 gem 'dotenv-rails', :groups => [:development]
 gem "gibbon"
@@ -53,6 +64,7 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring','1.3.6'
+  gem 'spring'
+
 end
 

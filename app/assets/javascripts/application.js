@@ -12,19 +12,26 @@
 //
 //= require jquery
 //= require fancybox
+//= require fancybox-buttons
+//= require fancybox-media
+//= require fancybox-thumbs
+//= require wow
 //= require bootstrap-datepicker
 //= require jquery_ujs
-//= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
 
-// $(document).ready(function(){
-// 	$('select#user_country').change(function(){
-// 		alert("hi");
-// 		select_wrapper = $('#order_state_code_wrapper');
-// 		$('select', select_wrapper).attr('disabled', true);
-// 		country_code = $(this).val();
-// 		url = "/user/registrations/subregion_options?parent_region="+country_code;
-// 		select_wrapper.load(url);
-// 	});
-// });
+$(document).ready(function(){
+	$('select#user_country').change(function(){
+		select_wrapper = $('#order_state_code_wrapper');
+		$('select', select_wrapper).attr('disabled', true);
+		country_code = $(this).val();
+		url = "/user/registrations/subregion_options?parent_region="+country_code;
+		select_wrapper.load(url);
+	});	
+});
+function printpage()
+{
+	window.print()
+}
+

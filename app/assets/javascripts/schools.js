@@ -1,90 +1,77 @@
 
 $(document).ready(function(){
-	$('select#school_country').change(function(){
-		select_wrapper = $('#order_state_code_wrapper');
-		$('select', select_wrapper).attr('disabled', true);
-		country_code = $(this).val();
-		url = "/schools/subregion_options?parent_region="+country_code;
-		select_wrapper.load(url);
-	});
-
-    // var max_fields      = 10; //maximum input boxes allowed
-    var wrapper         = $(".input_fields_wrap"); //Fields wrapper
-    var add_button      = $(".add_field_button"); //Add button ID
-
-    var x = 1; //initlal text box count
-    $(add_button).click(function(e){ //on add input button click
-        e.preventDefault();
-        // if(x < max_fields){ //max input box allowed
-            x++; //text box increment
-        $(wrapper).append('<div>'+
-            '<h3>Educational Detail '+x+'</h3> <a href="#" class="remove_field">Remove</a>'+
-            '<div class="field">'+
-            '<label for="grad_name">Graduation Name</label><br>'+
-            '<input type="text" name="grad_name[]">'+
-            '</div>'+
-
-            '<div class="field">'+
-            '<label for="completion_year">Completion Year</label><br>'+
-            '<input type="text" name="completion_year[]">'+
-            '</div>'+
-
-            '<div class="field">'+
-            '<label for="description">Description</label><br>'+
-            '<input type="text" name="description[]">'+
-            '</div>'+
-
-            '<div class="field">'+
-            '<label for="subject">Subject</label><br>'+
-            '<input type="text" name="subject[]">'+
-            '</div>'+
-
-            '<div class="field">'+
-            '<label for="course_name">Course Name</label><br>'+
-            '<input type="text" name="course_name[]">'+
-            '</div>'+
-
-            '<div class="field">'+
-            '<label for="honors">Honors</label><br>'+
-            '<input type="text" name="honors[]">'+
-            '</div>'+
-
-            '<div class="field">'+
-            '<label for="grade">Grade</label><br>'+
-            '<input type="text" name="grade[]">'+
-            '</div>'+
-
-            '<div class="field">'+
-            '<label for="credits">Credits</label><br>'+
-            '<input type="text" name="credits[]">'+
-            '</div>'+
-
-            '<div class="field">'+
-            '<label for="total_credit">Total Credit</label><br>'+
-            '<input type="text" name="total_credit[]">'+
-            '</div>'+
-
-            '<div class="field">'+
-            '<label for="gpa_credit">Gpa Credit</label><br>'+
-            '<input type="text" name="gpa_credit[]">'+
-            '</div>'+
-
-            '<div class="field">'+
-            '<label for="gpa_points">Gpa Points</label><br>'+
-            '<input type="text" name="gpa_points[]">'+
-            '</div>'+
-
-            '<div class="field">'+
-            '<label for="cumulative_gpa">Cumulative Gpa</label><br>'+
-            '<input type="text" name="cumulative_gpa[]">'+
-            '</div>'+
-            '</div>'); //add input box
-        // }
+    $('select#school_country').change(function(){
+        select_wrapper = $('#order_state_code_wrapper');
+        $('select', select_wrapper).attr('disabled', true);
+        country_code = $(this).val();
+        url = "/schools/subregion_options?parent_region="+country_code;
+        select_wrapper.load(url);
     });
 
-    $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
-        // e.preventDefault(); 
-        $(this).parent('div').remove();
-        x--;
-    })
+    $('.submittable').click(function() {
+        // $.get("/schools/user_detail_copy" , function(data){
+        //     alert(data);
+        // });
+    var url='';
+    var id_name = '';
+    if(window.location.pathname==='/schools/new')
+    {
+        url = '/schools/user_detail_copy';
+        id_name = "school";
+    }
+    else
+    {
+        url = '/schools/school_detail_copy';
+        id_name = "student";
+    }
+
+    if($('.submittable').is(":checked"))
+    {
+        $.ajax({
+            type: 'GET',
+            url: url,
+            dataType: 'JSON',
+            success: function(data){
+                    $('#'+id_name+'_address1').val(data.address1);
+                    $('#'+id_name+'_address2').val(data.address2);
+                    $('#'+id_name+'_address3').val(data.address3);
+                    $('#'+id_name+'_city').val(data.city);
+                    $('#'+id_name+'_zip').val(data.zip);
+                    $('#'+id_name+'_country option:selected').attr("selected",null);
+                    $('#'+id_name+'_country option[value="'+data.country+'"]').attr("selected","selected");
+                   // $('#school_country').val(data.country);
+                    select_wrapper = $('#order_state_code_wrapper');
+                    $('select', select_wrapper).attr('disabled', true);
+                    country_code = data.country;
+                    url = "/schools/subregion_options?parent_region="+country_code;
+                    select_wrapper.load(url);
+                    $('#student_state').val(data.state);
+                    $('#'+id_name+'_phone').val(data.phone);
+                    $('#'+id_name+'_email').val(data.email);
+                },
+            error: function(){
+                alert("Some error occur..");
+            }
+        });
+    }
+    else
+    {
+        $('#'+id_name+'_address1').val('');
+        $('#'+id_name+'_address2').val('');
+        $('#'+id_name+'_address3').val('');
+        $('#'+id_name+'_city').val('');
+        $('#'+id_name+'_zip').val('');
+        $(''+id_name+'_country option:selected').attr("selected",null);
+        $('#'+id_name+'_country option[value="Please select a country"]').attr("selected","selected");
+       // $('#school_country').val(data.country);
+        select_wrapper = $('#order_state_code_wrapper');
+        $('select', select_wrapper).attr('disabled', true);
+        country_code = 'Please select a country';
+        url = "/schools/subregion_options?parent_region="+country_code;
+        select_wrapper.load(url);
+        $('#'+id_name+'_state').val('');
+        $('#'+id_name+'_phone').val('');
+        $('#'+id_name+'_email').val('');
+    } 
+});
 });

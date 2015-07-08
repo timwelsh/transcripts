@@ -1,0 +1,181 @@
+    <div id="main_content">
+
+      <%= form_for :student,  url: admin_students_path   do|f|%>
+      <%#if @student.errors.any?%>
+      <fieldset class="inputs">
+        <legend>
+          <span>Student Details</span>
+        </legend>
+        <%#@student.errors.full_messages.each do |msg| %>
+        <%#= msg %>
+        <%#end %>
+        <%#end%>
+        <ol>
+          <li class="select input optional">
+            <%= f.label :school_name %>
+            <%= f.select :school_id, options_for_select(School.all.map{ |school| ["#{school.school_name}", school.id] }), :prompt=>'Please Select School'  %>
+            <p class="inline-errors">
+              <%=@student.errors[:school_id].join(",") %> 
+            </p>
+          </li>
+
+          <li class="string input optional stringish">
+            <%= f.label :first_name %>
+            <%= f.text_field :first_name, autofocus: true %>
+          </li>
+
+          <li class="string input optional stringish">
+            <%= f.label :middle_name %>
+            <%= f.text_field :middle_name, autofocus: true %>
+          </li>
+
+          <li class="string input optional stringish">
+            <%= f.label :last_name %>
+            <%= f.text_field :last_name, autofocus: true %>
+          </li>
+
+          <li class="string input optional stringish">
+            <%= f.label :dob %>
+            <%= f.text_field :dob, autofocus: true %>
+          </li>
+
+          <li class="string input optional stringish">
+            <%= f.label :address_line_1 %> 
+            <%= f.text_field :address1, autocomplete: "off" %>
+          </li>
+
+          <li class="string input optional stringish">
+            <%= f.label :address_line_2 %> 
+            <%= f.text_field :address2, autocomplete: "off" %>
+          </li>
+
+          <li class="string input optional stringish">
+            <%= f.label :address_line_3 %> 
+            <%= f.text_field :address3, autocomplete: "off" %>
+          </li>
+
+          <li class="string input optional stringish">
+            <%= f.label :country %> 
+            <%= f.country_select :country, {priority: %w(US CA), prompt: 'Please select a country'} %>
+          </li>
+
+
+          <li class="string input optional stringish">
+            <%= f.label :state %> 
+            <%= f.text_field :state, autocomplete: "off" %>
+          </li>
+
+          <li class="string input optional stringish">
+            <%= f.label :city %> 
+            <%= f.text_field :city, autocomplete: "off" %>
+          </li>
+
+
+          <li class="string input optional stringish">
+            <%= f.label :zip %> 
+            <%= f.text_field :zip, autocomplete: "off" %>
+          </li>
+
+          <li class="string input optional stringish">
+            <%= f.label :primary_phone %> 
+            <%= f.text_field :phone, autocomplete: "off" %>
+          </li>
+
+          <li class="string input optional stringish">
+            <%= f.label :email %>
+            <%= f.email_field :email, autofocus: true %>
+            <p class="inline-errors">
+              <%=@student.errors[:email].join(",") %> 
+          </p>
+          </li>
+          
+
+          <li class="string input optional stringish">
+            <%= f.label :enroll_date %>
+            <%= f.text_field :enroll_date %>
+          </li>
+
+          <li class="string input optional stringish">
+            <%= f.label :graduation_date %>
+            <%= f.text_field :graduation_date %>
+          </li>
+        </ol>
+
+
+        <h2>Academic details </h2>
+
+        <div class="input_fields_wrap">
+          <input type="button" class="add_field_button" value="Add More Details">
+
+          <div>
+            <h3>Educational Detail 1</h3>
+            <ol>
+              <li class="string input optional stringish">
+                <label for="grad_name">Graduation Name</label>
+                <input type="text" name="grad_name[]">
+              </li>
+
+              <li class="string input optional stringish">
+                <label for="completion_year">Completion Year</label>
+                <input type="text" name="completion_year[]">
+              </li>
+
+              <li class="string input optional stringish">
+                <label for="description">Description</label>
+                <input type="text" name="description[]">
+              </li>
+
+              <li class="string input optional stringish">
+                <label for="subject">Subject</label>
+                <input type="text" name="subject[]">
+              </li>
+
+              <li class="string input optional stringish">
+                <label for="course_name">Course Name</label>
+                <input type="text" name="course_name[]">
+              </li>
+
+              <li class="string input optional stringish">
+                <label for="honors">Honors</label>
+                <input type="text" name="honors[]">
+              </li>
+
+              <li class="string input optional stringish">
+                <label for="grade">Grade</label>
+                <input type="text" name="grade[]">
+              </li>
+
+              <li class="string input optional stringish">
+                <label for="credits">Credits</label>
+                <input type="text" name="credits[]">
+              </li>
+
+              <li class="string input optional stringish">
+                <label for="total_credit">Total Credit</label>
+                <input type="text" name="total_credit[]">
+              </li>
+
+              <li class="string input optional stringish">
+                <label for="gpa_credit">Gpa Credit</label>
+                <input type="text" name="gpa_credit[]">
+              </li>
+
+              <li class="string input optional stringish">
+                <label for="gpa_points">Gpa Points</label>
+                <input type="text" name="gpa_points[]">
+              </li>
+
+              <li class="string input optional stringish">                  <label for="cumulative_gpa">Cumulative Gpa</label>
+                <input type="text" name="cumulative_gpa[]">
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Create" %>
+        </div>
+        <%end%>
+
+      </fieldset>
+    </div>

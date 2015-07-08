@@ -9,8 +9,8 @@ default: &default
   encoding: unicode
   host: localhost
   pool: 5
-  username: inveera
-  password: inveera
+  username: postgres
+  password: postgres
 
 development:
   <<: *default

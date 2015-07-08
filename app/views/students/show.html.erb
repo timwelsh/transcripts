@@ -1,0 +1,120 @@
+<br><br><br>
+
+<div class = "container">
+
+	<div class="row">
+		<div class= "col-xs-2">&nbsp;</div>
+		<div class= "col-xs-6"><h3>Student Details:</h3></div>
+		<div class= "col-xs-4">&nbsp;</div>
+	</div>
+	<div class ="row">
+		<div class = "col-xs-2">&nbsp;</div>
+		<div class = "col-xs-8">
+			<table class="table table-striped table-responsive table-bordered">
+				<tr>
+					<th>Name</th><td><%=@student.first_name%> <%=@student.middle_name%> <%=@student.last_name%></td>
+				</tr>
+				<tr>
+					<th>DOB</th><td><%=@student.dob%> </td>
+				</tr>
+				<tr>
+					<th>Address</th><td><%=@student.address1%> , <%=@student.address2%> , <%=@student.address3%></td>
+				</tr>
+				<tr>
+					<th>Country</th><td><%=@country = Carmen::Country.coded(@student.country)%></td>
+				</tr>
+				<tr>
+					<% @subregions = @country.subregions %>
+					<% @state = @subregions.coded(@student.state) %>
+					<th>State</th>
+					<td>
+						<%if @state.blank?%>
+							<%= @student.state%>				
+						<%else%>
+							<%=@state.name%>
+						<%end%>
+					</td>
+				</tr>
+				<tr>
+					<th>City</th><td><%=@student.city%></td>
+				</tr>
+				<tr>
+					<th>Zip</th><td><%=@student.zip%></td>
+				</tr>
+				<tr>
+					<th>Phone</th><td><%=@student.phone%></td>
+				</tr>
+				<tr>
+					<th>Email id</th><td><%=@student.email%></td>
+				</tr>
+				<tr>
+					<th>Enrollment Date</th><td><%=@student.enroll_date%></td>
+				</tr>
+				<tr>
+					<th>Graduation Date</th><td><%=@student.graduation_date%></td>
+				</tr>
+			</table>
+		</div>
+		<div class = "col-xs-2">&nbsp;</div>
+	</div>
+
+	<div class="row">
+		<div class= "col-xs-2">&nbsp;</div>
+		<div class= "col-xs-6"><h3>Academic Details:</h3></div>
+		<div class= "col-xs-4">&nbsp;</div>
+	</div>
+	<div class ="row">
+		<div class = "col-xs-2">&nbsp;</div>
+		<div class = "col-xs-8">
+			<%x=1%>
+			<%@student.subject.length.times do|academic|%>
+			<table class="table table-striped table-responsive table-bordered">
+				Educational Detail <%= x %>
+				<tr>
+					<th>Graduation Name</th><td><%=@student.grad_name[academic]%></td>
+				</tr>
+				<tr>
+					<th>Completion Year</th><td><%=@student.completion_year[academic]%> </td>
+				</tr>
+				<tr>
+					<th>Description</th><td><%=@student.description[academic]%></td>
+				</tr>
+				<tr>
+					<th>Subject</th><td><%=@student.subject[academic]%></td>
+				</tr>
+				<tr>
+					<th>Course Name</th><td><%=@student.course_name[academic]%></td>
+				</tr>
+				<tr>
+					<th>Honors</th><td><%=@student.honors[academic]%></td>
+				</tr>
+				<tr>
+					<th>Grade</th><td><%=@student.grade[academic]%></td>
+				</tr>
+				<tr>
+					<th>Credits</th><td><%=@student.credits[academic]%></td>
+				</tr>
+				<tr>
+					<th>Total Credit</th><td><%=@student.total_credit[academic]%></td>
+				</tr>
+				<tr>
+					<th>Gpa Credit</th><td><%=@student.gpa_credit[academic]%></td>
+				</tr>
+				<tr>
+					<th>Gpa Points</th><td><%=@student.gpa_points[academic]%></td>
+				</tr>
+				<tr>
+					<th>Cumulative Gpa</th><td><%=@student.cumulative_gpa[academic]%></td>
+				</tr>
+			</table>
+			<% x = x+1%>
+			<%end%>
+		</div>
+		<div class = "col-xs-2">&nbsp;</div>
+	</div>
+</div>
+<p id="pdf_link">
+	<%= link_to "Download(PDF)",school_student_path(@student.school,@student, :format => "pdf") %>
+	<%= link_to "PRINT", '#', onclick: "printpage()" %>
+
+</p>

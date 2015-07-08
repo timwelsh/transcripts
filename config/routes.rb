@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   #devise_for :users
-
+  resources :homes
   devise_for :users, controllers: {
     sessions: 'user/sessions',
     registrations: 'user/registrations'
@@ -14,21 +14,24 @@ Rails.application.routes.draw do
     end
     
   end 
+
   unauthenticated :user do
     devise_scope :user do
-      get "/" => "user/sessions#new"
+      # get "/" => "user/sessions#new"
+      get "/" => "homes#index"
     end
   end
 
   get '/schools/subregion_options' => 'schools#subregion_options'
-  get '/students/subregion_options' => 'students#subregion_options'
-
+  get '/schools/:school_id/students/subregion_options' => 'students#subregion_options'
   devise_scope :user do
     get '/user/registrations/subregion_options' => 'user/registrations#subregion_options'
   end
 
+  get 'schools/user_detail_copy'
+  get 'schools/school_detail_copy'
   resources :schools do
-    resources :students
+    resources :students    
   end
   
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,4 +1,14 @@
-<% @school.each do |s|%>
-<%= s.school_name%> 
-<%= link_to 'View' ,  school_path(s)%><br>
-<%end%>
+<div class = "container">
+
+	<div class="row">
+		<div class= "col-xs-2">&nbsp;</div>
+		<div class= "col-xs-4"><h2><%=@school.school_name%></h2> </div>
+		<div class= "col-xs-6">
+			<%= link_to 'Show' ,school_path(@school.id) , class: 'btn btn-primary btn-xs'%>
+			<%= link_to 'Edit' ,edit_school_path(@school.id) , class: 'btn btn-info btn-xs'%>
+			<%= link_to 'Destroy' ,school_path(@school.id) ,method: :delete , data: {confirm: 'Are you sure'} , class: 'btn btn-danger btn-xs'%>
+
+		</div>
+		<%= link_to 'View Student List',school_students_path(@school.id), class: 'btn btn-primary btn-xs'%>
+	</div>
+</div>
