@@ -21,41 +21,10 @@ ActiveAdmin.register Student do
     actions
   end
 
-  filter :school_name
-  filter :admin_name
+  filter :first_name
   filter :email
-  filter :academic_term
-  filter :grading_scale
   filter :created_at
 
-
-  # form do |f|
-  #   f.inputs "Student Details" do
-  #     row :foo do
-  #               link_to("foo","#")
-  #           end
-  #     f.input :user, :as => :select, :collection => User.all.map{ |user| [user.email, user.id] } , :prompt=>'Please Select User'    
-  #     f.input :school
-  #     f.input :first_name
-  #     f.input :middle_name
-  #     f.input :last_name
-  #     f.input :dob
-  #     f.input :address1, :label => "Address Line 1"
-  #     f.input :address2, :label => "Address Line 2"
-  #     f.input :address3, :label => "Address Line 3"
-  #     f.input :country
-  #     f.input :state
-  #     f.input :city
-  #     f.input :zip
-  #     f.input :email
-  #     f.input :phone
-  #     f.input :enroll_date
-  #     f.input :graduation_date
-  #     f.input :academic_term, :as => :select, :collection=> TERM, :prompt=>'Please Select Academic Term'
-  #     f.input :grading_scale, :as => :select, :collection=> SCALE, :prompt=>'Please Select Grade'
-  #   end
-  #   f.actions
-  # end
 
 controller do
   layout 'active_admin' , :except => [:index]
