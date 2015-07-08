@@ -22,6 +22,7 @@ ActiveAdmin.register Student do
   end
 
   filter :first_name
+  filter :last_name
   filter :email
   filter :created_at
 
