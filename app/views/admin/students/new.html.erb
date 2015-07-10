@@ -86,7 +86,7 @@
             <%= f.email_field :email, autofocus: true %>
             <p class="inline-errors">
               <%=@student.errors[:email].join(",") %> 
-          </p>
+            </p>
           </li>
           
 
@@ -107,8 +107,11 @@
         <div class="input_fields_wrap">
           <input type="button" class="add_field_button" value="Add More Details">
 
-          <div>
+          <div class="education">
             <h3>Educational Detail 1</h3>
+
+            <div style="clear:both;"></div>
+
             <ol>
               <li class="string input optional stringish">
                 <label for="grad_name">Graduation Name</label>
@@ -171,10 +174,17 @@
             </ol>
           </div>
         </div>
-
-        <div class="actions">
-          <%= f.submit "Create" %>
-        </div>
+        
+        <fieldset class="actions">
+          <ol>
+            <li id="school_submit_action" class="action input_action ">
+             <%= f.submit "Create" %>
+            </li>
+            <li class="cancel">
+              <a href="/admin/students">Cancel</a>
+            </li>
+          </ol>
+        </fieldset>
         <%end%>
 
       </fieldset>

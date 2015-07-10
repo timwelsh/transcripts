@@ -30,8 +30,9 @@ $(document).ready(function(){
             x=$("#xval").val();
         }
         x++; 
-        $(wrapper).append('<div>'+
+        $(wrapper).append('<div class="education secondEdu">'+
             '<h3>Educational Detail '+x+'</h3> <a href="#" class="remove_field">Remove</a>'+
+            '<div style="clear:both;"></div>'+
             '<ol><li class="string input optional stringish">'+
             '<label for="grad_name">Graduation Name</label>'+
             '<input type="text" name="grad_name[]">'+
@@ -114,4 +115,12 @@ $(document).ready(function(){
 		var id = document.referrer.split('user_id=')[1]
 		$('select#school_user_id').val(id);
 	}
+
+    if(document.referrer.contains("school_id")){
+        var id = document.referrer.split('school_id=')[1]
+        $('select#student_school_id').val(id);
+    }
+    $('body.show.admin_students #page_title').html("Student Detail");
+    $('body.new.admin_students #page_title').html("Add Student Detail");
+    
 });

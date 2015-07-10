@@ -17,7 +17,9 @@ ActiveAdmin.register School do
     column :phone
     column :academic_term
     column :grading_scale
-    actions
+    actions :defaults => true do |resource|
+      link_to "View Students", "students?school_id=#{resource[:id]}"
+    end
   end
 
   filter :school_name
@@ -26,6 +28,8 @@ ActiveAdmin.register School do
   filter :academic_term
   filter :grading_scale
   filter :created_at
+
+  
 
 
   form do |f|
