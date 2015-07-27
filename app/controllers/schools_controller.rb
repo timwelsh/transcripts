@@ -1,5 +1,5 @@
 class SchoolsController < ApplicationController
-
+	load_and_authorize_resource 
 	def index
 		@school = current_user.school
 	end 

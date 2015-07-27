@@ -4,8 +4,8 @@ ActiveAdmin.register Student do
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
-  # member_action :delete, :method=>:delete do
-  # end
+  member_action :view_pdf, :method=>:get do
+  end
 
   permit_params :user_id, :school_name, :admin_name, :address1, :address2, :address3,
   :city, :state, :zip, :country, :phone, :email,:academic_term,:grading_scale
@@ -25,10 +25,12 @@ ActiveAdmin.register Student do
     column :email
     column :enroll_date
     column :graduation_date
+    actions :defaults => true do |resource|
+      link_to "View PDF", {:action => 'view_pdf', :id => resource }, :method => :get
+    end
     # actions :defaults => true do |resource|
     #   link_to "Delete", {:action => 'destroy', :id => resource } ,:class=>'delete_student' , :method => :delete
     # end
-    actions
   end
 
   filter :first_name
@@ -37,7 +39,7 @@ ActiveAdmin.register Student do
 
 
 controller do
-   layout 'active_admin' , :except => [:index, :destroy]
+   layout 'active_admin' , :except => [:index, :destroy,:view_pdf]
   # layout 'active_admin', :only => [:new]
 
    def scoped_collection
@@ -50,7 +52,20 @@ controller do
     end
 
   def create
+    # objArray = []
+    # objArray = Array.new
+    
+
+    # params[:subject].each do|s|
+    #   objArray << s
+
+    # end
+
+    # puts "************************************************"
+    # puts objArray
+    # puts "************************************************"
     @student = Student.new student_params.merge(grad_name: academic_params["grad_name"],completion_year: academic_params["completion_year"],description: academic_params["description"],subject: academic_params["subject"],course_name: academic_params["course_name"],honors: academic_params["honors"],grade: academic_params["grade"],credits: academic_params["credits"],total_credit: academic_params["total_credit"],gpa_credit: academic_params["gpa_credit"],gpa_points: academic_params["gpa_points"],cumulative_gpa: academic_params["cumulative_gpa"])
+
     if @student.save
       redirect_to  admin_students_path 
     else
@@ -80,6 +95,19 @@ controller do
   #   @student.destroy
   #   redirect_to admin_students_path 
   # end
+  def view_pdf
+    @student = Student.find(params[:id])
+    @school = School.find(@student.school_id)
+    respond_to do |format|
+      format.html
+      format.pdf do
+           @pdf = render_to_string pdf: "student" ,:template => 'admin/students/view_pdf.html.erb' ,disable_internal_links: true,disable_external_links: true,
+          print_media_type: true 
+         send_data(@pdf, :filename => @student.first_name,  :type=>"application/pdf")
+        end
+    end
+
+  end
 
   private
   def student_params

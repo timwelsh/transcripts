@@ -5,3 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+Plan.create(name: 'Gold', amount: "1000" , description: "expensive")
+Plan.create(name: 'Silver', amount: "500" , description: "moderate")
+Plan.create(name: 'Bronze', amount: "250" , description: "low")

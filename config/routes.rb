@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'stripe/webhook'
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   #devise_for :users
@@ -10,9 +12,12 @@ Rails.application.routes.draw do
 
   authenticated :user do
     devise_scope :user do
-      root 'user/registrations#edit'
-    end
-    
+      #root 'user/registrations#edit'
+      
+  root :to => 'homes#index'
+
+      end
+  
   end 
 
   unauthenticated :user do
@@ -21,7 +26,8 @@ Rails.application.routes.draw do
       get "/" => "homes#index"
     end
   end
-
+  
+  post 'stripe/webhook'
   get '/schools/subregion_options' => 'schools#subregion_options'
   get '/schools/:school_id/students/subregion_options' => 'students#subregion_options'
   devise_scope :user do
@@ -33,7 +39,7 @@ Rails.application.routes.draw do
   resources :schools do
     resources :students    
   end
-  
+  #post 'transactions/hook'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -48,7 +54,10 @@ Rails.application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   
-    # resources :schools
+    resources :subscriptions
+    resources :plans
+    resources :transactions
+
   # Example resource route with options:
   #   resources :products do
   #     member do

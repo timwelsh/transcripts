@@ -1,0 +1,18 @@
+<%= form_for @plan, url: transactions_path, method: :post do |f|%>
+<article>
+  <label class="amount">
+    <span>Amount: $ <%= (@plan.amount.to_i/100) %> </span>
+  </label>
+</article>
+
+
+<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+data-key="pk_test_jMUKzHL4kwf1KFpFhTVA8QFu"
+data-description="<%= @plan.name%>"
+data-amount="<%= @plan.amount%>">
+</script>
+<%= f.hidden_field :amount, value: @plan.amount%>
+<%= f.hidden_field :id, value: @plan.id%>
+<%= f.hidden_field :period, value: @plan.subscription_period%>
+<% end %>
+

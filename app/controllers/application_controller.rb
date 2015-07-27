@@ -7,7 +7,9 @@ class ApplicationController < ActionController::Base
   # def subregion_options
   # 	render partial: 'subregion_select'
   # end
-
+def after_sign_in_path_for(resource_or_scope)
+new_plan_path
+    end
   protected
 
   def configure_permitted_parameters

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150626091114) do
+ActiveRecord::Schema.define(version: 20150720132815) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,8 +62,9 @@ ActiveRecord::Schema.define(version: 20150626091114) do
     t.string   "name"
     t.string   "amount"
     t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.integer  "subscription_period"
   end
 
   create_table "schools", force: :cascade do |t|
@@ -122,7 +123,7 @@ ActiveRecord::Schema.define(version: 20150626091114) do
 
   add_index "students", ["school_id"], name: "index_students_on_school_id", using: :btree
 
-  create_table "user_plans", force: :cascade do |t|
+  create_table "subscriptions", force: :cascade do |t|
     t.datetime "plan_end_date"
     t.boolean  "status"
     t.integer  "user_id"
@@ -131,8 +132,29 @@ ActiveRecord::Schema.define(version: 20150626091114) do
     t.datetime "updated_at",    null: false
   end
 
-  add_index "user_plans", ["plan_id"], name: "index_user_plans_on_plan_id", using: :btree
-  add_index "user_plans", ["user_id"], name: "index_user_plans_on_user_id", using: :btree
+  add_index "subscriptions", ["plan_id"], name: "index_subscriptions_on_plan_id", using: :btree
+  add_index "subscriptions", ["user_id"], name: "index_subscriptions_on_user_id", using: :btree
+
+  create_table "transactions", force: :cascade do |t|
+    t.string   "transaction_id"
+    t.datetime "created"
+    t.string   "status"
+    t.boolean  "paid"
+    t.integer  "refunded"
+    t.string   "card_id"
+    t.integer  "last4"
+    t.string   "brand"
+    t.string   "funding"
+    t.integer  "expiry_month"
+    t.integer  "expiry_year"
+    t.string   "customer"
+    t.string   "bal_transactions"
+    t.integer  "subscription_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "transactions", ["subscription_id"], name: "index_transactions_on_subscription_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -165,6 +187,7 @@ ActiveRecord::Schema.define(version: 20150626091114) do
 
   add_foreign_key "schools", "users"
   add_foreign_key "students", "schools"
-  add_foreign_key "user_plans", "plans"
-  add_foreign_key "user_plans", "users"
+  add_foreign_key "subscriptions", "plans"
+  add_foreign_key "subscriptions", "users"
+  add_foreign_key "transactions", "subscriptions"
 end

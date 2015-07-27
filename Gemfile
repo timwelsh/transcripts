@@ -26,7 +26,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'devise'
 gem 'cancancan'
-
+gem 'stripe'
 
 #gem 'pdfkit'
 
@@ -46,6 +46,7 @@ gem 'fancybox2-rails', '~> 0.2.8'
 gem 'activeadmin-ckeditor'
 gem 'dotenv-rails', :groups => [:development]
 gem "gibbon"
+#gem 'stripe_event'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

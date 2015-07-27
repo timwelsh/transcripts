@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2>Subscription Plans</h2>
+  <table class="table table-bordered">
+   
+      <tr>
+        <td>
+        <img src="/assets/bronze.jpeg" class="img-circle" alt="images" width="80" height="100"> <br>
+  <%= link_to "Bronze for 1 months" , 'http://localhost:3000/subscriptions/new?plan_id=3'%>
+      </td>
+      <td>
+      <img src="/assets/silver.jpeg" class="img-circle" alt="images" width="180" height="100"> <br>
+  <%= link_to "Silver for 6 months " , 'http://localhost:3000/subscriptions/new?plan_id=2'%>
+      </td>
+      <td>
+        <img src="/assets/gold.jpeg" class="img-circle" alt="images" width="180" height="100"> <br>
+<%= link_to "Gold for 12 months" , 'http://localhost:3000/subscriptions/new?plan_id=1'%>
+      </td>
+      </tr>
+ 
+  
+</div>
+
+</body>
+</html>

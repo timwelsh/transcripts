@@ -1,4 +1,5 @@
 //= require active_admin/base
+//= require bootstrap-sprockets
 $(function (){
     $('#student_dob').datepicker({
         changeYear: true,
@@ -15,6 +16,13 @@ $(function (){
         changeMonth: true,
         yearRange: "1950:2050"
     });
+    $('.completion_year').each(function(){
+        $('.completion_year').datepicker({
+            changeYear: true,
+            changeMonth: true,
+            yearRange: "1950:2050"
+        });
+    })
 
 });
 $(document).ready(function(){
@@ -40,7 +48,7 @@ $(document).ready(function(){
 
             '<li class="string input optional stringish">'+
             '<label for="completion_year">Completion Year</label>'+
-            '<input type="text" name="completion_year[]">'+
+            '<input type="text" name="completion_year[]" class="completion_year">'+
             '</li>'+
 
             '<li class="string input optional stringish">'+
@@ -49,7 +57,7 @@ $(document).ready(function(){
             '</li>'+
 
             '<li class="string input optional stringish">'+
-            '<label for="subject">Subject</label>'+
+            '<label for="subject">Subject(seperate subject via ,)</label>'+
             '<input type="text" name="subject[]">'+
             '</li>'+
 
@@ -64,12 +72,12 @@ $(document).ready(function(){
             '</li>'+
 
             '<li class="string input optional stringish">'+
-            '<label for="grade">Grade</label>'+
+            '<label for="grade">Grade(seperate grade via ,)</label>'+
             '<input type="text" name="grade[]">'+
             '</li>'+
 
             '<li class="string input optional stringish">'+
-            '<label for="credits">Credits</label>'+
+            '<label for="credits">Credits(seperate credits via ,)</label>'+
             '<input type="text" name="credits[]">'+
             '</li>'+
 
@@ -93,34 +101,44 @@ $(document).ready(function(){
             '<input type="text" name="cumulative_gpa[]">'+
             '</li></ol>'+
             '</div>'); 
-    });
+            $('.completion_year').datepicker({
+                changeYear: true,
+                changeMonth: true,
+                yearRange: "1950:2050"
+            });
+});
 
     $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
         // e.preventDefault(); 
         $(this).parent('div').remove();
         x--;
     });
-	$('select#user_country').val('US');
+    $('select#user_country').val('US');
     $('select#school_country').val('US');
-	$('select#student_country').val('US');
-	$('select#user_status').val(1);
-	$('select#user_country').change(function(){
-		select_wrapper = $('#user_state');
-		$('select', select_wrapper).attr('disabled', true);
-		country_code = $(this).val();
-		url = "/user/registrations/subregion_options?parent_region="+country_code;
-		select_wrapper.load(url);
-	});
-	if(document.referrer.contains("user_id")){
-		var id = document.referrer.split('user_id=')[1]
-		$('select#school_user_id').val(id);
-	}
+    $('select#student_country').val('US');
+    $('select#user_status').val(1);
+    $('select#user_country').change(function(){
+      select_wrapper = $('#user_state');
+      $('select', select_wrapper).attr('disabled', true);
+      country_code = $(this).val();
+      url = "/user/registrations/subregion_options?parent_region="+country_code;
+      select_wrapper.load(url);
+  });
+    if(document.referrer.contains("user_id")){
+      var id = document.referrer.split('user_id=')[1]
+      $('select#school_user_id').val(id);
+  }
 
-    if(document.referrer.contains("school_id")){
-        var id = document.referrer.split('school_id=')[1]
-        $('select#student_school_id').val(id);
-    }
-    $('body.show.admin_students #page_title').html("Student Detail");
-    $('body.new.admin_students #page_title').html("Add Student Detail");
-    
+  if(document.referrer.contains("school_id")){
+    var id = document.referrer.split('school_id=')[1]
+    $('select#student_school_id').val(id);
+}
+$('body.show.admin_students #page_title').html("Student Detail");
+$('body.new.admin_students #page_title').html("Add Student Detail");
+
 });
+
+function printpage()
+{
+    window.print()
+}

@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  transaction_id: MyString
+  created: 2015-07-20 17:11:15
+  status: MyString
+  paid: false
+  refunded: 1
+  card_id: MyString
+  last4: 1
+  brand: MyString
+  funding: MyString
+  expiry_month: 1
+  expiry_year: 1
+  customer: MyString
+  bal_transactions: MyString
+  subscription_id: 
+
+two:
+  transaction_id: MyString
+  created: 2015-07-20 17:11:15
+  status: MyString
+  paid: false
+  refunded: 1
+  card_id: MyString
+  last4: 1
+  brand: MyString
+  funding: MyString
+  expiry_month: 1
+  expiry_year: 1
+  customer: MyString
+  bal_transactions: MyString
+  subscription_id: 

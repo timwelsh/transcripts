@@ -1,5 +1,5 @@
 class StudentsController < ApplicationController
-
+	load_and_authorize_resource 
 	def index
 		@school = School.find(params[:school_id])
 		@student = @school.students
@@ -51,6 +51,7 @@ class StudentsController < ApplicationController
 		@student.destroy
 		redirect_to school_students_path 
 	end
+
 
 	def subregion_options
 		render partial: 'subregion_select'
