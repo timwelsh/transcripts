@@ -104,12 +104,13 @@ $(document).ready(function(){
             '<input type="text" name="cumulative_gpa[]">'+
             '</li></ol>'+
             '</div>'); 
-            $('.completion_year').datepicker({
-                changeYear: true,
-                changeMonth: true,
-                yearRange: "1950:2050"
-            });
-});
+
+        $('.completion_year').datepicker({
+            changeYear: true,
+            changeMonth: true,
+            yearRange: "1950:2050"
+        });
+    });
 
     $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
         // e.preventDefault(); 
@@ -120,24 +121,67 @@ $(document).ready(function(){
     $('select#school_country').val('US');
     $('select#student_country').val('US');
     $('select#user_status').val(1);
+    $('#user_state_input').append('<div id="order_state_code_wrapper"></div>');
+    $('#user_state').remove();
+    select_wrapper = $('#order_state_code_wrapper');
+    $('select', select_wrapper).attr('disabled', true);
+    url = "/user/registrations/subregion_options?parent_region=US";
+    select_wrapper.load(url);
+
     $('select#user_country').change(function(){
-      select_wrapper = $('#user_state');
-      $('select', select_wrapper).attr('disabled', true);
-      country_code = $(this).val();
-      url = "/user/registrations/subregion_options?parent_region="+country_code;
-      select_wrapper.load(url);
-  });
+        select_wrapper = $('#order_state_code_wrapper');
+        $('select', select_wrapper).attr('disabled', true);
+        country_code = $(this).val();
+        url = "/user/registrations/subregion_options?parent_region="+country_code;
+        select_wrapper.load(url);
+    });
+
+
+    $('#school_state_input').append('<div id="order_state_code_wrapper"></div>');
+    $('#school_state').remove();
+    select_wrapper = $('#order_state_code_wrapper');
+    $('select', select_wrapper).attr('disabled', true);
+    url = "/user/registrations/subregion_options?parent_region=US";
+    select_wrapper.load(url);
+    
+    $('select#school_country').change(function(){
+        select_wrapper = $('#order_state_code_wrapper');
+        $('select', select_wrapper).attr('disabled', true);
+        country_code = $(this).val();
+        url = "/user/registrations/subregion_options?parent_region="+country_code;
+        select_wrapper.load(url);
+    });
+
+
+
+    $('#student_state').wrap('<div id="order_state_code_wrapper"></div>');
+    $('#student_state').remove();
+    select_wrapper = $('#order_state_code_wrapper');
+    $('select', select_wrapper).attr('disabled', true);
+    url = "/user/registrations/subregion_options?parent_region=US";
+    select_wrapper.load(url);
+    
+    $('select#student_country').change(function(){
+        select_wrapper = $('#order_state_code_wrapper');
+        $('select', select_wrapper).attr('disabled', true);
+        country_code = $(this).val();
+        url = "/user/registrations/subregion_options?parent_region="+country_code;
+        select_wrapper.load(url);
+    });
+
+
     if(document.referrer.contains("user_id")){
       var id = document.referrer.split('user_id=')[1]
       $('select#school_user_id').val(id);
-  }
+    }
 
-  if(document.referrer.contains("school_id")){
-    var id = document.referrer.split('school_id=')[1]
-    $('select#student_school_id').val(id);
-}
-$('body.show.admin_students #page_title').html("Student Detail");
-$('body.new.admin_students #page_title').html("Add Student Detail");
+    if(document.referrer.contains("school_id")){
+        var id = document.referrer.split('school_id=')[1]
+        $('select#student_school_id').val(id);
+    }
+
+    $('body.show.admin_students #page_title').html("Student Detail");
+    $('body.new.admin_students #page_title').html("Add Student Detail");
 
 });
 
