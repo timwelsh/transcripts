@@ -23,13 +23,19 @@ en:
             first_name:
               blank: "First name can't be blank"
             last_name:
-              blank: "Last name can't be blank"      
+              blank: "Last name can't be blank"     
         school:
           attributes:
             email:
               blank: "Please enter an email address"
               taken: "Please use a different email address"
               invalid: "Please enter a correct email address"
+            school_name:
+              blank: "School name can't be blank"  
+            email:
+              blank: "Please enter an email address"
+              taken: "Please use a different email address"
+              invalid: "Please enter a correct email address"  
         student:
           attributes:
             email:

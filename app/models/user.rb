@@ -2,7 +2,8 @@ class User < ActiveRecord::Base
   validates :email, presence: true, :format=> { with: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\w{2,3})+$/,multiline: true}
   validates :password, length: { in: 6..12 }
   validates :first_name,:last_name,:presence => true
-  has_one :school
+  validates :zip,numericality: { only_integer: true ,message:"zip code should be number"},length: { is: 5 ,message: "zip code length should be 5"}
+  validates :phone,numericality:{ only_integer: true ,message:"Phone number should be numeric"},length: { is: 10 ,message: "Phone number length should be 10"}
   has_many :subscriptions
   
   devise :database_authenticatable, :registerable,
