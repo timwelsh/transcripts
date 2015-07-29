@@ -36,3 +36,10 @@ en:
               blank: "Please enter an email address"
               taken: "Please use a different email address"
               invalid: "Please enter a correct email address"
+  flash:
+    actions:
+      create: {notice: "%{resource_name} has been successfully created."}
+      update: {notice: "%{resource_name} has been successfully updated."}
+      destroy:
+        notice: "%{resource_name} has been successfully destroyed."
+        alert:  "%{resource_name} could not be destroyed."
