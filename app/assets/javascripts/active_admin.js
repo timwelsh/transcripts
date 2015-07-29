@@ -30,16 +30,19 @@ $(document).ready(function(){
     var add_button      = $(".add_field_button"); //Add button ID
     var x = 1;    
     var xval = $("#xval").val();
-    $(add_button).click(function(e){ //on add input button click
-        e.preventDefault();
-        // debugger
+     // debugger
         if (typeof xval !== 'undefined' )
         {
             x=$("#xval").val();
         }
+    // alert(xval);
+    $(add_button).click(function(e){ //on add input button click
+        e.preventDefault();
+
+       
         x++; 
         $(wrapper).append('<div class="education secondEdu">'+
-            '<h3>Educational Detail '+x+'</h3> <a href="#" class="remove_field">Remove</a>'+
+            '<h3>Course '+x+'</h3> <a href="#" class="remove_field">Remove</a>'+
             '<div style="clear:both;"></div>'+
             '<ol><li class="string input optional stringish">'+
             '<label for="grad_name">Graduation Name</label>'+

@@ -46,7 +46,7 @@ $(document).ready(function(){
         }
         x++; 
         $(wrapper).append('<div>'+
-            '<h3>Educational Detail '+x+'</h3> <a href="#" class="remove_field">Remove</a>'+
+            '<h3>Course '+x+'</h3> <a href="#" class="remove_field">Remove</a>'+
             '<div class="field">'+
             '<label for="grad_name">Graduation Name</label><br>'+
             '<input type="text" name="grad_name[]">'+
