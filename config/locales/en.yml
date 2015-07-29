@@ -16,6 +16,14 @@ en:
             password:
               blank: "Password can't be blank"
               invalid: "Password is invalid"
+              too_short:
+                other: "Password length should be 6-12"
+              too_long:
+                other: "Password length should be 6-12"
+            first_name:
+              blank: "First name can't be blank"
+            last_name:
+              blank: "Last name can't be blank"      
         school:
           attributes:
             email:

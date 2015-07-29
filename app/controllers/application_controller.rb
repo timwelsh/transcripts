@@ -18,6 +18,6 @@ end
   protected
 
   def configure_permitted_parameters
-  	devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:email, :password, :current_password,:first_name ,:last_name ,:address1,:address2,:address3,:city,:state,:zip,:country, :phone, :status)}
-  end
+   devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:email, :password, :current_password,:first_name ,:last_name ,:address1,:address2,:address3,:city,:state,:zip,:country, :phone, :status)}
+ end
 end

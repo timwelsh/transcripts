@@ -3,5 +3,7 @@ class PlansController < ApplicationController
 	end
 	
 	def index
+	
+		@plan = Plan.all
 	end
 end

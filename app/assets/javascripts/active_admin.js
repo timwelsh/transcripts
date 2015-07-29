@@ -39,7 +39,7 @@ $(document).ready(function(){
     $(add_button).click(function(e){ //on add input button click
         e.preventDefault();
 
-       
+
         x++; 
         $(wrapper).append('<div class="education secondEdu">'+
             '<h3>Course '+x+'</h3> <a href="#" class="remove_field">Remove</a>'+

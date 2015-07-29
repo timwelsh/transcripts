@@ -37,7 +37,7 @@ Rails.application.routes.draw do
   get 'schools/user_detail_copy'
   get 'schools/school_detail_copy'
   resources :schools do
-    resources :students    
+  resources :students    
   end
   #post 'transactions/hook'
   # The priority is based upon order of creation: first created -> highest priority.
