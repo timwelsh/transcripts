@@ -117,6 +117,21 @@ $(document).ready(function(){
         $(this).parent('div').remove();
         x--;
     });
+    var a =  $('#user_email_input p').html();
+    if(a){
+        var b = a.replace('and', '').trim(); 
+        $('#user_email_input p').html(b);  
+    }
+    var c =  $('#school_email_input p').html();
+    if(c){
+        var d = c.replace('and', '').trim(); 
+        $('#school_email_input p').html(d);  
+    }
+    var e =  $('#student_email_input p').html();
+    if(e){
+        var f = e.replace('and', '').trim(); 
+        $('#student_email_input p').html(f);  
+    }
     $('select#user_country').val('US');
     $('select#school_country').val('US');
     $('select#student_country').val('US');

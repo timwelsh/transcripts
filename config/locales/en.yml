@@ -10,7 +10,7 @@ en:
         user:
           attributes:
             email:
-              blank: "Please enter an email address"
+              blank: ""
               taken: "Please use a different email address"
               invalid: "Please enter a correct email address"
             password:
@@ -27,7 +27,7 @@ en:
         school:
           attributes:
             email:
-              blank: "Please enter an email address"
+              blank: ""
               taken: "Please use a different email address"
               invalid: "Please enter a correct email address"
             school_name:
@@ -39,7 +39,7 @@ en:
         student:
           attributes:
             email:
-              blank: "Please enter an email address"
+              blank: ""
               taken: "Please use a different email address"
               invalid: "Please enter a correct email address"
   flash:

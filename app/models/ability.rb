@@ -13,7 +13,7 @@ class Ability
         # byebug
         can :create , School if !user.school
         can :rud, School if user.subscriptions.first.plan_end_date > Date.today 
-        can :rud, :user_id => user.id
+       # can :rud, :user_id => user.id
         can :manage, Student if user.subscriptions.first.plan_end_date > Date.today 
     end
 
