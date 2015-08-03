@@ -28,9 +28,7 @@ ActiveAdmin.register Student do
     actions :defaults => true do |resource|
       link_to "View PDF", {:action => 'view_pdf', :id => resource }, :method => :get
     end
-    # actions :defaults => true do |resource|
-    #   link_to "Delete", {:action => 'destroy', :id => resource } ,:class=>'delete_student' , :method => :delete
-    # end
+    
   end
 
   filter :first_name
@@ -40,9 +38,7 @@ ActiveAdmin.register Student do
 
 controller do
    layout 'active_admin' , :except => [:index, :destroy,:view_pdf]
-  # layout 'active_admin', :only => [:new]
-
-   def scoped_collection
+     def scoped_collection
       if params[:school_id]
         sql = "school_id =  '#{params[:school_id]}'"
         super.where(sql)
@@ -52,20 +48,80 @@ controller do
     end
 
   def create
-    # objArray = []
-    # objArray = Array.new
-    
+    grade=[]
+    credit=[]
+    gpa_points=[]
+    gpa_credit=[]
+    total_credits=[]
+     cumulative_gpa=[]
+    a=0
+    academic_params[:grade].each_index.map do |val|
+      case academic_params[:grade][val]
+        when 'A+'    #compare to 1
+          grade[val] = 4.3
+          credit[val] = academic_params[:credits][val].to_f
+        when 'A'    #compare to 2
+          grade[val] = 4
+          credit[val] = academic_params[:credits][val].to_f
+        when 'A-'    #compare to 2
+          grade[val] = 3.7
+          credit[val] = academic_params[:credits][val].to_f
+        when 'B+'    #compare to 1
+          grade[val] = 3.3
+          credit[val] = academic_params[:credits][val].to_f
+        when 'B'    #compare to 2
+          grade[val] = 3
+          credit[val] = academic_params[:credits][val].to_f
+        when 'B-'    #compare to 2
+          grade[val] = 2.7
+          credit[val] = academic_params[:credits][val].to_f
+        when 'C+'    #compare to 1
+          grade[val] = 2.3
+          credit[val] = academic_params[:credits][val].to_f
+        when 'C'    #compare to 2
+          grade[val] = 2
+          credit[val] = academic_params[:credits][val].to_f
+        when 'C-'    #compare to 2
+          grade[val] = 1.7
+          credit[val] = academic_params[:credits][val].to_f
+        when 'D+'    #compare to 1
+          grade[val] = 1.3
+          credit[val] = academic_params[:credits][val].to_f
+        when 'D'    #compare to 2
+          grade[val] = 1
+          credit[val] = academic_params[:credits][val].to_f
+        when 'D-'    #compare to 2
+          grade[val] = 0.7
+          credit[val] = academic_params[:credits][val].to_f
+        when 'F'    #compare to 1
+          grade[val] = 0
+          credit[val] = academic_params[:credits][val].to_f
+        when 'CR'    #compare to 2
+          grade[val] = 0
+          credit[val] = academic_params[:credits][val].to_f
+          a=academic_params[:credits][val].to_f+a
+        when 'NC'    #compare to 2
+          grade[val] = 0
+          credit[val] = academic_params[:credits][val].to_f
+          a=academic_params[:credits][val].to_f+a
+        when 'W'    #compare to 2
+          grade[val] = 0
+          credit[val] = academic_params[:credits][val].to_f
+          a=academic_params[:credits][val].to_f+a
+        when 'I'    #compare to 2
+          grade[val] = 0
+          credit[val] = academic_params[:credits][val].to_f
+          a=academic_params[:credits][val].to_f+a
+      end
+    end
+    gpa_points[0]=grade.inject{|sum,x| sum+x}
+    total_credits[0]=credit.inject{|sum,x| sum+x}
+    gpa_credit[0]=total_credits[0]-a
+    cumulative_gpa[0]=gpa_points[0]/gpa_credit[0]
+    cumulative_gpa[0]=cumulative_gpa[0].round(2)
 
-    # params[:subject].each do|s|
-    #   objArray << s
-
-    # end
-
-    # puts "************************************************"
-    # puts objArray
-    # puts "************************************************"
-    @student = Student.new student_params.merge(grad_name: academic_params["grad_name"],completion_year: academic_params["completion_year"],description: academic_params["description"],subject: academic_params["subject"],course_name: academic_params["course_name"],honors: academic_params["honors"],grade: academic_params["grade"],credits: academic_params["credits"],total_credit: academic_params["total_credit"],gpa_credit: academic_params["gpa_credit"],gpa_points: academic_params["gpa_points"],cumulative_gpa: academic_params["cumulative_gpa"])
-
+      @student = Student.new student_params.merge(grad_name: academic_params["grad_name"],completion_year: academic_params["completion_year"],description: academic_params["description"],subject: academic_params["subject"],course_name: academic_params["course_name"],honors: academic_params["honors"],grade: academic_params["grade"],credits: academic_params["credits"],total_credit: total_credits ,gpa_points: gpa_points, gpa_credit:gpa_credit,cumulative_gpa:cumulative_gpa)
+ 
     if @student.save
       redirect_to  admin_students_path 
     else
@@ -90,11 +146,7 @@ controller do
     end
   end
 
-  # def delete
-  #   @student = Student.find(params[:id])
-  #   @student.destroy
-  #   redirect_to admin_students_path 
-  # end
+ 
   def view_pdf
     @student = Student.find(params[:id])
     @school = School.find(@student.school_id)
@@ -103,7 +155,7 @@ controller do
       format.pdf do
            @pdf = render_to_string pdf: "student" ,:template => 'admin/students/view_pdf.html.erb' ,disable_internal_links: true,disable_external_links: true,
           print_media_type: true 
-         send_data(@pdf, :filename => @student.first_name,  :type=>"application/pdf")
+         send_data(@pdf, :filename => @student.first_name+'.pdf',  :type=>"application/pdf")
         end
     end
 
@@ -111,7 +163,7 @@ controller do
 
   private
   def student_params
-    params.require(:student).permit(:school_id ,:first_name , :middle_name , :last_name, :dob, :address1 , :address2 ,:address3 , :country, :state , :city , :zip, :phone ,:email, :enroll_date ,:graduation_date)
+    params.require(:student).permit(:school_id ,:first_name , :middle_name , :last_name, :dob, :address1 , :address2 ,:address3 , :country, :city, :state, :zip, :phone ,:email, :enroll_date ,:graduation_date)
   end
 
   def academic_params

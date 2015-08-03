@@ -17,9 +17,9 @@ en:
               blank: "Password can't be blank"
               invalid: "Password is invalid"
               too_short:
-                other: "Password length should be 6-12"
+                other: "Password length should be 8-12"
               too_long:
-                other: "Password length should be 6-12"
+                other: "Password length should be 8-12"
             first_name:
               blank: "First name can't be blank"
             last_name:
@@ -42,10 +42,14 @@ en:
               blank: ""
               taken: "Please use a different email address"
               invalid: "Please enter a correct email address"
+            first_name:
+              blank: "First name can't be blank"
+            last_name:
+              blank: "Last name can't be blank"  
   flash:
     actions:
-      create: {notice: "%{resource_name} has been successfully created."}
-      update: {notice: "%{resource_name} has been successfully updated."}
+      create: {notice: "%{resource_name} has been created successfully."}
+      update: {notice: "%{resource_name} has been updated successfully."}
       destroy:
-        notice: "%{resource_name} has been successfully destroyed."
-        alert:  "%{resource_name} could not be destroyed."
+        notice: "%{resource_name} has been deleted successfully."
+        alert:  "%{resource_name} could not be deleted."

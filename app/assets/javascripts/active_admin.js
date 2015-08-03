@@ -60,7 +60,7 @@ $(document).ready(function(){
             '</li>'+
 
             '<li class="string input optional stringish">'+
-            '<label for="subject">Subject(seperate subject via ,)</label>'+
+            '<label for="subject">Subject</label>'+
             '<input type="text" name="subject[]">'+
             '</li>'+
 
@@ -74,35 +74,45 @@ $(document).ready(function(){
             '<input type="text" name="honors[]">'+
             '</li>'+
 
-            '<li class="string input optional stringish">'+
-            '<label for="grade">Grade(seperate grade via ,)</label>'+
-            '<input type="text" name="grade[]">'+
+          '<li class="string input optional stringish">'+
+             '<label for="grade">Grade</label>'+
+              '<select name="grade[]">'+
+               '<option value ="A+">A+</option>'+
+                '<option value ="A">A</option>'+
+                '<option value ="A-">A-</option>'+
+                '<option value ="B+">B+</option>'+
+                '<option value ="B">B</option>'+
+                '<option value ="B-">B-</option>'+
+                '<option value ="C+">C+</option>'+
+                '<option value ="C">C</option>'+
+                '<option value ="C-">C-</option>'+
+                '<option value ="D+">D+</option>'+
+                '<option value ="D">D</option>'+
+                '<option value ="D-">D-</option>'+
+                '<option value ="F">F</option>'+
+                '<option value ="CR">CR</option>'+
+                '<option value ="NC">NC</option>'+
+                '<option value ="W">W</option>'+
+                '<option value ="I">I</option>'+
+
+              '</select>'+
             '</li>'+
 
             '<li class="string input optional stringish">'+
-            '<label for="credits">Credits(seperate credits via ,)</label>'+
-            '<input type="text" name="credits[]">'+
-            '</li>'+
+             '<label for="credit">Credit</label>'+
+              '<select name="credits[]">'+
+               '<option value ="0.5">0.5</option>'+
+                '<option value ="1.0">1.0</option>'+
+                '<option value ="2.0">2.0</option>'+
+              '</li>'+
 
-            '<li class="string input optional stringish">'+
-            '<label for="total_credit">Total Credit</label>'+
-            '<input type="text" name="total_credit[]">'+
-            '</li>'+
+            '<input type="hidden" name="total_credit[]">'+
+            '<input type="hidden" name="gpa_credit[]">'+
+            '<input type="hidden" name="gpa_points[]">'+
+            '<input type="hidden" name="cumulative_gpa[]">'+
+            
 
-            '<li class="string input optional stringish">'+
-            '<label for="gpa_credit">Gpa Credit</label>'+
-            '<input type="text" name="gpa_credit[]">'+
-            '</li>'+
-
-            '<li class="string input optional stringish">'+
-            '<label for="gpa_points">Gpa Points</label>'+
-            '<input type="text" name="gpa_points[]">'+
-            '</li>'+
-
-            '<li class="string input optional stringish">'+
-            '<label for="cumulative_gpa">Cumulative Gpa</label>'+
-            '<input type="text" name="cumulative_gpa[]">'+
-            '</li></ol>'+
+            '</ol>'+
             '</div>'); 
 
         $('.completion_year').datepicker({
@@ -136,13 +146,16 @@ $(document).ready(function(){
     $('select#school_country').val('US');
     $('select#student_country').val('US');
     $('select#user_status').val(1);
-    $('#user_state_input').append('<div id="order_state_code_wrapper"></div>');
-    $('#user_state').remove();
-    select_wrapper = $('#order_state_code_wrapper');
-    $('select', select_wrapper).attr('disabled', true);
-    url = "/user/registrations/subregion_options?parent_region=US";
-    select_wrapper.load(url);
 
+    if(document.URL.contains("users")){
+        $('#user_state_input').append('<div id="order_state_code_wrapper"></div>');
+        $('#user_state').remove();
+        select_wrapper = $('#order_state_code_wrapper');
+        $('select', select_wrapper).attr('disabled', true);
+        url = "/user/registrations/subregion_options?parent_region=US";
+        select_wrapper.load(url);
+    }
+    
     $('select#user_country').change(function(){
         select_wrapper = $('#order_state_code_wrapper');
         $('select', select_wrapper).attr('disabled', true);
@@ -151,36 +164,36 @@ $(document).ready(function(){
         select_wrapper.load(url);
     });
 
-
-    $('#school_state_input').append('<div id="order_state_code_wrapper"></div>');
-    $('#school_state').remove();
-    select_wrapper = $('#order_state_code_wrapper');
-    $('select', select_wrapper).attr('disabled', true);
-    url = "/user/registrations/subregion_options?parent_region=US";
-    select_wrapper.load(url);
-    
+    if(document.URL.contains("schools")){
+        $('#school_state_input').append('<div id="order_state_code_wrapper"></div>');
+        $('#school_state').remove();
+        select_wrapper = $('#order_state_code_wrapper');
+        $('select', select_wrapper).attr('disabled', true);
+        url = "/schools/subregion_options?parent_region=US";
+        select_wrapper.load(url);
+    }
     $('select#school_country').change(function(){
         select_wrapper = $('#order_state_code_wrapper');
         $('select', select_wrapper).attr('disabled', true);
         country_code = $(this).val();
-        url = "/user/registrations/subregion_options?parent_region="+country_code;
+        url = "/schools/subregion_options?parent_region="+country_code;
         select_wrapper.load(url);
     });
 
 
-
-    $('#student_state').wrap('<div id="order_state_code_wrapper"></div>');
-    $('#student_state').remove();
-    select_wrapper = $('#order_state_code_wrapper');
-    $('select', select_wrapper).attr('disabled', true);
-    url = "/user/registrations/subregion_options?parent_region=US";
-    select_wrapper.load(url);
-    
+    if(document.URL.contains("students")){
+        $('#student_state').wrap('<div id="order_state_code_wrapper"></div>');
+        $('#student_state').remove();
+        select_wrapper = $('#order_state_code_wrapper');
+        $('select', select_wrapper).attr('disabled', true);
+        url = "/students/subregion_options?parent_region=US";
+        select_wrapper.load(url);
+    }
     $('select#student_country').change(function(){
         select_wrapper = $('#order_state_code_wrapper');
         $('select', select_wrapper).attr('disabled', true);
         country_code = $(this).val();
-        url = "/user/registrations/subregion_options?parent_region="+country_code;
+        url = "/students/subregion_options?parent_region="+country_code;
         select_wrapper.load(url);
     });
 

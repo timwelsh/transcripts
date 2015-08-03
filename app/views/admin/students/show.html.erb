@@ -21,7 +21,9 @@
 					<% @state = @subregions.coded(@student.state) %>
 					<th>State</th>
 					<td>
+					
 						<%if @state.blank?%>
+
 						<%= @student.state%>				
 						<%else%>
 						<%=@state.name%>
@@ -76,19 +78,7 @@
 					<tr>
 						<th>Credits</th><td><%=@student.credits[academic]%></td>
 					</tr>
-					<tr>
-						<th>Total Credit</th><td><%=@student.total_credit[academic]%></td>
-					</tr>
-					<tr>
-						<th>Gpa Credit</th><td><%=@student.gpa_credit[academic]%></td>
-					</tr>
-					<tr>
-						<th>Gpa Points</th><td><%=@student.gpa_points[academic]%></td>
-					</tr>
-					<tr>
-						<th>Cumulative Gpa</th><td><%=@student.cumulative_gpa[academic]%></td>
-					</tr>
-				</tbody>
+					</tbody>
 			</table>
 			<% x = x+1%>
 			<%end%>

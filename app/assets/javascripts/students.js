@@ -77,35 +77,43 @@ $(document).ready(function(){
             '<input type="text" name="honors[]">'+
             '</div>'+
 
-            '<div class="field">'+
-            '<label for="grade">Grade</label><br>'+
-            '<input type="text" name="grade[]">'+
-            '</div>'+
+            '<li class="string input optional stringish">'+
+             '<label for="grade">Grade</label>'+
+              '<select name="grade[]">'+
+               '<option value ="A+">A+</option>'+
+                '<option value ="A">A</option>'+
+                '<option value ="A-">A-</option>'+
+                '<option value ="B+">B+</option>'+
+                '<option value ="B">B</option>'+
+                '<option value ="B-">B-</option>'+
+                '<option value ="C+">C+</option>'+
+                '<option value ="C">C</option>'+
+                '<option value ="C-">C-</option>'+
+                '<option value ="D+">D+</option>'+
+                '<option value ="D">D</option>'+
+                '<option value ="D-">D-</option>'+
+                '<option value ="F">F</option>'+
+                '<option value ="CR">CR</option>'+
+                '<option value ="NC">NC</option>'+
+                '<option value ="W">W</option>'+
+                '<option value ="I">I</option>'+
 
-            '<div class="field">'+
-            '<label for="credits">Credits</label><br>'+
-            '<input type="text" name="credits[]">'+
-            '</div>'+
+              '</select>'+
+            '</li>'+
 
-            '<div class="field">'+
-            '<label for="total_credit">Total Credit</label><br>'+
-            '<input type="text" name="total_credit[]">'+
-            '</div>'+
+           '<li class="string input optional stringish">'+
+             '<label for="credit">Credit</label>'+
+              '<select name="credits[]">'+
+               '<option value ="0.5">0.5</option>'+
+                '<option value ="1.0">1.0</option>'+
+                '<option value ="2.0">2.0</option>'+
+              '</li>'+
+            '<input type="hidden" name="total_credit[]">'+
+            '<input type="hidden" name="gpa_credit[]">'+
+            '<input type="hidden" name="gpa_points[]">'+
+            '<input type="hidden" name="cumulative_gpa[]">'+
 
-            '<div class="field">'+
-            '<label for="gpa_credit">Gpa Credit</label><br>'+
-            '<input type="text" name="gpa_credit[]">'+
-            '</div>'+
-
-            '<div class="field">'+
-            '<label for="gpa_points">Gpa Points</label><br>'+
-            '<input type="text" name="gpa_points[]">'+
-            '</div>'+
-
-            '<div class="field">'+
-            '<label for="cumulative_gpa">Cumulative Gpa</label><br>'+
-            '<input type="text" name="cumulative_gpa[]">'+
-            '</div>'+
+            
             '</div>'); //add input box
         // }
     });

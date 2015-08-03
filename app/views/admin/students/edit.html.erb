@@ -18,6 +18,9 @@
         <li class="string input optional stringish">
           <%= f.label :first_name %>
           <%= f.text_field :first_name, autofocus: true %>
+           <p class="inline-errors">
+              <%=@student.errors[:first_name].join(",") %> 
+            </p>
         </li>
 
         <li class="string input optional stringish">
@@ -28,6 +31,9 @@
         <li class="string input optional stringish">
           <%= f.label :last_name %>
           <%= f.text_field :last_name, autofocus: true %>
+           <p class="inline-errors">
+              <%=@student.errors[:last_name].join(",") %> 
+            </p>
         </li>
 
         <li class="string input optional stringish">
@@ -70,11 +76,17 @@
         <li class="string input optional stringish">
           <%= f.label :zip %> 
           <%= f.text_field :zip, autocomplete: "off" %>
+          <p class="inline-errors">
+              <%=@student.errors[:zip].join(" and ") %> 
+            </p>
         </li>
 
         <li class="string input optional stringish">
           <%= f.label :primary_phone %> 
           <%= f.text_field :phone, autocomplete: "off" %>
+           <p class="inline-errors">
+              <%=@student.errors[:phone].join(" and ") %> 
+            </p>
         </li>
 
         <li class="string input optional stringish">
@@ -129,8 +141,9 @@
             </li>
 
             <li class="string input optional stringish">
-              <label for="completion_year">Completion Year</label>
-              <input type="text" name="completion_year[]" value= "<%= @student.completion_year[x] %>">
+                <label for="completion_year">Completion Year</label>
+
+              <input type="text" class="completion_year" name="completion_year[]" value= "<%=@student.completion_year[x] %>">
             </li>
 
             <li class="string input optional stringish">
@@ -139,7 +152,7 @@
             </li>
 
             <li class="string input optional stringish">
-              <label for="subject">Subject(seperate subject via ,)</label>
+              <label for="subject">Subject</label>
               <input type="text" name="subject[]" value= "<%= @student.subject[x] %>">
             </li>
 
@@ -154,41 +167,47 @@
             </li>
 
             <li class="string input optional stringish">
-              <label for="grade">Grade(seperate grade via ,)</label>
-              <input type="text" name="grade[]" value= "<%= @student.grade[x] %>">
-            </li>
+             <label for="grade">Grade</label>
+             <select name="grade[]">
+               <option value ="A+">A+</option>
+               <option value ="A">A</option>
+               <option value ="A-">A-</option>
+               <option value ="B+">B+</option>
+               <option value ="B">B</option>
+               <option value ="B-">B-</option>
+               <option value ="C+">C+</option>
+               <option value ="C">C</option>
+               <option value ="C-">C-</option>
+               <option value ="D+">D+</option>
+               <option value ="D">D</option>
+               <option value ="D-">D-</option>
+               <option value ="F">C</option>
+               <option value ="CR">CR</option>
+               <option value ="NC">NC</option>
+               <option value ="W">W</option>
+               <option value ="I">I</option>
 
-            <li class="string input optional stringish">
-              <label for="credits">Credits(seperate credits via ,)</label>
-              <input type="text" name="credits[]" value= "<%= @student.credits[x] %>">
-            </li>
-
-            <li class="string input optional stringish">
-              <label for="total_credit">Total Credit</label>
-              <input type="text" name="total_credit[]" value= "<%= @student.total_credit[x] %>">
-            </li>
-
-            <li class="string input optional stringish">
-              <label for="gpa_credit">Gpa Credit</label>
-              <input type="text" name="gpa_credit[]" value= "<%= @student.gpa_credit[x] %>">
-            </li>
-
-            <li class="string input optional stringish">
-              <label for="gpa_points">Gpa Points</label>
-              <input type="text" name="gpa_points[]" value= "<%= @student.gpa_points[x] %>">
-            </li>
-
-            <li class="string input optional stringish">
-              <label for="cumulative_gpa">Cumulative Gpa</label>
-              <input type="text" name="cumulative_gpa[]" value= "<%= @student.cumulative_gpa[x] %>">
-            </li>
-          </ol>
-        </div>
-        <% x=x+1%>
-        <%end%>
-      </div>
-      <input type= "hidden" value= "<%=x%>" id="xval">
-      <fieldset class="actions">
+             </select>
+           </li>
+           <li class="string input optional stringish">
+             <label for="credit">Credit</label>
+             <select name="credits[]">
+               <option value ="0.5">0.5</option>
+               <option value ="1.0">1.0</option>
+               <option value ="2.0">2.0</option>
+             </li>
+             <input type="hidden" name="total_credit[]" value= "<%= @student.total_credit[x] %>">
+             <input type="hidden" name="gpa_credit[]" value= "<%= @student.gpa_credit[x] %>">
+             <input type="hidden" name="gpa_points[]" value= "<%= @student.gpa_points[x] %>">
+             <input type="hidden" name="cumulative_gpa[]" value= "<%= @student.cumulative_gpa[x] %>">
+             
+           </ol>
+         </div>
+         <% x=x+1%>
+         <%end%>
+       </div>
+       <input type= "hidden" value= "<%=x%>" id="xval">
+       <fieldset class="actions">
         <ol>
           <li id="school_submit_action" class="action input_action ">
            <%= f.submit "Update" %>

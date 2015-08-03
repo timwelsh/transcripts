@@ -19,54 +19,18 @@
                 <div class="rgt-side">
                 
                     <div class="school_logo">
-                    <div class="lg-inside">OFFICIAL</div>
-                
-                            <div class="high-school">
-                            <div class="">
-                
-                          	<ul>
-                                      <li id='auto_radius'>
-                                      
-                                      <span class='w12'>H</span>
-                                     <span class='w13'>I</span>
-                                     <span class='w14'>G</span>
-                                     <span class='w15'>H</span>
-                                     <span class='w16'>S</span>
-                                     <span class='w17'>C</span>
-                                     <span class='w18'>H</span>
-                                     <span class='w19'>O</span>
-                                     <span class='w20'>O</span>
-                                     <span class='w21'>L</span>
-                                     <span class='w5'>T</span>
-                                     <span class='w6'>R</span>
-                                     <span class='w7'>A</span>
-                                     <span class='w8'>N</span>
-                                     <span class='w9'>S</span>
-                                     <span class='w10'>C</span>
-                                     <span class='w0'>R</span>
-                                     <span class='w1'>I</span>
-                                     <span class='w2'>P</span>
-                                     <span class='w3'>T</span>
-                                    
-                                     
-                              </li>
-                        </ul>	  
-                         
-                    
-                         
-                            </div>
-                            </div>
-                    </div>
-                
-                
-                
+                     <% if params[:format]=="pdf" %>
+                     <%= wicked_pdf_image_tag '/img/logo_school.jpg' %>
+                     <%else%>
+                    <img src="/img/logo_school.jpg">
+                    <%end%>                                
                 </div>
         </div>
         
         <div class="add_section">
         <div class="f-side">
         <div>
-        <span class="st-info">Student Information</span><br />
+        <span class="st-info">School of Record</span><br />
         	<%=@school.school_name%><br>
 			Sample Parent<br>
 			<%=@school.address1%> , <%=@school.address2%> , <%=@school.address3%><br>
@@ -78,7 +42,7 @@
 			<%else%>
 			<%=@school_state.name%>
 			<%end%>
-
+      byebug
 			<%=@school.state%> , <%=@school_country%> , <%=@student.zip%><br>
 			<%=@school.phone%><br>
 			<%=@school.email%><br>
@@ -88,7 +52,7 @@
         
         <div class="s-side">
         <div>
-         <span class="st-info">School of Record</span><br />
+         <span class="st-info">Student Information</span><br />
         <%=@student.first_name%> <%=@student.middle_name%> <%=@student.last_name%><br>
 			Date of Birth: <%=@student.dob%><br>
 			<%=@student.address1%> , <%=@student.address2%> , <%=@student.address3%><br>
@@ -114,38 +78,66 @@
         <div class="clear"></div>
 
 <div class="tab-section">
-	<%@student.subject.length.times do|academic|%>
-	<% if academic%2== 0 %>
+	
+	
 	    <div class="tab-one">
-	<%else%>
-		<div class="tab-two">
-	<%end%>
+	
         
         <div class="course">
-        <div class="cour">Course Study - <%=@student.grad_name[academic]%> </div>
+        <div class="cour">Course Study - <%=@student.grad_name[0]%> </div>
         <div class="grade bd-gray">Grade </div>
         <div class="credite cr-left">Credits</div>
         </div>
-       
-        <% @student.subject[academic].split(",").length.times do|f| %>
-
-	        <div class="lite_section">
-		        <div class="study"><%= @student.subject[academic].split(",")[f]%></div>
-		        <div class="grade-a bd-gray"><%= @student.grade[academic].split(",")[f]%></div>
-		        <div class="credite-a cr-left"><%= @student.credits[academic].split(",")[f]%></div>
-	        </div>
-		<%end%>    
-       
+       <%@student.subject.length.times do|academic|%>
         <div class="lite_section">
-        <div class="study-last">GPA = <%=@student.cumulative_gpa[academic]%> </div>
-        <div class="credite-a cr-left"><%=@student.total_credit[academic]%></div>
+	        <div class="study"><%= @student.subject[academic]%></div>
+	        <div class="grade-a bd-gray"><%= @student.grade[academic]%></div>
+	        <div class="credite-a cr-left"><%= @student.credits[academic]%></div>
+        </div>
+		
+        <%end%>   
+        <div class="lite_section">
+        <div class="study-last">GPA = <%=@student.cumulative_gpa[0]%> </div>
+        <div class="credite-a cr-left"><%=@student.total_credit[0]%></div>
         </div>
         
         
         </div>
       <div style="width:20px;float:left;"></div>  
-    <%end%>    
-        
+      <div class="tab-two">
+    
+        <div class="course">
+            <div class="cumulative">Summary By Grade</div>
+        </div>
+                
+        <div class="summary">
+            <div class="cum-gpa bd-gray ">Grade </div>
+
+            <%#@student.subject.length.times do|academic|%>
+                <div class="nineth bd-gray ">
+                    <%=@student.grad_name[0]%>
+                </div>
+            <%#end%>
+        </div>
+
+        <div class="summary">
+            <div class="cum-gpa bd-gray ">Cum. GPA</div>
+            <%#@student.subject.length.times do|academic|%>
+                <div class="nineth bd-gray ">
+                    <%=@student.cumulative_gpa[0]%>
+                </div>
+            <%#end%>
+        </div>
+
+        <div class="summary">
+            <div class="cum-gpa bd-gray ">Credits Earned</div>
+            <%#@student.subject.length.times do|academic|%>
+                <div class="nineth bd-gray ">
+                    <%=@student.total_credit[0]%>
+                </div>
+            <%#end%>
+        </div>
+        </div>
         
 
 </div>
@@ -153,41 +145,6 @@
     <div class="tab-one">
 
 		<div class="course">
-		    <div class="cumulative">Summary By Grade</div>
-		</div>
-		        
-		<div class="summary">
-		    <div class="cum-gpa bd-gray ">Grade </div>
-
-			<%@student.subject.length.times do|academic|%>
-				<div class="nineth bd-gray ">
-					<%=@student.grad_name[academic]%>
-				</div>
-			<%end%>
-		</div>
-
-		<div class="summary">
-		    <div class="cum-gpa bd-gray ">Cum. GPA</div>
-			<%@student.subject.length.times do|academic|%>
-				<div class="nineth bd-gray ">
-					<%=@student.cumulative_gpa[academic]%>
-				</div>
-			<%end%>
-		</div>
-
-		<div class="summary">
-		    <div class="cum-gpa bd-gray ">Credits Earned</div>
-			<%@student.subject.length.times do|academic|%>
-				<div class="nineth bd-gray ">
-					<%=@student.total_credit[academic]%>
-				</div>
-			<%end%>
-		</div>
-
-
-
-
- 		<div class="course">
         	<div class="cumulative">Grading Scale</div>
         </div>
         
@@ -224,6 +181,8 @@
 
 
 	<div class="tab-two">
+
+
 		<div class="course">
         <div class="cumulative">Cumulative Summary (9th - 12th)</div>
         </div>
@@ -236,21 +195,19 @@
         </div>
         <div class="total_cr">
 	        <div class="tot-cr bd-gray ">
-	        	<%x = @student.total_credit.map {|j| j.to_i}%>
-				<%= x.inject{|sum , num| sum += num}%>
+	        	<%=@student.total_credit[0]%>
 			</div>
 	        <div class="gpa-cr bd-gray ">
-	        	<%x = @student.gpa_credit.map {|j| j.to_i}%>
-				<%= x.inject{|sum , num| sum += num}%>
+                <%=@student.gpa_credit[0]%>
+	        	
 			</div>
 	        <div class="gpa-point bd-gray ">
-	        	<%x = @student.gpa_points.map {|j| j.to_i}%>
-				<%= x.inject{|sum , num| sum += num}%>
+                <%=@student.gpa_points[0]%>
+	        	
 			</div>
 	        <div class="gpa bd-gray ">
-	        	<%x = @student.cumulative_gpa.map {|j| j.to_i}%>
-				<%y = x.inject{|sum , num| sum += num}%>
-				<%= y/@student.cumulative_gpa.length %>
+                <%=@student.cumulative_gpa[0]%>
+	        	
 	        </div>   
         </div>
     </div>
