@@ -24,8 +24,8 @@
 					<th>Country</th><td><%=@country = Carmen::Country.coded(@student.country)%></td>
 				</tr>
 				<tr>
-					<% @subregions = @country.subregions %>
-					<% @state = @subregions.coded(@student.state) %>
+					<%# @subregions = @country.subregions %>
+					<%#@state = @subregions.coded(@student.state) %>
 					<th>State</th>
 					<td>
 						<%if @state.blank?%>

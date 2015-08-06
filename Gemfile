@@ -27,9 +27,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'cancancan'
 gem 'stripe'
-
+gem 'validates_timeliness', '~> 3.0'
 #gem 'pdfkit'
-
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 

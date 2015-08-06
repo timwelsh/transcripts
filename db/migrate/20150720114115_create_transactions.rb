@@ -18,6 +18,6 @@ class CreateTransactions < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-    add_foreign_key :transactions, :subscriptions
+    add_foreign_key :transactions, :subscriptions, on_delete: :cascade
   end
 end

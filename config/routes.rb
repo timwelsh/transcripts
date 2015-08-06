@@ -37,6 +37,7 @@ Rails.application.routes.draw do
 
   get 'schools/user_detail_copy'
   get 'schools/school_detail_copy'
+
   resources :schools do
   resources :students    
   end

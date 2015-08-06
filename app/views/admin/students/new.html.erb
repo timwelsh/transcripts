@@ -22,7 +22,7 @@
           <li class="string input optional stringish">
             <%= f.label :first_name %>
             <%= f.text_field :first_name, autofocus: true %>
-            <p class="inline-errors">
+            <p id="first_name_error" class="inline-errors">
               <%=@student.errors[:first_name].join(",") %> 
             </p>
           </li>
@@ -35,7 +35,7 @@
           <li class="string input optional stringish">
             <%= f.label :last_name %>
             <%= f.text_field :last_name, autofocus: true %>
-             <p class="inline-errors">
+             <p id="last_name_error"class="inline-errors">
               <%=@student.errors[:last_name].join(",") %> 
             </p>
           </li>
@@ -43,6 +43,9 @@
           <li class="string input optional stringish">
             <%= f.label :dob %>
             <%= f.text_field :dob, autofocus: true %>
+            <p class="inline-errors">
+              <%=@student.errors[:dob].join(",") %> 
+            </p>
           </li>
 
           <li class="string input optional stringish">
@@ -80,7 +83,7 @@
           <li class="string input optional stringish">
             <%= f.label :zip %> 
             <%= f.text_field :zip, autocomplete: "off" %>
-             <p class="inline-errors">
+             <p id="zip_error" class="inline-errors">
               <%=@student.errors[:zip].join(" and ") %> 
             </p>
           </li>
@@ -88,7 +91,7 @@
           <li class="string input optional stringish">
             <%= f.label :primary_phone %> 
             <%= f.text_field :phone, autocomplete: "off" %>
-            <p class="inline-errors">
+            <p id="phone_error" class="inline-errors">
               <%=@student.errors[:phone].join(" and ") %> 
             </p>
           </li>
@@ -96,7 +99,7 @@
           <li class="string input optional stringish">
             <%= f.label :email %>
             <%= f.email_field :email, autofocus: true %>
-            <p class="inline-errors">
+            <p   class="inline-errors">
               <%=@student.errors[:email].join(",") %> 
             </p>
           </li>
@@ -105,11 +108,17 @@
           <li class="string input optional stringish">
             <%= f.label :enroll_date %>
             <%= f.text_field :enroll_date %>
+            <p class="inline-errors">
+            <%=@student.errors[:enroll_date].join(",") %> 
+          </p>
           </li>
 
           <li class="string input optional stringish">
             <%= f.label :graduation_date %>
             <%= f.text_field :graduation_date %>
+             <p class="inline-errors">
+            <%=@student.errors[:graduation_date].join(",") %> 
+          </p>
           </li>
         </ol>
 
@@ -133,7 +142,7 @@
               <li class="string input optional stringish">
                 <label for="completion_year">Completion Year</label>
                 <input type="text" name="completion_year[]" class= "completion_year">
-              </li>
+                </li>
 
               <li class="string input optional stringish">
                 <label for="description">Description</label>

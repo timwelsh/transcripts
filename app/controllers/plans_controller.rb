@@ -3,7 +3,8 @@ class PlansController < ApplicationController
 	end
 	
 	def index
+
+	@plan = Plan.all
 	
-		@plan = Plan.all
 	end
 end

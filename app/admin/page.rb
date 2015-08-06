@@ -31,6 +31,10 @@ ActiveAdmin.register Page do
     end
     f.actions
   end
+
+  filter :name
+  
+
   show do
     attributes_table do
       row :name

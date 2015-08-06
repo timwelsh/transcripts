@@ -51,10 +51,11 @@ ActiveAdmin.register User do
     
   end
 
-  filter :email
-  filter :current_sign_in_at
-  filter :sign_in_count
-  filter :created_at
+  filter :first_name
+  filter :last_name
+  filter :state
+  filter :city
+  
 
   form do |f|
     f.inputs "User Details" do
@@ -98,6 +99,7 @@ ActiveAdmin.register User do
       @user.update_attributes(status:'0')
       redirect_to admin_users_path, :notice => "User has been deactivated"
     end
+    
   end
 
 end

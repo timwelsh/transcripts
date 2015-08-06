@@ -1,6 +1,6 @@
 class Ability
   require 'date'
-  include CanCan::Ability
+ # include CanCan::Ability
 
   def initialize(user)
 

@@ -1,7 +1,9 @@
 class SchoolsController < ApplicationController
 	#load_and_authorize_resource except: [:school_detail_copy , :subregion_options]
 	def index
+		
 		@school = current_user.school
+
 	end 
 
 	def new

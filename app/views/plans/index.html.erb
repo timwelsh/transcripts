@@ -1,19 +1,23 @@
 
-
 <% @plan.each do |plan| %>
 
-  <td><%= form_for plan, url: transactions_path, method: :post do |f|%>
+	<%= form_for plan, url: transactions_path, method: :post do |f|%>
 
-<%=plan.name%>
-    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-    data-key="pk_test_jMUKzHL4kwf1KFpFhTVA8QFu"
-    data-description="<%= plan.name%>"
-    data-amount="<%= plan.amount%>">
-  </script><br><br></td>
-<%end%>
-</tr>
+		<%=plan.name%>
+		<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+		data-key="pk_test_jMUKzHL4kwf1KFpFhTVA8QFu"
+		data-description="<%= plan.name%>"
+		data-amount="<%= plan.amount%>">
+		
+		</script>
+		<input type="hidden" name="amount" value="<%= plan.amount%>">
+		<input type="hidden" name="subscription_period" value="<%= plan.subscription_period%>">
+		<input type="hidden" name="plan_id" value="<%= plan.id%>">
 
+		<br><br>
+	<%end%>
 <%end%>
+
 
 
 

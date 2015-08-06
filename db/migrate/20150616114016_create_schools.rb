@@ -18,6 +18,6 @@ class CreateSchools < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-    add_foreign_key :schools, :users
+    add_foreign_key :schools, :users, on_delete: :cascade
   end
 end

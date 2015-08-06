@@ -185,9 +185,9 @@ ActiveRecord::Schema.define(version: 20150731123215) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  add_foreign_key "schools", "users"
-  add_foreign_key "students", "schools"
+  add_foreign_key "schools", "users", on_delete: :cascade
+  add_foreign_key "students", "schools", on_delete: :cascade
   add_foreign_key "subscriptions", "plans"
   add_foreign_key "subscriptions", "users"
-  add_foreign_key "transactions", "subscriptions"
+  add_foreign_key "transactions", "subscriptions", on_delete: :cascade
 end

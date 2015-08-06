@@ -2,27 +2,32 @@
 //= require bootstrap-sprockets
 $(function (){
     $('#student_dob').datepicker({
+        dateFormat: 'dd-mm-yy',
         changeYear: true,
         changeMonth: true,
         yearRange: "1950:2050"
     });
     $('#student_enroll_date').datepicker({
+        dateFormat: 'dd-mm-yy',
         changeYear: true,
         changeMonth: true,
         yearRange: "1950:2050"
     });
     $('#student_graduation_date').datepicker({
+        dateFormat: 'dd-mm-yy',
         changeYear: true,
         changeMonth: true,
         yearRange: "1950:2050"
     });
     $('.completion_year').each(function(){
         $('.completion_year').datepicker({
+            dateFormat: 'dd-mm-yy',
             changeYear: true,
             changeMonth: true,
             yearRange: "1950:2050"
         });
     })
+
 
 });
 $(document).ready(function(){
@@ -211,7 +216,60 @@ $(document).ready(function(){
     $('body.show.admin_students #page_title').html("Student Detail");
     $('body.new.admin_students #page_title').html("Add Student Detail");
 
+    $('#school_submit_action').click(function(event){
+
+        var flag = true;
+        
+
+        var first_name = $("#student_first_name").val();
+        var last_name = $("#student_last_name").val();
+        var zip = $("#student_zip").val();
+        var phone = $("#student_phone").val();
+        if (first_name==''){
+            $('#first_name_error').html('First name can not be blank');
+            flag=false; 
+            alert('first_name'+flag);        
+        }
+        else if(last_name==''){
+            $('#last_name_error').html('Last name can not be blank');
+            flag=false; 
+            alert('last_name'+flag);          
+        }
+        else if($.isNumeric(zip)){
+            var len= zip.length;
+            if(len!=5){
+                $('#zip_error').html('Length should be 5');
+                $('#student_zip').focus();
+                flag=false;
+                alert('zip'+flag);  
+            }            
+        }
+        else if(!$.isNumeric(zip)){
+            $('#zip_error').html('Zip code should be integer');
+            flag=false;
+            alert('Zip integer'+flag);  
+        }
+
+        else if($.isNumeric(phone)){
+            var leng= phone.length;
+            if(leng!=10){
+                $('#phone_error').html('Length should be 10');
+                $('#student_phone').focus();
+                flag=false;
+                alert('phone'+flag);  
+            }          
+        }
+        else if(!$.isNumeric(phone)){
+            $('#phone_error').html('Phone number should be integer');
+            flag=false;
+            alert('phone integer'+flag);  
+        }
+        alert(flag);
+        return flag;
+        event.preventDefault();
+    });
 });
+
 
 function printpage()
 {

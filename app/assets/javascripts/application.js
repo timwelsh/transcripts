@@ -21,6 +21,7 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
+
 $(document).ready(function(){
 	$('select#user_country').change(function(){
 		select_wrapper = $('#order_state_code_wrapper');

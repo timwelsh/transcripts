@@ -1,6 +1,5 @@
 ActiveAdmin.register School do
 
-
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
@@ -27,7 +26,6 @@ ActiveAdmin.register School do
   filter :email
   filter :academic_term
   filter :grading_scale
-  filter :created_at
 
   
 
@@ -76,6 +74,8 @@ ActiveAdmin.register School do
         super
       end
     end
+
+
   end
 
 end
