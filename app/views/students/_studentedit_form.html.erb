@@ -98,16 +98,18 @@
           <input type="text" name="grad_name[]" value= "<%=@student.grad_name[x]%>">
         </div>
 
-        <div class="field">
-          <label for="completion_year">Completion Year</label><br>
-          <input type="text" name="completion_year[]" value= "<%= @student.completion_year[x] %>">
-        </div>
+       <li class="string input optional stringish">
+               <label for="completion_year">Completion Year</label>
+               <select name="completion_year[]">
+                 <option value ="Freshman">Freshman</option>
+                 <option value ="Sophomore">Sophomore</option>
+                 <option value ="Junior">Junior</option>
+                 <option value ="Senior">Senior</option>
+                 
+               </select>
+        </li>
 
-        <div class="field">
-          <label for="description">Description</label><br>
-          <input type="text" name="description[]" value= "<%= @student.description[x] %>">
-        </div>
-
+        
         <div class="field">
           <label for="subject">Subject</label><br>
           <input type="text" name="subject[]" value= "<%= @student.subject[x] %>">
@@ -118,10 +120,13 @@
           <input type="text" name="course_name[]" value= "<%= @student.course_name[x] %>">
         </div>
 
-        <div class="field">
-          <label for="honors">Honors</label><br>
-          <input type="text" name="honors[]" value= "<%= @student.honors[x] %>">
-        </div>
+         <li class="string input optional stringish">
+               <label for="honors">Honors</label>
+               <select name="honors[]">
+                 <option value ="No">No</option>
+                 <option value ="Yes">Yes</option>
+               </select>
+        </li>
 
         <div class="field">
           <label for="grade">Grade</label><br>

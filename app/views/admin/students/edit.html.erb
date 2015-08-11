@@ -142,12 +142,7 @@
           
           <div style="clear:both;"></div>
           <ol>
-            <li class="string input optional stringish">
-              <label for="grad_name">Graduation Name</label>
-              <%#byebug%>
-              <%#= f.text_field :grad_name %>
-              <input type="text" name="grad_name[]" value= "<%=@student.grad_name[x]%>">
-            </li>
+            
 
             <li class="string input optional stringish">
                 <label for="completion_year">Completion Year</label>
@@ -158,12 +153,7 @@
           </p>
             </li>
 
-            <li class="string input optional stringish">
-              <label for="description">Description</label>
-              <input type="text" name="description[]" value= "<%= @student.description[x] %>">
-            </li>
-
-            <li class="string input optional stringish">
+           <li class="string input optional stringish">
               <label for="subject">Subject</label>
               <input type="text" name="subject[]" value= "<%= @student.subject[x] %>">
             </li>
@@ -173,11 +163,13 @@
               <input type="text" name="course_name[]" value= "<%= @student.course_name[x] %>">
             </li>
 
-            <li class="string input optional stringish">
-              <label for="honors">Honors</label>
-              <input type="text" name="honors[]" value= "<%= @student.honors[x] %>">
-            </li>
-
+           <li class="string input optional stringish">
+               <label for="honors">Honors</label>
+               <select name="honors[]">
+                 <option value ="No">No</option>
+                 <option value ="Yes">Yes</option>
+               </select>
+               </li>
             <li class="string input optional stringish">
              <label for="grade">Grade</label>
              <select name="grade[]">
@@ -193,7 +185,7 @@
                <option value ="D+">D+</option>
                <option value ="D">D</option>
                <option value ="D-">D-</option>
-               <option value ="F">C</option>
+               <option value ="F">F</option>
                <option value ="CR">CR</option>
                <option value ="NC">NC</option>
                <option value ="W">W</option>

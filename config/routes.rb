@@ -28,16 +28,17 @@ Rails.application.routes.draw do
   end
   
   post 'stripe/webhook'
+
   get '/schools/subregion_options' => 'schools#subregion_options'
   get '/students/subregion_options' => 'students#subregion_options'
   #get '/schools/:school_id/students/subregion_options' => 'students#subregion_options'
   devise_scope :user do
     get '/user/registrations/subregion_options' => 'user/registrations#subregion_options'
   end
-
+get '/students/:id/view_pdf', to: 'students#view_pdf', as: :view_pdf
   get 'schools/user_detail_copy'
   get 'schools/school_detail_copy'
-
+  
   resources :schools do
   resources :students    
   end

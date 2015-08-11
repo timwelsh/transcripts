@@ -1,4 +1,5 @@
 class School < ActiveRecord::Base
+	
 	validates :school_name,:presence => true 
 	validates :zip,numericality: { only_integer: true ,message:"Zip code should be numeric"},length: { is: 5 ,message: "Zip code length should be 5"}
 	validates :email, uniqueness: true, :format=> { with: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\w{2,3})+$/,multiline: true}

@@ -35,7 +35,6 @@ gem 'wkhtmltopdf-binary'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 
-
 gem 'activeadmin', '~> 1.0.0.pre1'
 gem 'carmen-rails', '~> 1.0.0'
 gem 'bootstrap-datepicker-rails'
@@ -44,7 +43,7 @@ gem 'fancybox2-rails', '~> 0.2.8'
 
 gem 'activeadmin-ckeditor'
 gem 'dotenv-rails', :groups => [:development]
-gem "gibbon"
+gem "gibbon",'~>1.2.0'
 #gem 'stripe_event'
 
 # Use ActiveModel has_secure_password

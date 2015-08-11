@@ -1,6 +1,6 @@
 class Ability
   require 'date'
- # include CanCan::Ability
+ include CanCan::Ability
 
   def initialize(user)
 
@@ -9,12 +9,13 @@ class Ability
     # byebug
     alias_action :read , :update , :destroy, :to => :rud
     user ||= User.new # guest user (not logged in)
-    if !user.subscriptions.first.nil?
+
+    if !user.subscription.nil?
         # byebug
         can :create , School if !user.school
-        can :rud, School if user.subscriptions.first.plan_end_date > Date.today 
+        can :rud, School if user.subscription.plan_end_date > Date.today 
        # can :rud, :user_id => user.id
-        can :manage, Student if user.subscriptions.first.plan_end_date > Date.today 
+        can :manage, Student if user.subscription.plan_end_date > Date.today 
     end
 
     #   if user.admin?

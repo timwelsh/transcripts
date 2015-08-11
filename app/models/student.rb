@@ -24,6 +24,8 @@ private
 
 def today_is_after_dob
 	return if dob.blank? 
+	return if enroll_date.blank? 
+	return if graduation_date.blank? 
 
 	if dob.to_date>=Date.current 
 		errors.add(:dob, "Dob can't be Current Date and Future Date")
@@ -31,6 +33,7 @@ def today_is_after_dob
 
 	enroll_date1=dob.to_date + 15.years 
 	if enroll_date1>enroll_date.to_date
+		
 		errors.add(:enroll_date, "Enrollment date can't be less than DOB") 
 	end 
 

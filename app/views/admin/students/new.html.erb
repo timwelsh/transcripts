@@ -35,7 +35,7 @@
           <li class="string input optional stringish">
             <%= f.label :last_name %>
             <%= f.text_field :last_name, autofocus: true %>
-             <p id="last_name_error"class="inline-errors">
+            <p id="last_name_error"class="inline-errors">
               <%=@student.errors[:last_name].join(",") %> 
             </p>
           </li>
@@ -43,7 +43,7 @@
           <li class="string input optional stringish">
             <%= f.label :dob %>
             <%= f.text_field :dob, autofocus: true %>
-            <p class="inline-errors">
+            <p id= "student_dob_error"class="inline-errors">
               <%=@student.errors[:dob].join(",") %> 
             </p>
           </li>
@@ -83,7 +83,7 @@
           <li class="string input optional stringish">
             <%= f.label :zip %> 
             <%= f.text_field :zip, autocomplete: "off" %>
-             <p id="zip_error" class="inline-errors">
+            <p id="zip_error" class="inline-errors">
               <%=@student.errors[:zip].join(" and ") %> 
             </p>
           </li>
@@ -108,17 +108,17 @@
           <li class="string input optional stringish">
             <%= f.label :enroll_date %>
             <%= f.text_field :enroll_date %>
-            <p class="inline-errors">
-            <%=@student.errors[:enroll_date].join(",") %> 
-          </p>
+            <p id="student_enroll_date_error"class="inline-errors">
+              <%=@student.errors[:enroll_date].join(",") %> 
+            </p>
           </li>
 
           <li class="string input optional stringish">
             <%= f.label :graduation_date %>
             <%= f.text_field :graduation_date %>
-             <p class="inline-errors">
-            <%=@student.errors[:graduation_date].join(",") %> 
-          </p>
+            <p id ="student_graduation_date_error"class="inline-errors">
+              <%=@student.errors[:graduation_date].join(",") %> 
+            </p>
           </li>
         </ol>
 
@@ -134,21 +134,20 @@
             <div style="clear:both;"></div>
 
             <ol>
-              <li class="string input optional stringish">
-                <label for="grad_name">Graduation Name</label>
-                <input type="text" name="grad_name[]">
-              </li>
 
               <li class="string input optional stringish">
-                <label for="completion_year">Completion Year</label>
-                <input type="text" name="completion_year[]" class= "completion_year">
-                </li>
+               <label for="completion_year">Completion Year</label>
+               <select name="completion_year[]">
+                 <option value ="Freshman">Freshman</option>
+                 <option value ="Sophomore">Sophomore</option>
+                 <option value ="Junior">Junior</option>
+                 <option value ="Senior">Senior</option>
+                 
+               </select>
+               </li>
 
-              <li class="string input optional stringish">
-                <label for="description">Description</label>
-                <input type="text" name="description[]">
-              </li>
-
+              
+              
               <li class="string input optional stringish">
                 <label for="subject">Subject</label>
                 <input type="text" name="subject[]">
@@ -160,60 +159,64 @@
               </li>
 
               <li class="string input optional stringish">
-                <label for="honors">Honors</label>
-                <input type="text" name="honors[]">
-              </li>
-            <li class="string input optional stringish">
-             <label for="grade">Grade</label>
-              <select name="grade[]">
-               <option value ="A+">A+</option>
-                <option value ="A">A</option>
-                <option value ="A-">A-</option>
-                <option value ="B+">B+</option>
-                <option value ="B">B</option>
-                <option value ="B-">B-</option>
-                <option value ="C+">C+</option>
-                <option value ="C">C</option>
-                <option value ="C-">C-</option>
-                <option value ="D+">D+</option>
-                <option value ="D">D</option>
-                <option value ="D-">D-</option>
-                <option value ="F">F</option>
-                <option value ="CR">CR</option>
-                <option value ="NC">NC</option>
-                <option value ="W">W</option>
-                <option value ="I">I</option>
+               <label for="honors">Honors</label>
+               <select name="honors[]">
+                 <option value ="No">No</option>
+                 <option value ="Yes">Yes</option>
+               </select>
+               </li>
 
-              </select>
+               <li class="string input optional stringish">
+                 <label for="grade">Grade</label>
+                 <select name="grade[]">
+                   <option value ="A+">A+</option>
+                   <option value ="A">A</option>
+                   <option value ="A-">A-</option>
+                   <option value ="B+">B+</option>
+                   <option value ="B">B</option>
+                   <option value ="B-">B-</option>
+                   <option value ="C+">C+</option>
+                   <option value ="C">C</option>
+                   <option value ="C-">C-</option>
+                   <option value ="D+">D+</option>
+                   <option value ="D">D</option>
+                   <option value ="D-">D-</option>
+                   <option value ="F">F</option>
+                   <option value ="CR">CR</option>
+                   <option value ="NC">NC</option>
+                   <option value ="W">W</option>
+                   <option value ="I">I</option>
+
+                 </select>
+               </li>
+               <li class="string input optional stringish">
+                 <label for="credit">Credit</label>
+                 <select name="credits[]">
+                   <option value ="0.5">0.5</option>
+                   <option value ="1.0">1.0</option>
+                   <option value ="2.0">2.0</option>
+                 </li>
+
+                 <input type="hidden" name="total_credit[]">
+                 <input type="hidden" name="gpa_credit[]">
+                 <input type="hidden" name="gpa_points[]">
+                 <input type="hidden" name="cumulative_gpa[]">
+
+               </ol>
+             </div>
+           </div>
+
+           <fieldset class="actions">
+            <ol>
+              <li id="school_submit_action" class="action input_action ">
+               <%= f.submit "Create" %>
+             </li>
+             <li class="cancel">
+              <a href="/admin/students">Cancel</a>
             </li>
-             <li class="string input optional stringish">
-             <label for="credit">Credit</label>
-              <select name="credits[]">
-               <option value ="0.5">0.5</option>
-                <option value ="1.0">1.0</option>
-                <option value ="2.0">2.0</option>
-              </li>
+          </ol>
+        </fieldset>
+        <%end%>
 
-              <input type="hidden" name="total_credit[]">
-              <input type="hidden" name="gpa_credit[]">
-              <input type="hidden" name="gpa_points[]">
-              <input type="hidden" name="cumulative_gpa[]">
-              
-            </ol>
-          </div>
-        </div>
-        
-        <fieldset class="actions">
-          <ol>
-            <li id="school_submit_action" class="action input_action ">
-             <%= f.submit "Create" %>
-           </li>
-           <li class="cancel">
-            <a href="/admin/students">Cancel</a>
-          </li>
-        </ol>
       </fieldset>
-      <%end%>
-
-    </fieldset>
-  </div>
+    </div>

@@ -1,5 +1,5 @@
 class SchoolsController < ApplicationController
-	#load_and_authorize_resource except: [:school_detail_copy , :subregion_options]
+	load_and_authorize_resource except: [:school_detail_copy , :subregion_options]
 	def index
 		
 		@school = current_user.school
@@ -11,10 +11,16 @@ class SchoolsController < ApplicationController
 	end
 
 	def create
+		if !current_user.school
 		@school = School.new(school_params)
 		@school.user_id = current_user.id
 		@school.save
 		redirect_to schools_path
+	else
+		flash[:notice]= "User has already School"
+		redirect_to schools_path
+	end
+
 	end
 
 	def show

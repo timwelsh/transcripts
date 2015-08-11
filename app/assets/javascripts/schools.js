@@ -1,10 +1,12 @@
-
+$('select#school_country').val('US');
 $(document).ready(function(){
     $('select#school_country').change(function(){
         select_wrapper = $('#order_state_code_wrapper');
         $('select', select_wrapper).attr('disabled', true);
         country_code = $(this).val();
-        url = "/schools/subregion_options?parent_region="+country_code;
+        //url = "/schools/subregion_options?parent_region="+country_code;
+        url = "/schools/subregion_options?parent_region=US";
+
         select_wrapper.load(url);
     });
 
@@ -38,8 +40,8 @@ $(document).ready(function(){
                     $('#'+id_name+'_city').val(data.city);
                     $('#'+id_name+'_zip').val(data.zip);
                     $('#'+id_name+'_country option:selected').attr("selected",null);
-                    $('#'+id_name+'_country option[value="'+data.country+'"]').attr("selected","selected");
-                   // $('#school_country').val(data.country);
+                    //$('#'+id_name+'_country option[value="'+data.country+'"]').attr("selected","selected");
+                   $('#school_country').val(data.country);
                     select_wrapper = $('#order_state_code_wrapper');
                     $('select', select_wrapper).attr('disabled', true);
                     country_code = data.country;

@@ -18,19 +18,19 @@ class TransactionsController < ApplicationController
      )
     
     date=Time.at(charge[:created])
-    plan_end_date= date + @sub.day
+ 
+    plan_end_date= date + @sub.months
     if charge[:status] == "succeeded"
       sub_status = true
     else
       sub_status = false
     end
+    if !current_user.subscription.blank?
 
-    if !current_user.subscriptions.blank?
-
-      @subscription = current_user.subscriptions.first.update(plan_end_date:plan_end_date,plan_id:params[:plan_id],status:sub_status)
-      @subs_id = current_user.subscriptions.first.id
+      @subscription = current_user.subscription.update(plan_end_date:plan_end_date,plan_id:params[:plan_id],status:sub_status)
+      @subs_id = current_user.subscription.id
     else
-      @subscription= current_user.subscriptions.new(plan_end_date:plan_end_date, plan_id:params[:plan_id],status:sub_status)
+      @subscription= Subscription.new(plan_end_date:plan_end_date,user_id:current_user.id, plan_id:params[:plan_id],status:sub_status)
       @subscription.save
       @subs_id=@subscription.id
     end
