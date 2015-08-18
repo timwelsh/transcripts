@@ -1,11 +1,19 @@
-$('select#school_country').val('US');
 $(document).ready(function(){
+    $('select#school_country').val('US');
+
+$('#school_state_input').append('<div id="order_state_code_wrapper"></div>');
+        $('#school_state').remove();
+        select_wrapper = $('#order_state_code_wrapper');
+        $('select', select_wrapper).attr('disabled', true);
+        url = "/schools/subregion_options?parent_region=US";
+        select_wrapper.load(url);
+
     $('select#school_country').change(function(){
         select_wrapper = $('#order_state_code_wrapper');
         $('select', select_wrapper).attr('disabled', true);
         country_code = $(this).val();
-        //url = "/schools/subregion_options?parent_region="+country_code;
-        url = "/schools/subregion_options?parent_region=US";
+        url = "/schools/subregion_options?parent_region="+country_code;
+        //url = "/schools/subregion_options?parent_region=US";
 
         select_wrapper.load(url);
     });

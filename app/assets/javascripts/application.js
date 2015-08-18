@@ -11,12 +11,12 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery-ui
 //= require fancybox
 //= require fancybox-buttons
 //= require fancybox-media
 //= require fancybox-thumbs
 //= require wow
-//= require bootstrap-datepicker
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require_tree .
