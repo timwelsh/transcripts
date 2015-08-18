@@ -1,5 +1,6 @@
 class StudentsController < ApplicationController
-	load_and_authorize_resource 
+	before_filter :authenticate_user!
+  load_and_authorize_resource 
 	def index
 		@school = School.find(params[:school_id])
 		@student = @school.students
@@ -8,8 +9,13 @@ class StudentsController < ApplicationController
 		@school = School.find(params[:school_id])
 		@student = @school.students.new
 	end
-
-
+def checkemail
+  if Student.where('email = ?', params[:email]).count == 0
+   render json: {:email=>'not exist'}
+  else
+   render json: {:email=>'exist'}
+  end
+end
 
     def show
 		@school = School.find(params[:school_id])
@@ -32,9 +38,10 @@ class StudentsController < ApplicationController
 	end
 
 	def update
+      @school = School.find(params[:school_id])
 		@student = Student.find(params[:id])
 		if @student.update student_params.merge(grad_name: academic_params["grad_name"],completion_year: academic_params["completion_year"],description: academic_params["description"],subject: academic_params["subject"],course_name: academic_params["course_name"],honors: academic_params["honors"],grade: academic_params["grade"],credits: academic_params["credits"],total_credit: academic_params["total_credit"],gpa_credit: academic_params["gpa_credit"],gpa_points: academic_params["gpa_points"],cumulative_gpa: academic_params["cumulative_gpa"])
-			redirect_to  school_students_path 
+			redirect_to  school_students_path(@school) 
 		else
 			render 'edit'
 		end

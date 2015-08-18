@@ -13,7 +13,6 @@ $(function (){
         yearRange: "1950:2050"
     });
     $('#student_graduation_date').datepicker({
-        minDate: '-20Y',
         dateFormat: 'dd-mm-yy',
         changeYear: true,
         changeMonth: true,
@@ -135,10 +134,96 @@ $(document).ready(function(){
 
     });
 
+
+
+
+$('#student_submit_action').click(function(event){
+    var flag = true;
+    var first_name = $("#student_first_name").val();
+    var last_name = $("#student_last_name").val();
+    var zip = $("#student_zip").val();
+    var phone = $("#student_phone").val();
+    var dob= $("#student_dob").val();
+    var enroll_date=$("#student_enroll_date").val();
+    var grad_date=$("#student_graduation_date").val();
+    if (first_name==''){
+        $('#first_name_error').html('First name can not be blank');
+        flag=false; 
+        
+    }
+    else{
+         $('#first_name_error').html('');
+    }
+
+     if(last_name==''){
+        $('#last_name_error').html('Last name can not be blank');
+        flag=false; 
+        
+    }
+    else{
+         $('#last_name_error').html('');
+    }
+
+    if(dob==''){
+        $('#student_dob_error').html('dob can not be blank');
+        flag =false;
+    }
+    else{
+         $('#student_dob_error').html('');
+    }
+
+    
+    if(!$.isNumeric(zip) || zip.length!=5){
+        $('#zip_error').html('Zip code should be integer and length should be 5 character');
+        flag=false;
+
+    }
+    else{
+        $('#zip_error').html('');
+    }
+
+     if(!$.isNumeric(phone) || phone.length!=10){
+            $('#phone_error').html('Length should be integer and 10 numbers');
+          
+            flag=false;
+       }
+       else{
+        $('#phone_error').html('');
+
+       }
+
+
+
+     if(enroll_date==''){
+        $('#student_enroll_date_error').html('enroll_date can not be blank');
+        flag =false;
+    }
+
+    else{
+         $('#student_enroll_date_error').html('');
+
+    }
+if(grad_date==''){
+        $('#student_graduation_date_error').html('graduation date can not be blank');
+        flag =false;
+    }
+    else{
+         $('#student_graduation_date_error').html('');
+    }
+    
+
+    return flag;
+    event.preventDefault();
+});
+
+
+
     $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
         // e.preventDefault(); 
         $(this).parent('div').remove();
         x--;
     });
+    
+
     
 });

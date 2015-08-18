@@ -1,4 +1,5 @@
 class SchoolsController < ApplicationController
+	before_filter :authenticate_user!
 	load_and_authorize_resource except: [:school_detail_copy , :subregion_options]
 	def index
 		
@@ -11,6 +12,7 @@ class SchoolsController < ApplicationController
 	end
 
 	def create
+	
 		if !current_user.school
 		@school = School.new(school_params)
 		@school.user_id = current_user.id
@@ -39,6 +41,7 @@ class SchoolsController < ApplicationController
 
 	def edit
 		@school = School.find(params[:id])
+		
 	end
 
 	def destroy
@@ -50,7 +53,7 @@ class SchoolsController < ApplicationController
 	def update
 		@school = School.find(params[:id])
 		if @school.update(school_params)
-			redirect_to @school
+			redirect_to schools_path
 		else
 			render 'edit'
 		end

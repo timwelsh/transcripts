@@ -74,8 +74,28 @@ ActiveAdmin.register School do
         super
       end
     end
+def create
+if !params[:school][:user_id].blank?
+   @user = User.find(params[:school][:user_id])
 
+    if @user.school.blank?
+      
+      @school = School.new(school_params)
 
+   # @school.user_id = @user.id
+    
+    @school.save
+    redirect_to admin_schools_path
+  else
+    flash[:notice]= "User has already School"
+    redirect_to admin_schools_path
   end
-
+else
+        super
+      end
+  end
+  def school_params
+    params.require(:school).permit(:school_name ,:user_id, :admin_name, :address1,:address2 , :address3 , :country , :state , :city, :zip , :phone,:email, :academic_term, :grading_scale )
+  end
+end
 end

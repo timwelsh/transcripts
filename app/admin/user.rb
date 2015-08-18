@@ -76,8 +76,8 @@ ActiveAdmin.register User do
       f.input :city
       f.input :zip
       f.input :phone
-      f.input :status, :as => :select, :collection=> STATUS, :prompt=>'Please Select Status'
-    end
+      f.input :status, :as => :select, :collection=> STATUS,include_blank: false,allow_blank: false
+        end
     f.actions
   end
   controller do

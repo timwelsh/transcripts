@@ -5,6 +5,9 @@
 <div class="field">
   <%= f.label :first_name %><br />
   <%= f.text_field :first_name, autofocus: true %>
+  <p id="first_name_error" class="inline-errors">
+              <%=@student.errors[:first_name].join(",") %> 
+            </p>
 </div>
 
 <div class="field">
@@ -15,11 +18,17 @@
 <div class="field">
   <%= f.label :last_name %><br />
   <%= f.text_field :last_name, autofocus: true %>
+  <p id="last_name_error" class="inline-errors">
+              <%=@student.errors[:last_name].join(",") %> 
+            </p>
 </div>
 
 <div class="field">
   <%= f.label :dob %><br />
   <%= f.text_field :dob, autofocus: true %>
+   <p id= "student_dob_error" class="inline-errors">
+              <%=@student.errors[:dob].join(",") %> 
+            </p>
 </div>
 
 <div class="field">
@@ -58,11 +67,17 @@
 <div class="field">
   <%= f.label :zip %> <br />
   <%= f.text_field :zip, autocomplete: "off" %>
+  <p id="zip_error" class="inline-errors">
+              <%=@student.errors[:zip].join(" and ") %> 
+            </p>
 </div>
 
 <div class="field">
   <%= f.label :primary_phone %> <br />
   <%= f.text_field :phone, autocomplete: "off" %>
+   <p id="phone_error" class="inline-errors">
+              <%=@student.errors[:phone].join(" and ") %> 
+            </p>
 </div>
 
 <div class="field">
@@ -73,11 +88,17 @@
 <div class="field">
   <%= f.label :enroll_date %><br />
   <%= f.text_field :enroll_date %>
+  <p id="student_enroll_date_error" class="inline-errors">
+            <%=@student.errors[:enroll_date].join(",") %> 
+          </p>
 </div>
 
 <div class="field">
   <%= f.label :graduation_date %><br />
   <%= f.text_field :graduation_date %>
+  <p id ="student_graduation_date_error" class="inline-errors">
+            <%=@student.errors[:graduation_date].join(",") %> 
+          </p>
 </div>
 
 <br><br>
@@ -91,22 +112,11 @@
   <% @student.subject.each do |stu|%>
       <div>
         <h3>Educational Detail <%= x+1%></h3>
-        <div class="field">
-          <label for="grad_name">Graduation Name</label><br>
-          <%#byebug%>
-          <%#= f.text_field :grad_name %>
-          <input type="text" name="grad_name[]" value= "<%=@student.grad_name[x]%>">
-        </div>
+        
 
        <li class="string input optional stringish">
                <label for="completion_year">Completion Year</label>
-               <select name="completion_year[]">
-                 <option value ="Freshman">Freshman</option>
-                 <option value ="Sophomore">Sophomore</option>
-                 <option value ="Junior">Junior</option>
-                 <option value ="Senior">Senior</option>
-                 
-               </select>
+                <%= select_tag "completion_year[]", options_for_select([['Freshman ', 'Freshman'], ['Sophomore', 'Sophomore'],['Junior', 'Junior'],['Senior', 'Senior']],:selected => @student.completion_year[x]),:prompt=>'Please Select'%>
         </li>
 
         
@@ -122,41 +132,23 @@
 
          <li class="string input optional stringish">
                <label for="honors">Honors</label>
-               <select name="honors[]">
-                 <option value ="No">No</option>
-                 <option value ="Yes">Yes</option>
-               </select>
+                <%= select_tag "honors[]", options_for_select([['No ', 'No'], ['Yes', 'Yes']],:selected =>  @student.honors[x])%>
         </li>
 
         <div class="field">
           <label for="grade">Grade</label><br>
-          <input type="text" name="grade[]" value= "<%= @student.grade[x] %>">
+          <%= select_tag "grade[]", options_for_select([['A+ ', 'A+'], ['A', 'A'],['A-', 'A-'],['B+', 'B+'],['B', 'B'],['B-', 'B-'],['C+', 'C+'],['C', 'C'],['C-', 'C-'],['D+', 'D+'],['D', 'D'],['D-', 'D-'],['F', 'F'],['CR', 'CR'],['NC', 'NC'],['W', 'W'],['I', 'I']],:selected => @student.grade[x])%>
         </div>
 
         <div class="field">
           <label for="credits">Credits</label><br>
-          <input type="text" name="credits[]" value= "<%= @student.credits[x] %>">
+         <%= select_tag "credits[]", options_for_select([['0.5 ', '0.5'], ['1.0', '1.0'],['2.0 ', '2.0']],:selected => @student.credits[x])%>
         </div>
 
-        <div class="field">
-          <label for="total_credit">Total Credit</label><br>
-          <input type="text" name="total_credit[]" value= "<%= @student.total_credit[x] %>">
-        </div>
-
-        <div class="field">
-          <label for="gpa_credit">Gpa Credit</label><br>
-          <input type="text" name="gpa_credit[]" value= "<%= @student.gpa_credit[x] %>">
-        </div>
-
-        <div class="field">
-          <label for="gpa_points">Gpa Points</label><br>
-          <input type="text" name="gpa_points[]" value= "<%= @student.gpa_points[x] %>">
-        </div>
-
-        <div class="field">
-          <label for="cumulative_gpa">Cumulative Gpa</label><br>
-          <input type="text" name="cumulative_gpa[]" value= "<%= @student.cumulative_gpa[x] %>">
-        </div>
+        <input type="hidden" name="total_credit[]" value= "<%= @student.total_credit[x] %>">
+             <input type="hidden" name="gpa_credit[]" value= "<%= @student.gpa_credit[x] %>">
+             <input type="hidden" name="gpa_points[]" value= "<%= @student.gpa_points[x] %>">
+             <input type="hidden" name="cumulative_gpa[]" value= "<%= @student.cumulative_gpa[x] %>">
       </div>
       <% x=x+1%>
   <%end%>

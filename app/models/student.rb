@@ -9,8 +9,9 @@ class Student < ActiveRecord::Base
 	validates :phone,numericality:{ only_integer: true ,message:"Phone number should be numeric"},length: { is: 10 ,message: "Phone number length should be 10"}
 	belongs_to :school
 	validates :school_id,  :presence => {:message => "Please select a school" }
-
+	#validates :dob, :presence => true, format: { with:  /(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d/}
 	validates_presence_of :dob
+	#validates_presence_of :dob, :with => /\A\d{2}(\.|-)\d{2}(\.|-)\d{4}\Z/i, :message => "Date incorrect"
 	validates_presence_of :enroll_date
 	validates_presence_of :graduation_date
 	
@@ -26,15 +27,14 @@ def today_is_after_dob
 	return if dob.blank? 
 	return if enroll_date.blank? 
 	return if graduation_date.blank? 
-
 	if dob.to_date>=Date.current 
 		errors.add(:dob, "Dob can't be Current Date and Future Date")
 	end		
 
-	enroll_date1=dob.to_date + 15.years 
+	enroll_date1=dob.to_date + 30.years 
 	if enroll_date1>enroll_date.to_date
 		
-		errors.add(:enroll_date, "Enrollment date can't be less than DOB") 
+		errors.add(:enroll_date, "Enrollment date must be greater than 30 years from the DOB") 
 	end 
 
 	if graduation_date.to_date<enroll_date.to_date

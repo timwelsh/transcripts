@@ -42,7 +42,7 @@
 
           <li class="string input optional stringish">
             <%= f.label :dob %>
-            <%= f.text_field :dob, autofocus: true %>
+            <%= f.text_field :dob, autofocus: true,readonly: true %>
             <p id= "student_dob_error"class="inline-errors">
               <%=@student.errors[:dob].join(",") %> 
             </p>
@@ -99,7 +99,7 @@
           <li class="string input optional stringish">
             <%= f.label :email %>
             <%= f.email_field :email, autofocus: true %>
-            <p   class="inline-errors">
+            <p  id= "student_email_error" class="inline-errors">
               <%=@student.errors[:email].join(",") %> 
             </p>
           </li>
@@ -107,7 +107,7 @@
 
           <li class="string input optional stringish">
             <%= f.label :enroll_date %>
-            <%= f.text_field :enroll_date %>
+            <%= f.text_field :enroll_date,readonly: true %>
             <p id="student_enroll_date_error"class="inline-errors">
               <%=@student.errors[:enroll_date].join(",") %> 
             </p>
@@ -115,7 +115,7 @@
 
           <li class="string input optional stringish">
             <%= f.label :graduation_date %>
-            <%= f.text_field :graduation_date %>
+            <%= f.text_field :graduation_date,readonly: true %>
             <p id ="student_graduation_date_error"class="inline-errors">
               <%=@student.errors[:graduation_date].join(",") %> 
             </p>
@@ -136,14 +136,10 @@
             <ol>
 
               <li class="string input optional stringish">
+                
                <label for="completion_year">Completion Year</label>
-               <select name="completion_year[]">
-                 <option value ="Freshman">Freshman</option>
-                 <option value ="Sophomore">Sophomore</option>
-                 <option value ="Junior">Junior</option>
-                 <option value ="Senior">Senior</option>
-                 
-               </select>
+          
+               <%= select_tag "completion_year[]", options_for_select([['Freshman ', 'Freshman'], ['Sophomore', 'Sophomore'],['Junior', 'Junior'],['Senior', 'Senior']]),:prompt=>'Please Select '%>
                </li>
 
               
@@ -159,42 +155,17 @@
               </li>
 
               <li class="string input optional stringish">
-               <label for="honors">Honors</label>
-               <select name="honors[]">
-                 <option value ="No">No</option>
-                 <option value ="Yes">Yes</option>
-               </select>
-               </li>
+                <label for="honors">Honors</label>
+                <%= select_tag "honors[]", options_for_select([['No ', 'No'], ['Yes', 'Yes']])%>
+              </li>
 
                <li class="string input optional stringish">
                  <label for="grade">Grade</label>
-                 <select name="grade[]">
-                   <option value ="A+">A+</option>
-                   <option value ="A">A</option>
-                   <option value ="A-">A-</option>
-                   <option value ="B+">B+</option>
-                   <option value ="B">B</option>
-                   <option value ="B-">B-</option>
-                   <option value ="C+">C+</option>
-                   <option value ="C">C</option>
-                   <option value ="C-">C-</option>
-                   <option value ="D+">D+</option>
-                   <option value ="D">D</option>
-                   <option value ="D-">D-</option>
-                   <option value ="F">F</option>
-                   <option value ="CR">CR</option>
-                   <option value ="NC">NC</option>
-                   <option value ="W">W</option>
-                   <option value ="I">I</option>
-
-                 </select>
+                 <%= select_tag "grade[]", options_for_select([['A+ ', 'A+'], ['A', 'A'],['A-', 'A-'],['B+', 'B+'],['B', 'B'],['B-', 'B-'],['C+', 'C+'],['C', 'C'],['C-', 'C-'],['D+', 'D+'],['D', 'D'],['D-', 'D-'],['F', 'F'],['CR', 'CR'],['NC', 'NC'],['W', 'W'],['I', 'I']])%>
                </li>
                <li class="string input optional stringish">
                  <label for="credit">Credit</label>
-                 <select name="credits[]">
-                   <option value ="0.5">0.5</option>
-                   <option value ="1.0">1.0</option>
-                   <option value ="2.0">2.0</option>
+                 <%= select_tag "credits[]", options_for_select([['0.5 ', '0.5'], ['1.0', '1.0'],['2.0 ', '2.0']])%>
                  </li>
 
                  <input type="hidden" name="total_credit[]">
@@ -208,7 +179,7 @@
 
            <fieldset class="actions">
             <ol>
-              <li id="school_submit_action" class="action input_action ">
+              <li id="student_submit_action" class="action input_action ">
                <%= f.submit "Create" %>
              </li>
              <li class="cancel">

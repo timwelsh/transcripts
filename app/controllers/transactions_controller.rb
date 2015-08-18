@@ -1,6 +1,7 @@
 class TransactionsController < ApplicationController
 	#protect_from_forgery except: :webhook
   def create
+
     # Amount in cents
     @amount =params[:amount].to_i
     @sub = params[:subscription_period].to_i
@@ -25,6 +26,7 @@ class TransactionsController < ApplicationController
     else
       sub_status = false
     end
+
     if !current_user.subscription.blank?
 
       @subscription = current_user.subscription.update(plan_end_date:plan_end_date,plan_id:params[:plan_id],status:sub_status)

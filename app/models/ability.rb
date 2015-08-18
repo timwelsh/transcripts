@@ -3,19 +3,20 @@ class Ability
  include CanCan::Ability
 
   def initialize(user)
-
     # Define abilities for the passed in user here. For example:
     #
     # byebug
     alias_action :read , :update , :destroy, :to => :rud
     user ||= User.new # guest user (not logged in)
-
+    
     if !user.subscription.nil?
-        # byebug
+
         can :create , School if !user.school
         can :rud, School if user.subscription.plan_end_date > Date.today 
        # can :rud, :user_id => user.id
         can :manage, Student if user.subscription.plan_end_date > Date.today 
+    else
+        can :manage, Plan if !user.blank?
     end
 
     #   if user.admin?
