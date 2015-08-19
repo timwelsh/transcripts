@@ -3,23 +3,23 @@
 <head>
 	<title>EducationalRecord</title>
 	<% if !request.path.include? "admin"%>
-		<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-		<%= wicked_pdf_stylesheet_link_tag "pdf"%>
+	<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	<%= wicked_pdf_stylesheet_link_tag "pdf"%>
 	<%end%>
 	<%= csrf_meta_tags %>
 </head>
 <body>
 	
-<% if !request.path.include? "admin"%>
+	<% if !request.path.include? "admin"%>
 	<% if flash[:notice] %>
-    <div id="notice"><%= flash[:notice] %></div>
-<% end %>
-<% if user_signed_in? %>
-    Logged in as <strong><%= current_user.email %></strong>.
-    <center><%= link_to 'Logout', destroy_user_session_path, method: :delete %></center>
-    <%end%>
-<% end %>
+	<div id="notice"><%= flash[:notice] %></div>
+	<% end %>
+	<% if user_signed_in? %>
+	Logged in as <strong><%= current_user.email %></strong>.
+	<center><%= link_to 'Logout', destroy_user_session_path, method: :delete %></center>
+	<%end%>
+	<% end %>
 
 	<% if alert %>
 	<p class="alert alert-danger"><%= alert %></p>

@@ -1,21 +1,14 @@
 class Ability
   require 'date'
- include CanCan::Ability
-
+  include CanCan::Ability
   def initialize(user)
-    # Define abilities for the passed in user here. For example:
-    #
-    # byebug
     alias_action :read , :update , :destroy, :to => :rud
     user ||= User.new # guest user (not logged in)
-    
     if !user.subscription.nil?
-
         can :create , School if !user.school
         can :rud, School if user.subscription.plan_end_date > Date.today 
-       # can :rud, :user_id => user.id
         can :manage, Student if user.subscription.plan_end_date > Date.today 
-    else
+       else
         can :manage, Plan if !user.blank?
     end
 
@@ -42,5 +35,5 @@ class Ability
     #
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
-  end
+end
 end
