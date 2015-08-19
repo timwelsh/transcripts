@@ -16,8 +16,8 @@
 					
 						<% if can? :create, School %>
 						<li><%= link_to 'School',new_school_path %></li>
-
-						<%else%>
+						<%end%>
+						<%if !current_user.school.blank?%>
 						<li><%= link_to 'School',edit_school_path(current_user.school.id) %></li>
 						<%end%>
 						<li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
