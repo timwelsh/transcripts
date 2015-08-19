@@ -1,5 +1,11 @@
 
+<%if @plan.blank?%>
+<h1>There is no Plan has been created yet!!</h1> 
+<%else%> 
 <% @plan.each do |plan| %>
+
+
+
 
 	<%= form_for plan, url: transactions_path, method: :post do |f|%>
 
@@ -15,6 +21,7 @@
 		<input type="hidden" name="plan_id" value="<%= plan.id%>">
 
 		<br><br>
+	<%end%>
 	<%end%>
 <%end%>
 
