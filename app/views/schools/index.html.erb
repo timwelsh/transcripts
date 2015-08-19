@@ -1,3 +1,8 @@
+<%if @school.blank?%>
+No School has ben created yet.
+<%= link_to 'Click here',new_school_path, class: 'btn btn-primary btn-xs'%>
+to create a new school. 
+<%else%>
 <div class = "container">
 
 	<div class="row">
@@ -12,3 +17,4 @@
 		<%= link_to 'View Student List',school_students_path(@school.id), class: 'btn btn-primary btn-xs'%>
 	</div>
 </div>
+<%end%>

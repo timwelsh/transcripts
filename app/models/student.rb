@@ -17,11 +17,7 @@ class Student < ActiveRecord::Base
 	
 	validate :today_is_after_dob
 
-# ... 
-
-#######
 private
-#######
 
 def today_is_after_dob
 	return if dob.blank? 
@@ -31,10 +27,10 @@ def today_is_after_dob
 		errors.add(:dob, "Dob can't be Current Date and Future Date")
 	end		
 
-	enroll_date1=dob.to_date + 30.years 
+	enroll_date1=dob.to_date 
 	if enroll_date1>enroll_date.to_date
 		
-		errors.add(:enroll_date, "Enrollment date must be greater than 30 years from the DOB") 
+		errors.add(:enroll_date, "Enrollment date must be greater than DOB") 
 	end 
 
 	if graduation_date.to_date<enroll_date.to_date
