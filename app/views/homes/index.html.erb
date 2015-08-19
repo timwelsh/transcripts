@@ -11,7 +11,7 @@
 					<li><a href="">Features</a></li>
 					<li><a href="">Contact Us</a></li>
 					<%if current_user%>
-						<li><a href="/plans/new">Plans</a></li>
+						<li><a href="/plans">Plans</a></li>
 						<li><%= link_to 'Edit Profile',edit_user_registration_path %></li>
 					
 						<% if can? :create, School %>
