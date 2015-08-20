@@ -12,18 +12,15 @@
 <body>
 	
 	<% if !request.path.include? "admin"%>
-	<% if flash[:notice] %>
-	<div id="notice"><%= flash[:notice] %></div>
-	<% end %>
-	<% if user_signed_in? %>
-	Logged in as <strong><%= current_user.email %></strong>.
-	<center><%= link_to 'Logout', destroy_user_session_path, method: :delete %></center>
-	<%end%>
+		<% if flash[:notice] %>
+		<div id="notice"><%= flash[:notice] %></div>
+		<% end %>
 	<% end %>
 
 	<% if alert %>
 	<p class="alert alert-danger"><%= alert %></p>
 	<% end %>
+	<%= render 'layouts/header'%>
 	<%= yield %>
 
 </body>

@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   rescue_from CanCan::AccessDenied do | exception |
    # if @scope_name != :admin_user
    #  if !current_user.blank?
+
    if current_user.subscription.blank?
     redirect_to plans_path
   else

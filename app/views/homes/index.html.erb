@@ -1,262 +1,335 @@
-<!DOCTYPE html>
-<html lang="en">
-<head></head>
-<body>
-	<section class="billboard light">
-		<header class="wrapper light">
-			<a href="#"><img src="img/transcriptsme1.png" alt="" width="160" height="52" class="logo"/></a>
-			<nav>
-				<ul>
-					<li><a href="">About Us</a></li>
-					<li><a href="">Features</a></li>
-					<li><a href="">Contact Us</a></li>
-					<%if current_user%>
-						<li><a href="/plans">Plans</a></li>
-						<li><%= link_to 'Edit Profile',edit_user_registration_path %></li>
-					
-						<% if can? :create, School %>
-						<li><%= link_to 'School',new_school_path %></li>
-						<%end%>
-						<%if !current_user.school.blank?%>
-						<li><%= link_to 'School',edit_school_path(current_user.school.id) %></li>
-						<%end%>
-						<li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
-					<%else%>
-
-					<li><a href="/users/sign_up">Sign Up</a></li>
-					<li><a href="/users/sign_in">Login</a></li>
-					<%end%>
-				</ul>
-			</nav>
-		</header>
-
-		<div class="caption light animated wow fadeInDown clearfix">
-			<h1>Transcripts</h1>
-			<p>Simple. Secure. Personalized.</p>
-			<hr>
-		</div>
-		<div class="shadow"></div>
-	</section><!--  End billboard  -->
 
 
-	<section class="services wrapper">
-		<div class="title animated wow fadeIn">
-			<h2>Features</h2>
-			<h3>the simple ways we are set apart</h3>
-			<hr class="separator"/>
-		</div>
-		<ul class="clearfix">
-			<li class="animated wow fadeInDown">
-				<img src="img/doc-icon.png" alt="" width="120" height="120" class="icon"/>
-				<span class="separator"></span>
-				<h2>Document & Store</h2>
-				<p>A clear and simple way to document your student grades and credits all through high school. </p>
-			</li>
-			<li class="animated wow fadeInDown"  data-wow-delay=".2s">
-				<img src="img/print.ico" alt="" width="120" height="120" class="icon"/>
-				<span class="separator"></span>
-				<h2>Print</h2>
-				<p>Print single page transcripts with your school emblem and ordered by year or subject, in protrait or landscape.</p>
-			</li>
-			<li class="animated wow fadeInDown"  data-wow-delay=".4s">
-				<img src="img/diploma.jpg" alt="" width="120" height="120" class="icon"/>
-				<span class="separator"></span>
-				<h2>Diploma</h2>
-				<p>We offer an additional service of printing a high quality diploma complete with your school emblem.</p>
-			</li>
-		</ul>
-	</section><!--  End services  -->
+<div class="container-fluid">
+	<div class="menu_bg">
+    	<div class="row">
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
 
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
 
-	<section class="video">
-		<img src="img/transcriptsme1.png" alt="" width="160" height="52" class="video_logo animated wow fadeInDown"/>
-		<h3 class="animated wow fadeInDown">getting you ready to handoff your student from high school to college</h3>
-	</section><!--  End video  -->
+      <div class="item active">
+        <img src="/assets/banner.png" alt=""  width="100%" />
+        <!--<div class="carousel-caption">
+          <h3>Chania</h3>
+          <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
+        </div>-->
+      </div>
 
+      <div class="item">
+        <img src="/assets/banner1.png" alt=""  width="100%" />
+        <!--<div class="carousel-caption">
+          <h3>Chania</h3>
+          <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
+        </div>-->
+      </div>
+    
+      <div class="item">
+        <img src="/assets/banner2.png" alt=""  width="100%" />
+        <!--<div class="carousel-caption">
+          <h3>Flowers</h3>
+          <p>Beatiful flowers in Kolymbari, Crete.</p>
+        </div>-->
+      </div>
+      
+    </div>
 
-	<section class="testimonials wrapper">
-		<div class="title animated wow fadeIn">
-			<h2>Testimonials</h2>
-			<h3>what customers are saying about us</h3>
-			<hr class="separator"/>
-		</div>
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
+    </div>
+</div>
 
-		<ul class="clearfix">
-			<li class="animated wow fadeInDown">
-				<p><img src="img/quotes.png" alt="" class="quotes"/>Dolor sit amet consectetur isicing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua enim ad minim veniam quis nostrud laboris.
-					<span class="triangle"></span>
-				</p>
-				<div class="client">
-					<img src="img/client1.jpg" class="avatar"/>
-					<div class="client_details">
-						<h4>John Doe</h4>
-						<h5>CEO</h5>
+	<div class="banner_bottom">
+    	<div class="container">
+        	<div class="aligncenter">
+            	<h3 class="h3txt4">See why over 10 million visitors use Transcripts</h3>
+                <p class="aligncenter_itelic">Discover how we can help you:</p>
+            </div>
+            <div class="btnoutrwdth">
+            <div class="row">
+            <div class="col-md-6 col-sm-6">
+            	<div class="btwdt">
+                <a href="#" class="btn btn-success btn-lg">
+      <span class="glyphicon glyphicon-education"></span>  
+    I Am a Student </a>
+    </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+            <div class="btwdt">
+            	 <a href="#" class="btn btn-info btn-lg ">
+      <span class=" glyphicon glyphicon-user"></span>   Get in Touch </a>
+      </div>
+            </div>
+  
+            	
+
+            </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    
+    
+    <div class="features">
+    	<div class="row">
+        	<h3 class="h3txt">Features</h3>
+                <p class="aligncenter_itelic2">the simple ways we are set apart</p>
+        </div>
+    </div>
+    <div class="container">
+    <div class="row">
+    	 <div class="col-md-4 col-sm-4">
+         <div class="box_out1">
+         	<div class="features3">
+       	    <img src="/assets/dip.png" width="89" height="68">
+            	<div class="caption">
+            <h3>Diploma</h3>
+      
+            <p>We offer an additional service of printing a high quality diploma complete with your school emblem. <br>
+              <br>
+            </p>
+            <p> <a role="button" class="btn btn-primary" href="#">View more</a></p>
+          </div>
+            </div>
+            </div>
+         </div>
+        <div class="col-md-4 col-sm-4">
+        <div class="box_out1">
+        	<div class="features4">
+            	<img src="/assets/print.png" width="89" height="68">
+            	<div class="caption">
+            <h3>Print</h3>
+           
+            <p>Print single page transcripts with your school emblem and ordered by year or subject, in protrait or landscape. </p>
+            <p> <a role="button" class="btn btn-primary" href="#">View more</a></p>
+          </div>
+          </div>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-4">
+        <div class="box_out1">
+        	<div class="features5">
+            	<img src="/assets/doc.png" width="89" height="68">
+            	<div class="caption">
+            <h3>Document & Store</h3>
+     
+            <p>A clear and simple way to document your student grades and credits all through high school. <br>
+              <br>
+            </p>
+            <p> <a role="button" class="btn btn-primary" href="#">View more</a></p>
+          </div>
+          </div>
+        </div>
+        </div>
+        </div>
+    </div>
+    <div class="features">
+    	<div class="row">
+        	<h3 class="h3txt">Plan and Prices</h3>
+                <p class="aligncenter_itelic2">three options</p>
+        </div>
+    </div>
+    
+    <div class="container">
+    <div class="row">
+    	 <div class="col-md-4 col-sm-4">
+         <div class="box_out1">
+         	<div class="plan3">
+         	  <div class="caption">
+            <h3 class="h3txt2">Diploma</h3>
+            <p class="ptxt1">30 Days of free access</p>
+      
+            <p>We offer an additional service of printing a high quality diploma complete with your school emblem. <br>
+              <br>
+            </p>
+            <p> <a role="button" class="btn btn-info" href="#">View Plans</a></p>
+          </div>
+           </div>
+           </div>
+         </div>
+        <div class="col-md-4 col-sm-4">
+        <div class="box_out1">
+        	<div class="plan4">
+        	  <div class="caption">
+            <h3 class="h3txt2">Print</h3>
+           <p class="ptxt1">30 Days of free access</p>
+            <p>Print single page transcripts with your school emblem and ordered by year or subject, in protrait or landscape. </p>
+            <p> <a role="button" class="btn btn-info" href="#">View Plans</a></p>
+          </div>
+          </div>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-4">
+        <div class="box_out1">
+        	<div class="plan5">
+        	  <div class="caption">
+            <h3 class="h3txt2">Document & Store</h3>
+     <p class="ptxt1">30 Days of free access</p>
+            <p>A clear and simple way to document your student grades and credits all through high school. <br>
+              <br>
+            </p>
+            <p> <a role="button" class="btn btn-info" href="#">View Plans</a></p>
+          </div>
+          </div>
+          </div>
+        </div>
+        </div>
+    </div>
+<div class="banner_bottom">
+    	<div class="container">
+        	<div class="aligncenter">
+            	<h3 class="h3txt3">Testimonials</h3>
+                <p class="ptxt2">what customers are saying about us</p>
+            </div>
+            
+        </div>
+    </div>
+    
+    
+<div class="container">
+    <div class="row">
+    	 <div class="col-md-4 col-sm-4">
+         <div class="box_out1">
+         	<div class="testi3">
+         	  <div class="caption">
+   
+      
+            <p><img src="/assets/blockquotes.png" width="34" height="31"> Dolor sit amet consectetur isicing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua enim ad minim veniam quis nostrud laboris.  <br>
+              <br>
+              <div class="lintsti">
+              	<div class="col-sm-2"><img src="/assets/test1.png" width="43" height="48"></div>
+                <div class="col-sm-10"><strong>John Doe</strong> <br />CEO</div>
+                
+              </div>
+            </p>
+
+          </div>
+           </div>
+           </div>
+         </div>
+        <div class="col-md-4 col-sm-4">
+        <div class="box_out1">
+        	<div class="testi4">
+        	  <div class="caption">
+
+           
+            <p><img src="/assets/blockquotes.png" width="34" height="31"> Tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam sunt in culpa officia deserunt mollit anim laborum sint occaecat. </p>
+             <br>
+       
+              <div class="lintsti">
+              	<div class="col-sm-2"><img src="/assets/alex.png" width="43" height="48"></div>
+                <div class="col-sm-10"><strong>Alex Martin</strong> <br />
+                  UI Designer</div>
+                
+              </div>
+
+          </div>
+          </div>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-4">
+        <div class="box_out1">
+        	<div class="testi5">
+        	  <div class="caption">
+     
+     
+            <p><img src="/assets/blockquotes.png" width="34" height="31"> Aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse slum dolore eu fugiat nulla pariatursint occaecat.  <br>
+              <br>
+              <div class="lintsti">
+              	<div class="col-sm-2"><img src="assets/linda.png" width="43" height="48"></div>
+                <div class="col-sm-10"><strong>Linda Doe</strong> <br />
+                  Developer</div>
+                
+              </div>
+            </p>
+            
+          </div>
+          </div>
+          </div>
+        </div>
+        </div>
+    </div>
+    
+    
+
+<div class="footer1">
+<footer id="footer">
+		<div class="container">
+			<div class="row">
+				
+				<div class="col-sm-3 ">
+					<p class="phdr">The Company</p>
+					<ul class="contact">
+            			
+						<li><a href="#">About Us</a></li>
+						<li><a href="#">Features</a></li>
+						<li><a href="#">Student</a></li>
+						<li><a href="#">Plans</a></li>
+                        <li><a href="#">School</a></li>
+                        <li><a href="#">Contact Us</a></li>
+		  </ul>
+				</div>
+				<div class="col-sm-3">
+					<p class="phdr">Help</p>
+					<ul class="contact">
+            			
+						<li><a href="#">Terms & Conditions</a></li>
+						<li><a href="#">Privacy Policy</a></li>
+						<li><a href="#">Faq's</a></li>
+		  </ul>
+				</div>
+				<div class="col-sm-4">
+					<div class="contact-details">
+						<p class="phdr">Our Address</p>
+						
+							<p><i class="icon icon-map-marker"></i> <strong>Address: </strong> ABCD, Noida (U.P.)</p>
+							<p><i class="icon icon-envelope"></i> <strong>Phone No: </strong>+91 000 000 0000</p>
+                            <p><i class="icon icon-envelope"></i> <strong>E-mail: </strong> <a href="mailto:info@transcripts.me">info@transcripts.me</a></p>
+						
 					</div>
 				</div>
-			</li>
-			<li class="animated wow fadeInDown"  data-wow-delay=".2s">
-				<p><img src="img/quotes.png" alt="" class="quotes"/>Tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam sunt in culpa officia deserunt mollit anim laborum sint occaecat.
-					<span class="triangle"></span>
-				</p>
-				<div class="client">
-					<img src="img/client2.jpg" class="avatar"/>
-					<div class="client_details">
-						<h4>Alex Martin</h4>
-						<h5>UI Designer</h5>
+				<div class="col-sm-2">
+					<p class="phdr">Follow Us</p>
+					<div class="social-icons">
+						<div class="soc1"><a href="#"><img src="/assets/facebook.png" width="26" height="26" /></a></div>
+            <div class="soc2"><a href="#">Facebook</a></div>
+            <div class="clearfix"></div>
+            <div class="soc1"><a href="#"><img src="/assets/twitter.png" width="26" height="26" /></a></div>
+            <div class="soc2"><a href="#">Twitter</a></div>
+            <div class="clearfix"></div>
+            <div class="soc1"><a href="#"><img src="/assets/gplus.png" width="26" height="26" /></a></div>
+            <div class="soc2"><a href="#">Google Plus</a></div>
+            <div class="clearfix"></div>
+            <div class="soc1"><a href="#"><img src="/assets/in.png" width="26" height="26" /></a></div>
+            <div class="soc2"><a href="#">Linkedin</a></div>
 					</div>
 				</div>
-			</li>
-			<li class="animated wow fadeInDown"  data-wow-delay=".4s">
-				<p><img src="img/quotes.png" alt="" class="quotes"/>Aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse slum dolore eu fugiat nulla pariatursint occaecat.
-					<span class="triangle"></span>
-				</p>
-				<div class="client">
-					<img src="img/client3.jpg" class="avatar"/>
-					<div class="client_details">
-						<h4>Linda Doe</h4>
-						<h5>Developer</h5>
-					</div>
-				</div>
-			</li>
-		</ul>
-	</section><!--  End testimonials  -->
-
-<!--
-	<section class="blog_posts">
-		<div class="wrapper">
-			<div class="title animated wow fadeIn">
-				<h2>Plans and Prices</h2>
-				<h3>the most recent posts from our blog</h3>
-				<hr class="separator"/>
 			</div>
-
-			<ul class="clearfix">
-				<li class="animated wow fadeInDown">
-					<div class="media">
-						<div class="date">
-							<span class="day">25</span>
-							<span class="month">Jun</span>
-						</div>
-						<a href="#">
-							<img src="img/blog_post1.jpg" alt=""/>
-						</a>
-					</div>
-					<a href="#">
-						<h1>Sed do eiusmod tempor incididunt.</h1>
-					</a>
-				</li>
-
-				<li class="animated wow fadeInDown" data-wow-delay=".2s">
-					<div class="media">
-						<div class="date">
-							<span class="day">11</span>
-							<span class="month">May</span>
-						</div>
-						<a href="#">
-							<img src="img/blog_post2.jpg" alt=""/>
-						</a>
-					</div>					
-					<a href="#">
-						<h1>Velit esse cillum dollore fugiat nulla.</h1>
-					</a>
-				</li>
-
-				<li class="animated wow fadeInDown" data-wow-delay=".4s">
-					<div class="media">
-						<div class="date">
-							<span class="day">13</span>
-							<span class="month">Feb</span>
-						</div>
-						<a href="#">
-							<img src="img/blog_post3.jpg" alt=""/>
-						</a>
-					</div>
-					<a href="#">
-						<h1>Officia deserunt mollit est anim laborum.</h1>
-					</a>
-				</li>
-
-				<li class="animated wow fadeInDown" data-wow-delay=".6s">
-					<div class="media">
-						<div class="date">
-							<span class="day">10</span>
-							<span class="month">Jan</span>
-						</div>
-						<a href="#">
-							<img src="img/blog_post4.jpg" alt=""/>
-						</a>
-					</div>
-					<a href="#"><h1>Culpa qui officia deserunt 
-					mollit ani
-					m.</h1>
-				</a>
-				</li>
-			</ul>
+			
 		</div>
-	</section>-->
-	<!--  End blog_posts  -->
+           <div class="footer6">
+      <div class="container">
+        <div class="footer7"><img src="assets/footerlogo.png" width="142" height="50"></div>
+        <div class="footer8">© 2015. All Right Reserved</div>
+      </div>
+    </div>
+	</footer>
+    </div>
 
-	<br><br><br><br>
-
-	<section class="services wrapper">
-		<div class="title animated wow fadeIn">
-			<h2>Plans and Prices</h2>
-			<h3>three options</h3>
-			<hr class="separator"/>
-		</div>
-		<ul class="clearfix">
-			<li class="animated wow fadeInDown">
-				<span class="separator"></span>
-				<h2>Free</h2>
-				<p>
-					30 days of free access<br>
-					Print transcripts and diplomas with watermark<br>
-					Personalized school emblam<br>
-					One family per account<br>
-					Up to 10 students<br>
-				</p>
-				<li class="animated wow fadeInDown"  data-wow-delay=".2s">
-					<span class="separator"></span>
-					<h2>Annual</h2>
-					<p>One year access for $19<br>
-						Print without watermark<br>
-						Personalized school emblam<br>
-						One family per account<br>
-						Up to 10 students<br>
-					</p>
-				</li>
-				<li class="animated wow fadeInDown"  data-wow-delay=".4s">
-					<span class="separator"></span>
-					<h2>Lifetime</h2>
-					<p>Lifetime access for $99<br>
-						Print without watermark<br>
-						Personalized school emblem<br>
-						One family per account<br>
-						Up to 10 students<br></p>
-					</li>
-				</ul>
-			</section><!--  End services  -->
-
-
-
-			<footer>
-				<div class="wrapper">
-					<div class="rights">
-						<img src="img/footer_logo.png" alt="" class="footer_logo"/>
-						<p>© transcripts.me  All Rights Reserved 2015</p>
-					</div>
-
-					<nav>
-						<ul>
-							<li><a href="#">About Us</a></li>
-							<li><a href="#">Features</a></li>
-							<li><a href="#">Testimonials</a></li>
-							<li><a href="#">Plans and Prices</a></li>
-							<li><a href="#">Contact</a></li>
-						</ul>
-					</nav>
-				</div>		
-			</footer><!--  End footer  -->
-			<!-- <script src='../ga.js'></script> -->
-		</body>
-		</html>

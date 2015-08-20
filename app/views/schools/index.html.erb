@@ -15,6 +15,7 @@ to create a new school.
 
 		</div>
 		<%= link_to 'View Student List',school_students_path(@school.id), class: 'btn btn-primary btn-xs'%>
+		<%= link_to 'Add New Student',new_school_student_path(@school.id), class: 'btn btn-success btn-xs'%></th>
 	</div>
 </div>
 <%end%>

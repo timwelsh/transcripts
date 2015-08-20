@@ -61,37 +61,38 @@ $(document).ready(function(){
         $(wrapper).append('<div class="education secondEdu">'+
             '<h3>Course '+x+'</h3> <a href="#" class="remove_field">Remove</a>'+
             '<div style="clear:both;"></div>'+
-            '<ol><li class="string input optional stringish">'+
+            '<div class="string input optional stringish">'+
                '<label for="completion_year">Completion Year</label>'+
                '<select name="completion_year[]">'+
+               '<option value ="">Please Select</option>'+
                  '<option value ="Freshman">Freshman</option>'+
                  '<option value ="Sophomore">Sophomore</option>'+
                  '<option value ="Junior">Junior</option>'+
                  '<option value ="Senior">Senior</option>'+
                  
                '</select>'+
-               '</li>'+
+               '</div>'+
 
-            '<li class="string input optional stringish">'+
+            '<div class="string input optional stringish">'+
             '<label for="subject">Subject</label>'+
             '<input type="text" name="subject[]">'+
-            '</li>'+
+            '</div>'+
 
-            '<li class="string input optional stringish">'+
+            '<div class="string input optional stringish">'+
             '<label for="course_name">Course Name</label>'+
             '<input type="text" name="course_name[]">'+
-            '</li>'+
+            '</div>'+
 
-            '<li class="string input optional stringish">'+
+            '<div class="string input optional stringish">'+
                '<label for="honors">Honors</label>'+
                '<select name="honors[]">'+
                  '<option value ="No">No</option>'+
                  '<option value ="Yes">Yes</option>'+
                '</select>'+
-               '</li>'+
+               '</div>'+
 
 
-          '<li class="string input optional stringish">'+
+          '<div class="string input optional stringish">'+
              '<label for="grade">Grade</label>'+
               '<select name="grade[]">'+
                '<option value ="A+">A+</option>'+
@@ -113,23 +114,21 @@ $(document).ready(function(){
                 '<option value ="I">I</option>'+
 
               '</select>'+
-            '</li>'+
+            '</div>'+
 
-            '<li class="string input optional stringish">'+
+            '<div class="string input optional stringish">'+
              '<label for="credit">Credit</label>'+
               '<select name="credits[]">'+
                '<option value ="0.5">0.5</option>'+
                 '<option value ="1.0">1.0</option>'+
                 '<option value ="2.0">2.0</option>'+
-              '</li>'+
+              '</div>'+
 
             '<input type="hidden" name="total_credit[]">'+
             '<input type="hidden" name="gpa_credit[]">'+
             '<input type="hidden" name="gpa_points[]">'+
             '<input type="hidden" name="cumulative_gpa[]">'+
-            
-
-            '</ol>'+
+                        
             '</div>'); 
 
     });
