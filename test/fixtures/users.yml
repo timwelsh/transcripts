@@ -5,8 +5,10 @@
 # below each fixture, per the syntax in the comments below
 #
 one:
-  name: Alice
+  first_name: Alice
+  last_name: Alice
   email: alice@example.com
 two:
-  name: Bob
+  first_name: Bob
+  last_name: Bob
   email: bob@example.com
