@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   end
   
   post 'stripe/webhook'
+  get '/homes/about'
 #get 'registrations/checkemail'
   get '/schools/subregion_options' => 'schools#subregion_options'
   get '/students/subregion_options' => 'students#subregion_options'
@@ -43,6 +44,11 @@ get '/students/checkemail', to: 'students#checkemail', as: :checkemail
   resources :schools do
   resources :students    
   end
+
+  controller :pages do
+  get :about
+  get :contact
+end
   #post 'transactions/hook'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

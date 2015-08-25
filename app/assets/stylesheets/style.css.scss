@@ -1,3 +1,4 @@
+.container-fluid{padding:0px !important;}
 .header_top{background-color:#01bab5; padding:10px 0 10px 0; overflow:hidden; margin:0 0 5px 0; color:#fff; font-size:9pt;}
 .menu_bg{overflow:hidden; margin:10px 0 0 0;}
 .banner_bottom{background: #025682 url(../assets/bgblue.png);  overflow:hidden; padding-bottom:20px; margin:10px 0 10px 0; border-top:solid 1px #026599; border-bottom:solid 1px #026599;}
@@ -33,13 +34,14 @@
 .footer5{width:200px; float:left; overflow:hidden; }
 .footer6{border-top:solid 1px #464646; padding:5px 0 0px 0; margin-top:15px;}
 .footer7{width:150px; float:left; overflow:hidden; margin-right:10px;}
-.footer8{width:250px; float:left; overflow:hidden; padding-top:20px;}
+.footer8{width:250px; float:left; overflow:hidden; padding-top:20px; color:#666;}
 .contact{padding-left:12px; line-height:20px;}
 .phdr{color:#fff; font-size:10pt; font-weight:bold;}
 .soc1{width:40px; float:left; margin-bottom:5px;}
 .soc1:hover{width:40px; float:left; margin-bottom:5px; padding-left:3px;}
 .soc2{width:150px; float:left; padding-top:5px; margin-bottom:5px;}
 .contact{color:#01bab5;}
+.contact a{color:#01bab5;}
 
 
 .testi{overflow:hidden; padding-bottom:10px; margin:0px 0 0px 0; text-align:center;}
@@ -236,7 +238,6 @@
 }
 .txtalyn{text-align:center;}
 .txtalyn2{text-align:right;}
-.txtalyn2 a{color:#fff;text-decoration: none;}
 .h3txt{font-size:20pt;line-height: 11px; font-weight:bold; color:#000; margin:15px 0 15px 0;}
 .h3txt2{font-size:17pt;line-height: 11px; font-weight:normal; color:#000; margin:15px 0 15px 0;}
 .h3txt3{font-size:20pt;line-height: 11px; font-weight:bold; color:#fff; margin:25px 0 15px 0;}
@@ -244,10 +245,75 @@
 .ptxt1{font-weight:bold;}
 .ptxt2{font-weight:bold; font-size:12pt}
 .contact-details{color:#01bab5;}
+.contact-details a{color:#01bab5;}
 .btwdt{margin:10px; text-align:center; }
 .btnoutrwdth{width:40%; margin:auto; text-align:center}
+.social-icons a{color:#01bab5;}
+/*about start*/
+.parallax {
+    /*background-attachment: fixed !important;*/
+    background-color: #f8f8f8;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+	height:150px;
+	margin-top:10px;
+}
+.mini-title-head-bar {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: #f9f9f9;
+    background-image: none;
+    background-origin: padding-box;
+    background-position: 0 0;
+    background-repeat: repeat;
+    background-size: auto auto;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    height: auto;
+    min-height: 40px;
+    position: relative;
+    z-index: 555;
+	margin-bottom:15px;
+}
+.greybeadcrub{padding:8px 15px;margin-bottom:0px;list-style:none;/*background-color:#f5f5f5;*/border-radius:4px}.greybeadcrub>li{display:inline-block}.greybeadcrub>li+li:before{padding:0 5px;color:#ccc;content:"/\00a0"}.greybeadcrub>.active{color:#777}
+.aboutttl{padding:10px 0 0 0; font-size:28pt; color:#025682; font-weight:bold; text-align:center; vertical-align:middle;text-shadow:
+   -1px -1px 0 #fff,  
+    1px -1px 0 #fff,
+    -1px 1px 0 #fff,
+     1px 1px 0 #fff;}
+.abouttt2{margin:0 10px 0 10px;}
+#abouttt3{margin:0px; padding:0px;}
+#parpad{margin:0px; padding:0px;}
+#parpad1{margin:0px; padding:0px;}
+#parpad2{margin:0px; padding:0px;}
+#parpad3{margin:0px; padding:0px;}
+.parpad3btnregis {
+  background: #10bab5;
+  background-image: -webkit-linear-gradient(top, #10bab5, #0ab1ac);
+  background-image: -moz-linear-gradient(top, #10bab5, #0ab1ac);
+  background-image: -ms-linear-gradient(top, #10bab5, #0ab1ac);
+  background-image: -o-linear-gradient(top, #10bab5, #0ab1ac);
+  background-image: linear-gradient(to bottom, #10bab5, #0ab1ac);
+  border:solid 1px #06a39e;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 10px 68px 10px 68px;
+  border-radius:5px;
+  text-decoration: none;
+}
 
-
-@media only screen and (max-device-width: 480px) {
-
+.parpad3btnregis:hover {
+  background-image: -webkit-linear-gradient(top, #0ab1ac, #10bab5);
+  background-image: -moz-linear-gradient(top, #0ab1ac, #10bab5);
+  background-image: -ms-linear-gradient(top, #0ab1ac, #10bab5);
+  background-image: -o-linear-gradient(top, #0ab1ac, #10bab5);
+  background-image: linear-gradient(to bottom, #0ab1ac, #10bab5);
+  text-decoration: none;
+}
+.sbttle{color: #3463a1;
+    font-family: "Roboto",sans-serif;
+    font-size: 25px;
+    font-weight: 400;
 	}
+/*about end*/

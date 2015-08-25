@@ -12,16 +12,19 @@
 <body>
 	
 	<% if !request.path.include? "admin"%>
-		<% if flash[:notice] %>
-		<div id="notice"><%= flash[:notice] %></div>
-		<% end %>
+	<% if flash[:notice] %>
+	<div id="notice"><%= flash[:notice] %></div>
+	<% end %>
+	<%= render 'layouts/header'%>
 	<% end %>
 
 	<% if alert %>
 	<p class="alert alert-danger"><%= alert %></p>
 	<% end %>
-	<%= render 'layouts/header'%>
+	
 	<%= yield %>
-
+	<% if !request.path.include? "admin"%>
+	<%= render 'layouts/footer'%>
+	<%end%>
 </body>
 </html>
