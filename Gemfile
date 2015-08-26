@@ -37,9 +37,9 @@ gem 'autoprefixer-rails'
 
 gem 'activeadmin', '~> 1.0.0.pre1'
 gem 'carmen-rails', '~> 1.0.0'
-gem 'bootstrap-datepicker-rails'
+#gem 'bootstrap-datepicker-rails'
 
-gem 'fancybox2-rails', '~> 0.2.8'
+#gem 'fancybox2-rails', '~> 0.2.8'
 
 gem 'activeadmin-ckeditor'
 gem 'dotenv-rails', :groups => [:development]
