@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head></head>
+<body>
+	<section class="billboard light">
+		<header class="wrapper light">
+			<a href="#"><img src="img/transcriptsme1.png" alt="" width="160" height="52" class="logo"/></a>
+			<nav>
+				<ul>
+					<li><a href="">About Us</a></li>
+					<li><a href="">Features</a></li>
+					<li><a href="">Contact Us</a></li>
+					<%if current_user%>
+						<li><a href="/plans">Plans</a></li>
+						<li><%= link_to 'Edit Profile',edit_user_registration_path %></li>
+					
+						<% if can? :create, School %>
+						<li><%= link_to 'School',new_school_path %></li>
+						<%end%>
+						<%if !current_user.school.blank?%>
+						<li><%= link_to 'School',edit_school_path(current_user.school.id) %></li>
+						<%end%>
+						<li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+					<%else%>
+
+					<li><a href="/users/sign_up">Sign Up</a></li>
+					<li><a href="/users/sign_in">Login</a></li>
+					<%end%>
+				</ul>
+			</nav>
+		</header>
+
+		<div class="caption light animated wow fadeInDown clearfix">
+			<h1>Transcripts</h1>
+			<p>Simple. Secure. Personalized.</p>
+			<hr>
+		</div>
+		<div class="shadow"></div>
+	</section><!--  End billboard  -->
+
+
+	<section class="services wrapper">
+		<div class="title animated wow fadeIn">
+			<h2>Features</h2>
+			<h3>the simple ways we are set apart</h3>
+			<hr class="separator"/>
+		</div>
+		<ul class="clearfix">
+			<li class="animated wow fadeInDown">
+				<img src="img/doc-icon.png" alt="" width="120" height="120" class="icon"/>
+				<span class="separator"></span>
+				<h2>Document & Store</h2>
+				<p>A clear and simple way to document your student grades and credits all through high school. </p>
+			</li>
+			<li class="animated wow fadeInDown"  data-wow-delay=".2s">
+				<img src="img/print.ico" alt="" width="120" height="120" class="icon"/>
+				<span class="separator"></span>
+				<h2>Print</h2>
+				<p>Print single page transcripts with your school emblem and ordered by year or subject, in protrait or landscape.</p>
+			</li>
+			<li class="animated wow fadeInDown"  data-wow-delay=".4s">
+				<img src="img/diploma.jpg" alt="" width="120" height="120" class="icon"/>
+				<span class="separator"></span>
+				<h2>Diploma</h2>
+				<p>We offer an additional service of printing a high quality diploma complete with your school emblem.</p>
+			</li>
+		</ul>
+	</section><!--  End services  -->
+
+
+	<section class="video">
+		<img src="img/transcriptsme1.png" alt="" width="160" height="52" class="video_logo animated wow fadeInDown"/>
+		<h3 class="animated wow fadeInDown">getting you ready to handoff your student from high school to college</h3>
+	</section><!--  End video  -->
+
+
+	<section class="testimonials wrapper">
+		<div class="title animated wow fadeIn">
+			<h2>Testimonials</h2>
+			<h3>what customers are saying about us</h3>
+			<hr class="separator"/>
+		</div>
+
+		<ul class="clearfix">
+			<li class="animated wow fadeInDown">
+				<p><img src="img/quotes.png" alt="" class="quotes"/>Dolor sit amet consectetur isicing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua enim ad minim veniam quis nostrud laboris.
+					<span class="triangle"></span>
+				</p>
+				<div class="client">
+					<img src="img/client1.jpg" class="avatar"/>
+					<div class="client_details">
+						<h4>John Doe</h4>
+						<h5>CEO</h5>
+					</div>
+				</div>
+			</li>
+			<li class="animated wow fadeInDown"  data-wow-delay=".2s">
+				<p><img src="img/quotes.png" alt="" class="quotes"/>Tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam sunt in culpa officia deserunt mollit anim laborum sint occaecat.
+					<span class="triangle"></span>
+				</p>
+				<div class="client">
+					<img src="img/client2.jpg" class="avatar"/>
+					<div class="client_details">
+						<h4>Alex Martin</h4>
+						<h5>UI Designer</h5>
+					</div>
+				</div>
+			</li>
+			<li class="animated wow fadeInDown"  data-wow-delay=".4s">
+				<p><img src="img/quotes.png" alt="" class="quotes"/>Aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse slum dolore eu fugiat nulla pariatursint occaecat.
+					<span class="triangle"></span>
+				</p>
+				<div class="client">
+					<img src="img/client3.jpg" class="avatar"/>
+					<div class="client_details">
+						<h4>Linda Doe</h4>
+						<h5>Developer</h5>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</section><!--  End testimonials  -->
+
+<!--
+	<section class="blog_posts">
+		<div class="wrapper">
+			<div class="title animated wow fadeIn">
+				<h2>Plans and Prices</h2>
+				<h3>the most recent posts from our blog</h3>
+				<hr class="separator"/>
+			</div>
+
+			<ul class="clearfix">
+				<li class="animated wow fadeInDown">
+					<div class="media">
+						<div class="date">
+							<span class="day">25</span>
+							<span class="month">Jun</span>
+						</div>
+						<a href="#">
+							<img src="img/blog_post1.jpg" alt=""/>
+						</a>
+					</div>
+					<a href="#">
+						<h1>Sed do eiusmod tempor incididunt.</h1>
+					</a>
+				</li>
+
+				<li class="animated wow fadeInDown" data-wow-delay=".2s">
+					<div class="media">
+						<div class="date">
+							<span class="day">11</span>
+							<span class="month">May</span>
+						</div>
+						<a href="#">
+							<img src="img/blog_post2.jpg" alt=""/>
+						</a>
+					</div>					
+					<a href="#">
+						<h1>Velit esse cillum dollore fugiat nulla.</h1>
+					</a>
+				</li>
+
+				<li class="animated wow fadeInDown" data-wow-delay=".4s">
+					<div class="media">
+						<div class="date">
+							<span class="day">13</span>
+							<span class="month">Feb</span>
+						</div>
+						<a href="#">
+							<img src="img/blog_post3.jpg" alt=""/>
+						</a>
+					</div>
+					<a href="#">
+						<h1>Officia deserunt mollit est anim laborum.</h1>
+					</a>
+				</li>
+
+				<li class="animated wow fadeInDown" data-wow-delay=".6s">
+					<div class="media">
+						<div class="date">
+							<span class="day">10</span>
+							<span class="month">Jan</span>
+						</div>
+						<a href="#">
+							<img src="img/blog_post4.jpg" alt=""/>
+						</a>
+					</div>
+					<a href="#"><h1>Culpa qui officia deserunt 
+					mollit ani
+					m.</h1>
+				</a>
+				</li>
+			</ul>
+		</div>
+	</section>-->
+	<!--  End blog_posts  -->
+
+	<br><br><br><br>
+
+	<section class="services wrapper">
+		<div class="title animated wow fadeIn">
+			<h2>Plans and Prices</h2>
+			<h3>three options</h3>
+			<hr class="separator"/>
+		</div>
+		<ul class="clearfix">
+			<li class="animated wow fadeInDown">
+				<span class="separator"></span>
+				<h2>Free</h2>
+				<p>
+					30 days of free access<br>
+					Print transcripts and diplomas with watermark<br>
+					Personalized school emblam<br>
+					One family per account<br>
+					Up to 10 students<br>
+				</p>
+				<li class="animated wow fadeInDown"  data-wow-delay=".2s">
+					<span class="separator"></span>
+					<h2>Annual</h2>
+					<p>One year access for $19<br>
+						Print without watermark<br>
+						Personalized school emblam<br>
+						One family per account<br>
+						Up to 10 students<br>
+					</p>
+				</li>
+				<li class="animated wow fadeInDown"  data-wow-delay=".4s">
+					<span class="separator"></span>
+					<h2>Lifetime</h2>
+					<p>Lifetime access for $99<br>
+						Print without watermark<br>
+						Personalized school emblem<br>
+						One family per account<br>
+						Up to 10 students<br></p>
+					</li>
+				</ul>
+			</section><!--  End services  -->
+
+
+
+			<footer>
+				<div class="wrapper">
+					<div class="rights">
+						<img src="img/footer_logo.png" alt="" class="footer_logo"/>
+						<p>© transcripts.me  All Rights Reserved 2015</p>
+					</div>
+
+					<nav>
+						<ul>
+							<li><a href="#">About Us</a></li>
+							<li><a href="#">Features</a></li>
+							<li><a href="#">Testimonials</a></li>
+							<li><a href="#">Plans and Prices</a></li>
+							<li><a href="#">Contact</a></li>
+						</ul>
+					</nav>
+				</div>		
+			</footer><!--  End footer  -->
+			<!-- <script src='../ga.js'></script> -->
+		</body>
+		</html>

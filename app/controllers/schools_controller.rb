@@ -1,6 +1,6 @@
 class SchoolsController < ApplicationController
 	before_filter :authenticate_user!,except:[:subregion_options]
-	load_and_authorize_resource except: [:school_detail_copy , :subregion_options]
+	load_and_authorize_resource except: [:user_detail_copy,:school_detail_copy , :subregion_options]
 	def index
 		@school = current_user.school
 	end 

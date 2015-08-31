@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   resources :homes
   devise_for :users, controllers: {
     sessions: 'user/sessions',
-    registrations: 'user/registrations'
+    registrations: 'user/registrations',
+    :passwords => "user/passwords"
   }
 
   authenticated :user do

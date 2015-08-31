@@ -35,7 +35,7 @@
         <%end%>
 
         <%if !current_user.school.blank?%>
-       <li><%= link_to 'School',edit_school_path(current_user.school.id) %></li>
+       <li><%= link_to 'School',schools_path %></li>
       <%end%>
       <%end%>
         <li><%= link_to 'Contact Us',contact_path%></li>

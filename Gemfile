@@ -44,6 +44,7 @@ gem 'carmen-rails', '~> 1.0.0'
 gem 'activeadmin-ckeditor'
 gem 'dotenv-rails', :groups => [:development]
 gem "gibbon",'~>1.2.0'
+gem 'bootstrap-validator-rails'
 #gem 'stripe_event'
 
 # Use ActiveModel has_secure_password
