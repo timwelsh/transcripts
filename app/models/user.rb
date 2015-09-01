@@ -12,8 +12,14 @@ class User < ActiveRecord::Base
   :recoverable, :rememberable, :trackable, :validatable
   
   after_create :subscribe_user_to_mailing_list
+  after_create :send_email_to_user
   private
   def subscribe_user_to_mailing_list
   	#SubscribeUserToMailingListJob.perform_later(self)
+  end
+  def send_email_to_user
+    @user = self.first_name
+    @email= self.email
+    UserMailer.success_email(@email,@user).deliver
   end
 end
