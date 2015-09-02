@@ -55,3 +55,11 @@ en:
       destroy:
         notice: "%{resource_name} has been deleted successfully."
         alert:  "%{resource_name} could not be deleted."
+  helpers:
+    label:
+      school:
+        dob: "Date of Birth"
+      student:
+        dob: "Date of Birth"
+      user:
+        dob: "Date of Birth"

@@ -49,15 +49,15 @@ $(document).ready(function(){
                     $('#'+id_name+'_address3').val(data.address3);
                     $('#'+id_name+'_city').val(data.city);
                     $('#'+id_name+'_zip').val(data.zip);
-                   // $('#'+id_name+'_country option:selected').attr("selected",null);
+                    // $('#'+id_name+'_country option:selected').attr("selected",null);
                     //$('#'+id_name+'_country option[value="'+data.country+'"]').attr("selected","selected");
-                   $('#school_country').val(data.country);
+                    $('#'+id_name+'_country').val(data.country);
                     // select_wrapper = $('#order_state_code_wrapper');
                     // $('select', select_wrapper).attr('disabled', true);
                     // country_code = data.country;
                     // url = "/schools/subregion_options?parent_region="+country_code;
                     // select_wrapper.load(url);
-                    $('#school_state').val(data.state);
+                    $('#'+id_name+'_state').val(data.state);
                     $('#'+id_name+'_phone').val(data.phone);
                     $('#'+id_name+'_email').val(data.email);
                 },
