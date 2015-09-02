@@ -1,4 +1,10 @@
 $(document).ready(function() {
+    if(document.URL.contains("users/edit")){
+        select_wrapper = $('#order_state_code_wrapper');
+        $('select', select_wrapper).attr('disabled', true);
+        url = "/user/registrations/subregion_options?parent_region=US";
+        select_wrapper.load(url);
+    }
     $('#new_user').bootstrapValidator({
         framework: 'bootstrap',
         fields: {
