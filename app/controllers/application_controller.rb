@@ -23,7 +23,7 @@ def after_sign_in_path_for(resource_or_scope)
   if scope_name == :admin_user
     admin_root_path
   else
-    plans_path
+    root_path
   end
 end
 

@@ -57,6 +57,12 @@ ActiveAdmin.register School do
       row :user do |resource|
         resource.user.first_name+' '+resource.user.last_name
       end
+      row :address1, :label => "Address Line 1"
+      row :address2, :label => "Address Line 2"
+      row :address3, :label => "Address Line 3"
+      row :country
+      row :state
+      row :city
       row :email
       row :phone
       row :academic_term

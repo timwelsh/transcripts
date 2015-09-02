@@ -39,7 +39,7 @@ class TransactionsController < ApplicationController
 
     @transaction = Transaction.new(transaction_id: charge[:id],created: date,status: charge[:status],paid: charge[:paid], refunded: charge[:refunded],card_id: charge[:source][:id],last4: charge[:source][:last4],brand: charge[:source][:brand],funding: charge[:source][:funding],expiry_month: charge[:source][:exp_month],expiry_year: charge[:source][:exp_year],customer: charge[:source][:customer],bal_transactions: charge[:balance_transaction], subscription_id:@subs_id)
     if @transaction.save
-      redirect_to edit_user_registration_path
+      redirect_to edit_user_registration_path, :notice => "Your Payment Has Received"
     end
     
   rescue Stripe::CardError => e

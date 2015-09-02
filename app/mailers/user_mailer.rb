@@ -6,4 +6,10 @@ class UserMailer < ActionMailer::Base
     @user = user
     mail(to: @email, subject: 'Welcome to Transcript.me')
   end
+
+  def success_payment(email,user)
+    @email = email
+    @user = user
+    mail(to: @email, subject: 'Thanks for Payment')
+  end
 end

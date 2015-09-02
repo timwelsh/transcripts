@@ -12,7 +12,7 @@ class SchoolsController < ApplicationController
 			@school = School.new(school_params)
 			@school.user_id = current_user.id
 			@school.save
-			redirect_to schools_path
+			redirect_to new_school_student_path(@school.id)
 		else
 			flash[:notice]= "User has already School"
 			redirect_to schools_path

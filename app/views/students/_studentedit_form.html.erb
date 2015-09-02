@@ -1,4 +1,4 @@
-<input type= checkbox , class = 'submittable'> Copy schools details
+<!-- <input type= checkbox , class = 'submittable'> Copy schools details -->
 <br>
 
 <%= form_for [@school, @student] ,method: :patch do|f|%>
@@ -111,7 +111,7 @@
   
   <% @student.subject.each do |stu|%>
       <div>
-        <h3>Educational Detail <%= x+1%></h3>
+        <h3>Course <%= x+1%></h3>
         
 
        <li class="string input optional stringish">
@@ -157,4 +157,7 @@
 <div class="actions">
   <%= f.submit "Update" %>
 </div>
+<div class="actions">
+  <%= link_to "Back", :back %>
+</div>  
 <%end%>

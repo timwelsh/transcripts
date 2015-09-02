@@ -69,7 +69,7 @@
 			<%x=1%>
 			<%@student.subject.length.times do|academic|%>
 			<table class="table table-striped table-responsive table-bordered">
-				Educational Detail <%= x %>
+				Course <%= x %>
 				<tr>
 					<th>Graduation Name</th><td><%=@student.course_name[academic]%></td>
 				</tr>
@@ -105,3 +105,7 @@
 	<%= link_to "PRINT", '#', onclick: "printpage()" %>
 
 </p>
+
+<div class="actions">
+  <%= link_to "Back", :back %>
+</div>  
