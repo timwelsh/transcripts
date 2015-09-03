@@ -2,19 +2,19 @@
 //= require bootstrap-sprockets
 $(function (){
     $('#student_dob').datepicker({
-       dateFormat: 'dd-mm-yy',
+       dateFormat: 'mm-dd-yy',
        changeYear: true,
        changeMonth: true,
        yearRange: "1950:2050"
    });
     $('#student_enroll_date').datepicker({
-     dateFormat: 'dd-mm-yy',
+     dateFormat: 'mm-dd-yy',
      changeYear: true,
      changeMonth: true,
      yearRange: "1950:2050"
  });
     $('#student_graduation_date').datepicker({
-     dateFormat: 'dd-mm-yy',
+     dateFormat: 'mm-dd-yy',
      changeYear: true,
      changeMonth: true,
      yearRange: "1950:2050"
@@ -22,7 +22,7 @@ $(function (){
     $('.completion_year').each(function(){
 
         $('.completion_year').datepicker({
-            dateFormat: 'dd-mm-yy',
+            dateFormat: 'mm-dd-yy',
             changeYear: true,
             changeMonth: true,
             yearRange: "1950:2050"
