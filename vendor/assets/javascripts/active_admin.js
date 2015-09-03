@@ -47,7 +47,7 @@ $(document).ready(function(){
 
         x++; 
         $(wrapper).append('<div class="education secondEdu">'+
-            '<h3>Course '+x+'</h3> <a href="#" class="remove_field">Remove</a>'+
+            '<h3>Class '+x+'</h3> <a href="#" class="remove_field">Remove</a>'+
             '<div style="clear:both;"></div>'+
             '<ol><li class="string input optional stringish">'+
             '<label for="completion_year">Completion Year</label>'+

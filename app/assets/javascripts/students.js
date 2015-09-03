@@ -35,7 +35,7 @@ $(document).ready(function(){
 
     $('select#student_country').val('US');
 
-    if(document.URL.contains("students")){
+    if(document.URL.indexOf("students") > -1){
         $('#student_state').wrap('<div id="order_state_code_wrapper"></div>');
         $('#student_state').remove();
         select_wrapper = $('#order_state_code_wrapper');
@@ -59,70 +59,82 @@ $(document).ready(function(){
 
         x++; 
         $(wrapper).append('<div class="education secondEdu">'+
-            '<h3>Course '+x+'</h3> <a href="#" class="remove_field">Remove</a>'+
+            '<h3>Class '+x+'</h3> <a href="#" class="btn btn-danger remove_field">Remove</a>'+
             '<div style="clear:both;"></div>'+
-            '<div class="string input optional stringish">'+
-               '<label for="completion_year">Completion Year</label>'+
-               '<select name="completion_year[]">'+
-               '<option value ="">Please Select</option>'+
-                 '<option value ="Freshman">Freshman</option>'+
-                 '<option value ="Sophomore">Sophomore</option>'+
-                 '<option value ="Junior">Junior</option>'+
-                 '<option value ="Senior">Senior</option>'+
-                 
-               '</select>'+
-               '</div>'+
-
-            '<div class="string input optional stringish">'+
-            '<label for="subject">Subject</label>'+
-            '<input type="text" name="subject[]">'+
-            '</div>'+
-
-            '<div class="string input optional stringish">'+
-            '<label for="course_name">Course Name</label>'+
-            '<input type="text" name="course_name[]">'+
-            '</div>'+
-
-            '<div class="string input optional stringish">'+
-               '<label for="honors">Honors</label>'+
-               '<select name="honors[]">'+
-                 '<option value ="No">No</option>'+
-                 '<option value ="Yes">Yes</option>'+
-               '</select>'+
-               '</div>'+
-
-
-          '<div class="string input optional stringish">'+
-             '<label for="grade">Grade</label>'+
-              '<select name="grade[]">'+
-               '<option value ="A+">A+</option>'+
-                '<option value ="A">A</option>'+
-                '<option value ="A-">A-</option>'+
-                '<option value ="B+">B+</option>'+
-                '<option value ="B">B</option>'+
-                '<option value ="B-">B-</option>'+
-                '<option value ="C+">C+</option>'+
-                '<option value ="C">C</option>'+
-                '<option value ="C-">C-</option>'+
-                '<option value ="D+">D+</option>'+
-                '<option value ="D">D</option>'+
-                '<option value ="D-">D-</option>'+
-                '<option value ="F">F</option>'+
-                '<option value ="CR">CR</option>'+
-                '<option value ="NC">NC</option>'+
-                '<option value ="W">W</option>'+
-                '<option value ="I">I</option>'+
-
-              '</select>'+
-            '</div>'+
-
-            '<div class="string input optional stringish">'+
-             '<label for="credit">Credit</label>'+
-              '<select name="credits[]">'+
-               '<option value ="0.5">0.5</option>'+
-                '<option value ="1.0">1.0</option>'+
-                '<option value ="2.0">2.0</option>'+
+            '<div class="row">'+
+              '<div class="col-md-4">'+
+                '<div class="string input optional stringish">'+
+                  '<label for="completion_year">Year</label><br>'+
+                  '<select name="completion_year[]">'+
+                    '<option value ="">Please Select</option>'+
+                    '<option value ="Freshman">Freshman</option>'+
+                    '<option value ="Sophomore">Sophomore</option>'+
+                    '<option value ="Junior">Junior</option>'+
+                    '<option value ="Senior">Senior</option>'+
+                     
+                  '</select>'+
+                '</div>'+
               '</div>'+
+              '<div class="col-md-4">'+
+                '<div class="string input optional stringish">'+
+                  '<label for="subject">Subject</label><br>'+
+                  '<input type="text" name="subject[]">'+
+                '</div>'+
+              '</div>'+
+              '<div class="col-md-4">'+
+                '<div class="string input optional stringish">'+
+                  '<label for="course_name">Course Name</label><br>'+
+                  '<input type="text" name="course_name[]">'+
+                '</div>'+
+              '</div>'+
+            '</div>'+
+            '<div class="row">'+
+              '<div class="col-md-4">'+
+                '<div class="string input optional stringish">'+
+                   '<label for="honors">Honors</label><br>'+
+                   '<select name="honors[]">'+
+                     '<option value ="No">No</option>'+
+                     '<option value ="Yes">Yes</option>'+
+                   '</select>'+
+                '</div>'+
+              '</div>'+
+              '<div class="col-md-4">'+
+                '<div class="string input optional stringish">'+
+                   '<label for="grade">Grade</label><br>'+
+                    '<select name="grade[]">'+
+                     '<option value ="A+">A+</option>'+
+                      '<option value ="A">A</option>'+
+                      '<option value ="A-">A-</option>'+
+                      '<option value ="B+">B+</option>'+
+                      '<option value ="B">B</option>'+
+                      '<option value ="B-">B-</option>'+
+                      '<option value ="C+">C+</option>'+
+                      '<option value ="C">C</option>'+
+                      '<option value ="C-">C-</option>'+
+                      '<option value ="D+">D+</option>'+
+                      '<option value ="D">D</option>'+
+                      '<option value ="D-">D-</option>'+
+                      '<option value ="F">F</option>'+
+                      '<option value ="CR">CR</option>'+
+                      '<option value ="NC">NC</option>'+
+                      '<option value ="W">W</option>'+
+                      '<option value ="I">I</option>'+
+
+                    '</select>'+
+                '</div>'+
+              '</div>'+
+              '<div class="col-md-4">'+
+                '<div class="string input optional stringish">'+
+                 '<label for="credit">Credit</label><br>'+
+                  '<select name="credits[]">'+
+                   '<option value ="0.5">0.5</option>'+
+                    '<option value ="1.0">1.0</option>'+
+                    '<option value ="2.0">2.0</option>'+
+                  '</div>'+
+                  '</div>'+
+                  '</div>'+
+                  
+
 
             '<input type="hidden" name="total_credit[]">'+
             '<input type="hidden" name="gpa_credit[]">'+

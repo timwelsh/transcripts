@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    if(document.URL.contains("users/edit")){
+    if(document.URL.indexOf("users/edit") > -1){
         select_wrapper = $('#order_state_code_wrapper');
         $('select', select_wrapper).attr('disabled', true);
         url = "/user/registrations/subregion_options?parent_region=US";
