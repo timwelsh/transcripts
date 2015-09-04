@@ -1,0 +1,6 @@
+source 'http://rubygems.org'
+
+ruby '2.1.5'
+
+gem 'selenium-webdriver', '2.43.0' # selenium webdriver for integration test
+gem 'rspec'                        # For integration testing
