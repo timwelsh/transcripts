@@ -19,13 +19,13 @@ end
 def subregion_options
  render partial: 'subregion_select'
 end
-def after_sign_in_path_for(resource_or_scope)
-  if scope_name == :admin_user
-    admin_root_path
-  else
-    root_path
-  end
-end
+# def after_sign_in_path_for(resource_or_scope)
+#   if scope_name == :admin_user
+#     admin_root_path
+#   else
+#     root_path
+#   end
+# end
 
 protected
 def configure_permitted_parameters
