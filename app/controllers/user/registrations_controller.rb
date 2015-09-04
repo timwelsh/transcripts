@@ -62,7 +62,7 @@ class User::RegistrationsController < Devise::RegistrationsController
       if current_user.subscription.blank?
         plans_path
       else
-        puts "asdasdasd"
+        dashboard_homes_path
       end
     end
   # The path used after sign up for inactive accounts.
