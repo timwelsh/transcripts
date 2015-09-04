@@ -1,5 +1,5 @@
 class Student < ActiveRecord::Base
-
+require 'date'
 #before_update :dob_cannot_be_current
 	#validates :dob,:presence => true
 	#validates_date :dob, presence: true, date: { after_or_equal_to: Proc.new { Date.today }, message: "must be at least #{(Date.today + 1).to_s}" }, on: :create, on: :update
@@ -20,23 +20,24 @@ class Student < ActiveRecord::Base
 private
 
 def today_is_after_dob
+	
 	return if dob.blank? 
 	return if enroll_date.blank? 
 	return if graduation_date.blank? 
-	if dob.to_date>=Date.current 
-		errors.add(:dob, "Dob can't be Current Date and Future Date")
+	@dob = Date.strptime(dob, '%m-%d-%Y')
+	if @dob>=Date.current 
+		errors.add(:dob, "Date of Birth can't be Current Date and Future Date")
 	end		
 
-	enroll_date1=dob.to_date 
-	if enroll_date1>enroll_date.to_date
-		
-		errors.add(:enroll_date, "Enrollment date must be greater than DOB") 
-	end 
+	@enroll_date=Date.strptime(enroll_date, '%m-%d-%Y')
+	if @dob>=@enroll_date
+		errors.add(:enroll_date, "Enrollment date must be greater than Date of Birth") 
+	end
 
-	if graduation_date.to_date<enroll_date.to_date
+	@graduation_date=Date.strptime(graduation_date, '%m-%d-%Y')
+	if @enroll_date>=@graduation_date
 		errors.add(:graduation_date, "Graduation date can't be less than Enrollment date") 
 	end 
-	
 
 end
 
