@@ -184,24 +184,24 @@ $('#student_submit_action').click(function(event){
     }
 
     
-    if(!$.isNumeric(zip) || zip.length!=5){
-        $('#zip_error').html('Zip code should be integer and length should be 5 character');
-        flag=false;
+    // if(!$.isNumeric(zip) || zip.length!=5){
+    //     $('#zip_error').html('Zip code should be integer and length should be 5 character');
+    //     flag=false;
 
-    }
-    else{
-        $('#zip_error').html('');
-    }
+    // }
+    // else{
+    //     $('#zip_error').html('');
+    // }
 
-     if(!$.isNumeric(phone) || phone.length!=10){
-            $('#phone_error').html('Length should be integer and 10 numbers');
+     // if(!$.isNumeric(phone) || phone.length!=10){
+     //        $('#phone_error').html('Length should be integer and 10 numbers');
           
-            flag=false;
-       }
-       else{
-        $('#phone_error').html('');
+     //        flag=false;
+     //   }
+     //   else{
+     //    $('#phone_error').html('');
 
-       }
+     //   }
 
 
 

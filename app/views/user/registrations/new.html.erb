@@ -86,7 +86,7 @@
                             <label for="zip" class="col-sm-3 control-label rigys1">Zipcode</label>
                             <div class="col-sm-9">
                                 <!-- <input class="form-control" id="inputPassword3" placeholder="Zipcode" required type="Zipcode"> -->
-                                <%= f.number_field :zip, :class=>"form-control",placeholder: "Zipcode"  %>
+                                <%= f.text_field :zip, :class=>"form-control",placeholder: "Zipcode"  %>
                             </div>
                             <span class="inline-errors">
                               <%=@user.errors[:zip].join(",") %> 

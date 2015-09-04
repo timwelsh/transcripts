@@ -25,7 +25,7 @@ class User::SessionsController < Devise::SessionsController
       if current_user.subscription.blank?
         plans_path
       else
-        schools_path
+        dashboard_homes_path
       end
     end
   end

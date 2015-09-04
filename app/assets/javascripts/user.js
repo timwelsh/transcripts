@@ -74,8 +74,8 @@ $(document).ready(function() {
             'user[zip]': {
                 validators: {
                     stringLength: {
-                        message: 'Zip Code should be 5 characters long',
-                        max: 5
+                        message: 'Zip Code should be 7 characters long',
+                        max: 7
                     }
                 }
             }
