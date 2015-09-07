@@ -72,7 +72,7 @@ get '/students/subregion_options' => 'students#subregion_options'
   resources :subscriptions
   resources :plans
   resources :transactions
-
+  
   # Example resource route with options:
   #   resources :products do
   #     member do

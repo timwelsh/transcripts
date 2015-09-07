@@ -8,6 +8,7 @@ class Ability
         can :create , School if !user.school
         can :rud, School if user.subscription.plan_end_date > Date.today 
         can :manage, Student if user.subscription.plan_end_date > Date.today 
+        can :manage, Plan if !user.blank?
        else
         can :manage, Plan if !user.blank?
     end

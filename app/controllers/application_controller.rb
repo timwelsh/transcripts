@@ -7,11 +7,13 @@ class ApplicationController < ActionController::Base
    # if @scope_name != :admin_user
    #  if !current_user.blank?
 
-   if current_user.subscription.blank?
-    redirect_to plans_path
-  else
-    redirect_to edit_user_registration_path
-  end
+  # if current_user.subscription.blank?
+  #   redirect_to plans_path
+  # elsif !current_user.subscription.blank?
+  #   redirect_to upgrade_plans_path
+  # else
+    redirect_to dashboard_homes_path
+  # end
   
 #   end
 # end

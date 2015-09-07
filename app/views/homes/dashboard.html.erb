@@ -17,6 +17,7 @@
 
 <div class="container">
   <div class="row">
+    <%= link_to edit_user_registration_path do %>
     <div class="col-md-3 col-sm-3">
      <div class="panel panel-default">
       <div class="panel-heading dashy1">User</div>
@@ -24,16 +25,22 @@
        <img class="dashy6" src="/assets/userdash.png" alt="" /> </div>
      </div>
    </div>
+  <% end %>
+  
    <%= link_to schools_path do %>
-     <div class="col-md-3 col-sm-3">
-       <div class="panel panel-default">
-        <div class="panel-heading dashy1">School</div>
-        <div class="panel-body dashy2">
-         <img class="dashy6" src="/assets/schooldash.png" alt="" /> </div>
-       </div>
+   <div class="col-md-3 col-sm-3">
+     <div class="panel panel-default">
+      <div class="panel-heading dashy1">School</div>
+      <div class="panel-body dashy2">
+       <img class="dashy6" src="/assets/schooldash.png" alt="" /> </div>
      </div>
+   </div>
    <% end %>
    
+
+   
+   <% if current_user.school.blank? %>
+   <%= link_to schools_path  do%>
    <div class="col-md-3 col-sm-3">
      <div class="panel panel-default">
       <div class="panel-heading dashy1">Students</div>
@@ -41,21 +48,37 @@
        <img class="dashy6" src="/assets/studentdash.png" alt="" /> </div>
      </div>
    </div>
+   <% end %>
 
-
+   <% else %>
+   <%= link_to school_students_path(current_user.school.id) do %>
 
    <div class="col-md-3 col-sm-3">
      <div class="panel panel-default">
-      <div class="panel-heading dashy1">Plan</div>
+      <div class="panel-heading dashy1">Students</div>
       <div class="panel-body dashy2">
-       <div class="dashy3">Registration Date: <span class="dashy4"><%= current_user.subscription.created_at.strftime("%m-%d-%Y") %></span></div>	
-       <div class="dashy3">Plan End Date: <span class="dashy4"><%= current_user.subscription.plan_end_date.strftime("%m-%d-%Y")  %></span></div>	
-       <div class="dashy3">Current Plan: <span class="dashy4">Trial</span></div>	
-       <div class=""> <a role="button" class="btn btn-warning dashy5" href="#"><span class="glyphicon glyphicon-hand-right"></span> Upgrade Plan</a></div>
+       <img class="dashy6" src="/assets/studentdash.png" alt="" /> </div>
      </div>
    </div>
- </div>
-</div>
+   <% end %>
+   <%end%>
+
+
+
+  <div class="col-md-3 col-sm-3">
+    <div class="panel panel-default">
+      <div class="panel-heading dashy1">Plan</div>
+        <div class="panel-body dashy2">
+          <div class="dashy3">Registration Date: <span class="dashy4"><%= current_user.subscription.created_at.strftime("%m-%d-%Y") %></span></div>	
+          <div class="dashy3">Plan End Date: <span class="dashy4"><%= current_user.subscription.plan_end_date.strftime("%m-%d-%Y")  %></span></div>	
+          <div class="dashy3">Current Plan: <span class="dashy4">Trial</span></div>
+          <%= link_to plans_path  do%>	
+          <div class=""> <span role="button" class="btn btn-warning dashy5"><span class="glyphicon glyphicon-hand-right"></span> Upgrade Plan</span></div>
+          <%end%>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 
