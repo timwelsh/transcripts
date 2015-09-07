@@ -1,8 +1,13 @@
 <div class="container-fluid">
 	<div class="header_top">
        <div class="container" >
-        <div class="col-sm-8 col-lg-10 col-md-6 col-xs-6"><strong>Welcome to Transcripts!</strong></div>
-        <div class="col-sm-4 col-lg-2 col-md-6 col-xs-6">
+        <div class="col-sm-4 col-lg-6 col-md-4 col-xs-4"><strong>Welcome to Transcripts!</strong></div>
+        <div class="col-sm-4 col-lg-4 col-md-4 col-xs-4"><strong>
+        <% if flash[:notice] %>
+          <%= flash[:notice] %>
+        <% end %>
+        </strong></div>
+        <div class="col-sm-4 col-lg-2 col-md-4 col-xs-4">
            <div class="txtalyn2">
              <% if user_signed_in? %>
               <span>Welcome <%= current_user.first_name%> <%= current_user.last_name%></span> |
