@@ -19,11 +19,11 @@
 		<%if !current_user.subscription.blank?%>
 			<div class="col-md-12">
 				<div class="panel panel-default">
-					<div class="panel-heading dashy1">current Plan</div>
+					<div class="panel-heading dashy1">Current Plan</div>
 					<div class="panel-body dashy2">
 						<div class="dashy3">Registration Date: <span class="dashy4"><%= current_user.subscription.created_at.strftime("%m-%d-%Y") %></span></div> 
 						<div class="dashy3">Plan End Date: <span class="dashy4"><%= current_user.subscription.plan_end_date.strftime("%m-%d-%Y")  %></span></div> 
-						<div class="dashy3">Current Plan: <span class="dashy4">Trial</span></div>
+						<div class="dashy3">Current Plan: <span class="dashy4"><%= @subs_plan_name%></span></div>
 					</div>
 				</div>
 			</div>
@@ -47,14 +47,16 @@
 							<div class="list-group-item txtalyn">Description :<%= plan.description%></div>
 							<div class="list-group-item txtalyn">
 								<span class="plan-duration prycpln2">Amount /  </span>
-								<span class="prycpln">USD <%= plan.amount %></span>
+								<span class="prycpln">USD <%= (plan.amount.to_i)/100 %></span>
 							</div>
 							<div class="panel-heading">
 								<div class="btn btn-info btn-lg btn-block paid btn-max stripe-button">
 									<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
 									data-key="pk_test_jMUKzHL4kwf1KFpFhTVA8QFu"
 									data-description="<%= plan.name%>"
-									data-amount="<%= plan.amount%>"></script>    
+									data-label="Pay $<%= (plan.amount.to_i)/100%>"
+									data-amount="<%= plan.amount%>">
+									</script>    
 								</div>
 							</div>
 						</div>

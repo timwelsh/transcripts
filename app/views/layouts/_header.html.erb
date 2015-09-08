@@ -1,53 +1,53 @@
 <div class="container-fluid">
 	<div class="header_top">
-       <div class="container" >
-        <div class="col-sm-4 col-lg-6 col-md-4 col-xs-4"><strong>Welcome to Transcripts!</strong></div>
-        <div class="col-sm-4 col-lg-4 col-md-4 col-xs-4"><strong>
-        <% if flash[:notice] %>
-          <%= flash[:notice] %>
-        <% end %>
-        </strong></div>
-        <div class="col-sm-4 col-lg-2 col-md-4 col-xs-4">
-           <div class="txtalyn2">
-             <% if user_signed_in? %>
-              <span>Welcome <%= current_user.first_name%> <%= current_user.last_name%></span> |
-                <span class="glyphicon glyphicon-off"></span>  &nbsp;
-                <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
-             <%else%>
-                <span class="glyphicon glyphicon-user"></span> &nbsp;   <%= link_to 'Sign up', new_user_registration_path %>  &nbsp;&nbsp;   
-                <span class="glyphicon glyphicon-lock"></span>  &nbsp;
-                <%= link_to 'Login', new_user_session_path %>
-             <%end%>
-         </div>
+   <div class="container" >
+    <div class="col-sm-4 col-lg-6 col-md-4 col-xs-4"><strong>Welcome to Transcripts!</strong></div>
+    <div class="col-sm-4 col-lg-4 col-md-4 col-xs-4"><strong>
+      <% if flash[:notice] %>
+      <%= flash[:notice] %>
+      <% end %>
+    </strong></div>
+    <div class="col-sm-4 col-lg-2 col-md-4 col-xs-4">
+     <div class="txtalyn2">
+       <% if user_signed_in? %>
+       <span>Welcome <%= current_user.first_name%> <%= current_user.last_name%></span> |
+       <span class="glyphicon glyphicon-off"></span>  &nbsp;
+       <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+       <%else%>
+       <span class="glyphicon glyphicon-user"></span> &nbsp;   <%= link_to 'Sign up', new_user_registration_path %>  &nbsp;&nbsp;   
+       <span class="glyphicon glyphicon-lock"></span>  &nbsp;
+       <%= link_to 'Login', new_user_session_path %>
+       <%end%>
      </div>
+   </div>
  </div>
 </div>
 </div>
 <div class="container">
-<div class="row">
+  <div class="row">
     <div class="col-lg-6 col-sm-6 col-md-6">
-    <img class="img-responsive" src="/assets/logo.png" alt="" /></div>
-    <div class="col-lg-6 col-sm-6 col-sm-12 col-md-6 col-xs-12">
-        <div id='cssmenu' style="margin-top:20px;">
-<ul>
-   <li><%= link_to 'Home',root_path %></li>
-   <li><%= link_to 'About Us',about_path%></li>
-        <li><a href="#">Features</a></li>
-          <%if current_user%>
-          <li><a href="/plans">Plans</a></li>
-            <li><%= link_to 'Edit Profile',edit_user_registration_path %></li>
-          <% if can? :create, School %>
-         <li> <%= link_to 'School',new_school_path %></li>
-        <%end%>
-
-        <%if !current_user.school.blank?%>
-       <li><%= link_to 'School',schools_path %></li>
-      <%end%>
-      <%end%>
-        <li><%= link_to 'Contact Us',contact_path%></li>
-
-</ul>
-</div>
+      <img class="img-responsive" src="/assets/logo.png" alt="" />
     </div>
-</div>
+    <div class="col-lg-6 col-sm-6 col-sm-12 col-md-6 col-xs-12">
+      <div id='cssmenu' style="margin-top:20px;">
+        <ul>
+          <li><%= link_to 'Home',root_path %></li>  
+          <%if current_user%>
+          <li> <%= link_to 'Dashboard',dashboard_homes_path %></li>
+          <li> <%= link_to 'Plans',plans_path %></li>
+          <li><%= link_to 'Edit Profile',edit_user_registration_path %></li>
+          <% if can? :create, School %>
+          <li> <%= link_to 'School',new_school_path %></li>
+          <%end%>
+          <%if !current_user.school.blank?%>
+          <li><%= link_to 'School',schools_path %></li>
+          <%end%>
+          <%end%>
+          <li><a href="#">Features</a></li>
+          <li><%= link_to 'About Us',about_path%></li>
+          <li><%= link_to 'Contact Us',contact_path%></li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>
