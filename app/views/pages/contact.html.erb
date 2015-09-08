@@ -42,41 +42,46 @@
     <p>
       If you have business inquiries or other questions, please fill out the following form to contact us. Thank you.
     </p>
+    <%= form_for @message, url: contact_path do |message_form| %>
+
     <div class="row">
       <div class="col-lg-10">
 
         <div class="form-group field-contactform-name required">
           <label class="control-label">Full Name</label>
-          <input type="text"  class="form-control" >
+          <%= message_form.text_field :name, placeholder: "Name", :class=>"form-control" %>
 
           <p class="help-block help-block-error"></p>
         </div>                                                                 
         <div class="form-group field-contactform-name required">
-          <label class="control-label">Email Address</label><input type="text"  class="form-control" >
+          <label class="control-label">Email Address</label>
+          <%= message_form.email_field :email, placeholder: "Email", :class=>"form-control" %>
           <p class="help-block help-block-error"></p>
         </div>
         <div class="form-group field-contactform-name">
           <label class="control-label">Phone No.</label>
-          <input type="text"  class="form-control" >
+          <%= message_form.text_field :phnumber, placeholder: "Contact Number", :class=>"form-control" %>
           <p class="help-block help-block-error"></p>
         </div>
         <div class="form-group field-contactform-name">
           <label class="control-label">Subject</label>
-          <input type="text"  class="form-control" >
+          <%= message_form.text_field :subject, placeholder: "Subject", :class=>"form-control" %>
           <p class="help-block help-block-error"></p>
         </div>                       
         <div class="form-group field-contactform-body">
           <label for="contactform-body" class="control-label">Body</label>
-          <textarea rows="6" class="form-control" ></textarea>
+          <%= message_form.text_area :content, placeholder: "Message", :class=>"form-control" %>
           <p class="help-block help-block-error"></p>
         </div>                        
         <div class="form-group field-contactform-verifycode">
           <p class="help-block help-block-error"></p>
         </div>                        
         <div class="form-group">
-          <button name="contact-button" class="btn btn-primary" type="submit">Submit</button>                        
+          <!-- <button name="contact-button" class="btn btn-primary" type="submit">Submit</button> -->
+          <%= message_form.submit "Submit", :class=>"btn btn-primary" %>                        
         </div>
       </div>
     </div>
+    <% end %>
   </div>
 </div>   

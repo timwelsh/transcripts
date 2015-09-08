@@ -12,4 +12,13 @@ class UserMailer < ActionMailer::Base
     @user = user
     mail(to: @email, subject: 'Thanks for Payment')
   end
+
+  default to: "Inveera <inveera.test1@gmail.com>"
+
+  def new_message(message)
+    @message = message
+    
+    mail subject: "Message from #{message.name}"
+  end 
+
 end

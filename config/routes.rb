@@ -52,8 +52,12 @@ get '/students/subregion_options' => 'students#subregion_options'
 
   controller :pages do
     get :about
-    get :contact
+    get :contact, to: 'pages#contact'
+    post 'contact', to: 'pages#create'
   end
+
+  # get 'contact', to: 'pages#new', as: 'contact'
+  # post 'contact', to: 'pages#create'
   #post 'transactions/hook'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
