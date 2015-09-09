@@ -99,13 +99,10 @@
 		</div>
 		<div class = "col-xs-2">&nbsp;</div>
 	</div>
+	<div class="actions">
+	  <%= link_to "Back", :back %>
+	</div>
 </div>
-<p id="pdf_link">
-	<%= link_to "Download(PDF)",school_student_path(@student.school,@student, :format => "pdf") %>
-	<%= link_to "PRINT", '#', onclick: "printpage()" %>
 
-</p>
 
-<div class="actions">
-  <%= link_to "Back", :back %>
-</div>  
+  
