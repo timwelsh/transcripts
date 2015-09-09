@@ -69,11 +69,20 @@
     <div class="panel panel-default">
       <div class="panel-heading dashy1">Plan</div>
         <div class="panel-body dashy2">
-          <div class="dashy3">Registration Date: <span class="dashy4"><%= current_user.subscription.created_at.strftime("%m-%d-%Y") %></span></div>	
-          <div class="dashy3">Plan End Date: <span class="dashy4"><%= current_user.subscription.plan_end_date.strftime("%m-%d-%Y")  %></span></div>	
-          <div class="dashy3">Current Plan: <span class="dashy4"><%= @subs_plan_name%></span></div>
+          <% if !current_user.subscription.blank?%>
+            <%@plan_name="Upgrade Plan"%>
+            <div class="dashy3">Registration Date: <span class="dashy4"><%= current_user.subscription.created_at.strftime("%m-%d-%Y") %></span></div>	
+            <div class="dashy3">Plan End Date: <span class="dashy4"><%= current_user.subscription.plan_end_date.strftime("%m-%d-%Y")  %></span></div>	
+            <div class="dashy3">Current Plan: <span class="dashy4"><%= @subs_plan_name%></span></div>
+          <%else%>
+            <%@plan_name="Purchase Plan"%>
+            <div class="dashy3" >&nbsp</div>
+            <div class="dashy3"><strong>No Plan has been purchased.</strong></div>
+            <div class="dashy3" >&nbsp</div>
+          <%end%>
           <%= link_to plans_path  do%>	
-          <div class=""> <span role="button" class="btn btn-warning dashy5"><span class="glyphicon glyphicon-hand-right"></span> Upgrade Plan</span></div>
+          <div class=""> <span role="button" class="btn btn-warning dashy5"><span class="glyphicon glyphicon-hand-right"></span>
+           <%= @plan_name%></span></div>
           <%end%>
         </div>
       </div>
