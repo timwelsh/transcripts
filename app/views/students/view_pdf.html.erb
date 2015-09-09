@@ -1,16 +1,18 @@
+
+<%= wicked_pdf_stylesheet_link_tag "pdf" , media: 'all' %>
 <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-<%= wicked_pdf_stylesheet_link_tag "pdf" , media: 'all' %>
+
 
 
 <style type="text/css">
 @media print
 {
-    #pdf_link * { visibility: hidden; }
+    #pdf_link * { display:none ; }
     .wraper * { visibility: visible; }
-    .footer1 * { visibility: hidden; }
-    .container * { visibility: hidden; }
-    .container-fluid * { visibility: hidden; }
+    .footer1 * { display:none ; }
+    .container * { visibility:hidden; }
+    .container-fluid * { display:none ; }
 }
 </style>
 <br>

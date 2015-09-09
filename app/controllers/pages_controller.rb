@@ -19,7 +19,7 @@ class PagesController < ApplicationController
       redirect_to contact_path, notice: "Your messages has been sent."
     else
       flash[:alert] = "An error occurred while delivering this message."
-      render :new
+      redirect_to contact_path, notice: "Your messages is not valid."
     end
   end
 
