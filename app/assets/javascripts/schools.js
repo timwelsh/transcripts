@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
     $('select#school_country').val('US');
-    if(document.URL.indexOf("schools") > -1){
+    if(document.URL.indexOf("schools/new") > -1){
         $('#school_state_input').append('<div id="order_state_code_wrapper"></div>');
         $('#school_state').remove();
         select_wrapper = $('#order_state_code_wrapper');

@@ -31,12 +31,10 @@
   <%= f.country_select :country, {priority: %w(US CA), prompt: 'Please select a country'} %>
 </div>
 
-<% if !current_user.school.country.blank? %>
 <div class="field">
   <%= f.label :state %> <br />
   <%= render partial: 'subregion_select', locals: {parent_region: f.object.country}%>
 </div>
-<% end %>
 
 <div class="field">
   <%= f.label :city %> <br />

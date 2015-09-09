@@ -69,14 +69,12 @@
     </div>
   </div>
   <div class="row">
-    <% if !@student.country.blank? %>
     <div class="col-md-4">
       <div class="field">
         <%= f.label :state %> <br />
         <%= render partial: 'students/subregion_select', locals: {parent_region: f.object.country} %>
       </div>
     </div>
-    <% end %>
 
     <div class="col-md-4">
       <div class="field">
