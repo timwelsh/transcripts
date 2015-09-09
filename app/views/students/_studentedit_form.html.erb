@@ -33,7 +33,7 @@
     <div class="col-md-4">
       <div class="field">
         <%= f.label :dob %><br />
-        <%= f.text_field :dob, autofocus: true %>
+        <%= f.text_field :dob, autofocus: true, readonly: true %>
         <p id= "student_dob_error" class="inline-errors">
           <%=@student.errors[:dob].join(",") %> 
         </p>
@@ -69,12 +69,14 @@
     </div>
   </div>
   <div class="row">
+    <% if !@student.country.blank? %>
     <div class="col-md-4">
       <div class="field">
         <%= f.label :state %> <br />
         <%= render partial: 'students/subregion_select', locals: {parent_region: f.object.country} %>
       </div>
     </div>
+    <% end %>
 
     <div class="col-md-4">
       <div class="field">
@@ -113,7 +115,7 @@
     <div class="col-md-4">
       <div class="field">
         <%= f.label :enroll_date %><br />
-        <%= f.text_field :enroll_date %>
+        <%= f.text_field :enroll_date, readonly: true %>
         <p id="student_enroll_date_error" class="inline-errors">
           <%=@student.errors[:enroll_date].join(",") %> 
         </p>
@@ -124,7 +126,7 @@
     <div class="col-md-4">
       <div class="field">
         <%= f.label :graduation_date %><br />
-        <%= f.text_field :graduation_date %>
+        <%= f.text_field :graduation_date, readonly: true %>
         <p id ="student_graduation_date_error" class="inline-errors">
           <%=@student.errors[:graduation_date].join(",") %> 
         </p>
@@ -197,7 +199,7 @@
   <br>
   <div class="actions">
     <%= f.submit "Update",:class=>"btn btn-success" %>
-    <%= link_to "Back", :back ,:class=>"btn btn-primary"%>
+    <%= link_to "Back", school_students_path(@school.id),:class=>"btn btn-primary"%>
   </div> 
   <%end%>
 </div>
