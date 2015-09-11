@@ -2,221 +2,217 @@
 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 <%= wicked_pdf_stylesheet_link_tag "pdf" , media: 'all' %>
 
-<style>
 
-
-			  
+<style type="text/css">
+    @media print
+    {
+        #pdf_link * { display:none ; }
+        .wraper * { visibility: visible; }
+        .footer1 * { display:none ; }
+        .container * { display:none ; }
+        .container-fluid * { display:none ; }
+    }
 </style>
 <br>
 <div class="wraper">
-        <div>
-                <div class="lft-side">
-                <h4>HIGH SCHOOL TRANSCRIPT</h4>
-                (Grades 9-12)<br />
-                Graduation Date: <%=@student.graduation_date%>
-                
-                </div>
-                <div class="rgt-side">
-                
-                    <div class="school_logo">
-                     <% if params[:format]=="pdf" %>
-                     <%= wicked_pdf_image_tag '/img/logo_school.jpg' %>
-                     <%else%>
-                    <img src="/img/logo_school.jpg">
-                    <%end%>                                
-                </div>
+    <div>
+        <div class="lft-side">
+            <h4>HIGH SCHOOL TRANSCRIPT</h4>
+            (Grades 9-12)<br />
+            Graduation Date: <%=@student.graduation_date%>
+
         </div>
-       
+        <div class="rgt-side">
+            <div class="school_logo">
+                <% if params[:format]=="pdf" %>
+                <%= wicked_pdf_image_tag '/img/logo_school.jpg' %>
+                <%else%>
+                <img src="/img/logo_school.jpg"/>
+                <%end%>                                
+            </div>
+        </div>
+
         <div class="add_section">
-        <div class="f-side">
-        <div>
-        <span class="st-info">School of Record</span><br />
-        	<%=@school.school_name%><br>
-			Sample Parent<br>
-			<%=@school.address1%> , <%=@school.address2%> , <%=@school.address3%><br>
-			<%@school_country = Carmen::Country.coded(@school.country)%>
-			<% @subregions = @school_country.subregions %>
-			<% @school_state = @subregions.coded(@school.state) %>
-			<%if @school_state.blank?%>
-			<%= @school.state%>				
-			<%else%>
-			<%=@school_state.name%>
-			<%end%>
- 
-			<%=@school.state%> , <%=@school_country%> , <%=@student.zip%><br>
-			<%=@school.phone%><br>
-			<%=@school.email%><br>
-        
+            <div class="f-side">
+                <div>
+                    <span class="st-info">School of Record</span><br />
+                    <%=@school.school_name%><br>
+                    Sample Parent<br>
+                    <%=@school.address1%> , <%=@school.address2%> , <%=@school.address3%><br>
+                    <%@school_country = Carmen::Country.coded(@school.country)%>
+                    <% @subregions = @school_country.subregions %>
+                    <% @school_state = @subregions.coded(@school.state) %>
+                    <%if @school_state.blank?%>
+                    <%= @school.state%>				
+                    <%else%>
+                    <%=@school_state.name%>
+                    <%end%>
+
+                    <%=@school.state%> , <%=@school_country%> , <%=@student.zip%><br>
+                    <%=@school.phone%><br>
+                    <%=@school.email%><br>
+
+                </div>
+            </div>
+
+            <div class="s-side">
+                <div>
+                    <span class="st-info">Student Information</span><br />
+                    <%=@student.first_name%> <%=@student.middle_name%> <%=@student.last_name%><br>
+                    Date of Birth: <%=@student.dob%><br>
+                    <%=@student.address1%> , <%=@student.address2%> , <%=@student.address3%><br>
+                    <%@country = Carmen::Country.coded(@student.country)%>
+                    <% @subregions = @country.subregions %>
+                    <% @state = @subregions.coded(@student.state) %>
+                    <%if @state.blank?%>
+                    <%= @student.state%>				
+                    <%else%>
+                    <%=@state.name%>
+                    <%end%>
+                    , <%=@country%> , <%=@student.zip%><br>
+                    <%=@student.phone%><br>
+                    <%=@student.email%><br>
+
+                </div>
+
+            </div>
+
+
         </div>
-        </div>
-        
-        <div class="s-side">
-        <div>
-         <span class="st-info">Student Information</span><br />
-        <%=@student.first_name%> <%=@student.middle_name%> <%=@student.last_name%><br>
-			Date of Birth: <%=@student.dob%><br>
-			<%=@student.address1%> , <%=@student.address2%> , <%=@student.address3%><br>
-			<%@country = Carmen::Country.coded(@student.country)%>
-			<% @subregions = @country.subregions %>
-			<% @state = @subregions.coded(@student.state) %>
-			<%if @state.blank?%>
-			<%= @student.state%>				
-			<%else%>
-			<%=@state.name%>
-			<%end%>
-			, <%=@country%> , <%=@student.zip%><br>
-			<%=@student.phone%><br>
-			<%=@student.email%><br>
-        
-        </div>
-        
-        </div>
-        
-        
-        </div>
-        
+
         <div class="clear"></div>
 
-<div class="tab-section">
-	
-	
-	    <div class="tab-one">
-	
-        
-        <div class="course">
-        
-        <div class="cour">Course Study - <%=@student.course_name[0]%> </div>
+        <div class="tab-section">
+            <div class="tab-one">
+                <div class="course">
+                    <div class="cour">Course Study - <%=@student.course_name[0]%> </div>
 
-        <div class="grade bd-gray">Grade </div>
-        <div class="credite cr-left">Credits</div>
-        </div>
-       <%@student.subject.length.times do|academic|%>
-        <div class="lite_section">
-	        <div class="study"><%= @student.subject[academic]%></div>
-	        <div class="grade-a bd-gray"><%= @student.grade[academic]%></div>
-	        <div class="credite-a cr-left"><%= @student.credits[academic]%></div>
-        </div>
-		
-        <%end%>   
-        <div class="lite_section">
-        <div class="study-last">GPA = <%=@student.cumulative_gpa[0]%> </div>
-        <div class="credite-a cr-left"><%=@student.total_credit[0]%></div>
-        </div>
-        
-        
-        </div>
-      <div style="width:20px;float:left;"></div>  
-      <div class="tab-two">
-    
-        <div class="course">
-            <div class="cumulative">Summary By Grade</div>
-        </div>
-                
-        <div class="summary">
-            <div class="cum-gpa bd-gray ">Grade </div>
-
-            <%#@student.subject.length.times do|academic|%>
-                <div class="nineth bd-gray ">
-                    <%=@student.course_name[0]%>
+                    <div class="grade bd-gray">Grade </div>
+                    <div class="credite cr-left">Credits</div>
                 </div>
-            <%#end%>
-        </div>
-
-        <div class="summary">
-            <div class="cum-gpa bd-gray ">Cum. GPA</div>
-            <%#@student.subject.length.times do|academic|%>
-                <div class="nineth bd-gray ">
-                    <%=@student.cumulative_gpa[0]%>
+                <%@student.subject.length.times do|academic|%>
+                <div class="lite_section">
+                    <div class="study"><%= @student.subject[academic]%></div>
+                    <div class="grade-a bd-gray"><%= @student.grade[academic]%></div>
+                    <div class="credite-a cr-left"><%= @student.credits[academic]%></div>
                 </div>
-            <%#end%>
-        </div>
 
-        <div class="summary">
-            <div class="cum-gpa bd-gray ">Credits Earned</div>
-            <%#@student.subject.length.times do|academic|%>
-                <div class="nineth bd-gray ">
-                    <%=@student.total_credit[0]%>
+                <%end%>   
+                <div class="lite_section">
+                    <div class="study-last">GPA = <%=@student.cumulative_gpa[0]%> </div>
+                    <div class="credite-a cr-left"><%=@student.total_credit[0]%></div>
                 </div>
-            <%#end%>
-        </div>
-        </div>
-        
-
-</div>
-<div class="tab-section">
-    <div class="tab-one">
-
-		<div class="course">
-        	<div class="cumulative">Grading Scale</div>
-        </div>
-        
-        <div class="summary">
-        	<div class="gra-one bd-gray ">90 - 100 </div>
-        	<div class="gra-two bd-gray ">80 - 89  </div>
-       		<div class="gra-three bd-gray ">70 - 79</div>
-       		<div class="gra-four bd-gray ">60 - 69 </div>
-        	<div class="gra-five bd-gray ">0 - 59</div>
-        
-        </div>
-        <div class="summary">
-        	<div class="gra-one bd-gray ">A</div>
-        	<div class="gra-two bd-gray ">B</div>
-       		<div class="gra-three bd-gray ">C</div>
-       		<div class="gra-four bd-gray ">D</div>
-        	<div class="gra-five bd-gray ">F</div>
-        
-        </div>
-        
-        <div class="authoeize">
-        	<div class=""><input type="textarea" value="" /></div>
-       		<div class="atho">
-        	<div class="atho-one bd-gray">Authorized Signature </div>
-        	<div class="atho-sec bd-gray">Date:&nbsp;<%=Date.current%></div>
-        	</div>
-		</div>
-
-		<p id="pdf_link">
-		    <%= link_to "Download(PDF)",view_pdf_admin_student_path(@student, :format => "pdf") %>
-		    <%= link_to "PRINT", '#', onclick: "printpage()" %>
-	     </p>
-	</div>
 
 
-	<div class="tab-two">
+            </div>
+            <div style="width:20px;float:left;"></div>  
+            <div class="tab-two">
+
+                <div class="course">
+                    <div class="cumulative">Summary By Grade</div>
+                </div>
+
+                <div class="summary">
+                    <div class="cum-gpa bd-gray ">Grade </div>
+
+                    <%#@student.subject.length.times do|academic|%>
+                    <div class="nineth bd-gray ">
+                        <%=@student.course_name[0]%>
+                    </div>
+                    <%#end%>
+                </div>
+
+                <div class="summary">
+                    <div class="cum-gpa bd-gray ">Cum. GPA</div>
+                    <%#@student.subject.length.times do|academic|%>
+                    <div class="nineth bd-gray ">
+                        <%=@student.cumulative_gpa[0]%>
+                    </div>
+                    <%#end%>
+                </div>
+
+                <div class="summary">
+                    <div class="cum-gpa bd-gray ">Credits Earned</div>
+                    <%#@student.subject.length.times do|academic|%>
+                    <div class="nineth bd-gray ">
+                        <%=@student.total_credit[0]%>
+                    </div>
+                    <%#end%>
+                </div>
+            </div>
 
 
-		<div class="course">
-        <div class="cumulative">Cumulative Summary (9th - 12th)</div>
         </div>
-       
-        <div class="total_cr">
-	        <div class="tot-cr bd-gray ">Total Credits</div>
-	        <div class="gpa-cr bd-gray ">GPA Credits </div>
-	        <div class="gpa-point bd-gray ">GPA Points </div>
-	        <div class="gpa bd-gray ">GPA</div>   
-        </div>
-        <div class="total_cr">
-	        <div class="tot-cr bd-gray ">
-	        	<%=@student.total_credit[0]%>
-			</div>
-	        <div class="gpa-cr bd-gray ">
-                <%=@student.gpa_credit[0]%>
-	        	
-			</div>
-	        <div class="gpa-point bd-gray ">
-                <%=@student.gpa_points[0]%>
-	        	
-			</div>
-	        <div class="gpa bd-gray ">
-                <%=@student.cumulative_gpa[0]%>
-	        	
-	        </div>   
+        <div class="tab-section">
+            <div class="tab-one">
+
+                <div class="course">
+                    <div class="cumulative">Grading Scale</div>
+                </div>
+
+                <div class="summary">
+                    <div class="gra-one bd-gray ">90 - 100 </div>
+                    <div class="gra-two bd-gray ">80 - 89  </div>
+                    <div class="gra-three bd-gray ">70 - 79</div>
+                    <div class="gra-four bd-gray ">60 - 69 </div>
+                    <div class="gra-five bd-gray ">0 - 59</div>
+
+                </div>
+                <div class="summary">
+                    <div class="gra-one bd-gray ">A</div>
+                    <div class="gra-two bd-gray ">B</div>
+                    <div class="gra-three bd-gray ">C</div>
+                    <div class="gra-four bd-gray ">D</div>
+                    <div class="gra-five bd-gray ">F</div>
+
+                </div>
+
+                <div class="authoeize">
+                    <div class=""><input type="textarea" value="" /></div>
+                    <div class="atho">
+                        <div class="atho-one bd-gray">Authorized Signature </div>
+                        <div class="atho-sec bd-gray">Date:&nbsp;<%=Date.current%></div>
+                    </div>
+                </div>
+
+                <p id="pdf_link">
+                    <%= link_to "Download(PDF)",view_pdf_admin_student_path(@student, :format => "pdf") %>
+                    <%= link_to "PRINT", '#', onclick: "printpage()" %>
+                </p>
+            </div>
+
+
+            <div class="tab-two">
+                <div class="course">
+                    <div class="cumulative">Cumulative Summary (9th - 12th)</div>
+                </div>
+
+                <div class="total_cr">
+                    <div class="tot-cr bd-gray ">Total Credits</div>
+                    <div class="gpa-cr bd-gray ">GPA Credits </div>
+                    <div class="gpa-point bd-gray ">GPA Points </div>
+                    <div class="gpa bd-gray ">GPA</div>   
+                </div>
+                <div class="total_cr">
+                    <div class="tot-cr bd-gray ">
+                        <%=@student.total_credit[0]%>
+                    </div>
+                    <div class="gpa-cr bd-gray ">
+                        <%=@student.gpa_credit[0]%>
+
+                    </div>
+                    <div class="gpa-point bd-gray ">
+                        <%=@student.gpa_points[0]%>
+
+                    </div>
+                    <div class="gpa bd-gray ">
+                        <%=@student.cumulative_gpa[0]%>
+
+                    </div>   
+                </div>
+            </div>
         </div>
     </div>
-
-   
-
-
 </div>
 
 
