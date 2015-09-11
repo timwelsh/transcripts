@@ -5,7 +5,7 @@
   <% if country.nil? %>
     <em>Please select a country above</em>
   <% elsif country.subregions? %>
-    <%= subregion_select(:school , :state, parent_region) %>
+    <%= subregion_select(:school , :state, parent_region,{},{:class=>"form-control"}) %>
   <% else %>
     <%= text_field(:school , :state) %>
   <% end %>

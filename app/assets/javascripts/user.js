@@ -5,7 +5,6 @@ $(document).ready(function() {
     //     url = "/user/registrations/subregion_options?parent_region=US";
     //     select_wrapper.load(url);
     // }
-    $('#user_state').addClass('form-control');
     $('#new_user').bootstrapValidator({
         framework: 'bootstrap',
         fields: {
@@ -61,6 +60,92 @@ $(document).ready(function() {
                     identical: {
                         field: 'user[password]',
                         message: 'Password and Confirm Password does not match'
+                    }
+                }
+            },
+            'user[phone]': {
+                validators: {
+                    stringLength: {
+                        message: 'Phone Number should be less than 15 characters',
+                        max: 15
+                    }
+                }
+            },
+            'user[zip]': {
+                validators: {
+                    stringLength: {
+                        message: 'Zip Code should be 7 characters long',
+                        max: 7
+                    }
+                }
+            }
+        }
+    });
+    $('#edit_user').bootstrapValidator({
+        framework: 'bootstrap',
+        fields: {
+            'user[email]': {
+                validators: {
+                    notEmpty: {
+                        message: 'Email is required'
+                    },
+                    regexp: {
+                        regexp: '^[^\.][^@\\s]+@([^@\\s]+\\.)+[^@\\s]+$',
+                        message: 'This is not a valid email address'
+                    }
+                }
+            },
+            'user[first_name]': {
+                validators: {
+                    notEmpty: {
+                        message: 'First Name is required'
+                    },
+                    stringLength: {
+                        message: 'First Name must be less than 50 characters',
+                        max: 50
+                    }
+                }
+            },
+            'user[last_name]': {
+                validators: {
+                    notEmpty: {
+                        message: 'Last Name is required'
+                    },
+                    stringLength: {
+                        message: 'Last Name must be less than 50 characters',
+                        max: 50
+                    }
+                }
+            },
+            'user[address1]': {
+                validators: {
+                    stringLength: {
+                        message: 'Address Line 1 should be less than 50 characters',
+                        max: 50
+                    }
+                }
+            },
+            'user[address2]': {
+                validators: {
+                    stringLength: {
+                        message: 'Address Line 2 should be less than 50 characters',
+                        max: 50
+                    }
+                }
+            },
+            'user[address3]': {
+                validators: {
+                    stringLength: {
+                        message: 'Address Line 3 should be less than 50 characters',
+                        max: 50
+                    }
+                }
+            },
+            'user[city]': {
+                validators: {
+                    stringLength: {
+                        message: 'City should be less than 20 characters',
+                        max: 20
                     }
                 }
             },
