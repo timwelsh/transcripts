@@ -1,0 +1,78 @@
+
+
+<h2>Edit <%= resource_name.to_s.humanize %></h2><br>
+<br><br>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+<%= devise_error_messages! %>
+
+<div class="field">
+  <%= f.label :email %><br />
+  <%= f.email_field :email, autofocus: true %>
+</div>
+
+<% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+<div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+<% end %>
+
+
+<div class="field">
+  <%= f.label :first_name %> <br />
+  <%= f.text_field :first_name, autocomplete: "off" %>
+</div>
+
+<div class="field">
+  <%= f.label :last_name %> <br />
+  <%= f.text_field :last_name, autocomplete: "off" %>
+</div>
+
+<div class="field">
+  <%= f.label :address_line_1 %> <br />
+  <%= f.text_field :address1, autocomplete: "off" %>
+</div>
+
+<div class="field">
+  <%= f.label :address_line_2 %> <br />
+  <%= f.text_field :address2, autocomplete: "off" %>
+</div>
+
+<div class="field">
+  <%= f.label :address_line_3 %> <br />
+  <%= f.text_field :address3, autocomplete: "off" %>
+</div>
+
+<div class="field">
+  <%= f.label :country %> <br />
+  <%= f.country_select :country, {priority: %w(US CA), prompt: 'Please select a country'} %>
+</div>
+
+<div class="field">
+  <%= f.label :state %> <br />
+  <%= render partial: 'subregion_select', locals: {parent_region: f.object.country}%> 
+</div>
+
+</div>
+
+<div class="field">
+  <%= f.label :city %> <br />
+  <%= f.text_field :city, autocomplete: "off" %>
+</div>
+
+
+<div class="field">
+  <%= f.label :zip %> <br />
+  <%= f.text_field :zip, autocomplete: "off" %>
+</div>
+
+<div class="field">
+  <%= f.label :phone %> <br />
+  <%= f.text_field :phone, autocomplete: "off" %>
+</div>
+
+<div class="actions">
+  <%= f.submit "Update" %>
+</div>
+<% end %>
+
+<!-- <h3>Cancel my account</h3> -->
+
+<%= link_to "Back", :back %>

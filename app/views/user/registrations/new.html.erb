@@ -1,112 +1,112 @@
 <div class="mini-title-head-bar logiq1">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <ol class="greybeadcrub">
-                    <ul class="greybeadcrub">
-                        <li><%= link_to 'Home',root_path %></li>
-                        <li class="active">Registration</li>
-                    </ul>
-                </ol>
-            </div>
-        </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <ol class="greybeadcrub">
+          <ul class="greybeadcrub">
+            <li><%= link_to 'Home',root_path %></li>
+            <li class="active">Registration</li>
+          </ul>
+        </ol>
+      </div>
     </div>
+  </div>
 </div>
 <div class="container">
-    <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-            <div class="panel panel-default">
-                <div class="panel-heading"> 
-                    <strong class="">Sign up</strong>
-                </div>
-                <div class="panel-body">
-                    <!-- <form class="form-horizontal" role="form"> -->
-                    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:class => "form-horizontal"}) do |f| %>
-                        <div class="form-group required">
-                            <label for="first_name" class="col-sm-3 control-label rigys1">First Name</label>
-                            <div class="col-sm-9">
-                                <!-- <input class="form-control" id="inputEmail3" placeholder="First Name" required type="First Name"> -->
-                                <%= f.text_field :first_name, :class=>"form-control",:required => true,placeholder: "First Name" %>
-                            </div>
-                            <span class="inline-errors">
-                              <%=@user.errors[:first_name].join(",") %> 
-                            </span>
-                        </div>
-                        <div class="form-group required">
-                            <label for="last_name" class="col-sm-3 control-label rigys1">Last Name</label>
-                            <div class="col-sm-9">
-                                <!-- <input class="form-control" id="inputPassword3" placeholder="Last Name" required type="Last Name"> -->
-                                <%= f.text_field :last_name, :class=>"form-control",:required => true,placeholder: "Last Name"  %>
-                            </div>
-                            <span class="inline-errors">
-                              <%=@user.errors[:last_name].join(",") %> 
-                            </span>
-                        </div>
-                        <div class="form-group required">
-                            <label for="email" class="col-sm-3 control-label rigys1">Email</label>
-                            <div class="col-sm-9">
-                                <!-- <input class="form-control" id="inputEmail3" placeholder="Email" required type="email"> -->
-                                <%= f.text_field :email,:class=>"form-control",:required => true,placeholder: "Email"  %>
-                            </div>
-                            <span class="inline-errors">
-                              <%=@user.errors[:email].join(",") %> 
-                            </span>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone" class="col-sm-3 control-label rigys1">Phone</label>
-                            <div class="col-sm-9">
-                                <!-- <input class="form-control" id="inputEmail3" placeholder="Phone" required type="Phone"> -->
-                                <%= f.number_field :phone, :class=>"form-control",placeholder: "Phone" %>
-                            </div>
-                            <span class="inline-errors">
-                              <%=@user.errors[:phone].join(",") %> 
-                            </span>
-                        </div>
-                        <div class="form-group required">
-                            <label for="password" class="col-sm-3 control-label rigys1">Password</label>
-                            <div class="col-sm-9">
-                                <!-- <input class="form-control" id="inputPassword3" placeholder="Password" required type="password"> -->
-                                <%= f.password_field :password, autocomplete: "off",:class=>"form-control",:required => true,placeholder: "Password"  %>
-                            </div>
-                            <span class="inline-errors">
-                              <%=@user.errors[:password].join(",") %> 
-                            </span>
-                        </div>
-                        <div class="form-group required">
-                            <label for="password_confirmation" class="col-sm-3 control-label rigys1">Confirm Password</label>
-                            <div class="col-sm-9">
-                                <!-- <input class="form-control" id="inputEmail3" placeholder="Confirm Password" required type="Password"> -->
-                                <%= f.password_field :password_confirmation, autocomplete: "off",:class=>"form-control",:required => true,placeholder: "Confirm Password"  %>
-                            </div>
-                            <span class="inline-errors">
-                              <%=@user.errors[:password_confirmation].join(",") %> 
-                            </span>
-                        </div>
-                        <div class="form-group">
-                            <label for="zip" class="col-sm-3 control-label rigys1">Zipcode</label>
-                            <div class="col-sm-9">
-                                <!-- <input class="form-control" id="inputPassword3" placeholder="Zipcode" required type="Zipcode"> -->
-                                <%= f.text_field :zip, :class=>"form-control",placeholder: "Zipcode"  %>
-                            </div>
-                            <span class="inline-errors">
-                              <%=@user.errors[:zip].join(",") %> 
-                            </span>
-                        </div>
-
-
-
-                        <div class="form-group last">
-                            <div class="col-sm-offset-3 col-sm-9">
-                                <%= f.submit "Sign up", :class=>"btn btn-success" %>
-                            </div>
-                        </div>
-                    <!-- </form> -->
-                    <% end %>
-                </div>
-                <div class="panel-footer">Already Registered? <%= link_to 'Login Here', new_user_session_path %>
-                </div>
-            </div>
+  <div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+      <div class="panel panel-default">
+        <div class="panel-heading"> 
+          <strong class="">Sign up</strong>
         </div>
+        <div class="panel-body">
+          <!-- <form class="form-horizontal" role="form"> -->
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:class => "form-horizontal"}) do |f| %>
+          <div class="form-group required">
+            <label for="first_name" class="col-sm-3 control-label rigys1">First Name</label>
+            <div class="col-sm-9">
+              <!-- <input class="form-control" id="inputEmail3" placeholder="First Name" required type="First Name"> -->
+              <%= f.text_field :first_name, :class=>"form-control",:required => true,placeholder: "First Name" %>
+            </div>
+            <span class="inline-errors">
+              <%=@user.errors[:first_name].join(",") %> 
+            </span>
+          </div>
+          <div class="form-group required">
+            <label for="last_name" class="col-sm-3 control-label rigys1">Last Name</label>
+            <div class="col-sm-9">
+              <!-- <input class="form-control" id="inputPassword3" placeholder="Last Name" required type="Last Name"> -->
+              <%= f.text_field :last_name, :class=>"form-control",:required => true,placeholder: "Last Name"  %>
+            </div>
+            <span class="inline-errors">
+              <%=@user.errors[:last_name].join(",") %> 
+            </span>
+          </div>
+          <div class="form-group required">
+            <label for="email" class="col-sm-3 control-label rigys1">Email</label>
+            <div class="col-sm-9">
+              <!-- <input class="form-control" id="inputEmail3" placeholder="Email" required type="email"> -->
+              <%= f.text_field :email,:class=>"form-control",:required => true,placeholder: "Email"  %>
+            </div>
+            <span class="inline-errors">
+              <%=@user.errors[:email].join(",") %> 
+            </span>
+          </div>
+          <div class="form-group">
+            <label for="phone" class="col-sm-3 control-label rigys1">Phone</label>
+            <div class="col-sm-9">
+              <!-- <input class="form-control" id="inputEmail3" placeholder="Phone" required type="Phone"> -->
+              <%= f.number_field :phone, :class=>"form-control",placeholder: "Phone" %>
+            </div>
+            <span class="inline-errors">
+              <%=@user.errors[:phone].join(",") %> 
+            </span>
+          </div>
+          <div class="form-group required">
+            <label for="password" class="col-sm-3 control-label rigys1">Password</label>
+            <div class="col-sm-9">
+              <!-- <input class="form-control" id="inputPassword3" placeholder="Password" required type="password"> -->
+              <%= f.password_field :password, autocomplete: "off",:class=>"form-control",:required => true,placeholder: "Password"  %>
+            </div>
+            <span class="inline-errors">
+              <%=@user.errors[:password].join(",") %> 
+            </span>
+          </div>
+          <div class="form-group required">
+            <label for="password_confirmation" class="col-sm-3 control-label rigys1">Confirm Password</label>
+            <div class="col-sm-9">
+              <!-- <input class="form-control" id="inputEmail3" placeholder="Confirm Password" required type="Password"> -->
+              <%= f.password_field :password_confirmation, autocomplete: "off",:class=>"form-control",:required => true,placeholder: "Confirm Password"  %>
+            </div>
+            <span class="inline-errors">
+              <%=@user.errors[:password_confirmation].join(",") %> 
+            </span>
+          </div>
+          <div class="form-group">
+            <label for="zip" class="col-sm-3 control-label rigys1">Zipcode</label>
+            <div class="col-sm-9">
+              <!-- <input class="form-control" id="inputPassword3" placeholder="Zipcode" required type="Zipcode"> -->
+              <%= f.text_field :zip, :class=>"form-control",placeholder: "Zipcode"  %>
+            </div>
+            <span class="inline-errors">
+              <%=@user.errors[:zip].join(",") %> 
+            </span>
+          </div>
 
+
+
+          <div class="form-group last">
+            <div class="col-sm-offset-3 col-sm-9">
+              <%= f.submit "Sign up", :class=>"btn btn-success" %>
+            </div>
+          </div>
+          <!-- </form> -->
+          <% end %>
+        </div>
+        <div class="panel-footer">Already Registered? <%= link_to 'Login Here', new_user_session_path %>
+        </div>
+      </div>
     </div>
+
+  </div>
 </div>

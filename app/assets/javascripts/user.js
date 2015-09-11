@@ -5,6 +5,7 @@ $(document).ready(function() {
     //     url = "/user/registrations/subregion_options?parent_region=US";
     //     select_wrapper.load(url);
     // }
+    $('#user_state').addClass('form-control');
     $('#new_user').bootstrapValidator({
         framework: 'bootstrap',
         fields: {

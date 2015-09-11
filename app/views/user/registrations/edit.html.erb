@@ -1,78 +1,117 @@
 
+<div class="mini-title-head-bar logiq1">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <ol class="greybeadcrub">
+          <ul class="greybeadcrub"><li><a href="index.html">Home</a></li>
+            <li class="active">Edit <%= resource_name.to_s.humanize %></li>
+          </ul>                    
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
 
-<h2>Edit <%= resource_name.to_s.humanize %></h2><br>
-<br><br>
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
 <%= devise_error_messages! %>
 
-<div class="field">
-  <%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+      <div class="panel panel-default">
+        <div class="panel-heading"> <strong class="">Edit Profile</strong>
+
+        </div>
+        <div class="panel-body">
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, :class=>"form-horizontal" }) do |f| %>
+            <div class="form-group">
+              <%= f.label :email, :class=>"col-sm-3 control-label rigys1" %>
+              <div class="col-sm-9">
+                <%= f.email_field :email, autofocus: true,:class=>"form-control" %> 
+              </div>
+            </div>
+
+            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+              <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+            <% end %>
+
+            <div class="form-group">
+              <%= f.label :first_name,:class=>"col-sm-3 control-label rigys1" %>
+              <div class="col-sm-9">
+                <%= f.text_field :first_name, autocomplete: "off",:class=>"form-control" %>
+              </div>
+            </div>
+            <div class="form-group">
+              <%= f.label :last_name,:class=>"col-sm-3 control-label rigys1" %>
+              <div class="col-sm-9">
+                <%= f.text_field :last_name, autocomplete: "off",:class=>"form-control" %>
+              </div>
+            </div>
+            <div class="form-group">
+              <%= f.label :address_line_1,:class=>"col-sm-3 control-label rigys1" %> 
+              <div class="col-sm-9">
+                <%= f.text_field :address1, autocomplete: "off",:class=>"form-control" %>
+              </div>
+            </div>
+            <div class="form-group">
+              <%= f.label :address_line_2,:class=>"col-sm-3 control-label rigys1" %> 
+              <div class="col-sm-9">
+                <%= f.text_field :address2, autocomplete: "off",:class=>"form-control" %>
+              </div>
+            </div>
+            <div class="form-group">
+              <%= f.label :address_line_3,:class=>"col-sm-3 control-label rigys1" %> 
+              <div class="col-sm-9">
+                <%= f.text_field :address3, autocomplete: "off",:class=>"form-control" %>
+              </div>
+            </div>
+            <div class="form-group">
+              <%= f.label :country,:class=>"col-sm-3 control-label rigys1" %>
+              <div class="col-sm-9">
+                <%= f.country_select :country, {priority: %w(US CA), prompt: 'Please select a country'},:class=>"form-control"  %>
+              </div>  
+            </div>
+            <div class="form-group">
+              <%= f.label :state,:class=>"col-sm-3 control-label rigys1" %>
+              <div class="col-sm-9">
+                <%= render partial: 'subregion_select', locals: {parent_region: f.object.country}%> 
+              </div>
+            </div>
+            <div style="clear:both"></div>
+            <div class="form-group">
+              <%= f.label :city,:class=>"col-sm-3 control-label rigys1" %>
+              <div class="col-sm-9">
+                <%= f.text_field :city, autocomplete: "off",:class=>"form-control"  %>
+              </div>
+            </div>
+            <div class="form-group">
+              <%= f.label :zip,:class=>"col-sm-3 control-label rigys1" %>
+              <div class="col-sm-9">
+                <%= f.text_field :zip, autocomplete: "off",:class=>"form-control" %>
+              </div>
+            </div>
+            <div class="form-group">
+              <%= f.label :phone,:class=>"col-sm-3 control-label rigys1" %>
+              <div class="col-sm-9">
+                <%= f.text_field :phone, autocomplete: "off",:class=>"form-control" %>
+              </div>
+            </div>
+
+            <div class="form-group last">
+              <div class="col-sm-offset-3 col-sm-9">
+                <a>
+                  <%= f.submit "Update", :class=>"btn btn-info" %>
+                </a>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        
+        <div class="panel-footer">Not Edit in profile? <%= link_to "Back", :back %>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>
-
-<% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-<div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-<% end %>
-
-
-<div class="field">
-  <%= f.label :first_name %> <br />
-  <%= f.text_field :first_name, autocomplete: "off" %>
-</div>
-
-<div class="field">
-  <%= f.label :last_name %> <br />
-  <%= f.text_field :last_name, autocomplete: "off" %>
-</div>
-
-<div class="field">
-  <%= f.label :address_line_1 %> <br />
-  <%= f.text_field :address1, autocomplete: "off" %>
-</div>
-
-<div class="field">
-  <%= f.label :address_line_2 %> <br />
-  <%= f.text_field :address2, autocomplete: "off" %>
-</div>
-
-<div class="field">
-  <%= f.label :address_line_3 %> <br />
-  <%= f.text_field :address3, autocomplete: "off" %>
-</div>
-
-<div class="field">
-  <%= f.label :country %> <br />
-  <%= f.country_select :country, {priority: %w(US CA), prompt: 'Please select a country'} %>
-</div>
-
-<div class="field">
-  <%= f.label :state %> <br />
-  <%= render partial: 'subregion_select', locals: {parent_region: f.object.country}%> 
-</div>
-
-</div>
-
-<div class="field">
-  <%= f.label :city %> <br />
-  <%= f.text_field :city, autocomplete: "off" %>
-</div>
-
-
-<div class="field">
-  <%= f.label :zip %> <br />
-  <%= f.text_field :zip, autocomplete: "off" %>
-</div>
-
-<div class="field">
-  <%= f.label :phone %> <br />
-  <%= f.text_field :phone, autocomplete: "off" %>
-</div>
-
-<div class="actions">
-  <%= f.submit "Update" %>
-</div>
-<% end %>
-
-<!-- <h3>Cancel my account</h3> -->
-
-<%= link_to "Back", :back %>
