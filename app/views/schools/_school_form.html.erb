@@ -1,75 +1,160 @@
-<input type= checkbox , class = 'submittable'> Copy user details
 
-
-<%= form_for @school do|f|%>
-<div class="field">
-  <%= f.label :school_name %><br />
-  <%= f.text_field :school_name, autofocus: true %>
+<div class="mini-title-head-bar logiq1">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <ol class="greybeadcrub">
+          <ul class="greybeadcrub"><li><a href="index.html">Home</a></li>
+              <li class="active">Create New School</li>
+          </ul>                    
+        </ol>
+      </div>
+    </div>
+  </div>
 </div>
+    
+    
 
-<div class="field">
-  <%= f.label :admin_name %><br />
-  <%= f.text_field :admin_name, autofocus: true %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+      <div class="panel panel-default">
+        <div class="panel-heading"> 
+          <strong class="">Create New School</strong>
+        </div>
+        <div class="panel-body">
+          <div class="form-group">
+            <input type= checkbox , class = 'submittable'> Copy user details
+          </div>
+          <%= form_for @school do|f|%>
+            <div class="form-group">
+              <%= f.label :school_name, :class=>"col-sm-3 control-label rigys1" %>
+              <div class="col-sm-9">
+                <%= f.text_field :school_name, autofocus: true,:class=>"form-control"  %>
+              </div>
+              <span class="inline-errors">
+                <%=@school.errors[:school_name].join(",") %> 
+              </span>
+            </div>
+            <div class="form-group">
+              <%= f.label :admin_name, :class=>"col-sm-3 control-label rigys1" %>
+              <div class="col-sm-9">
+                <%= f.text_field :admin_name, autofocus: true,:class=>"form-control"  %>
+              </div>
+              <span class="inline-errors">
+                <%=@school.errors[:admin_name].join(",") %> 
+              </span>
+            </div>
+            <div class="form-group">
+              <%= f.label :address_line_1,:class=>"col-sm-3 control-label rigys1" %> 
+              <div class="col-sm-9">
+                <%= f.text_field :address1, autocomplete: "off",:class=>"form-control" %>
+              </div>
+              <span class="inline-errors">
+                <%=@school.errors[:address1].join(",") %> 
+              </span>
+            </div>
+            <div class="form-group">
+              <%= f.label :address_line_2,:class=>"col-sm-3 control-label rigys1" %> 
+              <div class="col-sm-9">
+                <%= f.text_field :address2, autocomplete: "off",:class=>"form-control" %>
+              </div>
+              <span class="inline-errors">
+                <%=@school.errors[:address2].join(",") %> 
+              </span>
+            </div>
+            <div class="form-group">
+              <%= f.label :address_line_3,:class=>"col-sm-3 control-label rigys1" %> 
+              <div class="col-sm-9">
+                <%= f.text_field :address3, autocomplete: "off",:class=>"form-control" %>
+              </div>
+              <span class="inline-errors">
+                <%=@school.errors[:address3].join(",") %> 
+              </span>
+            </div>
+            <div class="form-group">
+              <%= f.label :country,:class=>"col-sm-3 control-label rigys1" %>
+              <div class="col-sm-9">
+                <%= f.country_select :country, {priority: %w(US CA), prompt: 'Please select a country'},:class=>"form-control"  %>
+              </div>
+              <span class="inline-errors">
+                <%=@school.errors[:country].join(",") %> 
+              </span>  
+            </div>
+            <div class="form-group">
+              <%= f.label :state,:class=>"col-sm-3 control-label rigys1" %>
+              <div class="col-sm-9">
+                <%= render partial: 'subregion_select', locals: {parent_region: f.object.country}%> 
+              </div>
+              <span class="inline-errors">
+                <%=@school.errors[:state].join(",") %> 
+              </span>
+            </div>
+            <div style="clear:both"></div>
+            <div class="form-group">
+              <%= f.label :city,:class=>"col-sm-3 control-label rigys1" %>
+              <div class="col-sm-9">
+                <%= f.text_field :city, autocomplete: "off",:class=>"form-control"  %>
+              </div>
+              <span class="inline-errors">
+                <%=@school.errors[:city].join(",") %> 
+              </span>
+            </div>
+            <div class="form-group">
+              <%= f.label :zip,:class=>"col-sm-3 control-label rigys1" %>
+              <div class="col-sm-9">
+                <%= f.text_field :zip, autocomplete: "off",:class=>"form-control" %>
+              </div>
+              <span class="inline-errors">
+                <%=@school.errors[:zip].join(",") %> 
+              </span>
+            </div>
+            <div class="form-group">
+              <%= f.label :primary_phone,:class=>"col-sm-3 control-label rigys1" %>
+              <div class="col-sm-9">
+                <%= f.text_field :phone, autocomplete: "off",:class=>"form-control" %>
+              </div>
+              <span class="inline-errors">
+                <%=@school.errors[:phone].join(",") %> 
+              </span>
+            </div>
+            <div class="form-group required">
+              <%= f.label :email, :class=>"col-sm-3 control-label rigys1" %>
+              <div class="col-sm-9">
+                <%= f.email_field :email, autofocus: true,:class=>"form-control",:required => true %> 
+              </div>
+              <span class="inline-errors">
+                <%=@school.errors[:email].join(",") %> 
+              </span>
+            </div>
+            <div class="form-group">
+              <%= f.label :academic_term,:class=>"col-sm-3 control-label rigys1" %>
+              <div class="col-sm-6">
+                <%= f.select :academic_term, [["semester", "semester"], ["quarter","quarter"]],:class=>"form-control" %>
+              </div>
+              <span class="inline-errors">
+                <%=@school.errors[:academic_term].join(",") %> 
+              </span>
+            </div>
+            <div class="form-group">
+              <%= f.label :grading_scale,:class=>"col-sm-3 control-label rigys1" %>
+              <div class="col-sm-5">
+                <%= f.select :grading_scale, [["7", 7], ["10", 10]],:class=>"form-control"  %>
+              </div>
+              <span class="inline-errors">
+                <%=@school.errors[:grading_scale].join(",") %> 
+              </span>
+            </div>
+            <div class="form-group last">
+              <div class="col-sm-offset-3 col-sm-9">
+                <a>
+                  <%= f.submit "Create", :class=>"btn btn-info" %>
+                </a>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
-<div class="field">
-  <%= f.label :address_line_1 %> <br />
-  <%= f.text_field :address1, autocomplete: "off" %>
-</div>
-
-<div class="field">
-  <%= f.label :address_line_2 %> <br />
-  <%= f.text_field :address2, autocomplete: "off" %>
-</div>
-
-<div class="field">
-  <%= f.label :address_line_3 %> <br />
-  <%= f.text_field :address3, autocomplete: "off" %>
-</div>
-
-<div class="field">
-  <%= f.label :country %> <br />
-  <%= f.country_select :country, {priority: %w(US CA), prompt: 'Please select a country'} %>
-</div>
-
-<div class="field">
-  <%= f.label :state %> <br />
-  <%= render partial: 'subregion_select', locals: {parent_region: f.object.country}%>
-</div>
-
-<div class="field">
-  <%= f.label :city %> <br />
-  <%= f.text_field :city, autocomplete: "off" %>
-</div>
-
-
-<div class="field">
-  <%= f.label :zip %> <br />
-  <%= f.text_field :zip, autocomplete: "off" %>
-</div>
-
-<div class="field">
-  <%= f.label :primary_phone %> <br />
-  <%= f.text_field :phone, autocomplete: "off" %>
-</div>
-
-<div class="field">
-  <%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %>
-</div>
-
-<div class="field">
-  <%= f.label :academic_term %><br />
-  <%= f.select :academic_term, [["semester", "semester"], ["quarter","quarter"]] %>
-</div>
-
-<div class="field">
-  <%= f.label :grading_scale %><br />
-  <%= f.select :grading_scale, [["7", 7], ["10", 10]] %>
-</div>
-
-<div class="actions">
-  <%= f.submit "Create" %>
-</div>
-
-<% end %>
