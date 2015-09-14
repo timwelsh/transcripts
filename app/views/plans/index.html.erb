@@ -23,7 +23,7 @@
 			<div class="panel-heading dashy1">Current Plan</div>
 			<div class="panel-body dashy2">
 				<div class="dashy3">Current Plan: <span class="dashy4"><%= @subs_plan_name%></span></div>
-				<div class="dashy3">Plan Subscriptio Date: <span class="dashy4"><%= current_user.subscription.created_at.strftime("%m-%d-%Y") %></span></div> 
+				<div class="dashy3">Plan Subscription Date: <span class="dashy4"><%= current_user.subscription.created_at.strftime("%m-%d-%Y") %></span></div> 
 				<div class="dashy3">Plan End Date: <span class="dashy4"><%= current_user.subscription.plan_end_date.strftime("%m-%d-%Y")  %></span></div> 
 				
 			</div>

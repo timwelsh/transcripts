@@ -4,7 +4,7 @@
     <div class="row">
       <div class="col-md-12">
         <ol class="greybeadcrub">
-          <ul class="greybeadcrub"><li><a href="index.html">Home</a></li>
+          <ul class="greybeadcrub"><li><%= link_to 'Home',root_path %></li>
               <li class="active">Edit School Details</li>
           </ul>                    
         </ol>
@@ -127,7 +127,7 @@
             <div class="form-group">
               <%= f.label :academic_term,:class=>"col-sm-3 control-label rigys1" %>
               <div class="col-sm-6">
-                <%= f.select :academic_term, [["semester", "semester"], ["quarter","quarter"]],:class=>"form-control" %>
+                <%= f.select :academic_term, [["semester", "semester"], ["quarter","quarter"]], {},{:class=>"form-control"} %>
               </div>
               <span class="inline-errors">
                 <%=@school.errors[:academic_term].join(",") %> 
@@ -135,8 +135,8 @@
             </div>
             <div class="form-group">
               <%= f.label :grading_scale,:class=>"col-sm-3 control-label rigys1" %>
-              <div class="col-sm-5">
-                <%= f.select :grading_scale, [["7", 7], ["10", 10]],:class=>"form-control"  %>
+              <div class="col-sm-6">
+                <%= f.select :grading_scale, [["7", 7], ["10", 10]],{},{:class=>"form-control"}  %>
               </div>
               <span class="inline-errors">
                 <%=@school.errors[:grading_scale].join(",") %> 

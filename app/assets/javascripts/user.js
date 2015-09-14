@@ -141,6 +141,13 @@ $(document).ready(function() {
                     }
                 }
             },
+            'user[country]': {
+                validators: {
+                    notEmpty: {
+                        message: 'Country Name is required'
+                    },
+                }
+            },
             'user[city]': {
                 validators: {
                     stringLength: {
