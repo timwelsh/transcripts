@@ -59,80 +59,99 @@ $(document).ready(function(){
 
         x++; 
         $(wrapper).append('<div class="education secondEdu">'+
-            '<h3>Class '+x+'</h3> <a href="#" class="btn btn-danger remove_field">Remove</a>'+
+            '<div class="panel-heading student-class">'+
+              '<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"><strong class="">Class '+x+'</strong></div>'+
+              '<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 rptrq1">'+
+                '<a href="#" class="btn btn-danger remove_field">Remove</a>'+
+              '</div>'+
+            '</div>'+
+            
             '<div style="clear:both;"></div>'+
             '<div class="row">'+
-              '<div class="col-md-4">'+
-                '<div class="string input optional stringish">'+
-                  '<label for="completion_year">Year</label><br>'+
-                  '<select name="completion_year[]">'+
-                    '<option value ="">Please Select</option>'+
-                    '<option value ="Freshman">Freshman</option>'+
-                    '<option value ="Sophomore">Sophomore</option>'+
-                    '<option value ="Junior">Junior</option>'+
-                    '<option value ="Senior">Senior</option>'+
-                     
-                  '</select>'+
+              '<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">'+
+                '<div class="form-group">'+
+                  '<label class="col-sm-12 adnwstdnt">Year</label>'+
+                  '<div class="col-sm-12">'+
+                    '<select class="form-control" name="completion_year[]">'+
+                      '<option value ="">Please Select</option>'+
+                      '<option value ="Freshman">Freshman</option>'+
+                      '<option value ="Sophomore">Sophomore</option>'+
+                      '<option value ="Junior">Junior</option>'+
+                      '<option value ="Senior">Senior</option>'+
+                       
+                    '</select>'+
+                  '</div>'+
                 '</div>'+
               '</div>'+
-              '<div class="col-md-4">'+
-                '<div class="string input optional stringish">'+
-                  '<label for="subject">Subject</label><br>'+
-                  '<input type="text" name="subject[]">'+
+              '<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">'+
+                '<div class="form-group">'+
+                  '<label  class="col-sm-12 adnwstdnt">Subject</label>'+
+                  '<div class="col-sm-12">'+
+                    '<input class="form-control" type="text" name="subject[]">'+
+                  '</div>'+
                 '</div>'+
               '</div>'+
-              '<div class="col-md-4">'+
-                '<div class="string input optional stringish">'+
-                  '<label for="course_name">Course Name</label><br>'+
-                  '<input type="text" name="course_name[]">'+
+              '<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">'+
+                '<div class="form-group">'+
+                  '<label  class="col-sm-12 adnwstdnt">Course Name</label>'+
+                  '<div class="col-sm-12">'+
+                    '<input class="form-control" type="text" name="course_name[]">'+
+                  '</div>'+
                 '</div>'+
               '</div>'+
             '</div>'+
             '<div class="row">'+
-              '<div class="col-md-4">'+
-                '<div class="string input optional stringish">'+
-                   '<label for="honors">Honors</label><br>'+
-                   '<select name="honors[]">'+
-                     '<option value ="No">No</option>'+
-                     '<option value ="Yes">Yes</option>'+
-                   '</select>'+
+              '<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">'+
+                '<div class="form-group">'+
+                   '<label  class="col-sm-12 adnwstdnt">Honors</label>'+
+                   '<div class="col-sm-12">'+
+                     '<select class="form-control" name="honors[]">'+
+                       '<option value ="No">No</option>'+
+                       '<option value ="Yes">Yes</option>'+
+                     '</select>'+
+                    '</div>'+
                 '</div>'+
               '</div>'+
-              '<div class="col-md-4">'+
-                '<div class="string input optional stringish">'+
-                   '<label for="grade">Grade</label><br>'+
-                    '<select name="grade[]">'+
-                     '<option value ="A+">A+</option>'+
-                      '<option value ="A">A</option>'+
-                      '<option value ="A-">A-</option>'+
-                      '<option value ="B+">B+</option>'+
-                      '<option value ="B">B</option>'+
-                      '<option value ="B-">B-</option>'+
-                      '<option value ="C+">C+</option>'+
-                      '<option value ="C">C</option>'+
-                      '<option value ="C-">C-</option>'+
-                      '<option value ="D+">D+</option>'+
-                      '<option value ="D">D</option>'+
-                      '<option value ="D-">D-</option>'+
-                      '<option value ="F">F</option>'+
-                      '<option value ="CR">CR</option>'+
-                      '<option value ="NC">NC</option>'+
-                      '<option value ="W">W</option>'+
-                      '<option value ="I">I</option>'+
+              '<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">'+
+                '<div class="form-group">'+
+                    '<label  class="col-sm-12 adnwstdnt">Grade</label>'+
+                    '<div class="col-sm-12">'+
+                      '<select class="form-control" name="grade[]">'+
+                       '<option value ="A+">A+</option>'+
+                        '<option value ="A">A</option>'+
+                        '<option value ="A-">A-</option>'+
+                        '<option value ="B+">B+</option>'+
+                        '<option value ="B">B</option>'+
+                        '<option value ="B-">B-</option>'+
+                        '<option value ="C+">C+</option>'+
+                        '<option value ="C">C</option>'+
+                        '<option value ="C-">C-</option>'+
+                        '<option value ="D+">D+</option>'+
+                        '<option value ="D">D</option>'+
+                        '<option value ="D-">D-</option>'+
+                        '<option value ="F">F</option>'+
+                        '<option value ="CR">CR</option>'+
+                        '<option value ="NC">NC</option>'+
+                        '<option value ="W">W</option>'+
+                        '<option value ="I">I</option>'+
 
-                    '</select>'+
+                      '</select>'+
+                    '</div>'+
                 '</div>'+
               '</div>'+
-              '<div class="col-md-4">'+
-                '<div class="string input optional stringish">'+
-                 '<label for="credit">Credit</label><br>'+
-                  '<select name="credits[]">'+
-                   '<option value ="0.5">0.5</option>'+
-                    '<option value ="1.0">1.0</option>'+
-                    '<option value ="2.0">2.0</option>'+
-                  '</div>'+
-                  '</div>'+
-                  '</div>'+
+              '<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">'+
+                '<div class="form-group">'+
+                  '<label  class="col-sm-12 adnwstdnt">Credit</label>'+
+                  '<div class="col-sm-12">'+
+                    '<select class="form-control" name="credits[]">'+
+                      '<option value ="0.5">0.5</option>'+
+                      '<option value ="1.0">1.0</option>'+
+                      '<option value ="2.0">2.0</option>'+
+                    '</select>'+
+                  '</div>'+  
+                '</div>'+
+              '</div>'+
+            '</div>'+
                   
 
 

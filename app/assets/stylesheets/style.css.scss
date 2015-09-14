@@ -7,6 +7,8 @@ body {
   content:"*";
   color:#a94442;
 }
+.form-control[readonly]{cursor:text!important;}
+.student-class{background:#f1f1f1; margin-top:3%; margin-bottom:3%; font-size:12pt; color:#666; }
 #user_remember_me{margin:0;}
 .inline-errors{color: #a94442; font-size: 8pt; margin: 0.3em 0 0 28%;}
 .container-fluid{padding:0px !important;}
@@ -367,3 +369,4 @@ body {
 /*add new students start*/
 .adnwstdnt{font-size:10pt; font-weight:normal; text-align:left;}
 /*add new students end*/
+.rptrq1{text-align:right;}
