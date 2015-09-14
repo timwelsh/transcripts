@@ -3,7 +3,7 @@ class Message < ActiveRecord::Base
   include ActiveModel::Conversion
   include ActiveModel::Validations
 
-  attr_accessor :name, :email, :content, :phnumber, :subject
+  attr_accessor :name, :email, :content, :phnumber
 
   validates :name,
     presence: true
@@ -15,9 +15,6 @@ class Message < ActiveRecord::Base
     presence: true
 
   validates :content,
-    presence: true
-
-  validates :subject,
     presence: true
 
 end

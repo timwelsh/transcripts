@@ -26,7 +26,7 @@ class PagesController < ApplicationController
 private
 
   def message_params
-    params.require(:message).permit(:name, :email, :content, :subject, :phnumber)
+    params.require(:message).permit(:name, :email, :content, :phnumber)
   end
 
 end

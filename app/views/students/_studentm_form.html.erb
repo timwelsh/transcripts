@@ -1,0 +1,205 @@
+<div class="container">
+  <h2>Add Student Details</h2>
+  <input type= checkbox , class = 'submittable'/> Copy schools details
+  <br>
+  <%= form_for [@school, @student] do|f|%>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="field">
+        <%= f.label :first_name %><br />
+        <%= f.text_field :first_name, autofocus: true %>
+        <p id="first_name_error" class="inline-errors">
+          <%=@student.errors[:first_name].join(",") %> 
+        </p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="field">
+        <%= f.label :middle_name %><br />
+        <%= f.text_field :middle_name, autofocus: true %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="field">
+        <%= f.label :last_name %><br />
+        <%= f.text_field :last_name, autofocus: true %>
+        <p id="last_name_error"class="inline-errors">
+          <%=@student.errors[:last_name].join(",") %> 
+        </p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="field">
+        <%= f.label :dob %><br />
+        <%= f.text_field :dob, autofocus: true, readonly: true %>
+        <p id= "student_dob_error"class="inline-errors">
+          <%=@student.errors[:dob].join(",") %> 
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="field">
+        <%= f.label :address_line_1 %> <br />
+        <%= f.text_field :address1, autocomplete: "off" %>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="field">
+        <%= f.label :address_line_2 %> <br />
+        <%= f.text_field :address2, autocomplete: "off" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="field">
+        <%= f.label :address_line_3 %> <br />
+        <%= f.text_field :address3, autocomplete: "off" %>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="field">
+        <%= f.label :country %> <br />
+        <%= f.country_select :country, {priority: %w(US CA), prompt: 'Please select a country'} %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="field">
+        <%= f.label :state %> <br />
+        <%= render partial: 'students/subregion_select', locals: {parent_region: f.object.country} %>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="field">
+        <%= f.label :city %> <br />
+        <%= f.text_field :city, autocomplete: "off" %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="field">
+        <%= f.label :zip %> <br />
+        <%= f.text_field :zip, autocomplete: "off" %>
+        <p id="zip_error" class="inline-errors">
+          <%=@student.errors[:zip].join(" and ") %> 
+        </p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="field">
+        <%= f.label :primary_phone %> <br />
+        <%= f.text_field :phone, autocomplete: "off" %>
+        <p id="phone_error" class="inline-errors">
+          <%=@student.errors[:phone].join(" and ") %> 
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true %>
+
+        <p  id= "student_email_error" class="inline-errors">
+          <%=@student.errors[:email].join(",") %> 
+        </p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="field">
+        <%= f.label :enroll_date %><br />
+        <%= f.text_field :enroll_date, readonly: true %>
+        <p id="student_enroll_date_error"class="inline-errors">
+          <%=@student.errors[:enroll_date].join(",") %> 
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="field">
+        <%= f.label :graduation_date %><br />
+        <%= f.text_field :graduation_date, readonly: true %>
+        <p id ="student_graduation_date_error"class="inline-errors">
+          <%=@student.errors[:graduation_date].join(",") %> 
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <br><br>
+  <h2>Academic details </h2>
+  <div class="input_fields_wrap">
+
+    <input type="button" class="btn btn-primary add_field_button" value="Add Another Class">
+
+    <div>
+      <h3>Class 1</h3>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="field">
+           <label for="completion_year">Year
+           </label><br>
+           <%= select_tag "completion_year[]", options_for_select([['Freshman ', 'Freshman'], ['Sophomore', 'Sophomore'],['Junior', 'Junior'],['Senior', 'Senior']]),:prompt=>'Please Select '%>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="field">
+            <label for="subject">Subject</label><br>
+            <input type="text" name="subject[]">
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="field">
+            <label for="course_name">Course Name</label><br>
+            <input type="text" name="course_name[]">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="field">
+           <label for="honors">Honors</label><br>
+           <%= select_tag "honors[]", options_for_select([['No ', 'No'], ['Yes', 'Yes']])%>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="field">
+             <label for="grade">Grade</label><br>
+             <%= select_tag "grade[]", options_for_select([['A+ ', 'A+'], ['A', 'A'],['A-', 'A-'],['B+', 'B+'],['B', 'B'],['B-', 'B-'],['C+', 'C+'],['C', 'C'],['C-', 'C-'],['D+', 'D+'],['D', 'D'],['D-', 'D-'],['F', 'F'],['CR', 'CR'],['NC', 'NC'],['W', 'W'],['I', 'I']])%>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="field">
+            <label for="credit">Credit</label><br>
+            <select name="credits[]">
+              <option value ="0.5">0.5</option>
+              <option value ="1.0">1.0</option>
+              <option value ="2.0">2.0</option>
+            </select>
+          </div>
+        </div>
+      </div>
+       <input type="hidden" name="total_credit[]">
+       <input type="hidden" name="gpa_credit[]">
+       <input type="hidden" name="gpa_points[]">
+       <input type="hidden" name="cumulative_gpa[]">
+    </div>
+  </div>
+  <br>
+  <div class="actions">
+    <div id="student_submit_action" class="action input_action ">
+      <%= f.submit "Create",:class=>"btn btn-success" %>
+    </div>
+  </div>
+  <%end%>
+</div>
