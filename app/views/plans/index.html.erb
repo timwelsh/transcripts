@@ -21,13 +21,18 @@
 	<div class="col-md-12">
 		<div class="panel panel-default">
 			<div class="panel-heading dashy1">Current Plan</div>
-			<div class="panel-body dashy2">
-				<div class="dashy3">Current Plan: <span class="dashy4"><%= @subs_plan_name%></span></div>
-				<div class="dashy3">Plan Subscription Date: <span class="dashy4"><%= current_user.subscription.created_at.strftime("%m-%d-%Y") %></span></div> 
-				<div class="dashy3">Plan End Date: <span class="dashy4"><%= current_user.subscription.plan_end_date.strftime("%m-%d-%Y")  %></span></div> 
+			
+			<table class="table table-striped table-responsive table-bordered"><tbody>
+
+				<tr>
+					<td class="rptrq6" align="center"><div class="dashy3">Current Plan: <span class="dashy4"><%= @subs_plan_name%></span></div></td>
+					<td align="center"><div class="dashy3">Plan Subscription Date: <span class="dashy4"><%= current_user.subscription.created_at.strftime("%m-%d-%Y") %></span></div></td>
+					<td align="center"><div class="dashy3">Plan End Date: <span class="dashy4"><%= current_user.subscription.plan_end_date.strftime("%m-%d-%Y")  %></span></div> </td>
+				</tr>
 				
-			</div>
+			</tbody></table>
 		</div>
+
 	</div>
 
 	<center><h1>You Can Upgrade Your Plan !!</h1></center> 
@@ -42,7 +47,7 @@
 	<div class="col-sm-3">
 		<div class="panel panel-primary">
 			<div class="panel-heading">
-				<h3 class="txtalyn"><%=plan.name%></h3>
+				<div class="rptrq5"><%=plan.name%></div>
 			</div>
 			<div class="list-group">
 				<div class="list-group-item txtalyn">Subscription Period :<%= plan.subscription_period%> </div>
@@ -52,7 +57,7 @@
 					<span class="prycpln">USD <%= (plan.amount.to_i)/100 %></span>
 				</div>
 				<div class="panel-heading">
-					<div class="btn btn-info btn-lg btn-block paid btn-max stripe-button">
+					<div class="rptrq4">
 						<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
 						data-key="pk_test_jMUKzHL4kwf1KFpFhTVA8QFu"
 						data-description="<%= plan.name%>"
