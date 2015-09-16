@@ -24,17 +24,17 @@ def today_is_after_dob
 	return if dob.blank? 
 	return if enroll_date.blank? 
 	return if graduation_date.blank? 
-	@dob = Date.strptime(dob, '%m-%d-%Y')
+	@dob = Date.strptime(dob, '%m/%d/%Y')
 	if @dob>=Date.current 
 		errors.add(:dob, "Date of Birth can't be Current Date and Future Date")
 	end		
 
-	@enroll_date=Date.strptime(enroll_date, '%m-%d-%Y')
+	@enroll_date=Date.strptime(enroll_date, '%m/%d/%Y')
 	if @dob>=@enroll_date
 		errors.add(:enroll_date, "Enrollment date must be greater than Date of Birth") 
 	end
 
-	@graduation_date=Date.strptime(graduation_date, '%m-%d-%Y')
+	@graduation_date=Date.strptime(graduation_date, '%m/%d/%Y')
 	if @enroll_date>=@graduation_date
 		errors.add(:graduation_date, "Graduation date can't be less than Enrollment date") 
 	end 

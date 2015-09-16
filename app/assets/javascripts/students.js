@@ -291,5 +291,115 @@ $(document).ready(function(){
         }
       }
     }
-  });   
+  });
+
+  $('.edit_student').bootstrapValidator({
+    framework: 'bootstrap',
+    icon: {
+      valid: 'glyphicon glyphicon-ok',
+      invalid: 'glyphicon glyphicon-remove',
+      validating: 'glyphicon glyphicon-refresh'
+    },
+    fields: {
+      'student[first_name]': {
+        validators: {
+          notEmpty: {
+            message: 'First Name is required'
+          },
+          stringLength: {
+            message: 'First Name must be less than 50 characters',
+            max: 50
+          }
+        }
+      },
+      'student[last_name]': {
+        validators: {
+          notEmpty: {
+            message: 'Last Name is required'
+          },
+          stringLength: {
+            message: 'Last Name must be less than 50 characters',
+            max: 50
+          }
+        }
+      },
+      'student[email]': {
+        trigger: 'change focus',
+        validators: {
+          notEmpty: {
+            message: 'Email is required'
+          },
+          regexp: {
+            regexp: '^[^\.][^@\\s]+@([^@\\s]+\\.)+[^@\\s]+$',
+            message: 'This is not a valid email address'
+          }
+        }
+      },
+      'student[dob]': {
+        trigger: 'change focus',
+        validators: {
+          notEmpty: {
+            message: 'Date of Birth is required'
+          },
+          date: {
+            format: 'MM/DD/YYYY',
+            min: '01/01/1950',
+            max: DOBMaxDate,
+            message: 'Date of Birth should be less than current date'
+          }
+        }
+      },
+      'student[enroll_date]': {
+        trigger: 'change focus',
+        validators: {
+          notEmpty: {
+            message: 'Enrollment Date is required'
+          },
+          date: {
+            format: 'MM/DD/YYYY',
+            min: 'student[dob]',
+            max: DOBMaxDate,
+            message: 'Enrollment date must be greater than Date of Birth'
+          }
+        }
+      },
+      'student[graduation_date]': {
+        trigger: 'change focus',
+        validators: {
+          notEmpty: {
+            message: 'Graduation Date is required'
+          },
+          date: {
+            format: 'MM/DD/YYYY',
+            min: 'student[enroll_date]',
+            max: DOBMaxDate,
+            message: 'Graduation date must be greater than Enrollment date'
+          }
+        }
+      },
+      'student[country]': {
+        validators: {
+          notEmpty: {
+            message: 'Country is required'
+          }
+        }
+      },
+      'student[phone]': {
+        validators: {
+          stringLength: {
+            message: 'Phone Number should be less than 15 characters',
+            max: 15
+          }
+        }
+      },
+      'student[zip]': {
+        validators: {
+          stringLength: {
+            message: 'Zip Code should be 7 characters long',
+            max: 7
+          }
+        }
+      }
+    }
+  });      
 });

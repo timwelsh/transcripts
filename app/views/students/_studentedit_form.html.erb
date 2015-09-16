@@ -1,203 +1,312 @@
+
+<div class="mini-title-head-bar logiq1">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <ol class="greybeadcrub">
+          <ul class="greybeadcrub">
+            <li><%= link_to 'Home',root_path %></li>
+            <li class="active">Edit Student Details</li>
+          </ul>                    
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 <div class="container">
-  <h2>Edit Student Details</h2>
-  <br>
-  <%= form_for [@school, @student] ,method: :patch do|f|%>
   <div class="row">
-    <div class="col-md-4">
-      <div class="field">
-        <%= f.label :first_name %><br />
-        <%= f.text_field :first_name, autofocus: true %>
-        <p id="first_name_error" class="inline-errors">
-          <%=@student.errors[:first_name].join(",") %> 
-        </p>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="field">
-        <%= f.label :middle_name %><br />
-        <%= f.text_field :middle_name, autofocus: true %>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-4">
-      <div class="field">
-        <%= f.label :last_name %><br />
-        <%= f.text_field :last_name, autofocus: true %>
-        <p id="last_name_error" class="inline-errors">
-          <%=@student.errors[:last_name].join(",") %> 
-        </p>
-      </div>
-    </div>
+    <%= form_for [@school, @student] ,method: :patch do|f|%>
+      <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-md-offset-3">
+        <div class="panel panel-default">
+          <div class="panel-heading"> <strong class="">Edit Student Details</strong>
+          </div>
+          <div class="panel-body">        
+            <div class="row">
+              <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group required">
+                  <%= f.label :first_name,:class=>"col-sm-12 control-label adnwstdnt" %>
+                  <div class="col-sm-12">
+                    <%= f.text_field :first_name, autocomplete: "off",:class=>"form-control",:required => true %>
+                  </div>
+                  <span class="inline-errors">
+                    <%=@student.errors[:first_name].join(",") %> 
+                  </span>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group ">
+                  <%= f.label :middle_name,:class=>"col-sm-12 adnwstdnt" %>
+                  <div class="col-sm-12">
+                    <%= f.text_field :middle_name, autocomplete: "off",:class=>"form-control"%>
+                  </div>
+                  <span class="inline-errors">
+                    <%=@student.errors[:middle_name].join(",") %> 
+                  </span>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group required">
+                  <%= f.label :last_name,:class=>"col-sm-12 control-label adnwstdnt" %>
+                  <div class="col-sm-12">
+                    <%= f.text_field :last_name, autocomplete: "off",:class=>"form-control",:required => true %>
+                  </div>
+                  <span class="inline-errors">
+                    <%=@student.errors[:last_name].join(",") %> 
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="form-group required">
+                  <%= f.label :dob, :class=>"col-sm-6 control-label adnwstdnt" %>
+                  <div class="col-sm-12">
+                    <%= f.text_field :dob, :class=>"form-control" %>
+                    <!-- <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-calendar"></span>
+                    </span> -->
+                  </div>
+                  <span class="inline-errors">
+                    <%=@student.errors[:dob].join(",") %> 
+                  </span>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="form-group">
+                  <%= f.label :address_line_1,:class=>"col-sm-6 adnwstdnt" %> 
+                  <div class="col-sm-12">
+                    <%= f.text_field :address1, autocomplete: "off",:class=>"form-control" %>
+                  </div>
+                  <span class="inline-errors">
+                    <%=@student.errors[:address1].join(",") %> 
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="form-group">
+                  <%= f.label :address_line_2,:class=>"col-sm-6 adnwstdnt" %> 
+                  <div class="col-sm-12">
+                    <%= f.text_field :address2, autocomplete: "off",:class=>"form-control" %>
+                  </div>
+                  <span class="inline-errors">
+                    <%=@student.errors[:address2].join(",") %> 
+                  </span>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="form-group">
+                  <%= f.label :address_line_3,:class=>"col-sm-6 adnwstdnt" %> 
+                  <div class="col-sm-12">
+                    <%= f.text_field :address3, autocomplete: "off",:class=>"form-control" %>
+                  </div>
+                  <span class="inline-errors">
+                    <%=@student.errors[:address3].join(",") %> 
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="form-group required">
+                  <%= f.label :country,:class=>"col-sm-6 control-label adnwstdnt" %>
+                  <div class="col-sm-12">
+                    <%= f.country_select :country, {priority: %w(US CA), prompt: 'Please select a country'}, :class=>"form-control" %>
+                  </div>
+                  <span class="inline-errors">
+                    <%=@student.errors[:country].join(",") %> 
+                  </span>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="form-group">
+                  <%= f.label :state, :class=>"col-sm-6 adnwstdnt" %>
+                  <div class="col-sm-12">
+                    <%= render partial: 'students/subregion_select', locals: {parent_region: f.object.country},:class=>"form-control" %>
+                  </div>
+                  <span class="inline-errors">
+                    <%=@student.errors[:state].join(",") %> 
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="form-group">
+                  <%= f.label :city,:class=>"col-sm-6 adnwstdnt" %>
+                  <div class="col-sm-12">
+                    <%= f.text_field :city, autocomplete: "off",:class=>"form-control"  %>
+                  </div>
+                  <span class="inline-errors">
+                    <%=@student.errors[:city].join(",") %> 
+                  </span>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="form-group">
+                  <%= f.label :zip,:class=>"col-sm-6 adnwstdnt" %>
+                  <div class="col-sm-12">
+                    <%= f.text_field :zip, autocomplete: "off",:class=>"form-control" %>
+                  </div>
+                  <span class="inline-errors">
+                    <%=@student.errors[:zip].join(",") %> 
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="form-group">
+                  <%= f.label :primary_phone, :class=>"col-sm-6 adnwstdnt"%>
+                  <div class="col-sm-12">
+                    <%= f.text_field :phone, autocomplete: "off",:class=>"form-control" %>
+                  </div>
+                  <span class="inline-errors">
+                    <%=@student.errors[:phone].join(",") %> 
+                  </span>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="form-group required">
+                  <%= f.label :email, :class=>"col-sm-6 control-label adnwstdnt" %>
+                  <div class="col-sm-12">
+                    <%= f.text_field :email,:class=>"form-control",:required => true %> 
+                  </div>
+                  <span class="inline-errors">
+                    <%=@student.errors[:email].join(",") %> 
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="form-group required">
+                  <%= f.label :enroll_date, :class=>"col-sm-6 control-label adnwstdnt" %>
+                  <div class="col-sm-12">
+                    <%= f.text_field :enroll_date, :class=>"form-control" %>
+                      <!-- <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                      </span> -->
+                    </div>
+                    <span class="inline-errors">
+                      <%=@student.errors[:enroll_date].join(",") %> 
+                    </span>
+                  </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <div class="form-group required">
+                    <%= f.label :graduation_date, :class=>"col-sm-7 control-label adnwstdnt" %>
+                    <div class="col-sm-12">
+                      <%= f.text_field :graduation_date,  :class=>"form-control" %>
+                      <!-- <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                      </span> -->
+                    </div>
+                    <span class="inline-errors">
+                      <%=@student.errors[:graduation_date].join(",") %> 
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
-    <div class="col-md-4">
-      <div class="field">
-        <%= f.label :dob %><br />
-        <%= f.text_field :dob, autofocus: true, readonly: true %>
-        <p id= "student_dob_error" class="inline-errors">
-          <%=@student.errors[:dob].join(",") %> 
-        </p>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-4">
-      <div class="field">
-        <%= f.label :address_line_1 %> <br />
-        <%= f.text_field :address1, autocomplete: "off" %>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="field">
-        <%= f.label :address_line_2 %> <br />
-        <%= f.text_field :address2, autocomplete: "off" %>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-4">
-      <div class="field">
-        <%= f.label :address_line_3 %> <br />
-        <%= f.text_field :address3, autocomplete: "off" %>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="field">
-        <%= f.label :country %> <br />
-        <%= f.country_select :country, {priority: %w(US CA), prompt: 'Please select a country'} %>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-4">
-      <div class="field">
-        <%= f.label :state %> <br />
-        <%= render partial: 'students/subregion_select', locals: {parent_region: f.object.country} %>
-      </div>
-    </div>
 
-    <div class="col-md-4">
-      <div class="field">
-        <%= f.label :city %> <br />
-        <%= f.text_field :city, autocomplete: "off" %>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-4">
-      <div class="field">
-        <%= f.label :zip %> <br />
-        <%= f.text_field :zip, autocomplete: "off" %>
-        <p id="zip_error" class="inline-errors">
-          <%=@student.errors[:zip].join(" and ") %> 
-        </p>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="field">
-        <%= f.label :primary_phone %> <br />
-        <%= f.text_field :phone, autocomplete: "off" %>
-        <p id="phone_error" class="inline-errors">
-          <%=@student.errors[:phone].join(" and ") %> 
-        </p>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-4">
-      <div class="field">
-        <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true %>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="field">
-        <%= f.label :enroll_date %><br />
-        <%= f.text_field :enroll_date, readonly: true %>
-        <p id="student_enroll_date_error" class="inline-errors">
-          <%=@student.errors[:enroll_date].join(",") %> 
-        </p>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-4">
-      <div class="field">
-        <%= f.label :graduation_date %><br />
-        <%= f.text_field :graduation_date, readonly: true %>
-        <p id ="student_graduation_date_error" class="inline-errors">
-          <%=@student.errors[:graduation_date].join(",") %> 
-        </p>
-      </div>
-    </div>
-  </div>
 
-  <br><br>
 
-  <h2>Academic details </h2>
-
-  <div class="input_fields_wrap">
-    <% x=0%>
-    <input type="button" class="btn btn-primary add_field_button" value="Add Another Class">
-
-    <% @student.subject.each do |stu|%>
-    <div>
-      <h3>Class <%= x+1%></h3>
-      <div class="row">
-        <div class="col-md-4">
-
-          <div class="field">
-            <label for="completion_year">Year</label><br>
-            <%= select_tag "completion_year[]", options_for_select([['Freshman ', 'Freshman'], ['Sophomore', 'Sophomore'],['Junior', 'Junior'],['Senior', 'Senior']],:selected => @student.completion_year[x]),:prompt=>'Please Select'%>
+          <div class="panel panel-default">
+            <div class="panel-heading"> <strong class="">Academic Details</strong>
+            </div>
+            <div class="panel-body">
+              
+              <div class="input_fields_wrap">
+                <% x=0%>
+              <% @student.subject.each do |stu|%>
+              
+                <div class="panel-heading student-class">
+                  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"><strong class="">Class <%= x+1%></strong></div>
+                  <!-- <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 rptrq1"></div> -->
+                </div>
+                <div class="row">
+                  <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                      <label class="col-sm-12 adnwstdnt">Year</label>
+                      <div class="col-sm-12">
+                        <%= select_tag "completion_year[]", options_for_select([['Freshman ', 'Freshman'], ['Sophomore', 'Sophomore'],['Junior', 'Junior'],['Senior', 'Senior']],:selected => @student.completion_year[x]),:prompt=>'Please Select', :class=>"form-control"%>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                      <label  class="col-sm-12 adnwstdnt">Subject</label>
+                      <div class="col-sm-12">
+                        <input class="form-control" type="text" name="subject[]" value= "<%= @student.subject[x] %>">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                      <label  class="col-sm-12 adnwstdnt">Course Name</label>
+                      <div class="col-sm-12">
+                        <input class="form-control" type="text" name="course_name[]" value= "<%= @student.course_name[x] %>">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              
+              <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                  <div class="form-group">
+                    <label  class="col-sm-12 adnwstdnt">Honors</label>
+                    <div class="col-sm-12">
+                      <%= select_tag "honors[]", options_for_select([['No ', 'No'], ['Yes', 'Yes']],:selected =>  @student.honors[x]), :class=>"form-control"%>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                  <div class="form-group">
+                    <label  class="col-sm-12 adnwstdnt">Grade</label>
+                    <div class="col-sm-12">
+                      <%= select_tag "grade[]", options_for_select([['A+ ', 'A+'], ['A', 'A'],['A-', 'A-'],['B+', 'B+'],['B', 'B'],['B-', 'B-'],['C+', 'C+'],['C', 'C'],['C-', 'C-'],['D+', 'D+'],['D', 'D'],['D-', 'D-'],['F', 'F'],['CR', 'CR'],['NC', 'NC'],['W', 'W'],['I', 'I']],:selected => @student.grade[x]), :class=>"form-control"%>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                  <div class="form-group">
+                    <label  class="col-sm-12 adnwstdnt">Credit</label>
+                    <div class="col-sm-12">
+                      <%= select_tag "credits[]", options_for_select([['0.5 ', '0.5'], ['1.0', '1.0'],['2.0 ', '2.0']],:selected => @student.credits[x]), :class=>"form-control"%>
+                    </div>
+                  </div>
+                </div>
+                <input type="hidden" name="total_credit[]" value= "<%= @student.total_credit[x] %>">
+                <input type="hidden" name="gpa_credit[]" value= "<%= @student.gpa_credit[x] %>">
+                <input type="hidden" name="gpa_points[]" value= "<%= @student.gpa_points[x] %>">
+                <input type="hidden" name="cumulative_gpa[]" value= "<%= @student.cumulative_gpa[x] %>">
+              </div>
+              <% x=x+1%>
+              <%end%>
+            </div>
+            </div>
+            <input type= "hidden" value= "<%=x%>" id="xval">
+            <div class="panel-footer rptrq2">
+              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <input type="button" class="btn btn-primary add_field_button" value="Add Another Class">
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 rptrq1">
+                <%= f.submit "Update",:class=>"btn btn-success" %>
+                <%= link_to "Back", school_students_path(@school.id),:class=>"btn btn-primary"%>
+              </div>   
+            </div>
+            
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="field">
-            <label for="subject">Subject</label><br>
-            <input type="text" name="subject[]" value= "<%= @student.subject[x] %>">
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="field">
-            <label for="course_name">Course Name</label><br>
-            <input type="text" name="course_name[]" value= "<%= @student.course_name[x] %>">
-          </div>
-        </div>
       </div>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="field">
-            <label for="honors">Honors</label><br>
-            <%= select_tag "honors[]", options_for_select([['No ', 'No'], ['Yes', 'Yes']],:selected =>  @student.honors[x])%>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="field">
-            <label for="grade">Grade</label><br>
-            <%= select_tag "grade[]", options_for_select([['A+ ', 'A+'], ['A', 'A'],['A-', 'A-'],['B+', 'B+'],['B', 'B'],['B-', 'B-'],['C+', 'C+'],['C', 'C'],['C-', 'C-'],['D+', 'D+'],['D', 'D'],['D-', 'D-'],['F', 'F'],['CR', 'CR'],['NC', 'NC'],['W', 'W'],['I', 'I']],:selected => @student.grade[x])%>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="field">
-            <label for="credits">Credits</label><br>
-            <%= select_tag "credits[]", options_for_select([['0.5 ', '0.5'], ['1.0', '1.0'],['2.0 ', '2.0']],:selected => @student.credits[x])%>
-          </div>
-        </div>
-      </div>
-
-      <input type="hidden" name="total_credit[]" value= "<%= @student.total_credit[x] %>">
-      <input type="hidden" name="gpa_credit[]" value= "<%= @student.gpa_credit[x] %>">
-      <input type="hidden" name="gpa_points[]" value= "<%= @student.gpa_points[x] %>">
-      <input type="hidden" name="cumulative_gpa[]" value= "<%= @student.cumulative_gpa[x] %>">
-    </div>
-    <% x=x+1%>
     <%end%>
   </div>
-  <input type= "hidden" value= "<%=x%>" id="xval">
-  <br>
-  <div class="actions">
-    <%= f.submit "Update",:class=>"btn btn-success" %>
-    <%= link_to "Back", school_students_path(@school.id),:class=>"btn btn-primary"%>
-  </div> 
-  <%end%>
 </div>
+

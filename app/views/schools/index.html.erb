@@ -1,21 +1,53 @@
-<%if @school.blank?%>
-No School has ben created yet.
-<%= link_to 'Click here',new_school_path, class: 'btn btn-primary btn-xs'%>
-to create a new school. 
-<%else%>
-<div class = "container">
 
-	<div class="row">
-		<div class= "col-xs-2">&nbsp;</div>
-		<div class= "col-xs-4"><h2><%=@school.school_name%></h2> </div>
-		<div class= "col-xs-6">
-			<%= link_to 'Show' ,school_path(@school.id) , class: 'btn btn-primary btn-xs'%>
-			<%= link_to 'Edit' ,edit_school_path(@school.id) , class: 'btn btn-info btn-xs'%>
-			<%= link_to 'Destroy' ,school_path(@school.id) ,method: :delete , data: {confirm: 'Are you sure'} , class: 'btn btn-danger btn-xs'%>
-
-		</div>
-		<%= link_to 'View Student List',school_students_path(@school.id), class: 'btn btn-primary btn-xs'%>
-		<%= link_to 'Add New Student',new_school_student_path(@school.id), class: 'btn btn-success btn-xs'%></th>
-	</div>
+<div class="mini-title-head-bar logiq1">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <ol class="greybeadcrub">
+          <ul class="greybeadcrub"><li><%= link_to 'Home',root_path %></li>
+            <li class="active">School</li>
+          </ul>                    
+        </ol>
+      </div>
+    </div>
+  </div>
 </div>
-<%end%>
+
+<%if @school.blank?%>
+  No School has ben created yet.
+  <%= link_to 'Click here',new_school_path, class: 'btn btn-primary btn-xs'%>
+  to create a new school. 
+<%else%>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 col-md-offset-1">
+        <div class="panel panel-default">
+          <div class="panel-heading"> <strong class="clasq2"><%=@school.school_name%></strong>
+
+          </div>
+          <table class="table table-striped table-responsive table-bordered">
+            <tbody>
+              <tr>
+                <th width="77%" rowspan="4" align="center" valign="middle" class="schoolq6"><img class="img-responsive" src="/assets/schoolbg.png" width="698" height="213"></th>
+                <td width="23%" align="center" valign="middle"><%= link_to 'Show' ,school_path(@school.id) , class: 'btn btn-primary btn-xs schoolq1'%> </td>
+              </tr>
+              <tr>
+                <td align="center" valign="middle"><%= link_to 'Edit' ,edit_school_path(@school.id) , class: 'btn btn-info btn-xs schoolq2 glyphicon glyphicon-edit '%></td>
+              </tr>
+              <tr>
+                <td align="center" valign="middle">
+                  <%= link_to 'View Student List',school_students_path(@school.id), class:'btn btn-primary btn-xs schoolq4 glyphicon glyphicon-check' %></td>
+              </tr>
+              <tr>
+                <td align="center" valign="middle"><%= link_to 'Add New Student',new_school_student_path(@school.id), class:"btn btn-success btn-xs schoolq5 glyphicon glyphicon-user" %></td>
+              </tr>
+            </tbody></table>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  <%end%> 
