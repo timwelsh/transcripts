@@ -18,17 +18,18 @@
 
 <div class="container">
   <div class="row">
+    <%= form_for [@school, @student] do|f|%>
     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-md-offset-3">
       <div class="panel panel-default">
         <div class="panel-heading"> <strong class="">Add New Students</strong>
         </div>
         <div class="panel-body">
           <input type= checkbox , class = 'submittable'/> Copy schools details
-          <%= form_for [@school, @student] do|f|%>
+          
           <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
               <div class="form-group required">
-                <%= f.label :first_name,:class=>"col-sm-12 adnwstdnt" %>
+                <%= f.label :first_name,:class=>"col-sm-12 control-label adnwstdnt" %>
                 <div class="col-sm-12">
                   <%= f.text_field :first_name, autocomplete: "off",:class=>"form-control",:required => true %>
                 </div>
@@ -50,7 +51,7 @@
             </div>
             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
             	<div class="form-group required">
-                <%= f.label :last_name,:class=>"col-sm-12 adnwstdnt" %>
+                <%= f.label :last_name,:class=>"col-sm-12 control-label adnwstdnt" %>
                 <div class="col-sm-12">
                   <%= f.text_field :last_name, autocomplete: "off",:class=>"form-control",:required => true %>
                 </div>
@@ -63,18 +64,16 @@
           <div class="row">
           	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
               <div class="form-group required">
-                <%= f.label :dob, :class=>"col-sm-6 adnwstdnt" %>
+                <%= f.label :dob, :class=>"col-sm-6 control-label adnwstdnt" %>
                 <div class="col-sm-12">
-                  <div class='input-group date' id='datetimepicker1'>
-                    <%= f.text_field :dob, readonly: true, :class=>"form-control", :required => true %>
-                    <span class="input-group-addon">
-                      <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                  </div>
-                  <span class="inline-errors">
-                    <%=@student.errors[:dob].join(",") %> 
-                  </span>
+                  <%= f.text_field :dob, :class=>"form-control" %>
+                  <!-- <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                  </span> -->
                 </div>
+                <span class="inline-errors">
+                  <%=@student.errors[:dob].join(",") %> 
+                </span>
               </div>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -115,8 +114,8 @@
           </div>
           <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-              <div class="form-group">
-                <%= f.label :country,:class=>"col-sm-6 adnwstdnt" %>
+              <div class="form-group required">
+                <%= f.label :country,:class=>"col-sm-6 control-label adnwstdnt" %>
                 <div class="col-sm-12">
                   <%= f.country_select :country, {priority: %w(US CA), prompt: 'Please select a country'}, :class=>"form-control" %>
                 </div>
@@ -175,7 +174,7 @@
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
               <div class="form-group required">
-                <%= f.label :email, :class=>"col-sm-6 adnwstdnt" %>
+                <%= f.label :email, :class=>"col-sm-6 control-label adnwstdnt" %>
                 <div class="col-sm-12">
                   <%= f.text_field :email,:class=>"form-control",:required => true %> 
                 </div>
@@ -187,15 +186,13 @@
           </div>
           <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-              <div class="form-group">
-                <%= f.label :enroll_date, :class=>"col-sm-6 adnwstdnt" %>
+              <div class="form-group required">
+                <%= f.label :enroll_date, :class=>"col-sm-6 control-label adnwstdnt" %>
                 <div class="col-sm-12">
-                  <div class='input-group date' id='datetimepicker2'>
-                    <%= f.text_field :enroll_date, readonly: true, :class=>"form-control" %>
-                    <span class="input-group-addon">
+                    <%= f.text_field :enroll_date, :class=>"form-control" %>
+                    <!-- <span class="input-group-addon">
                       <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                  </div>
+                    </span> -->
                 </div>
                 <span class="inline-errors">
                   <%=@student.errors[:enroll_date].join(",") %> 
@@ -203,15 +200,13 @@
               </div>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-              <div class="form-group">
-                <%= f.label :graduation_date, :class=>"col-sm-6 adnwstdnt" %>
+              <div class="form-group required">
+                <%= f.label :graduation_date, :class=>"col-sm-7 control-label adnwstdnt" %>
                 <div class="col-sm-12">
-                  <div class='input-group date' id='datetimepicker3'>
-                    <%= f.text_field :graduation_date, readonly: true, :class=>"form-control" %>
-                    <span class="input-group-addon">
+                    <%= f.text_field :graduation_date,  :class=>"form-control" %>
+                    <!-- <span class="input-group-addon">
                       <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                  </div>
+                    </span> -->
                 </div>
                 <span class="inline-errors">
                   <%=@student.errors[:graduation_date].join(",") %> 
@@ -236,7 +231,7 @@
                 <div class="form-group">
                   <label class="col-sm-12 adnwstdnt">Year</label>
                   <div class="col-sm-12">
-                    <%= select_tag "completion_year[]", options_for_select([['Freshman ', 'Freshman'], ['Sophomore', 'Sophomore'],['Junior', 'Junior'],['Senior', 'Senior']]),:prompt=>'Please Select ', :class=>"form-control"%>
+                    <%= select_tag "completion_year[]", options_for_select([['Freshman ', 'Freshman'], ['Sophomore', 'Sophomore'],['Junior', 'Junior'],['Senior', 'Senior']]),:prompt=>'Select Year', :class=>"form-control"%>
                   </div>
                 </div>
               </div>
@@ -289,13 +284,13 @@
         </div>
       </div>
     </div>
-    <div class="panel-footer">
-      <input type="button" class="btn btn-primary add_field_button" value="Add Another Class">
-    </div>
-    <div class="form-group last">
-      <div class="col-sm-offset-0 col-sm-9">
-        <%= f.submit "Create",:class=>"btn btn-success" %>
+    <div class="panel-footer rptrq2">
+      <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <input type="button" class="btn btn-primary add_field_button" value="Add Another Class">
       </div>
+      <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 rptrq1">
+        <%= f.submit "Create",:class=>"btn btn-success" %>
+      </div>    
     </div>
   </div>
 </div>

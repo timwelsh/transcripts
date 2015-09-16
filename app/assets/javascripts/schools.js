@@ -59,7 +59,7 @@ if($('.submittable').is(":checked"))
                     // select_wrapper.load(url);
                     $('#'+id_name+'_state').val(data.state);
                     $('#'+id_name+'_phone').val(data.phone);
-                    $('#'+id_name+'_email').val(data.email);
+                    $('#'+id_name+'_email').val(data.email).focus();
                   },
                   error: function(){
                     alert("Some error occur..");
