@@ -23,6 +23,12 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 col-md-offset-1">
+    <% if alert %>
+      <center><p class="alert alert-danger"><%= alert %></p></center>
+    <% end %>
+    <% if flash[:notice] %>
+      <center><p class="alert alert-success"><%= flash[:notice] %></p></center>
+    <% end %>
         <div class="panel panel-default">
           <div class="panel-heading"> <strong class="clasq2"><%=@school.school_name%></strong>
 

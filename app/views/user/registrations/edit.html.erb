@@ -17,6 +17,9 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+      <% if alert %>
+            <center><p class="alert alert-danger"><%= alert %></p></center>
+      <% end %>
       <div class="panel panel-default">
         <div class="panel-heading"> <strong class="">Edit Profile</strong>
 

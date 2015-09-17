@@ -1,6 +1,12 @@
 
 
 <div class="container-fluid">
+<% if alert %>
+  <center><p class="alert alert-danger"><%= alert %></p></center>
+<% end %>
+<% if flash[:notice] %>
+  <center><p class="alert alert-success"><%= flash[:notice] %></p></center>
+<% end %> 
 	<div class="menu_bg">
     	<div class="row">
   <div id="myCarousel" class="carousel slide" data-ride="carousel">

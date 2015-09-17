@@ -18,6 +18,12 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-6 col-sm-6">
+			<% if alert %>
+		    	<center><p class="alert alert-danger"><%= alert %></p></center>
+		    <% end %>
+		    <% if flash[:notice] %>
+		    	<center><p class="alert alert-success"><%= flash[:notice] %></p></center>
+		    <% end %>
 			<div class="panel panel-default">
 				<div class="panel-heading"> <strong class=""> Student Details</strong>
 				</div>

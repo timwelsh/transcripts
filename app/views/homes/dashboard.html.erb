@@ -17,6 +17,12 @@
 
 <div class="container">
   <div class="row">
+    <% if alert %>
+      <center><p class="alert alert-danger"><%= alert %></p></center>
+    <% end %>
+    <% if flash[:notice] %>
+      <center><p class="alert alert-success"><%= flash[:notice] %></p></center>
+    <% end %>
     <%= link_to edit_user_registration_path do %>
     <div class="col-md-3 col-sm-3">
      <div class="panel panel-default">
