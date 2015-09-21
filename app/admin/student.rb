@@ -205,7 +205,7 @@ controller do
       end
     end
     gpa_points[0]=grade.inject{|sum,x| sum+x}
-    # gpa_points[0]=gpa_points[0].round(2)
+    gpa_points[0]=gpa_points[0].round(2)
     total_credits[0]=credit.inject{|sum,x| sum+x}
     gpa_credit[0]=total_credits[0]-a
     cumulative_gpa[0]=gpa_points[0]/gpa_credit[0]
