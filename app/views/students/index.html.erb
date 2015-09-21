@@ -33,22 +33,32 @@
 							</tr>
 							<% @student.each do |student|%>
 							<tr>
-								<td><%= student.first_name %> <%= student.middle_name %> <%= student.last_name %></td>
-								<td align="center" valign="middle"><%= student.dob%></td>
-								<td align="center" valign="middle">
-									<%= link_to 'Show' , school_student_path(student.school,student.id), :class=> 'btn btn-primary btn-xs'%>
-								</td>
-
-								<td align="center" valign="middle">
-										<%= link_to 'Edit' , edit_school_student_path(student.school,student.id) , :class=>'btn btn-info btn-xs glyphicon glyphicon-edit'%>
+								<td>
+									<%= student.first_name %> <%= student.middle_name %> <%= student.last_name %>
 								</td>
 								<td align="center" valign="middle">
-										<%= link_to 'Destroy' , school_student_path(student.school,student.id),method: :delete , data: {confirm: 'Are you sure'} , :class=>'btn btn-danger btn-xs glyphicon glyphicon-trash'%>
+									<%= student.dob%>
+								</td>
+								<td align="center" valign="middle">			
+									<%= link_to school_student_path(student.school,student.id),:class=>"btn btn-info btn-xs" do %>
+										<i><span class="glyphicon glyphicon-eye-open"></span></i> View
+                  					<%end%>
 								</td>
 								<td align="center" valign="middle">
-									<%= link_to ' View Pdf',view_pdf_path(student), :class=>'btn btn-success btn-xs glyphicon glyphicon-print'%> 
+									<%= link_to edit_school_student_path(student.school,student.id),:class=>"btn btn-info btn-xs" do %>
+										<i><span class="glyphicon glyphicon-edit"></span></i> Edit
+                  					<%end%>
 								</td>
-
+								<td align="center" valign="middle">
+									<%= link_to school_student_path(student.school,student.id),method: :delete , data: {confirm: ' Are you sure you want to delete student record?'} , :class=>"btn btn-danger btn-xs" do %>
+										<i><span class="glyphicon glyphicon-trash"></span></i> Delete
+                  					<%end%>
+								</td>
+								<td align="center" valign="middle">
+									<%= link_to view_pdf_path(student),:class=>"btn btn-success btn-xs" do %>
+										<i><span class="glyphicon glyphicon-print"></span></i> View Pdf
+                  					<%end%> 
+								</td>
 							</tr>
 							
 							<%end%>

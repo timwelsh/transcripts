@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   # elsif !current_user.subscription.blank?
   #   redirect_to upgrade_plans_path
   # else
-    redirect_to dashboard_homes_path
+    redirect_to dashboard_homes_path, :alert => 'No Plan has been purchased yet'
   # end
   
 #   end

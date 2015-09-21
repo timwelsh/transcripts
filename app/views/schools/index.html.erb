@@ -37,17 +37,32 @@
             <tbody>
               <tr>
                 <th width="77%" rowspan="4" align="center" valign="middle" class="schoolq6"><img class="img-responsive" src="/assets/schoolbg.png" width="698" height="213"></th>
-                <td width="23%" align="center" valign="middle"><%= link_to 'Show' ,school_path(@school.id) , class: 'btn btn-primary btn-xs schoolq1'%> </td>
-              </tr>
-              <tr>
-                <td align="center" valign="middle"><%= link_to 'Edit' ,edit_school_path(@school.id) , class: 'btn btn-info btn-xs schoolq2 glyphicon glyphicon-edit '%></td>
+                <td width="23%" align="center" valign="middle">
+                  <%= link_to school_path(@school.id),:class=>"btn btn-primary btn-xs schoolq1" do %>
+                    <i><span class="glyphicon glyphicon-eye-open"></span></i> View
+                  <%end%> 
+                </td>
               </tr>
               <tr>
                 <td align="center" valign="middle">
-                  <%= link_to 'View Student List',school_students_path(@school.id), class:'btn btn-primary btn-xs schoolq4 glyphicon glyphicon-check' %></td>
+                  <%= link_to edit_school_path(@school.id),:class=>"btn btn-info btn-xs schoolq2" do %>
+                    <i><span class="glyphicon glyphicon-edit"></span></i> Edit
+                  <%end%>
+                </td>
               </tr>
               <tr>
-                <td align="center" valign="middle"><%= link_to 'Add New Student',new_school_student_path(@school.id), class:"btn btn-success btn-xs schoolq5 glyphicon glyphicon-user" %></td>
+                <td align="center" valign="middle">
+                  <%= link_to school_students_path(@school.id),:class=>"btn btn-primary btn-xs schoolq4" do %>
+                    <i><span class="glyphicon glyphicon-check"></span></i> View Student List
+                  <%end%>
+                </td>
+              </tr>
+              <tr>
+                <td align="center" valign="middle">
+                  <%= link_to new_school_student_path(@school.id),:class=>"btn btn-success btn-xs schoolq5" do %>
+                    <i><span class="glyphicon glyphicon-user"></span></i> Add New Student
+                  <%end%>
+                </td>
               </tr>
             </tbody></table>
 

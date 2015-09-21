@@ -9,7 +9,7 @@ class Ability
         can :rud, School if user.subscription.plan_end_date > Date.today 
         can :manage, Student if user.subscription.plan_end_date > Date.today 
         can :manage, Plan if !user.blank?
-       else
+    else
         can :manage, Plan if !user.blank?
     end
 
