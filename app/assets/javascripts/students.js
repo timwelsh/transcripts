@@ -3,8 +3,7 @@ $(function (){
     dateFormat: 'mm/dd/yy',
     changeYear: true,
     changeMonth: true,
-    startDate: '01/01/1950',
-    endDate: '01/01/2050'
+    yearRange: "1950:2050"
 
   })
   .on('changeDate', function(e) {
@@ -37,11 +36,12 @@ $(document).ready(function(){
   {
     x=$("#xval").val();
   }
-  // alert(xval);
+ 
 
-  $('select#student_country').val('US');
+ 
 
-  if(document.URL.indexOf("students") > -1){
+  if(document.URL.indexOf("students/new") > -1){
+    $('select#student_country').val('US');
     $('#student_state').wrap('<div id="order_state_code_wrapper"></div>');
     $('#student_state').remove();
     select_wrapper = $('#order_state_code_wrapper');
@@ -176,7 +176,21 @@ $(document).ready(function(){
     var id=$(this).attr("id");
     $('#edu_'+id).remove();
     x--;
-  }); 
+  });
+
+  $('#student_email').blur(function(event){
+    $.getJSON('/students/checkemail', { email: $('#student_email').val() }, function(data) {
+      if(data.email=='exist'){
+        $('#email_div').parent().removeClass('has-success').addClass('has-error')
+        $('#email_div').append('<small style="display: block;" class="help-block" data-bv-validator="remote" data-bv-for="student[email]" data-bv-result="INVALID">This email is already exist</small>');
+        $("input[value='Create']").attr('disabled','disabled'); 
+        return false;
+      }
+      else{
+        $("input[value='Create']").removeAttr('disabled');  
+      }
+    });
+  });
 
   var today = new Date();
   var previousdate = new Date(today.getFullYear(), today.getMonth(), today.getDate() - 1);

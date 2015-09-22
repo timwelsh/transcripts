@@ -148,7 +148,7 @@ $(document).ready(function(){
     $('select#school_country').val('US');
     $('select#student_country').val('US');
 
-    if(document.URL.contains("users")){
+    if(document.URL.indexOf("users")){
         $('#user_state_input').append('<div id="order_state_code_wrapper"></div>');
         $('#user_state').remove();
         select_wrapper = $('#order_state_code_wrapper');
@@ -165,7 +165,7 @@ $(document).ready(function(){
         select_wrapper.load(url);
     });
 
-    if(document.URL.contains("schools")){
+    if(document.URL.indexOf("schools")){
         $('#school_state_input').append('<div id="order_state_code_wrapper"></div>');
         $('#school_state').remove();
         select_wrapper = $('#order_state_code_wrapper');
@@ -182,7 +182,7 @@ $(document).ready(function(){
     });
 
 
-    if(document.URL.contains("students")){
+    if(document.URL.indexOf("students")){
         $('#student_state').wrap('<div id="order_state_code_wrapper"></div>');
         $('#student_state').remove();
         select_wrapper = $('#order_state_code_wrapper');

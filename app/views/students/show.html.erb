@@ -43,6 +43,8 @@
 						<tr>
 							<th class="showdt1">State</th>
 							<td>
+								<% @subregions = @country.subregions %>
+                    			<% @state = @subregions.coded(@student.state) %>
 								<%if @state.blank?%>
 									<%= @student.state%>				
 								<%else%>

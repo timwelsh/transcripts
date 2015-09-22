@@ -81,7 +81,7 @@
             <div class="form-group required">
               <%= f.label :country,:class=>"col-sm-3 control-label rigys1" %>
               <div class="col-sm-9">
-                <%= f.country_select :country, {priority: %w(US CA), prompt: 'Please select a country'},:class=>"form-control"  %>
+                <%= f.select :country, region_options_for_select(only_us_and_canada),{},:class=>"form-control" %>
               </div>
               <span class="inline-errors">
                 <%=@school.errors[:country].join(",") %> 
