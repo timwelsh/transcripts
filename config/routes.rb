@@ -43,6 +43,7 @@ get '/students/subregion_options' => 'students#subregion_options'
   end
   get '/students/:id/view_pdf', to: 'students#view_pdf', as: :view_pdf
   get '/students/checkemail', to: 'students#checkemail', as: :checkemail
+  get '/schools/checkemail', to: 'students#checkemail', as: :checkemail_school
   get 'schools/user_detail_copy'
   get 'schools/school_detail_copy'
   

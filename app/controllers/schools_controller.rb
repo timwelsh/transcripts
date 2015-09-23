@@ -7,6 +7,13 @@ class SchoolsController < ApplicationController
 	def new
 		@school = School.new
 	end
+    def checkemail
+        if School.where('email = ?', params[:email]).count == 0
+            render json: {:email=>'not exist'}
+        else
+            render json: {:email=>'exist'}
+        end
+    end
 	def create
 		if !current_user.school
 			@school = School.new(school_params)
