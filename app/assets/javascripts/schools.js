@@ -30,9 +30,13 @@ $(document).ready(function(){
         //return false;
       }
       else{
+        $( "#smallError" ).remove();
         $("input[value='Create']").removeAttr('disabled');  
       }
     });
+  });
+  $('#school_email').focusin(function(){
+    $( "#smallError" ).remove();
   });
 
 
