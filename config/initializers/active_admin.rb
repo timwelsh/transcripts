@@ -7,6 +7,7 @@ ActiveAdmin.setup do |config|
   STATUS = [["Active",1], ["Deactive",0]]
   config.site_title = "Educational Record"
   TERM = [["Quarter",'Quarter'], ["Semester",'Semester']]
+  COUNTRY = [["United States",'US'], ["Canada",'CA']]
   SCALE = [["7",7], ["10",10]]
   config.site_title = "Educational Record"
   config.register_javascript 'ckeditor/init.js'

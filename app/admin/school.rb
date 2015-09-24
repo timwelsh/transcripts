@@ -38,7 +38,7 @@ ActiveAdmin.register School do
       f.input :address1, :label => "Address Line 1"
       f.input :address2, :label => "Address Line 2"
       f.input :address3, :label => "Address Line 3"
-      f.input :country
+      f.input :country, :as => :select, :collection=> COUNTRY,include_blank: false,allow_blank: false
       f.input :state
       f.input :city
       f.input :zip

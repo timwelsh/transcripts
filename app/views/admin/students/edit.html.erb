@@ -61,7 +61,7 @@
 
         <li class="string input optional stringish">
           <%= f.label :country %> 
-          <%= f.country_select :country, {priority: %w(US CA), prompt: 'Please select a country'} %>
+          <%= f.select :country, region_options_for_select(only_us_and_canada,@student.country),{},:class=>"form-control" %>
         </li>
 
 

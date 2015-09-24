@@ -122,7 +122,7 @@ $(document).ready(function(){
             '</div>'); 
 
 
-});
+    });
 
     $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
         // e.preventDefault(); 
@@ -144,17 +144,30 @@ $(document).ready(function(){
         var f = e.replace('and', '').trim(); 
         $('#student_email_input p').html(f);  
     }
-    $('select#user_country').val('US');
-    $('select#school_country').val('US');
-    $('select#student_country').val('US');
+   
+    
+    
 
-    if(document.URL.indexOf("users")){
+    if(document.URL.indexOf("users/new") > -1){
+        $('select#user_country').val('US');
         $('#user_state_input').append('<div id="order_state_code_wrapper"></div>');
         $('#user_state').remove();
         select_wrapper = $('#order_state_code_wrapper');
         $('select', select_wrapper).attr('disabled', true);
         url = "/user/registrations/subregion_options?parent_region=US";
         select_wrapper.load(url);
+    }
+    else{
+        user_state = $('#user_state').val();
+        $('#user_state_input').append('<div id="order_state_code_wrapper"></div>');
+        $('#user_state').remove();
+        select_wrapper = $('#order_state_code_wrapper');
+        $('select', select_wrapper).attr('disabled', true);
+        country_code = $('select#user_country').val();
+        url = "/user/registrations/subregion_options?parent_region="+country_code;
+        select_wrapper.load(url,function(){
+            $('select#user_state').val(user_state);
+        });
     }
     
     $('select#user_country').change(function(){
@@ -165,7 +178,8 @@ $(document).ready(function(){
         select_wrapper.load(url);
     });
 
-    if(document.URL.indexOf("schools")){
+    if(document.URL.indexOf("schools/new") > -1){
+        $('select#school_country').val('US');
         $('#school_state_input').append('<div id="order_state_code_wrapper"></div>');
         $('#school_state').remove();
         select_wrapper = $('#order_state_code_wrapper');
@@ -173,6 +187,19 @@ $(document).ready(function(){
         url = "/schools/subregion_options?parent_region=US";
         select_wrapper.load(url);
     }
+    else{
+        school_state = $('#school_state').val();
+        $('#school_state_input').append('<div id="order_state_code_wrapper"></div>');
+        $('#school_state').remove();
+        select_wrapper = $('#order_state_code_wrapper');
+        $('select', select_wrapper).attr('disabled', true);
+        country_code = $('select#school_country').val();
+        url = "/schools/subregion_options?parent_region="+country_code;
+        select_wrapper.load(url,function(){
+            $('select#school_state').val(school_state);
+        });
+    }
+
     $('select#school_country').change(function(){
         select_wrapper = $('#order_state_code_wrapper');
         $('select', select_wrapper).attr('disabled', true);
@@ -182,13 +209,26 @@ $(document).ready(function(){
     });
 
 
-    if(document.URL.indexOf("students")){
+    if(document.URL.indexOf("students/new") > -1){
+        $('select#student_country').val('US');
         $('#student_state').wrap('<div id="order_state_code_wrapper"></div>');
         $('#student_state').remove();
         select_wrapper = $('#order_state_code_wrapper');
         $('select', select_wrapper).attr('disabled', true);
         url = "/students/subregion_options?parent_region=US";
         select_wrapper.load(url);
+    }
+    else{
+        student_state = $('#student_state').val();
+        $('#student_state').wrap('<div id="order_state_code_wrapper"></div>');
+        $('#student_state').remove();
+        select_wrapper = $('#order_state_code_wrapper');
+        $('select', select_wrapper).attr('disabled', true);
+        country_code = $('select#student_country').val();
+        url = "/students/subregion_options?parent_region="+country_code;
+        select_wrapper.load(url,function(){
+            $('select#student_state').val(student_state);
+        });
     }
     $('select#student_country').change(function(){
         select_wrapper = $('#order_state_code_wrapper');
@@ -202,114 +242,105 @@ $(document).ready(function(){
     if(document.referrer.contains("user_id")){
       var id = document.referrer.split('user_id=')[1]
       $('select#school_user_id').val(id);
-  }
+    }
 
-  if(document.referrer.contains("school_id")){
-    var id = document.referrer.split('school_id=')[1]
-    $('select#student_school_id').val(id);
-}
+    if(document.referrer.contains("school_id")){
+        var id = document.referrer.split('school_id=')[1]
+        $('select#student_school_id').val(id);
+    }
 
-$('body.show.admin_students #page_title').html("Student Detail");
-$('body.new.admin_students #page_title').html("Add Student Detail");
+    $('body.show.admin_students #page_title').html("Student Detail");
+    $('body.new.admin_students #page_title').html("Add Student Detail");
 
 
 
-$('#student_submit_action').click(function(event){
-    var flag = true;
-    var first_name = $("#student_first_name").val();
-    var last_name = $("#student_last_name").val();
-    var zip = $("#student_zip").val();
-    var phone = $("#student_phone").val();
-    var dob= $("#student_dob").val();
-    var enroll_date=$("#student_enroll_date").val();
-    var grad_date=$("#student_graduation_date").val();
-    if (first_name==''){
-        $('#first_name_error').html('First name can not be blank');
-        flag=false; 
+    $('#student_submit_action').click(function(event){
+        var flag = true;
+        var first_name = $("#student_first_name").val();
+        var last_name = $("#student_last_name").val();
+        var zip = $("#student_zip").val();
+        var phone = $("#student_phone").val();
+        var dob= $("#student_dob").val();
+        var enroll_date=$("#student_enroll_date").val();
+        var grad_date=$("#student_graduation_date").val();
+        if (first_name==''){
+            $('#first_name_error').html('First name can not be blank');
+            flag=false; 
+            
+        }
+        else{
+             $('#first_name_error').html('');
+        }
+
+         if(last_name==''){
+            $('#last_name_error').html('Last name can not be blank');
+            flag=false; 
+            
+        }
+        else{
+             $('#last_name_error').html('');
+        }
+
+        if(dob==''){
+            $('#student_dob_error').html('dob can not be blank');
+            flag =false;
+        }
+        else{
+             $('#student_dob_error').html('');
+        }
+
         
-    }
-    else{
-         $('#first_name_error').html('');
-    }
+        if(!$.isNumeric(zip) || zip.length!=5){
+            $('#zip_error').html('Zip code should be integer and length should be 5 character');
+            flag=false;
 
-     if(last_name==''){
-        $('#last_name_error').html('Last name can not be blank');
-        flag=false; 
-        
-    }
-    else{
-         $('#last_name_error').html('');
-    }
+        }
+        else{
+            $('#zip_error').html('');
+        }
 
-    if(dob==''){
-        $('#student_dob_error').html('dob can not be blank');
-        flag =false;
-    }
-    else{
-         $('#student_dob_error').html('');
-    }
-
-    
-    if(!$.isNumeric(zip) || zip.length!=5){
-        $('#zip_error').html('Zip code should be integer and length should be 5 character');
-        flag=false;
-
-    }
-    else{
-        $('#zip_error').html('');
-    }
-
-     if(!$.isNumeric(phone) || phone.length!=10){
+        if(!$.isNumeric(phone) || phone.length!=10){
             $('#phone_error').html('Length should be integer and 10 numbers');
           
             flag=false;
-       }
-       else{
-        $('#phone_error').html('');
-
-       }
-
-
-
-     if(enroll_date==''){
-        $('#student_enroll_date_error').html('enroll_date can not be blank');
-        flag =false;
-    }
-
-    else{
-         $('#student_enroll_date_error').html('');
-
-    }
-if(grad_date==''){
-        $('#student_graduation_date_error').html('graduation date can not be blank');
-        flag =false;
-    }
-    else{
-         $('#student_graduation_date_error').html('');
-    }
-    
-
-    return flag;
-    event.preventDefault();
-});
-
-$('#student_email').blur(function(event){
-
-     $.getJSON('/students/checkemail', { email: $('#student_email').val() }, function(data) {
-        $('#student_email').addClass("error");
-        if(data.email=='exist'){
-             $('#student_email_error').html('Please use different Email');
-             return false;
         }
         else{
-             $('#student_email_error').html('');
+            $('#phone_error').html('');
+
+        }
+        if(enroll_date==''){
+            $('#student_enroll_date_error').html('enroll_date can not be blank');
+            flag =false;
         }
 
-      });
+        else{
+            $('#student_enroll_date_error').html('');
 
-});
+        }
+        if(grad_date==''){
+            $('#student_graduation_date_error').html('graduation date can not be blank');
+            flag =false;
+        }
+        else{
+            $('#student_graduation_date_error').html('');
+        }
+    
+        return flag;
+        event.preventDefault();
+    });
 
-
+    $('#student_email').blur(function(event){
+        $.getJSON('/students/checkemail', { email: $('#student_email').val() }, function(data) {
+            $('#student_email').addClass("error");
+            if(data.email=='exist'){
+                $('#student_email_error').html('Please use different Email');
+                return false;
+            }
+            else{
+                $('#student_email_error').html('');
+            }
+        });
+    });
 });
 
 function printpage()

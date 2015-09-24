@@ -38,10 +38,11 @@
                 <%= f.label :first_name,:class=>"col-sm-12 control-label adnwstdnt" %>
                 <div class="col-sm-12">
                   <%= f.text_field :first_name, autocomplete: "off",:class=>"form-control",:required => true %>
+                  <span class="inline-errors-student">
+                    <%=@student.errors[:first_name].join(",") %> 
+                  </span> 
                 </div>
-                <span class="inline-errors">
-                  <%=@student.errors[:first_name].join(",") %> 
-                </span>
+                
               </div>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
@@ -49,10 +50,11 @@
                 <%= f.label :middle_name,:class=>"col-sm-12 adnwstdnt" %>
                 <div class="col-sm-12">
                   <%= f.text_field :middle_name, autocomplete: "off",:class=>"form-control"%>
+                  <span class="inline-errors-student">
+                    <%=@student.errors[:middle_name].join(",") %> 
+                  </span>
                 </div>
-                <span class="inline-errors">
-                  <%=@student.errors[:middle_name].join(",") %> 
-                </span>
+                
               </div>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
@@ -60,10 +62,11 @@
                 <%= f.label :last_name,:class=>"col-sm-12 control-label adnwstdnt" %>
                 <div class="col-sm-12">
                   <%= f.text_field :last_name, autocomplete: "off",:class=>"form-control",:required => true %>
+                  <span class="inline-errors-student">
+                    <%=@student.errors[:last_name].join(",") %> 
+                  </span>
                 </div>
-                <span class="inline-errors">
-                  <%=@student.errors[:last_name].join(",") %> 
-                </span>
+                
               </div>
             </div>
           </div>
@@ -76,10 +79,11 @@
                   <!-- <span class="input-group-addon">
                     <span class="glyphicon glyphicon-calendar"></span>
                   </span> -->
+                  <span class="inline-errors-student">
+                    <%=@student.errors[:dob].join(",") %> 
+                  </span>
                 </div>
-                <span class="inline-errors">
-                  <%=@student.errors[:dob].join(",") %> 
-                </span>
+                
               </div>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -87,10 +91,11 @@
                 <%= f.label :address_line_1,:class=>"col-sm-6 adnwstdnt" %> 
                 <div class="col-sm-12">
                   <%= f.text_field :address1, autocomplete: "off",:class=>"form-control" %>
+                  <span class="inline-errors-student">
+                    <%=@student.errors[:address1].join(",") %> 
+                  </span>
                 </div>
-                <span class="inline-errors">
-                  <%=@student.errors[:address1].join(",") %> 
-                </span>
+                
               </div>
             </div>
           </div>
@@ -100,10 +105,11 @@
                 <%= f.label :address_line_2,:class=>"col-sm-6 adnwstdnt" %> 
                 <div class="col-sm-12">
                   <%= f.text_field :address2, autocomplete: "off",:class=>"form-control" %>
+                  <span class="inline-errors-student">
+                    <%=@student.errors[:address2].join(",") %> 
+                  </span>
                 </div>
-                <span class="inline-errors">
-                  <%=@student.errors[:address2].join(",") %> 
-                </span>
+                
               </div>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -111,10 +117,11 @@
                 <%= f.label :address_line_3,:class=>"col-sm-6 adnwstdnt" %> 
                 <div class="col-sm-12">
                   <%= f.text_field :address3, autocomplete: "off",:class=>"form-control" %>
+                  <span class="inline-errors-student">
+                    <%=@student.errors[:address3].join(",") %> 
+                  </span>
                 </div>
-                <span class="inline-errors">
-                  <%=@student.errors[:address3].join(",") %> 
-                </span>
+                
               </div>
             </div>
           </div>
@@ -124,10 +131,11 @@
                 <%= f.label :country,:class=>"col-sm-6 control-label adnwstdnt" %>
                 <div class="col-sm-12">
                   <%= f.select :country, region_options_for_select(only_us_and_canada),{},:class=>"form-control" %>
+                  <span class="inline-errors-student">
+                    <%=@student.errors[:country].join(",") %> 
+                  </span>
                 </div>
-                <span class="inline-errors">
-                  <%=@student.errors[:country].join(",") %> 
-                </span>
+                
               </div>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -135,10 +143,11 @@
                 <%= f.label :state, :class=>"col-sm-6 adnwstdnt" %>
                 <div class="col-sm-12">
                   <%= render partial: 'students/subregion_select', locals: {parent_region: f.object.country},:class=>"form-control" %>
+                  <span class="inline-errors-student">
+                    <%=@student.errors[:state].join(",") %> 
+                  </span>
                 </div>
-                <span class="inline-errors">
-                  <%=@student.errors[:state].join(",") %> 
-                </span>
+                
               </div>
             </div>
           </div>
@@ -148,10 +157,11 @@
                 <%= f.label :city,:class=>"col-sm-6 adnwstdnt" %>
                 <div class="col-sm-12">
                   <%= f.text_field :city, autocomplete: "off",:class=>"form-control"  %>
+                  <span class="inline-errors-student">
+                    <%=@student.errors[:city].join(",") %> 
+                  </span>
                 </div>
-                <span class="inline-errors">
-                  <%=@student.errors[:city].join(",") %> 
-                </span>
+                
               </div>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -159,10 +169,11 @@
                 <%= f.label :zip,:class=>"col-sm-6 adnwstdnt" %>
                 <div class="col-sm-12">
                   <%= f.text_field :zip, autocomplete: "off",:class=>"form-control" %>
+                  <span class="inline-errors-student">
+                    <%=@student.errors[:zip].join(",") %> 
+                  </span>
                 </div>
-                <span class="inline-errors">
-                  <%=@student.errors[:zip].join(",") %> 
-                </span>
+               
               </div>
             </div>
           </div>
@@ -172,10 +183,11 @@
                 <%= f.label :primary_phone, :class=>"col-sm-6 adnwstdnt"%>
                 <div class="col-sm-12">
                   <%= f.text_field :phone, autocomplete: "off",:class=>"form-control" %>
+                  <span class="inline-errors-student">
+                    <%=@student.errors[:phone].join(",") %> 
+                  </span>
                 </div>
-                <span class="inline-errors">
-                  <%=@student.errors[:phone].join(",") %> 
-                </span>
+                
               </div>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -183,10 +195,11 @@
                 <%= f.label :email, :class=>"col-sm-6 control-label adnwstdnt" %>
                 <div class="col-sm-12" id="email_div">
                   <%= f.text_field :email,:class=>"form-control",:required => true %> 
+                  <span class="inline-errors-student">
+                    <%=@student.errors[:email].join(",") %> 
+                  </span>
                 </div>
-                <span class="inline-errors">
-                  <%=@student.errors[:email].join(",") %> 
-                </span>
+                
               </div>
             </div>
           </div>
@@ -199,24 +212,26 @@
                     <!-- <span class="input-group-addon">
                       <span class="glyphicon glyphicon-calendar"></span>
                     </span> -->
+                  <span class="inline-errors-student">
+                    <%=@student.errors[:enroll_date].join(",") %> 
+                  </span>
                 </div>
-                <span class="inline-errors">
-                  <%=@student.errors[:enroll_date].join(",") %> 
-                </span>
+                
               </div>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
               <div class="form-group required">
                 <%= f.label :graduation_date, :class=>"col-sm-7 control-label adnwstdnt" %>
                 <div class="col-sm-12">
-                    <%= f.text_field :graduation_date,  :class=>"form-control" %>
+                  <%= f.text_field :graduation_date,  :class=>"form-control" %>
                     <!-- <span class="input-group-addon">
                       <span class="glyphicon glyphicon-calendar"></span>
                     </span> -->
+                  <span class="inline-errors-student">
+                    <%=@student.errors[:graduation_date].join(",") %> 
+                  </span>
                 </div>
-                <span class="inline-errors">
-                  <%=@student.errors[:graduation_date].join(",") %> 
-                </span>
+
               </div>
             </div>
           </div>
