@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  require 'date'
   attr_accessor :current_password
 
   validates :email, presence: true, :format=> { with: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\w{2,3})+$/,multiline: true}
@@ -13,6 +14,7 @@ class User < ActiveRecord::Base
   
   after_create :subscribe_user_to_mailing_list
   after_create :send_email_to_user
+  after_create :add_trial_plan
   private
   def subscribe_user_to_mailing_list
   	#SubscribeUserToMailingListJob.perform_later(self)
@@ -21,5 +23,10 @@ class User < ActiveRecord::Base
     @user = self.first_name
     @email= self.email
     UserMailer.success_email(@email,@user).deliver
+  end
+  def add_trial_plan
+    plan_end_date=Date.current+29.days
+    @subscription = Subscription.new(plan_end_date:plan_end_date,user_id:self.id,status:false)
+    @subscription.save
   end
 end
