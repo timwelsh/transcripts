@@ -29,7 +29,7 @@
           <strong class="">Create New School</strong>
         </div>
         <div class="panel-body">
-          <div class="form-group">
+          <div class="form-group tplgin2">
             <input type= checkbox , class = 'submittable'> Copy user details
           </div>
           <%= form_for @school do|f|%>
@@ -136,7 +136,7 @@
             <div class="form-group">
               <%= f.label :academic_term,:class=>"col-sm-3 control-label rigys1" %>
               <div class="col-sm-6">
-                <%= f.select :academic_term, [["semester", "semester"], ["quarter","quarter"]],{},{:class=>"form-control"} %>
+                <%= f.select :academic_term, [["Semester", "semester"], ["Quarter","quarter"]],{},{:class=>"form-control"} %>
               </div>
               <span class="inline-errors">
                 <%=@school.errors[:academic_term].join(",") %> 

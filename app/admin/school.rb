@@ -51,6 +51,11 @@ ActiveAdmin.register School do
   end
 
   show :title => :school_name do
+    @school_country = Carmen::Country.coded(resource[:country])
+    @subregions = @school_country.subregions
+    @school_state = @subregions.coded(resource[:state])
+    resource[:country]=@school_country
+    resource[:state]=@school_state
     attributes_table do
       row :school_name
       row :admin_name

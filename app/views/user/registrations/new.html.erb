@@ -59,7 +59,7 @@
             <label for="phone" class="col-sm-3 control-label rigys1">Phone</label>
             <div class="col-sm-9">
               <!-- <input class="form-control" id="inputEmail3" placeholder="Phone" required type="Phone"> -->
-              <%= f.number_field :phone, :class=>"form-control",placeholder: "Phone" %>
+              <%= f.text_field :phone, :class=>"form-control",placeholder: "Phone" %>
             </div>
             <span class="inline-errors">
               <%=@user.errors[:phone].join(",") %> 

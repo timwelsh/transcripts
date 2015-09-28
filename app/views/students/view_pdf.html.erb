@@ -13,9 +13,24 @@
     .footer1 * { display:none ; }
     .container * { display:none ; }
     .container-fluid * { display:none ; }
+    .mini-title-head-bar * { display:none ; }
 }
 </style>
-<br>
+
+<div class="mini-title-head-bar logiq1">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <ol class="greybeadcrub">
+          <ul class="greybeadcrub">
+            <li><%= link_to 'Home',root_path %></li>
+            <li class="active">View Pdf</li>
+          </ul>                    
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="wraper">
     <div>
         <div class="lft-side">
@@ -215,8 +230,25 @@
         </div>
     </div>
 </div>
-
-<div id="pdf_link">
-    <%= link_to "Download(PDF)",view_pdf_path(@student, :format => "pdf") %>
-    <%= link_to "PRINT", '#', onclick: "printpage('.wraper')" %>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 tplgin5">
+            
+        <%= link_to view_pdf_path(@student, :format => "pdf"),:class=>"btn btn-info btn-xs" do %>
+            <i><span class="glyphicon glyphicon-download-alt"></span></i> Download Pdf
+        <%end%>
+        <%= link_to '#',onclick: "printpage('.wraper')",:class=>"btn btn-success btn-xs" do %>
+            <i><span class="glyphicon glyphicon-print"></span></i> Print
+        <%end%>
+        </div>
+    </div>
 </div>
+
+
+
+
+
+
+
+
+

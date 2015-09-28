@@ -3,7 +3,7 @@ $(function (){
     dateFormat: 'mm/dd/yy',
     changeYear: true,
     changeMonth: true,
-    yearRange: "1950:2050"
+    yearRange: "1950:2015"
 
   })
   .on('changeDate', function(e) {

@@ -32,7 +32,12 @@ ActiveAdmin.register User do
 
   show do
     if resource[:status]=='1' ? resource[:status]="Active" : resource[:status] ="Deactive"
-    end 
+    end
+    @school_country = Carmen::Country.coded(resource[:country])
+    @subregions = @school_country.subregions
+    @school_state = @subregions.coded(resource[:state])
+    resource[:country]=@school_country
+    resource[:state]=@school_state
     attributes_table do
       row :email
       row :first_name

@@ -2,7 +2,12 @@ class SchoolsController < ApplicationController
 	before_filter :authenticate_user!,except:[:subregion_options]
 	load_and_authorize_resource except: [:user_detail_copy,:school_detail_copy , :subregion_options]
 	def index
-		@school = current_user.school
+        if current_user.school.blank?
+            flash[:notice]= "No School has been created yet"
+            redirect_to new_school_path
+        else
+		  @school = current_user.school
+        end
 	end 
 	def new
 		@school = School.new

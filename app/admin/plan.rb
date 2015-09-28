@@ -21,6 +21,12 @@ ActiveAdmin.register Plan do
       
     end      
   end
+
+  filter :name
+  filter :amount
+  filter :description
+  filter :subscription_period
+
   form do |f|
     f.inputs "Plan Details" do
       f.input :name

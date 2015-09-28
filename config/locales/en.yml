@@ -47,7 +47,12 @@ en:
             last_name:
               blank: "Last name can't be blank"  
             dob:
-              blank: "Dob can't be blank" 
+              blank: "Dob can't be blank"
+        plan:
+          attributes:
+            name:
+              taken: "Please use a different Plan name"
+              blank: ""
   flash:
     actions:
       create: {notice: "%{resource_name} has been created successfully."}
