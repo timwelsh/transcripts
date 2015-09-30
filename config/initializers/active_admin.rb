@@ -9,7 +9,6 @@ ActiveAdmin.setup do |config|
   TERM = [["Quarter",'Quarter'], ["Semester",'Semester']]
   COUNTRY = [["United States",'US'], ["Canada",'CA']]
   SCALE = [["7",7], ["10",10]]
-  config.site_title = "Educational Record"
   config.register_javascript 'ckeditor/init.js'
   config.register_javascript 'ckeditor/ckeditor.js' 
   config.comments = false

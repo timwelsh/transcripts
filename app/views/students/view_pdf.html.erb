@@ -56,19 +56,21 @@
                     <span class="st-info">School of Record</span><br />
                     <%=@school.school_name%><br>
                     Sample Parent<br>
-                    <%=@school.address1%> , <%=@school.address2%> , <%=@school.address3%><br>
+                    <%=@school.address1%> <%=@school.address2%> <%=@school.address3%><br>
                     <%@school_country = Carmen::Country.coded(@school.country)%>
                     <% @subregions = @school_country.subregions %>
                     <% @school_state = @subregions.coded(@school.state) %>
                     <%if @school_state.blank?%>
-                    <%= @school.state%>             
+                    <%= @school.state%>,             
                     <%else%>
-                    <%=@school_state.name%>
+                    <%=@school_state.name%>,
+                    <%end%><%=@school_country%>, <%=@student.zip%><br>
+                    <%if !@school.phone.blank?%>
+                        <%=@school.phone%><br>
                     <%end%>
-
-                    <%=@school.state%> , <%=@school_country%> , <%=@student.zip%><br>
-                    <%=@school.phone%><br>
-                    <%=@school.email%><br>
+                    <%if !@school.email.blank?%>
+                        <%=@school.email%><br>
+                    <%end%>
 
                 </div>
             </div>
@@ -78,18 +80,22 @@
                     <span class="st-info">Student Information</span><br />
                     <%=@student.first_name%> <%=@student.middle_name%> <%=@student.last_name%><br>
                     Date of Birth: <%=@student.dob%><br>
-                    <%=@student.address1%> , <%=@student.address2%> , <%=@student.address3%><br>
+                    <%=@student.address1%> <%=@student.address2%> <%=@student.address3%><br>
                     <%@country = Carmen::Country.coded(@student.country)%>
                     <% @subregions = @country.subregions %>
                     <% @state = @subregions.coded(@student.state) %>
                     <%if @state.blank?%>
-                    <%= @student.state%>                
+                    <%= @student.state%>,
                     <%else%>
-                    <%=@state.name%>
+                    <%=@state.name%>,
                     <%end%>
-                    , <%=@country%> , <%=@student.zip%><br>
-                    <%=@student.phone%><br>
-                    <%=@student.email%><br>
+                    <%=@country%>, <%=@student.zip%><br>
+                    <%if !@student.phone.blank?%>
+                        <%=@student.phone%><br>
+                    <%end%>
+                    <%if !@student.email.blank?%>
+                        <%=@student.email%><br>
+                    <%end%>
 
                 </div>
 

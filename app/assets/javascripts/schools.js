@@ -191,6 +191,10 @@ $(document).ready(function(){
           stringLength: {
               message: 'Phone Number should be less than 15 characters',
               max: 15
+          },
+          phone: {
+              country: 'US',
+              message: 'The value is not valid %s phone number'
           }
         }
       }
@@ -278,6 +282,10 @@ $(document).ready(function(){
             stringLength: {
                 message: 'Phone Number should be less than 15 characters',
                 max: 15
+            },
+            phone: {
+                country: 'US',
+                message: 'The value is not valid %s phone number'
             }
           }
         },

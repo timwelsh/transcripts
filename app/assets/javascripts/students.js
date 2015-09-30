@@ -263,7 +263,7 @@ $(document).ready(function(){
             format: 'MM/DD/YYYY',
             min: 'student[dob]',
             max: DOBMaxDate,
-            message: 'Enrollment date must be greater than Date of Birth'
+            message: 'Enrollment date must be greater than Date of Birth and less than Current date'
           }
         }
       },
@@ -276,7 +276,6 @@ $(document).ready(function(){
           date: {
             format: 'MM/DD/YYYY',
             min: 'student[enroll_date]',
-            max: DOBMaxDate,
             message: 'Graduation date must be greater than Enrollment date'
           }
         }
@@ -293,6 +292,10 @@ $(document).ready(function(){
           stringLength: {
             message: 'Phone Number should be less than 15 characters',
             max: 15
+          },
+          phone: {
+              country: 'US',
+              message: 'The value is not valid %s phone number'
           }
         }
       },
@@ -373,7 +376,7 @@ $(document).ready(function(){
             format: 'MM/DD/YYYY',
             min: 'student[dob]',
             max: DOBMaxDate,
-            message: 'Enrollment date must be greater than Date of Birth'
+            message: 'Enrollment date must be greater than Date of Birth and less than Current date'
           }
         }
       },
@@ -386,7 +389,6 @@ $(document).ready(function(){
           date: {
             format: 'MM/DD/YYYY',
             min: 'student[enroll_date]',
-            max: DOBMaxDate,
             message: 'Graduation date must be greater than Enrollment date'
           }
         }
@@ -403,6 +405,10 @@ $(document).ready(function(){
           stringLength: {
             message: 'Phone Number should be less than 15 characters',
             max: 15
+          },
+          phone: {
+              country: 'US',
+              message: 'The value is not valid %s phone number'
           }
         }
       },
