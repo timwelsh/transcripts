@@ -122,7 +122,8 @@
 
                 <%end%>   
                 <div class="lite_section">
-                    <div class="study-last">GPA = <%=@student.cumulative_gpa[0]%> </div>
+                <%@student.cumulative_gpa[0]=="NaN" ? @cum=0 : @cum=@student.cumulative_gpa[0] %>
+                    <div class="study-last">GPA = <%= @cum %> </div>
                     <div class="credite-a cr-left"><%=@student.total_credit[0]%></div>
                 </div>
 
@@ -149,7 +150,7 @@
                     <div class="cum-gpa bd-gray ">Cum. GPA</div>
                     <%#@student.subject.length.times do|academic|%>
                     <div class="nineth bd-gray ">
-                        <%=@student.cumulative_gpa[0]%>
+                        <%=@cum%>
                     </div>
                     <%#end%>
                 </div>
@@ -228,7 +229,7 @@
 
                     </div>
                     <div class="gpa bd-gray ">
-                        <%=@student.cumulative_gpa[0]%>
+                        <%=@cum%>
 
                     </div>   
                 </div>

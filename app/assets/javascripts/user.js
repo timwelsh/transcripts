@@ -5,6 +5,15 @@ $(document).ready(function() {
     //     url = "/user/registrations/subregion_options?parent_region=US";
     //     select_wrapper.load(url);
     // }
+
+    if($('#em').length > 0){
+        $('select#user_country').val('US');
+        select_wrapper = $('#order_state_code_wrapper');
+        $('select', select_wrapper).attr('disabled', true);
+        country_code = $(this).val();
+        url = "/user/registrations/subregion_options?parent_region=US";
+        select_wrapper.load(url);
+    }
     $('#new_user').bootstrapValidator({
         framework: 'bootstrap',
         fields: {

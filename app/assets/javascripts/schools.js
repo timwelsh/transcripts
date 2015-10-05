@@ -75,7 +75,7 @@ $(document).ready(function(){
             $('#'+id_name+'_state').val(data.state);
           });
           $('#'+id_name+'_phone').val(data.phone);
-          $('#'+id_name+'_email').val(data.email)
+          $('#'+id_name+'_email').val(data.email).focus();
         },
         error: function(){
           console.log("Some error occur..");
