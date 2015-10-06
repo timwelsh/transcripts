@@ -1,6 +1,14 @@
 $(document).ready(function(){
 
   
+  if($('#emschool').length > 0){
+    $('select#school_country').val('US');
+    select_wrapper = $('#order_state_code_wrapper');
+    $('select', select_wrapper).attr('disabled', true);
+    country_code = $(this).val();
+    url = "/schools/subregion_options?parent_region=US";
+    select_wrapper.load(url);
+  }
   if(document.URL.indexOf("schools/new") > -1){
     $('select#school_country').val('US');
     $('#school_state_input').append('<div id="order_state_code_wrapper"></div>');
