@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   require 'date'
   attr_accessor :current_password
 
-  validates :email, presence: true, :format=> { with: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\w{2,3})+$/,multiline: true}
+  validates :email, presence: true
  #validates :password, length: { in: 8..12 }
   validates :first_name,:last_name,:presence => true,length: { maximum: 50 }
   #validates :zip,numericality: { only_integer: true ,message:"Zip code should be numeric"},length: { is: 5 ,message: "Zip code length should be 5"}

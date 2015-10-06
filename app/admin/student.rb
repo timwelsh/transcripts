@@ -48,6 +48,7 @@ controller do
     end
 
   def create
+
     grade=[]
     credit=[]
     gpa_points=[]
@@ -138,6 +139,7 @@ controller do
   end
 
   def update
+   
       grade=[]
     credit=[]
     gpa_points=[]
@@ -187,6 +189,7 @@ controller do
           grade[val] = 0
           credit[val] = academic_params[:credits][val].to_f
         when 'CR'    #compare to 2
+
           grade[val] = 0
           credit[val] = academic_params[:credits][val].to_f
           a=academic_params[:credits][val].to_f+a
