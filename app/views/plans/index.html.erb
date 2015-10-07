@@ -37,7 +37,7 @@
 	        </tr>
 	        <tr>
 	          <td colspan="2" align="center" class="rptrq6"><div class="dashy3">Plan Subscription Date: <br>
-	            <span class="dashy4"><%= current_user.subscription.created_at.strftime("%m-%d-%Y") %></span></div>
+	            <span class="dashy4"><%= current_user.subscription.updated_at.strftime("%m-%d-%Y") %></span></div>
 	          </td>
 	        </tr>
 	        <% @subs_plan_name=='Trial' ? @renewaldate = "Trial Expire Date: " : @renewaldate = "Auto Renewal Date: "%>
