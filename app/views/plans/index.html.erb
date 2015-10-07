@@ -58,6 +58,7 @@
 	<input type="hidden" name="amount" value="<%= plan.amount%>">
 	<input type="hidden" name="subscription_period" value="<%= plan.subscription_period%>">
 	<input type="hidden" name="plan_id" value="<%= plan.id%>">
+	<input type="hidden" id="subs_plan_id" value="<%= @subs_plan_id%>">
 	<% plan.subscription_period==12 ? @period='Yearly': @period='Lifetime'%> 
 	<div class="col-sm-4">
 		<div class="panel panel-primary">
@@ -72,7 +73,7 @@
 					<span class="prycpln">USD <%= (plan.amount.to_i)/100 %></span>
 				</div>
 				<div class="panel-heading">
-					<div class="rptrq4">
+					<div class="rptrq4" id="stripe_<%=plan.id%>">
 						<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
 						data-key="pk_test_jMUKzHL4kwf1KFpFhTVA8QFu"
 						data-description="<%= plan.name%>"

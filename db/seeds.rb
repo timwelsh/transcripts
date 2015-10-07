@@ -5,5 +5,16 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-Plan.create!(name: 'Annual - Auto Renew', amount: "1900" , description: "Annual Plan and Auto Renew on yearly basis", subscription_period: 12)
-Plan.create!(name: 'Annual Lifetime', amount: "9900" , description: "Annual Plan and lifetime membership", subscription_period: 360)
+
+
+
+# 	Plan.destroy_all
+# 	ActiveRecord::Base.connection.execute("TRUNCATE plans RESTART IDENTITY cascade")
+
+if Plan.all.first.nil?
+	Plan.create!(name: 'Annual - Auto Renew', amount: "1900" , description: "Annual Plan and Auto Renew on yearly basis", subscription_period: 12)
+	Plan.create!(name: 'Annual Lifetime', amount: "9900" , description: "Annual Plan and lifetime membership", subscription_period: 360)
+else
+	Plan.find(1).update_attributes!(:description => 'Annual Plan with Auto Renew on yearly basis')
+	Plan.find(2).update_attributes!(:description => 'Annual Plan with lifetime membership')
+end

@@ -25,7 +25,15 @@ $(document).ready(function(){
 		country_code = $(this).val();
 		url = "/user/registrations/subregion_options?parent_region="+country_code;
 		select_wrapper.load(url);
-	});	
+	});
+	var plan_id = $('#subs_plan_id').val();
+	if(plan_id==2){
+		// $('#stripe_1 button').prop('disabled',true);		
+		// $('#stripe_2 button').prop('disabled',true);		
+	}
+	else{
+		$('#stripe_'+plan_id+' button').prop('disabled',true)	
+	}
 });
 function printpage()
 {

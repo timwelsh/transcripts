@@ -28,7 +28,7 @@ class TransactionsController < ApplicationController
       end
       params[:plan_id].to_i==2 ? @sub = 10950.days : @sub = 365.days 
       if !current_user.subscription.blank?
-        plan_end_date= Date.today + @sub
+        plan_end_date= current_user.subscription.plan_end_date + @sub
         @subscription = current_user.subscription.update(plan_end_date:plan_end_date,plan_id:params[:plan_id],status:sub_status)
         @subs_id = current_user.subscription.id
       else
