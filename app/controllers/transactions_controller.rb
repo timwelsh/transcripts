@@ -5,12 +5,11 @@ class TransactionsController < ApplicationController
     # Amount in cents
     @amount =params[:amount].to_i
     @sub = params[:subscription_period].to_i
-
     begin
-      customer = Stripe::Customer.create(
-       :email => params[:stripeEmail],
-       :card  => params[:stripeToken]
-       )
+      customer_data = {email: params[:stripeEmail], card: params[:stripeToken]}
+                        .merge((params[:plan_id].to_i==2)? {}: {plan: params[:plan_id]})
+
+      customer = Stripe::Customer.create customer_data
 
       charge = Stripe::Charge.create(
        :customer    => customer.id,
@@ -27,13 +26,13 @@ class TransactionsController < ApplicationController
       else
         sub_status = false
       end
-
+      params[:plan_id].to_i==2 ? @sub = 10950.days : @sub = 365.days 
       if !current_user.subscription.blank?
-        plan_end_date= current_user.subscription.plan_end_date + @sub.months
+        plan_end_date= Date.today + @sub
         @subscription = current_user.subscription.update(plan_end_date:plan_end_date,plan_id:params[:plan_id],status:sub_status)
         @subs_id = current_user.subscription.id
       else
-        plan_end_date= date + @sub.months
+        plan_end_date= date + @sub
         @subscription= Subscription.new(plan_end_date:plan_end_date,user_id:current_user.id, plan_id:params[:plan_id],status:sub_status)
         @subscription.save
         @subs_id=@subscription.id

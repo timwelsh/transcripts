@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'stripe/webhook'
+  # get 'stripe/webhook'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
@@ -32,11 +32,12 @@ Rails.application.routes.draw do
     end
   end
   
-  post 'stripe/webhook'
+  # post 'stripe/webhook'
   get '/homes/about'
-#get 'registrations/checkemail'
-get '/schools/subregion_options' => 'schools#subregion_options'
-get '/students/subregion_options' => 'students#subregion_options'
+  post "subscriptions/webhook"
+  #get 'registrations/checkemail'
+  get '/schools/subregion_options' => 'schools#subregion_options'
+  get '/students/subregion_options' => 'students#subregion_options'
   #get '/schools/:school_id/students/subregion_options' => 'students#subregion_options'
   devise_scope :user do
     get '/user/registrations/subregion_options' => 'user/registrations#subregion_options'

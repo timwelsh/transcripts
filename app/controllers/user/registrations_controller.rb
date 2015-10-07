@@ -59,8 +59,8 @@ class User::RegistrationsController < Devise::RegistrationsController
      edit_user_registration_path
    end
    def after_update_path_for(resource)
-      if current_user.subscription.blank?
-        plans_path
+      if current_user.subscription.plan_id.blank?
+        new_school_path
       else
         dashboard_homes_path
       end
