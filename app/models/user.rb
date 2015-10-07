@@ -15,6 +15,19 @@ class User < ActiveRecord::Base
   after_create :subscribe_user_to_mailing_list
   after_create :send_email_to_user
   after_create :add_trial_plan
+
+  def active_for_authentication?
+    super && self.checking_active # i.e. super && self.is_active
+  end
+
+  def checking_active
+    self.status.to_i==0 ? is_active=false : is_active=true
+  end
+
+  def inactive_message
+    "Sorry, this account has been deactivated."
+  end
+
   private
   def subscribe_user_to_mailing_list
   	#SubscribeUserToMailingListJob.perform_later(self)
