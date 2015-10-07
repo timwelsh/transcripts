@@ -150,18 +150,18 @@ $(document).ready(function(){
 
     if(document.URL.indexOf("users/new") > -1){
         $('select#user_country').val('US');
-        $('#user_state_input').append('<div id="order_state_code_wrapper"></div>');
+        $('#user_state_input').append('<div id="order_state_code_wrap"></div>');
         $('#user_state').remove();
-        select_wrapper = $('#order_state_code_wrapper');
+        select_wrapper = $('#order_state_code_wrap');
         $('select', select_wrapper).attr('disabled', true);
         url = "/user/registrations/subregion_options?parent_region=US";
         select_wrapper.load(url);
     }
     else{
         user_state = $('#user_state').val();
-        $('#user_state_input').append('<div id="order_state_code_wrapper"></div>');
+        $('#user_state_input').append('<div id="order_state_code_wrap"></div>');
         $('#user_state').remove();
-        select_wrapper = $('#order_state_code_wrapper');
+        select_wrapper = $('#order_state_code_wrap');
         $('select', select_wrapper).attr('disabled', true);
         country_code = $('select#user_country').val();
         url = "/user/registrations/subregion_options?parent_region="+country_code;
@@ -180,9 +180,9 @@ $(document).ready(function(){
 
     if(document.URL.indexOf("schools/new") > -1){
         $('select#school_country').val('US');
-        $('#school_state_input').append('<div id="order_state_code_wrapper"></div>');
+        $('#school_state_input').append('<div id="order_state_code_wrappe"></div>');
         $('#school_state').remove();
-        select_wrapper = $('#order_state_code_wrapper');
+        select_wrapper = $('#order_state_code_wrappe');
         $('select', select_wrapper).attr('disabled', true);
         url = "/schools/subregion_options?parent_region=US";
         select_wrapper.load(url);
@@ -211,9 +211,9 @@ $(document).ready(function(){
 
     if(document.URL.indexOf("students/new") > -1){
         $('select#student_country').val('US');
-        $('#student_state').wrap('<div id="order_state_code_wrapper"></div>');
+        $('#student_state').wrap('<div id="order_state_code_wrapp"></div>');
         $('#student_state').remove();
-        select_wrapper = $('#order_state_code_wrapper');
+        select_wrapper = $('#order_state_code_wrapp');
         $('select', select_wrapper).attr('disabled', true);
         url = "/students/subregion_options?parent_region=US";
         select_wrapper.load(url);
@@ -239,12 +239,12 @@ $(document).ready(function(){
     });
 
 
-    if(document.referrer.contains("user_id")){
+    if(document.referrer.indexOf("user_id") > -1){
       var id = document.referrer.split('user_id=')[1]
       $('select#school_user_id').val(id);
     }
 
-    if(document.referrer.contains("school_id")){
+    if(document.referrer.indexOf("school_id") > -1){
         var id = document.referrer.split('school_id=')[1]
         $('select#student_school_id').val(id);
     }
