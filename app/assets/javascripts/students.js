@@ -136,10 +136,10 @@ $(document).ready(function(){
       '<option value ="D">D</option>'+
       '<option value ="D-">D-</option>'+
       '<option value ="F">F</option>'+
-      '<option value ="CR">CR</option>'+
-      '<option value ="NC">NC</option>'+
-      '<option value ="W">W</option>'+
-      '<option value ="I">I</option>'+
+      '<option value ="CR">CR:Credit</option>'+
+      '<option value ="NC">NC:Not Credit</option>'+
+      '<option value ="W">W:Withdrawal</option>'+
+      '<option value ="I">I:Incomplete</option>'+
 
       '</select>'+
       '</div>'+

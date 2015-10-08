@@ -291,7 +291,7 @@
                   <div class="form-group">
                     <label  class="col-sm-12 adnwstdnt">Grade</label>
                     <div class="col-sm-12">
-                      <%= select_tag "grade[]", options_for_select([['A+ ', 'A+'], ['A', 'A'],['A-', 'A-'],['B+', 'B+'],['B', 'B'],['B-', 'B-'],['C+', 'C+'],['C', 'C'],['C-', 'C-'],['D+', 'D+'],['D', 'D'],['D-', 'D-'],['F', 'F'],['CR', 'CR'],['NC', 'NC'],['W', 'W'],['I', 'I']],:selected => @student.grade[x]), :class=>"form-control"%>
+                      <%= select_tag "grade[]", options_for_select([['A+ ', 'A+'], ['A', 'A'],['A-', 'A-'],['B+', 'B+'],['B', 'B'],['B-', 'B-'],['C+', 'C+'],['C', 'C'],['C-', 'C-'],['D+', 'D+'],['D', 'D'],['D-', 'D-'],['F', 'F'],['CR:Credit', 'CR'],['NC:Not Credit', 'NC'],['W:Withdrawal', 'W'],['I:Incomplete', 'I']],:selected => @student.grade[x]), :class=>"form-control"%>
                     </div>
                   </div>
                 </div>

@@ -55,7 +55,7 @@
                 <div>
                     <span class="st-info">School of Record</span><br />
                     <%=@school.school_name%><br>
-                    Sample Parent<br>
+                    <%=@school.admin_name%><br>
                     <%=@school.address1%> <%=@school.address2%> <%=@school.address3%><br>
                     <%@school_country = Carmen::Country.coded(@school.country)%>
                     <% @subregions = @school_country.subregions %>
@@ -79,8 +79,12 @@
                 <div>
                     <span class="st-info">Student Information</span><br />
                     <%=@student.first_name%> <%=@student.middle_name%> <%=@student.last_name%><br>
+                    
                     Date of Birth: <%=@student.dob%><br>
-                    <%=@student.address1%> <%=@student.address2%> <%=@student.address3%><br>
+                    <%if !@student.address1.blank?%>
+                
+                        <%=@student.address1+' '+@student.address2+' '+@student.address3 %><br>
+                    <%end%>
                     <%@country = Carmen::Country.coded(@student.country)%>
                     <% @subregions = @country.subregions %>
                     <% @state = @subregions.coded(@student.state) %>
@@ -109,15 +113,16 @@
                 <div class="course">
 
                     <div class="cour">Course Study - <%=@student.course_name[0]%> </div>
-
+                    <div class="honors">Honors </div>
                     <div class="grade bd-gray">Grade </div>
                     <div class="credite cr-left">Credits</div>
                 </div>
                 <%@student.subject.length.times do|academic|%>
                 <div class="lite_section">
                     <div class="study"><%= @student.subject[academic]%></div>
-                    <div class="grade-a bd-gray"><%= @student.grade[academic]%></div>
-                    <div class="credite-a cr-left"><%= @student.credits[academic]%></div>
+                    <div class="grade-a bd-gray"><%= @student.honors[academic]%></div>
+                    <div class="credite-a cr-left"><%= @student.grade[academic]%></div>
+                    <div class="honors"><%= @student.credits[academic]%></div>
                 </div>
 
                 <%end%>   

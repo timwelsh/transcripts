@@ -106,6 +106,8 @@ class StudentsController < ApplicationController
       gpa_credit[0]=total_credits[0]-a
       cumulative_gpa[0]=gpa_points[0]/gpa_credit[0]
       cumulative_gpa[0]=cumulative_gpa[0].round(2)
+      gpa_points[0]=gpa_points[0].round(2)
+      
       @school = School.find(params[:school_id])
       @student = Student.find(params[:id])
       if @student.update student_params.merge(grad_name: academic_params["grad_name"],completion_year: academic_params["completion_year"],description: academic_params["description"],subject: academic_params["subject"],course_name: academic_params["course_name"],honors: academic_params["honors"],grade: academic_params["grade"],credits: academic_params["credits"],total_credit: total_credits,gpa_credit: gpa_credit,gpa_points: gpa_points,cumulative_gpa: cumulative_gpa)
