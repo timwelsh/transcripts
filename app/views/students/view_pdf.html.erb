@@ -55,7 +55,7 @@
                 <div>
                     <span class="st-info">School of Record</span><br />
                     <%=@school.school_name%><br>
-                    <%=@school.admin_name%><br>
+                    School Administrator: <%=@school.admin_name%><br>
                     <%=@school.address1%> <%=@school.address2%> <%=@school.address3%><br>
                     <%@school_country = Carmen::Country.coded(@school.country)%>
                     <% @subregions = @school_country.subregions %>
