@@ -277,9 +277,9 @@
           <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 tplgin3">
               <div class="form-group">
-                <label  class="col-sm-12 adnwstdnt">Honors</label>
+                <label  class="col-sm-12 adnwstdnt">Weighted</label>
                 <div class="col-sm-12">
-                  <%= select_tag "honors[]", options_for_select([['No ', 'No'], ['Yes', 'Yes']]), :class=>"form-control"%>
+                  <%= select_tag "honors[]", options_for_select([['Honors ', 'Honors'], ['AP', 'AP'],['Not Weighted','Not Weighted']]), :class=>"form-control"%>
                 </div>
               </div>
             </div>
@@ -287,7 +287,7 @@
               <div class="form-group">
                 <label  class="col-sm-12 adnwstdnt">Grade</label>
                 <div class="col-sm-12">
-                  <%= select_tag "grade[]", options_for_select([['A+ ', 'A+'], ['A', 'A'],['A-', 'A-'],['B+', 'B+'],['B', 'B'],['B-', 'B-'],['C+', 'C+'],['C', 'C'],['C-', 'C-'],['D+', 'D+'],['D', 'D'],['D-', 'D-'],['F', 'F'],['CR:Credit', 'CR'],['NC:Not Credit', 'NC'],['W:Withdrawal', 'W'],['I:Incomplete', 'I']]), :class=>"form-control"%>
+                  <%= select_tag "grade[]", options_for_select([['A+ ', 'A+'], ['A', 'A'],['A-', 'A-'],['B+', 'B+'],['B', 'B'],['B-', 'B-'],['C+', 'C+'],['C', 'C'],['C-', 'C-'],['D+', 'D+'],['D', 'D'],['D-', 'D-'],['F', 'F'],['CR:Credit', 'CR'],['NC:No Credit', 'NC'],['W:Withdrawal', 'W'],['I:Incomplete', 'I']]), :class=>"form-control"%>
                 </div>
               </div>
             </div>

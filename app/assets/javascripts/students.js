@@ -109,11 +109,12 @@ $(document).ready(function(){
       '<div class="row">'+
       '<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">'+
       '<div class="form-group">'+
-      '<label  class="col-sm-12 adnwstdnt">Honors</label>'+
+      '<label  class="col-sm-12 adnwstdnt">Weighted</label>'+
       '<div class="col-sm-12">'+
       '<select class="form-control" name="honors[]">'+
-      '<option value ="No">No</option>'+
-      '<option value ="Yes">Yes</option>'+
+      '<option value ="Honors">Honors</option>'+
+      '<option value ="AP">AP</option>'+
+      '<option value ="Not Weighted">Not Weighted</option>'+
       '</select>'+
       '</div>'+
       '</div>'+
@@ -137,7 +138,7 @@ $(document).ready(function(){
       '<option value ="D-">D-</option>'+
       '<option value ="F">F</option>'+
       '<option value ="CR">CR:Credit</option>'+
-      '<option value ="NC">NC:Not Credit</option>'+
+      '<option value ="NC">NC:No Credit</option>'+
       '<option value ="W">W:Withdrawal</option>'+
       '<option value ="I">I:Incomplete</option>'+
 
