@@ -283,7 +283,7 @@
                   <div class="form-group">
                     <label  class="col-sm-12 adnwstdnt">Weighted</label>
                     <div class="col-sm-12">
-                      <%= select_tag "honors[]", options_for_select([['Honors ', 'Honors'], ['AP', 'AP'],['Not Weighted','Not Weighted']],:selected =>  @student.honors[x]), :class=>"form-control"%>
+                      <%= select_tag "honors[]", options_for_select([['Not Weighted ', 'Not Weighted'], ['AP', 'AP'],['Honors','Honors']],:selected =>  @student.honors[x]), :class=>"form-control"%>
                     </div>
                   </div>
                 </div>

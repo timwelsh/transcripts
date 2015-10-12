@@ -1,1 +1,7 @@
-"Your Payment has received"
+<h2>Dear <%= @user%>,</h2>
+<h4>Thanks for the Payment. Below is the Plan details.</h4><br><br>
+
+
+<h4>Plan Name: <%= @plan%></h4>
+<h4>Plan End Date: <%= @endate.strftime("%m-%d-%Y")%></h4>
+<h4>Plan Amount: $<%=@amount%></h4>

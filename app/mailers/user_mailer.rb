@@ -7,9 +7,12 @@ class UserMailer < ActionMailer::Base
     mail(to: @email, subject: 'Welcome to Transcript.me')
   end
 
-  def success_payment(email,user)
+  def success_payment(email,user,plan,amount,endate)
     @email = email
     @user = user
+    @plan=plan
+    @amount=amount
+    @endate=endate
     mail(to: @email, subject: 'Thanks for Payment')
   end
 

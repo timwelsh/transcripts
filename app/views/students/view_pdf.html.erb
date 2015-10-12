@@ -31,7 +31,14 @@
     </div>
   </div>
 </div>
-<div class="wraper">
+<%
+if current_user.subscription.plan_id.blank?
+    style = 'background-image: url("/assets/trial.jpg");'
+else
+    style = ''
+end
+%>
+<div class="wraper" style= '<%= style %>'>
     <div>
         <div class="lft-side">
             <h4>HIGH SCHOOL TRANSCRIPT</h4>

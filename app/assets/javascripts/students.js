@@ -112,9 +112,9 @@ $(document).ready(function(){
       '<label  class="col-sm-12 adnwstdnt">Weighted</label>'+
       '<div class="col-sm-12">'+
       '<select class="form-control" name="honors[]">'+
-      '<option value ="Honors">Honors</option>'+
-      '<option value ="AP">AP</option>'+
       '<option value ="Not Weighted">Not Weighted</option>'+
+      '<option value ="AP">AP</option>'+
+      '<option value ="Honors">Honors</option>'+
       '</select>'+
       '</div>'+
       '</div>'+
