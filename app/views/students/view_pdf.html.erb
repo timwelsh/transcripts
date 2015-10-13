@@ -116,15 +116,15 @@ end
         <div class="tab-section">
             <div class="tab-one">
 
-
+                <%@student.subject.length.times do|academic|%>
                 <div class="course">
 
-                    <div class="cour">Course Study - <%=@student.course_name[0]%> </div>
+                    <div class="cour">Course Study - <%=@student.completion_year[academic]%> </div>
                     <div class="honors">Weighted </div>
                     <div class="grade bd-gray">Grade </div>
                     <div class="credite cr-left">Credits</div>
                 </div>
-                <%@student.subject.length.times do|academic|%>
+                
                 <div class="lite_section">
                     <div class="study"><%= @student.subject[academic]%></div>
                     <div class="grade-a bd-gray"><%= @student.honors[academic]%></div>
