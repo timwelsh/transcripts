@@ -79,7 +79,6 @@ $(document).ready(function(){
       '<label class="col-sm-12 adnwstdnt">Year</label>'+
       '<div class="col-sm-12">'+
       '<select class="form-control" name="completion_year[]">'+
-      '<option value ="">Select Year</option>'+
       '<option value ="Freshman">Freshman</option>'+
       '<option value ="Sophomore">Sophomore</option>'+
       '<option value ="Junior">Junior</option>'+

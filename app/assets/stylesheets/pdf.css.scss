@@ -60,13 +60,13 @@ margin:0 0 0 2%;
 clear:both;
 }
 .tab-one{
-width:49%;
+width:99%;
 float:left;}
 
 .tab-two{
-width:49%;
+width:99%;
 float:left;
-margin:0 0 0 2%;}
+margin:0 0 0 0;}
 
 .cour{
 font-size: 15px;
@@ -119,7 +119,7 @@ padding: 5px;
 width: 54%;
 }
 .grade-a{
-text-align:left;
+text-align:center;
 width:18%;
 padding: 5px;
 float:left;}
@@ -260,7 +260,7 @@ margin:5px 0 ;
 }
 .authoeize input{
 width: 97.5%;
-height:100px;
+height:55px;
 margin:5px;
 border:none;
 }
@@ -279,3 +279,4 @@ padding: 5px;
 .atho{
 border-top: 1px solid #fff;
 }
+.pd-mar-botm{margin-bottom:4px;}

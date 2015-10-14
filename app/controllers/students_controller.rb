@@ -43,60 +43,67 @@ class StudentsController < ApplicationController
       cumulative_gpa=[]
       a=0
       academic_params[:grade].each_index.map do |val|
+        if academic_params[:honors][val]=='AP'
+          ap=1 
+        elsif academic_params[:honors][val]=='Honors'
+          ap=0.5
+        else
+          ap=0
+        end
         case academic_params[:grade][val]
         when 'A+'   
-          grade[val] = 4.3
+          grade[val] = 4.3+ap
           credit[val] = academic_params[:credits][val].to_f
         when 'A'  
-          grade[val] = 4
+          grade[val] = 4+ap
           credit[val] = academic_params[:credits][val].to_f
         when 'A-'   
-          grade[val] = 3.7
+          grade[val] = 3.7+ap
           credit[val] = academic_params[:credits][val].to_f
         when 'B+'  
-          grade[val] = 3.3
+          grade[val] = 3.3+ap
           credit[val] = academic_params[:credits][val].to_f
         when 'B'  
-          grade[val] = 3
+          grade[val] = 3+ap
           credit[val] = academic_params[:credits][val].to_f
         when 'B-'   
-          grade[val] = 2.7
+          grade[val] = 2.7+ap
           credit[val] = academic_params[:credits][val].to_f
         when 'C+'    
-          grade[val] = 2.3
+          grade[val] = 2.3+ap
           credit[val] = academic_params[:credits][val].to_f
         when 'C'    
-          grade[val] = 2
+          grade[val] = 2+ap
           credit[val] = academic_params[:credits][val].to_f
         when 'C-'    
-          grade[val] = 1.7
+          grade[val] = 1.7+ap
           credit[val] = academic_params[:credits][val].to_f
         when 'D+'   
-          grade[val] = 1.3
+          grade[val] = 1.3+ap
           credit[val] = academic_params[:credits][val].to_f
         when 'D'   
-          grade[val] = 1
+          grade[val] = 1+ap
           credit[val] = academic_params[:credits][val].to_f
         when 'D-'   
-          grade[val] = 0.7
+          grade[val] = 0.7+ap
           credit[val] = academic_params[:credits][val].to_f
         when 'F'   
-          grade[val] = 0
+          grade[val] = 0+ap
           credit[val] = academic_params[:credits][val].to_f
         when 'CR'   
-          grade[val] = 0
+          grade[val] = 0+ap
           credit[val] = academic_params[:credits][val].to_f
           a=academic_params[:credits][val].to_f+a
         when 'NC'    
-          grade[val] = 0
+          grade[val] = 0+ap
           credit[val] = academic_params[:credits][val].to_f
           a=academic_params[:credits][val].to_f+a
         when 'W'    
-          grade[val] = 0
+          grade[val] = 0+ap
           credit[val] = academic_params[:credits][val].to_f
           a=academic_params[:credits][val].to_f+a
         when 'I'   
-          grade[val] = 0
+          grade[val] = 0+ap
           credit[val] = academic_params[:credits][val].to_f
           a=academic_params[:credits][val].to_f+a
         end
@@ -123,7 +130,7 @@ class StudentsController < ApplicationController
     redirect_to school_students_path 
   end
   def view_pdf
-    @student = Student.find(params[:id])
+     @student = Student.find(params[:id])
     @school = School.find(@student.school_id)
 
     respond_to do |format|
@@ -144,60 +151,67 @@ class StudentsController < ApplicationController
   cumulative_gpa=[]
   a=0
   academic_params[:grade].each_index.map do |val|
+    if academic_params[:honors][val]=='AP'
+          ap=1 
+        elsif academic_params[:honors][val]=='Honors'
+          ap=0.5
+        else
+          ap=0
+        end
     case academic_params[:grade][val]
     when 'A+'   
-      grade[val] = 4.3
+      grade[val] = 4.3+ap
       credit[val] = academic_params[:credits][val].to_f
     when 'A'  
-      grade[val] = 4
+      grade[val] = 4+ap
       credit[val] = academic_params[:credits][val].to_f
     when 'A-'   
-      grade[val] = 3.7
+      grade[val] = 3.7+ap
       credit[val] = academic_params[:credits][val].to_f
     when 'B+'  
-      grade[val] = 3.3
+      grade[val] = 3.3+ap
       credit[val] = academic_params[:credits][val].to_f
     when 'B'  
-      grade[val] = 3
+      grade[val] = 3+ap
       credit[val] = academic_params[:credits][val].to_f
     when 'B-'   
-      grade[val] = 2.7
+      grade[val] = 2.7+ap
       credit[val] = academic_params[:credits][val].to_f
     when 'C+'    
-      grade[val] = 2.3
+      grade[val] = 2.3+ap
       credit[val] = academic_params[:credits][val].to_f
     when 'C'    
-      grade[val] = 2
+      grade[val] = 2+ap
       credit[val] = academic_params[:credits][val].to_f
     when 'C-'    
-      grade[val] = 1.7
+      grade[val] = 1.7+ap
       credit[val] = academic_params[:credits][val].to_f
     when 'D+'   
-      grade[val] = 1.3
+      grade[val] = 1.3+ap
       credit[val] = academic_params[:credits][val].to_f
     when 'D'   
-      grade[val] = 1
+      grade[val] = 1+ap
       credit[val] = academic_params[:credits][val].to_f
     when 'D-'   
-      grade[val] = 0.7
+      grade[val] = 0.7+ap
       credit[val] = academic_params[:credits][val].to_f
     when 'F'   
-      grade[val] = 0
+      grade[val] = 0+ap
       credit[val] = academic_params[:credits][val].to_f
     when 'CR'   
-      grade[val] = 0
+      grade[val] = 0+ap
       credit[val] = academic_params[:credits][val].to_f
       a=academic_params[:credits][val].to_f+a
     when 'NC'    
-      grade[val] = 0
+      grade[val] = 0+ap
       credit[val] = academic_params[:credits][val].to_f
       a=academic_params[:credits][val].to_f+a
     when 'W'    
-      grade[val] = 0
+      grade[val] = 0+ap
       credit[val] = academic_params[:credits][val].to_f
       a=academic_params[:credits][val].to_f+a
     when 'I'   
-      grade[val] = 0
+      grade[val] = 0+ap
       credit[val] = academic_params[:credits][val].to_f
       a=academic_params[:credits][val].to_f+a
     end

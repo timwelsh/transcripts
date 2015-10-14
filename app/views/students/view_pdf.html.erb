@@ -113,36 +113,230 @@ end
             </div>
         </div>
         <div class="clear"></div>
-        <div class="tab-section">
-            <div class="tab-one">
-
-                <%@student.subject.length.times do|academic|%>
+            <%
+                    @frsh=Hash.new
+                    @soph=Hash.new 
+                    @jun=Hash.new
+                    @sen=Hash.new
+                    @val=Hash.new
+                    @val={"A+"=>4.3,"A"=>4.0,"A-"=>3.7,"B+"=>3.3,"B"=>3.0,"B-"=>2.7,"C+"=>2.3,"C"=>2.0,"C-"=>1.7,"D+"=>1.3,"D"=>1.0,"D-"=>0.7,"F"=>0,"CR"=>0,"NC"=>0,"W"=>0,"I"=>0}
+            %>
+            <%
+            @student.completion_year.length.times do|academic|
+                   
+                    
+                    if @student.completion_year[academic]=="Freshman"
+                        @frsh[academic]={"subject"=> @student.subject[academic],"honor"=>@student.honors[academic],"grade"=>@student.grade[academic],"credit"=>@student.credits[academic]}
+                    
+                    elsif @student.completion_year[academic]=="Sophomore"
+                        @soph[academic]={"subject"=> @student.subject[academic],"honor"=>@student.honors[academic],"grade"=>@student.grade[academic],"credit"=>@student.credits[academic]}
+                    
+                    elsif @student.completion_year[academic]=="Junior"
+                        @jun[academic]={"subject"=> @student.subject[academic],"honor"=>@student.honors[academic],"grade"=>@student.grade[academic],"credit"=>@student.credits[academic]}
+                    
+                    else @student.completion_year[academic]=="Senior"
+                        @sen[academic]={"subject"=> @student.subject[academic],"honor"=>@student.honors[academic],"grade"=>@student.grade[academic],"credit"=>@student.credits[academic]}
+                    end
+                
+            end
+            %>
+   
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 pd-mar-botm">
+                <%if @frsh.count > 0%>
+            <div class="tab-one">   
                 <div class="course">
-
-                    <div class="cour">Course Study - <%=@student.completion_year[academic]%> </div>
+                    <div class="cour">Course Study - Freshman</div>
                     <div class="honors">Weighted </div>
                     <div class="grade bd-gray">Grade </div>
                     <div class="credite cr-left">Credits</div>
                 </div>
-                
-                <div class="lite_section">
-                    <div class="study"><%= @student.subject[academic]%></div>
-                    <div class="grade-a bd-gray"><%= @student.honors[academic]%></div>
-                    <div class="credite-a cr-left"><%= @student.grade[academic]%></div>
-                    <div class="honors"><%= @student.credits[academic]%></div>
+                <% @gpa = 0
+                @ftcredit = 0 %>
+                <% @frsh.each do |k,val| %>
+                 <div class="lite_section">
+                    <div class="study"><%= val["subject"] %></div>
+                        <div class="grade-a bd-gray"><%= val["honor"]%></div>
+                        <div class="credite-a cr-left"><%= val["grade"]%></div>
+                        <div class="honors"><%= val["credit"]%></div>
+                        <%
+                        if val["honor"]=='AP'
+                          ap=1 
+                        elsif val["honor"]=='Honors'
+                          ap=0.5
+                        else
+                          ap=0
+                        end
+                        @gpa = @gpa + @val[val["grade"]] +ap
+                          if !['F', 'NC', 'CR', 'W', 'I'].include?  val["grade"]
+                            @ftcredit = @ftcredit + val["credit"].to_f
+                          else
+                            @ftcredit = val["credit"].to_f
+                          end
+                          @fgpacredit = @gpa/@ftcredit
+
+                       %>
                 </div>
 
-                <%end%>   
+                <%end%>
                 <div class="lite_section">
-                <%@student.cumulative_gpa[0]=="NaN" ? @cum=0 : @cum=@student.cumulative_gpa[0] %>
+                <%@fgpacredit=="NaN" ? @cum=0 : @cum=@fgpacredit %>
                     <div class="study-last">GPA = <%= @cum %> </div>
-                    <div class="credite-a cr-left"><%=@student.total_credit[0]%></div>
+                    <div class="credite-a cr-left"><%=@ftcredit%></div>
+                </div>
+            </div>
+            <%end%>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 pd-mar-botm">
+                <%if @jun.count > 0%>
+            <div class="tab-one">
+                <div class="course">
+                    <div class="cour">Course Study - Junior </div>
+                    <div class="honors">Weighted </div>
+                    <div class="grade bd-gray">Grade </div>
+                    <div class="credite cr-left">Credits</div>
+                </div>
+                <% @gpa = 0
+                @jtcredit = 0 %>
+                <% @jun.each do |k,val| %>
+                    <div class="lite_section">
+                        <div class="study"><%= val["subject"] %></div>
+                        <div class="grade-a bd-gray"><%= val["honor"]%></div>
+                        <div class="credite-a cr-left"><%= val["grade"]%></div>
+                        <div class="honors"><%= val["credit"]%></div>
+                        <%
+                        if val["honor"]=='AP'
+                          ap=1 
+                        elsif val["honor"]=='Honors'
+                          ap=0.5
+                        else
+                          ap=0
+                        end
+                        @gpa = @gpa + @val[val["grade"]] +ap
+                          if !['F', 'NC', 'CR', 'W', 'I'].include?  val["grade"]
+                            @jtcredit = @jtcredit + val["credit"].to_f
+                          else
+                            @jtcredit = val["credit"].to_f
+                          end
+                          @jgpacredit = @gpa/@jtcredit
+
+                       %>
+                    </div>
+
+                <%end%>
+
+                <div class="lite_section">
+                <%@jgpacredit=="NaN" ? @cum=0 : @cum=@jgpacredit %>
+                    <div class="study-last">GPA = <%= @cum %> </div>
+                    <div class="credite-a cr-left"><%=@jtcredit%></div>
                 </div>
 
 
             </div>
-            <div style="width:20px;float:left;"></div>  
-            <div class="tab-two">
+            <%end%>
+            </div>
+        </div>        
+        <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 pd-mar-botm">
+                <%if @soph.count > 0%>
+            <div class="tab-one">
+                <div class="course">
+                    <div class="cour">Course Study - Sophomore </div>
+                    <div class="honors">Weighted </div>
+                    <div class="grade bd-gray">Grade </div>
+                    <div class="credite cr-left">Credits</div>
+                </div>
+                <% @gpa = 0
+                @stcredit = 0 %>
+                <% @soph.each do |k,val| %>
+                    <div class="lite_section">
+                        <div class="study"><%= val["subject"] %></div>
+                        <div class="grade-a bd-gray"><%= val["honor"]%></div>
+                        <div class="credite-a cr-left"><%= val["grade"]%></div>
+                        <div class="honors"><%= val["credit"]%></div>
+                        <%
+                        if val["honor"]=='AP'
+                          ap=1 
+                        elsif val["honor"]=='Honors'
+                          ap=0.5
+                        else
+                          ap=0
+                        end
+                        @gpa = @gpa + @val[val["grade"]] +ap
+                          if !['F', 'NC', 'CR', 'W', 'I'].include?  val["grade"]
+                            @stcredit = @stcredit + val["credit"].to_f
+                          else
+                            @stcredit = val["credit"].to_f
+                          end
+                          @sgpacredit = @gpa.to_f/@stcredit
+
+                       %>
+                    </div>
+
+                <%end%>
+
+                <div class="lite_section">
+                <% @sgpacredit=="NaN" ? @cum=0 : @cum=@sgpacredit %>
+                    <div class="study-last">GPA = <%= @cum %> </div>
+                    <div class="credite-a cr-left"><%=@stcredit%></div>
+                </div>
+
+
+            </div>
+            <%end%>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 pd-mar-botm">
+                <%if @sen.count > 0%>
+            <div class="tab-one">
+                <div class="course">
+                    <div class="cour">Course Study - Senior </div>
+                    <div class="honors">Weighted </div>
+                    <div class="grade bd-gray">Grade </div>
+                    <div class="credite cr-left">Credits</div>
+                </div>
+                <% @gpa = 0
+                @setcredit = 0 %>
+                <% @sen.each do |k,val| %>
+                    <div class="lite_section">
+                        <div class="study"><%= val["subject"] %></div>
+                        <div class="grade-a bd-gray"><%= val["honor"]%></div>
+                        <div class="credite-a cr-left"><%= val["grade"]%></div>
+                        <div class="honors"><%= val["credit"]%></div>
+                        <%
+                        if val["honor"]=='AP'
+                          ap=1 
+                        elsif val["honor"]=='Honors'
+                          ap=0.5
+                        else
+                          ap=0
+                        end
+                        @gpa = @gpa + @val[val["grade"]] +ap
+                          if !['F', 'NC', 'CR', 'W', 'I'].include?  val["grade"]
+                            @setcredit = @setcredit + val["credit"].to_f
+                          else
+                            @setcredit = val["credit"].to_f
+                          end
+                          @segpacredit = @gpa/@setcredit
+
+                       %>
+                    </div>
+
+                <%end%>
+
+                <div class="lite_section">
+                <% @segpacredit=="NaN" ? @cum=0 : @cum=@segpacredit %>
+                    <div class="study-last">GPA = <%= @cum %> </div>
+                    <div class="credite-a cr-left"><%=@setcredit%></div>
+                </div>
+
+
+            </div>
+            <%end%>
+        </div>
+        </div>
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 pd-mar-botm">
+                <div class="tab-one pd-mar-botm">
 
                 <div class="course">
                     <div class="cumulative">Summary By Grade</div>
@@ -151,36 +345,36 @@ end
                 <div class="summary">
                     <div class="cum-gpa bd-gray ">Grade </div>
 
-                    <%#@student.subject.length.times do|academic|%>
+
+                     <% @student.completion_year.uniq.length.times do|academic|%>
                     <div class="nineth bd-gray ">
-                        <%=@student.course_name[0]%>
+                        <%=@student.completion_year.uniq[academic]%>
                     </div>
-                    <%#end%>
+                    <%end%>
                 </div>
 
                 <div class="summary">
                     <div class="cum-gpa bd-gray ">Cum. GPA</div>
-                    <%#@student.subject.length.times do|academic|%>
+
+                    <% arr=[@fgpacredit,@jgpacredit,@sgpacredit,@segpacredit]
+                    arr.each do|val|%>
                     <div class="nineth bd-gray ">
-                        <%=@cum%>
+                        <%=val%>
                     </div>
-                    <%#end%>
+                    <%end%>
                 </div>
 
                 <div class="summary">
                     <div class="cum-gpa bd-gray ">Credits Earned</div>
-                    <%#@student.subject.length.times do|academic|%>
+                    <% arr1=[@ftcredit,@jtcredit,@stcredit,@setcredit]
+                    arr1.each do|val|%>
                     <div class="nineth bd-gray ">
-                        <%=@student.total_credit[0]%>
+                        <%=val%>
                     </div>
-                    <%#end%>
+                    <%end%>
                 </div>
             </div>
-
-
-        </div>
-        <div class="tab-section">
-            <div class="tab-one">
+                <div class="tab-one">
 
                 <div class="course">
                     <div class="cumulative">Grading Scale</div>
@@ -213,13 +407,15 @@ end
 
                 
             </div>
+            
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 pd-mar-botm">
 
-
-            <div class="tab-two">
+                <div class="tab-two">
 
 
                 <div class="course">
-                    <div class="cumulative">Cumulative Summary (9th - 12th)</div>
+                    <div class="cumulative">Cumulative Summary (Freshman - Senior)</div>
                 </div>
 
                 <div class="total_cr">
@@ -241,11 +437,20 @@ end
 
                     </div>
                     <div class="gpa bd-gray ">
+                         <% @student.cumulative_gpa[0]=="NaN" ? @cum=0 : @cum=@student.cumulative_gpa[0] %>
                         <%=@cum%>
 
                     </div>   
                 </div>
             </div>
+        </div>
+    </div>
+
+        <div class="tab-section">
+            
+
+
+            
         </div>
     </div>
 </div>

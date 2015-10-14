@@ -256,7 +256,7 @@
                     <div class="form-group">
                       <label class="col-sm-12 adnwstdnt">Year</label>
                       <div class="col-sm-12">
-                        <%= select_tag "completion_year[]", options_for_select([['Freshman ', 'Freshman'], ['Sophomore', 'Sophomore'],['Junior', 'Junior'],['Senior', 'Senior']],:selected => @student.completion_year[x]),:prompt=>'Please Select', :class=>"form-control"%>
+                        <%= select_tag "completion_year[]", options_for_select([['Freshman ', 'Freshman'], ['Sophomore', 'Sophomore'],['Junior', 'Junior'],['Senior', 'Senior']],:selected => @student.completion_year[x]), :class=>"form-control"%>
                       </div>
                     </div>
                   </div>
