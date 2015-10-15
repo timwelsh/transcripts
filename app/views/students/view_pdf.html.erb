@@ -182,7 +182,7 @@ end
                 <div class="lite_section">
                 <%@fgpacredit=="NaN" ? @cum=0 : @cum=@fgpacredit %>
                     <div class="study-last">GPA = <%= @cum %> </div>
-                    <div class="credite-a cr-left"><%=@ftcredit%></div>
+                    <div class="honors"><%=@ftcredit%></div>
                 </div>
             </div>
             <%end%>
@@ -228,7 +228,7 @@ end
                 <div class="lite_section">
                 <%@jgpacredit=="NaN" ? @cum=0 : @cum=@jgpacredit %>
                     <div class="study-last">GPA = <%= @cum %> </div>
-                    <div class="credite-a cr-left"><%=@jtcredit%></div>
+                    <div class="honors"><%=@jtcredit%></div>
                 </div>
 
 
@@ -278,7 +278,7 @@ end
                 <div class="lite_section">
                 <% @sgpacredit=="NaN" ? @cum=0 : @cum=@sgpacredit %>
                     <div class="study-last">GPA = <%= @cum %> </div>
-                    <div class="credite-a cr-left"><%=@stcredit%></div>
+                    <div class="honors"><%=@stcredit%></div>
                 </div>
 
 
@@ -326,7 +326,7 @@ end
                 <div class="lite_section">
                 <% @segpacredit=="NaN" ? @cum=0 : @cum=@segpacredit %>
                     <div class="study-last">GPA = <%= @cum %> </div>
-                    <div class="credite-a cr-left"><%=@setcredit%></div>
+                    <div class="honors"><%=@setcredit%></div>
                 </div>
 
 
@@ -345,10 +345,10 @@ end
                 <div class="summary">
                     <div class="cum-gpa bd-gray ">Grade </div>
 
-
-                     <% @student.completion_year.uniq.length.times do|academic|%>
+                    <% arra=["Freshman","Sophomore","Junior","Senior"]
+                    arra.each do |val| %>
                     <div class="nineth bd-gray ">
-                        <%=@student.completion_year.uniq[academic]%>
+                        <%=val%>
                     </div>
                     <%end%>
                 </div>
@@ -356,7 +356,7 @@ end
                 <div class="summary">
                     <div class="cum-gpa bd-gray ">Cum. GPA</div>
 
-                    <% arr=[@fgpacredit,@jgpacredit,@sgpacredit,@segpacredit]
+                    <% arr=[@fgpacredit,@sgpacredit,@jgpacredit,@segpacredit]
                     arr.each do|val|%>
                     <div class="nineth bd-gray ">
                         <%=val%>
@@ -366,7 +366,7 @@ end
 
                 <div class="summary">
                     <div class="cum-gpa bd-gray ">Credits Earned</div>
-                    <% arr1=[@ftcredit,@jtcredit,@stcredit,@setcredit]
+                    <% arr1=[@ftcredit,@stcredit,@jtcredit,@setcredit]
                     arr1.each do|val|%>
                     <div class="nineth bd-gray ">
                         <%=val%>

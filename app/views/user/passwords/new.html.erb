@@ -21,14 +21,16 @@
         </div>
         <div class="panel-body">
           <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-          <%= devise_error_messages! %>
+          <% if !resource.errors.empty? %>
+              <center><p class="alert alert-danger">E-mail address not found</p></center>
+          <% end %>
           <div class="form-group required">
             <%= f.label :email, :class=>"col-sm-3 control-label rigys1" %>
             <div class="col-sm-9">
-              <%= f.email_field :email, autofocus: true, :class=>"form-control", :required => true %>
+              <%= f.text_field :email, autofocus: true, :class=>"form-control", :required => true %>
               </div>
               <span class="inline-errors">
-                <%=@user.errors[:email].join(",") %> 
+                
               </span>
             </div>
             <div class="form-group last">
