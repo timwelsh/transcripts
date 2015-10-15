@@ -126,16 +126,16 @@ end
                    
                     
                     if @student.completion_year[academic]=="Freshman"
-                        @frsh[academic]={"subject"=> @student.subject[academic],"honor"=>@student.honors[academic],"grade"=>@student.grade[academic],"credit"=>@student.credits[academic]}
+                        @frsh[academic]={"subject"=> @student.subject[academic],"honor"=>@student.honors[academic],"grade"=>@student.grade[academic],"credit"=>@student.credits[academic],"course"=>@student.course_name[academic]}
                     
                     elsif @student.completion_year[academic]=="Sophomore"
-                        @soph[academic]={"subject"=> @student.subject[academic],"honor"=>@student.honors[academic],"grade"=>@student.grade[academic],"credit"=>@student.credits[academic]}
+                        @soph[academic]={"subject"=> @student.subject[academic],"honor"=>@student.honors[academic],"grade"=>@student.grade[academic],"credit"=>@student.credits[academic],"course"=>@student.course_name[academic]}
                     
                     elsif @student.completion_year[academic]=="Junior"
-                        @jun[academic]={"subject"=> @student.subject[academic],"honor"=>@student.honors[academic],"grade"=>@student.grade[academic],"credit"=>@student.credits[academic]}
+                        @jun[academic]={"subject"=> @student.subject[academic],"honor"=>@student.honors[academic],"grade"=>@student.grade[academic],"credit"=>@student.credits[academic],"course"=>@student.course_name[academic]}
                     
                     else @student.completion_year[academic]=="Senior"
-                        @sen[academic]={"subject"=> @student.subject[academic],"honor"=>@student.honors[academic],"grade"=>@student.grade[academic],"credit"=>@student.credits[academic]}
+                        @sen[academic]={"subject"=> @student.subject[academic],"honor"=>@student.honors[academic],"grade"=>@student.grade[academic],"credit"=>@student.credits[academic],"course"=>@student.course_name[academic]}
                     end
                 
             end
@@ -155,7 +155,7 @@ end
                 @ftcredit = 0 %>
                 <% @frsh.each do |k,val| %>
                  <div class="lite_section">
-                    <div class="study"><%= val["subject"] %></div>
+                    <div class="study"><%= val["subject"] %>: <%= val["course"] %></div>
                         <div class="grade-a bd-gray"><%= val["honor"]%></div>
                         <div class="credite-a cr-left"><%= val["grade"]%></div>
                         <div class="honors"><%= val["credit"]%></div>
@@ -200,7 +200,7 @@ end
                 @jtcredit = 0 %>
                 <% @jun.each do |k,val| %>
                     <div class="lite_section">
-                        <div class="study"><%= val["subject"] %></div>
+                        <div class="study"><%= val["subject"] %>: <%= val["course"] %></div>
                         <div class="grade-a bd-gray"><%= val["honor"]%></div>
                         <div class="credite-a cr-left"><%= val["grade"]%></div>
                         <div class="honors"><%= val["credit"]%></div>
@@ -250,7 +250,7 @@ end
                 @stcredit = 0 %>
                 <% @soph.each do |k,val| %>
                     <div class="lite_section">
-                        <div class="study"><%= val["subject"] %></div>
+                        <div class="study"><%= val["subject"] %>: <%= val["course"] %></div>
                         <div class="grade-a bd-gray"><%= val["honor"]%></div>
                         <div class="credite-a cr-left"><%= val["grade"]%></div>
                         <div class="honors"><%= val["credit"]%></div>
@@ -298,7 +298,7 @@ end
                 @setcredit = 0 %>
                 <% @sen.each do |k,val| %>
                     <div class="lite_section">
-                        <div class="study"><%= val["subject"] %></div>
+                        <div class="study"><%= val["subject"] %>: <%= val["course"] %></div>
                         <div class="grade-a bd-gray"><%= val["honor"]%></div>
                         <div class="credite-a cr-left"><%= val["grade"]%></div>
                         <div class="honors"><%= val["credit"]%></div>
@@ -401,7 +401,7 @@ end
                     <div class=""><input type="textarea" value="" /></div>
                     <div class="atho">
                         <div class="atho-one bd-gray">Authorized Signature </div>
-                        <div class="atho-sec bd-gray">Date:&nbsp;<%=Date.current%></div>
+                        <div class="atho-sec bd-gray">Date:&nbsp;<%= Time.now.strftime("%m/%d/%Y")%></div>
                     </div>
                 </div>
 
