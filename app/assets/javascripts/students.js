@@ -68,7 +68,7 @@ $(document).ready(function(){
       '<div class="panel-heading student-class">'+
       '<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"><div class="rptrq3">Class '+x+'</div></div>'+
       '<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 rptrq1">'+
-      '<a id='+x+' href="#" class="btn btn-danger remove_field">Remove</a>'+
+      '<a id='+x+' href="javascript:void(0)" class="btn btn-danger remove_field">Remove</a>'+
       '</div>'+
       '</div>'+
 
@@ -174,7 +174,24 @@ $(document).ready(function(){
     // e.preventDefault(); 
     //$(this).parent('div').remove();
     var id=$(this).attr("id");
+    id1=parseInt(id)+1;
+    length = $('.secondEdu').length;
     $('#edu_'+id).remove();
+    if(id<length){
+      $('.secondEdu').each(function() {
+        $('#edu_'+id1).attr("id","edu_"+id);
+        $('#'+id1).attr("id",id);
+        $('#edu_'+id+' .rptrq3').html('Class '+id);
+         id=parseInt(id)+1;
+         id1=parseInt(id)+1;
+      });
+    }
+    else{
+      $('#edu_'+id1).attr("id","edu_"+id);
+        $('#'+id1).attr("id",id);
+        alert(id);
+        $('#edu_'+id+' .rptrq3').html('Class '+id);
+    }
     x--;
   });
 

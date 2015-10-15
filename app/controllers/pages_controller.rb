@@ -16,10 +16,9 @@ class PagesController < ApplicationController
     
     if @message.valid?
       UserMailer.new_message(@message).deliver
-      redirect_to contact_path, notice: "Your messages has been sent."
+      redirect_to root_path, notice: "Your messages has been sent successfully."
     else
-      flash[:alert] = "An error occurred while delivering this message."
-      redirect_to contact_path, notice: "Your messages is not valid."
+      redirect_to root_path, alert: "Your messages is not valid."
     end
   end
 
