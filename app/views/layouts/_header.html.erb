@@ -1,21 +1,23 @@
 <div class="container-fluid">
 	<div class="header_top">
    <div class="container" >
-    <div class="col-sm-4 col-lg-6 col-md-4 col-xs-4"><strong>Welcome to Transcripts!</strong></div>
-    <div class="col-sm-4 col-lg-4 col-md-4 col-xs-4"><strong>
-      
-    </strong></div>
-    <div class="col-sm-4 col-lg-2 col-md-4 col-xs-4">
-     <div class="txtalyn2">
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"><strong>Welcome to Transcripts!</strong></div>
+    
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+     <div class="txtalign-hd">
        <% if user_signed_in? %>
        <% @name = current_user.first_name.to_s() +' '+current_user.last_name.to_s()%>
-       <span>Welcome <%= link_to @name,edit_user_registration_path %></span> |
+       <span class="wyttxt-top">Welcome <%= link_to @name,edit_user_registration_path %></span> |
        <span class="glyphicon glyphicon-off"></span>  &nbsp;
-       <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+          <span class="wyttxt-top">
+            <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+          </span>
        <%else%>
-       <span class="glyphicon glyphicon-user"></span> &nbsp;   <%= link_to 'Sign up', new_user_registration_path %>  &nbsp;&nbsp;   
+       <span class="glyphicon glyphicon-user"></span> &nbsp;   
+        <span class="wyttxt-top"><%= link_to 'Sign up', new_user_registration_path %></span>
+          &nbsp;&nbsp;   
        <span class="glyphicon glyphicon-lock"></span>  &nbsp;
-       <%= link_to 'Login', new_user_session_path %>
+       <span class="wyttxt-top"><%= link_to 'Login', new_user_session_path %></span>
        <%end%>
      </div>
    </div>
@@ -24,10 +26,10 @@
 </div>
 <div class="container">
   <div class="row">
-    <div class="col-lg-6 col-sm-6 col-md-6">
+    <div class="col-lg-5 col-md-6 col-sm-12 col-xs-12">
       <img class="img-responsive" src="/assets/logo.png" alt="" />
     </div>
-    <div class="col-lg-6 col-sm-6 col-sm-12 col-md-6 col-xs-12">
+    <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 marpadz">
       <div id='cssmenu' style="margin-top:20px;">
         <ul>
           <li><%= link_to 'Home',root_path %></li>  
