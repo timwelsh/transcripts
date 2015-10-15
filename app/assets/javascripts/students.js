@@ -57,8 +57,13 @@ $(document).ready(function(){
     select_wrapper.load(url);
   });
 
-
+  editlength = $('.student-class').length;
+  if(document.URL.indexOf("students/new") > -1){
     var x=1;
+  }
+  else{
+    var x = editlength;
+  }
   $(add_button).click(function(e){ //on add input button click
     e.preventDefault();
     if (x >= 15) return;
@@ -189,7 +194,6 @@ $(document).ready(function(){
     else{
       $('#edu_'+id1).attr("id","edu_"+id);
         $('#'+id1).attr("id",id);
-        alert(id);
         $('#edu_'+id+' .rptrq3').html('Class '+id);
     }
     x--;
