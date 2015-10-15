@@ -39,8 +39,8 @@ $('#new_message').bootstrapValidator({
         'message[content]': {
             validators: {
                 stringLength: {
-                    message: 'Description should be 160 characters long',
-                    max: 7
+                    message: 'Description should be less than 160 characters',
+                    max: 160
                 }
             }
         }
