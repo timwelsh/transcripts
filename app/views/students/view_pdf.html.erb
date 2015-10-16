@@ -14,6 +14,30 @@
     .container * { display:none ; }
     .container-fluid * { display:none ; }
     .mini-title-head-bar * { display:none ; }
+    .rgt-side{
+        width:45%;
+    }
+    .course {
+        background-color: #ccc!important;
+    }
+    .lite_section{
+        background-color: #eaeaea!important;
+    }
+    .cumulative{
+        background-color: #ccc!important;
+    }
+    .total_cr{
+        background-color: #eaeaea!important;
+    }
+    .summary{
+        background-color: #eaeaea!important;
+    }
+    .authoeize{
+        background-color:#eaeaea!important;
+    }
+    .authoeize input{
+        background-color: #fff!important;
+    }
 }
 </style>
 
@@ -42,7 +66,7 @@ end
     <div>
         <div class="lft-side">
             <h4>HIGH SCHOOL TRANSCRIPT</h4>
-            (Grades 9-12)<br />
+            (Grades Freshman-Senior)<br/><br/>
             Graduation Date: <%=@student.graduation_date%>
 
         </div>
@@ -464,7 +488,7 @@ end
         <%= link_to view_pdf_path(@student, :format => "pdf"),:class=>"btn btn-info btn-xs" do %>
             <i><span class="glyphicon glyphicon-download-alt"></span></i> Download Pdf
         <%end%>
-        <%= link_to '#',onclick: "printpage('.wraper')",:class=>"btn btn-success btn-xs" do %>
+        <%= link_to 'javascript:void(0)',onclick: "printpage('.wraper')",:class=>"btn btn-success btn-xs" do %>
             <i><span class="glyphicon glyphicon-print"></span></i> Print
         <%end%>
         </div>
