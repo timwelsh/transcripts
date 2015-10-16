@@ -181,6 +181,7 @@ $(document).ready(function(){
     var id=$(this).attr("id");
     id1=parseInt(id)+1;
     length = $('.secondEdu').length;
+    
     $('#edu_'+id).remove();
     if(id<length){
       $('.secondEdu').each(function() {
@@ -196,6 +197,16 @@ $(document).ready(function(){
         $('#'+id1).attr("id",id);
         $('#edu_'+id+' .rptrq3').html('Class '+id);
     }
+    if(editlength){
+      $('.secondEdu').each(function() {
+        $('#edu_'+id1).attr("id","edu_"+id);
+        $('#'+id1).attr("id",id);
+        $('#edu_'+id+' .rptrq3').html('Class '+id);
+         id=parseInt(id)+1;
+         id1=parseInt(id)+1;
+      });
+    }
+    
     x--;
   });
 
