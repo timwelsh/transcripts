@@ -1,3 +1,6 @@
+
+
+
 table, tr, td, th, tbody, thead, tfoot {
 page-break-inside: avoid !important;
 }
@@ -61,7 +64,8 @@ clear:both;
 }
 .tab-one{
 width:99%;
-float:left;}
+float:left;
+margin-bottom: 5px;}
 
 .tab-two{
 width:99%;
@@ -71,26 +75,26 @@ margin:0 0 0 0;}
 .cour{
 font-size: 15px;
 font-weight: bold;
-width:54%;
+width: 40%;
 padding: 5px;
 float:left;}
 
 .grade{
 text-align:center;
-width:10%;
+width: 15%;
 padding: 5px;
 float:left;}
 
 .honors {
 text-align:center;
-width:18%;
+width: 20%;
 padding: 5px;
 float:left;
 border-left: solid 1px #fff;}
 
 .credite{
 text-align:center;
-width:10%;
+width: 15%;
 padding: 5px;
 float:left;}
 
@@ -116,7 +120,7 @@ border-top: 1px solid #fff;
 .study{
 float: left;
 padding: 5px;
-width: 54%;
+width: 48%;
 }
 .grade-a{
 text-align:center;
@@ -136,8 +140,8 @@ border-bottom:1px solid #fff;
 
 .study-last{
 float: left;
-padding: 5px;
-width: 82%;
+padding: 5px 7px 5px 25px;
+width: 75%;
 font-size: 15px;
 font-weight: bold;
 }
@@ -279,4 +283,11 @@ padding: 5px;
 .atho{
 border-top: 1px solid #fff;
 }
-.pd-mar-botm{margin-bottom:4px;}
+.pd-mar-botm{margin-bottom:8px;}
+.qpd-outer{
+  margin-right: -15px;
+  margin-left: -15px;
+}
+.qpd-outer2{width:50%; float:left;margin-bottom:4px;}
+.clearfq{clear:both;}
+.clearmargin{margin-bottom: 10px;}

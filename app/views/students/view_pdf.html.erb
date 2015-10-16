@@ -1,7 +1,7 @@
 
 <%= wicked_pdf_stylesheet_link_tag "pdf" , media: 'all' %>
 <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
 
 
 
@@ -113,6 +113,7 @@ end
             </div>
         </div>
         <div class="clear"></div>
+        <div class="clearmargin"></div>
             <%
                     @frsh=Hash.new
                     @soph=Hash.new 
@@ -141,12 +142,12 @@ end
             end
             %>
    
-        <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 pd-mar-botm">
+        <div class="qpd-outer">
+            <div class="qpd-outer2">
                 <%if @frsh.count > 0%>
             <div class="tab-one">   
                 <div class="course">
-                    <div class="cour">Course Study - Freshman</div>
+                    <div class="cour">&nbsp;Course Study - Freshman</div>
                     <div class="honors">Weighted </div>
                     <div class="grade bd-gray">Grade </div>
                     <div class="credite cr-left">Credits</div>
@@ -155,10 +156,10 @@ end
                 @ftcredit = 0 %>
                 <% @frsh.each do |k,val| %>
                  <div class="lite_section">
-                    <div class="study"><%= val["subject"] %>: <%= val["course"] %></div>
-                        <div class="grade-a bd-gray"><%= val["honor"]%></div>
-                        <div class="credite-a cr-left"><%= val["grade"]%></div>
-                        <div class="honors"><%= val["credit"]%></div>
+                    <div class="cour">&nbsp;<%= val["subject"] %>: <%= val["course"] %></div>
+                        <div class="honors bd-gray"><%= val["honor"]%></div>
+                        <div class="grade bd-gray"><%= val["grade"]%></div>
+                        <div class="credite cr-left"><%= val["credit"]%></div>
                         <%
                         if val["honor"]=='AP'
                           ap=1 
@@ -182,12 +183,12 @@ end
                 <div class="lite_section">
                 <%@fgpacredit=="NaN" ? @cum=0 : @cum=@fgpacredit %>
                     <div class="study-last">GPA = <%= @cum %> </div>
-                    <div class="honors"><%=@ftcredit%></div>
+                    <div class="credite cr-left"><%=@ftcredit%></div>
                 </div>
             </div>
             <%end%>
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 pd-mar-botm">
+            <div class="qpd-outer2">
                 <%if @jun.count > 0%>
             <div class="tab-one">
                 <div class="course">
@@ -200,10 +201,10 @@ end
                 @jtcredit = 0 %>
                 <% @jun.each do |k,val| %>
                     <div class="lite_section">
-                        <div class="study"><%= val["subject"] %>: <%= val["course"] %></div>
-                        <div class="grade-a bd-gray"><%= val["honor"]%></div>
-                        <div class="credite-a cr-left"><%= val["grade"]%></div>
-                        <div class="honors"><%= val["credit"]%></div>
+                        <div class="cour"><%= val["subject"] %>: <%= val["course"] %></div>
+                        <div class="honors bd-gray"><%= val["honor"]%></div>
+                        <div class="grade cr-left"><%= val["grade"]%></div>
+                        <div class="credite cr-left"><%= val["credit"]%></div>
                         <%
                         if val["honor"]=='AP'
                           ap=1 
@@ -228,20 +229,21 @@ end
                 <div class="lite_section">
                 <%@jgpacredit=="NaN" ? @cum=0 : @cum=@jgpacredit %>
                     <div class="study-last">GPA = <%= @cum %> </div>
-                    <div class="honors"><%=@jtcredit%></div>
+                    <div class="credite cr-left"><%=@jtcredit%></div>
                 </div>
 
 
             </div>
             <%end%>
             </div>
-        </div>        
-        <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 pd-mar-botm">
+        </div>   
+        <div class="clearfq"></div>     
+        <div class="qpd-outer">
+            <div class="qpd-outer2">
                 <%if @soph.count > 0%>
             <div class="tab-one">
                 <div class="course">
-                    <div class="cour">Course Study - Sophomore </div>
+                    <div class="cour">&nbsp;Course Study - Sophomore </div>
                     <div class="honors">Weighted </div>
                     <div class="grade bd-gray">Grade </div>
                     <div class="credite cr-left">Credits</div>
@@ -250,10 +252,10 @@ end
                 @stcredit = 0 %>
                 <% @soph.each do |k,val| %>
                     <div class="lite_section">
-                        <div class="study"><%= val["subject"] %>: <%= val["course"] %></div>
-                        <div class="grade-a bd-gray"><%= val["honor"]%></div>
-                        <div class="credite-a cr-left"><%= val["grade"]%></div>
-                        <div class="honors"><%= val["credit"]%></div>
+                        <div class="cour">&nbsp;<%= val["subject"] %>: <%= val["course"] %></div>
+                        <div class="honors bd-gray"><%= val["honor"]%></div>
+                        <div class="grade cr-left"><%= val["grade"]%></div>
+                        <div class="credite cr-left"><%= val["credit"]%></div>
                         <%
                         if val["honor"]=='AP'
                           ap=1 
@@ -278,14 +280,14 @@ end
                 <div class="lite_section">
                 <% @sgpacredit=="NaN" ? @cum=0 : @cum=@sgpacredit %>
                     <div class="study-last">GPA = <%= @cum %> </div>
-                    <div class="honors"><%=@stcredit%></div>
+                    <div class="credite cr-left"><%=@stcredit%></div>
                 </div>
 
 
             </div>
             <%end%>
         </div>
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 pd-mar-botm">
+            <div class="qpd-outer2">
                 <%if @sen.count > 0%>
             <div class="tab-one">
                 <div class="course">
@@ -298,10 +300,10 @@ end
                 @setcredit = 0 %>
                 <% @sen.each do |k,val| %>
                     <div class="lite_section">
-                        <div class="study"><%= val["subject"] %>: <%= val["course"] %></div>
-                        <div class="grade-a bd-gray"><%= val["honor"]%></div>
-                        <div class="credite-a cr-left"><%= val["grade"]%></div>
-                        <div class="honors"><%= val["credit"]%></div>
+                        <div class="cour"><%= val["subject"] %>: <%= val["course"] %></div>
+                        <div class="honors bd-gray"><%= val["honor"]%></div>
+                        <div class="grade cr-left"><%= val["grade"]%></div>
+                        <div class="credite cr-left"><%= val["credit"]%></div>
                         <%
                         if val["honor"]=='AP'
                           ap=1 
@@ -326,7 +328,7 @@ end
                 <div class="lite_section">
                 <% @segpacredit=="NaN" ? @cum=0 : @cum=@segpacredit %>
                     <div class="study-last">GPA = <%= @cum %> </div>
-                    <div class="honors"><%=@setcredit%></div>
+                    <div class="credite cr-left"><%=@setcredit%></div>
                 </div>
 
 
@@ -334,12 +336,13 @@ end
             <%end%>
         </div>
         </div>
-    <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 pd-mar-botm">
+        <div class="clearfq"></div>
+    <div class="qpd-outer">
+            <div class="qpd-outer2">
                 <div class="tab-one pd-mar-botm">
 
                 <div class="course">
-                    <div class="cumulative">Summary By Grade</div>
+                    <div class="cumulative">&nbsp;Summary By Grade</div>
                 </div>
 
                 <div class="summary">
@@ -377,7 +380,7 @@ end
                 <div class="tab-one">
 
                 <div class="course">
-                    <div class="cumulative">Grading Scale</div>
+                    <div class="cumulative">&nbsp;Grading Scale</div>
                 </div>
 
                 <div class="summary">
@@ -398,7 +401,7 @@ end
                 </div>
 
                 <div class="authoeize">
-                    <div class=""><input type="textarea" value="" /></div>
+                    <div class=""><input type="textarea" value="" style="margin-left:10px;" /></div>
                     <div class="atho">
                         <div class="atho-one bd-gray">Authorized Signature </div>
                         <div class="atho-sec bd-gray">Date:&nbsp;<%= Time.now.strftime("%m/%d/%Y")%></div>
@@ -409,7 +412,7 @@ end
             </div>
             
         </div>
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 pd-mar-botm">
+            <div class="qpd-outer2">
 
                 <div class="tab-two">
 

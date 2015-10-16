@@ -367,7 +367,7 @@ body {
 
 /*show school details start*/
 .showdt1{font-size:10pt; font-weight:normal; color:#01bab5;}
-.txtalyn3{text-align:right; margin-right:5px;}
+.txtalyn3{text-align:right; margin-right:5px; width:100%;}
 /*show school details end*/
 
 /*add new students start*/
@@ -407,7 +407,7 @@ body {
 .tplgin5{text-align:right; margin-right:10px 20px 0 0;}
 .tplgin6{text-align:right; }
 .disabled{pointer-events:none; }
-.upgradePlan{font-size: 36px; margin: 7px 0px 24px 0px; }
+.upgradePlan{font-size: 36px; margin: 7px 0px 24px 0px; line-height:35px;}
 
 .heigh_pln{min-height: 63px;}
 
@@ -415,3 +415,17 @@ body {
 .txtalign-hd{text-align:right; color:#fff;}
 .marpadz{margin:0px; padding:0px;}
 .wyttxt-top a{color:#fff; font-weight:bold; margin:0 3px 0 3px;}
+
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 568px) 
+{
+  .studentscroll{overflow:scroll;overflow-y:hidden;overflow-x:scroll;}
+  .txtalyn3 {
+    margin-right: 5px;
+    text-align: right;
+    width: 100%;
+}
+}
+
+
