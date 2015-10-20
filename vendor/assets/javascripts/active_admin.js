@@ -30,6 +30,13 @@ $(function (){
     })
 
 });
+editlength = $('.student-class').length;
+  if(document.URL.indexOf("students/new") > -1){
+    var x=1;
+  }
+  else{
+    var x = editlength;
+  }
 $(document).ready(function(){
 	var wrapper         = $(".input_fields_wrap"); //Fields wrapper
     var add_button      = $(".add_field_button"); //Add button ID
@@ -46,8 +53,8 @@ $(document).ready(function(){
 
 
         x++; 
-        $(wrapper).append('<div class="education secondEdu">'+
-            '<h3>Class '+x+'</h3> <a href="#" class="remove_field">Remove</a>'+
+        $(wrapper).append('<div id= edu_'+x+' class="education secondEdu">'+
+            '<h3 class="rptrq3">Class '+x+'</h3> <a id='+x+' href="javascript:void(0)" class="remove_field">Remove</a>'+
             '<div style="clear:both;"></div>'+
             '<ol><li class="string input optional stringish">'+
             '<label for="completion_year">Completion Year</label>'+
@@ -125,10 +132,39 @@ $(document).ready(function(){
     });
 
     $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
-        // e.preventDefault(); 
-        $(this).parent('div').remove();
-        x--;
-    });
+    // e.preventDefault(); 
+    //$(this).parent('div').remove();
+    var id=$(this).attr("id");
+    id1=parseInt(id)+1;
+    length = $('.secondEdu').length;
+    
+    $('#edu_'+id).remove();
+    if(id<length){
+      $('.secondEdu').each(function() {
+        $('#edu_'+id1).attr("id","edu_"+id);
+        $('#'+id1).attr("id",id);
+        $('#edu_'+id+' .rptrq3').html('Class '+id);
+         id=parseInt(id)+1;
+         id1=parseInt(id)+1;
+      });
+    }
+    else{
+      $('#edu_'+id1).attr("id","edu_"+id);
+        $('#'+id1).attr("id",id);
+        $('#edu_'+id+' .rptrq3').html('Class '+id);
+    }
+    if(editlength){
+      $('.secondEdu').each(function() {
+        $('#edu_'+id1).attr("id","edu_"+id);
+        $('#'+id1).attr("id",id);
+        $('#edu_'+id+' .rptrq3').html('Class '+id);
+         id=parseInt(id)+1;
+         id1=parseInt(id)+1;
+      });
+    }
+    
+    x--;
+  });
     var a =  $('#user_email_input p').html();
     if(a){
         var b = a.replace('and', '').trim(); 
