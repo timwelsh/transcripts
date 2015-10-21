@@ -196,7 +196,7 @@ end
                           if !['F', 'NC', 'CR', 'W', 'I'].include?  val["grade"]
                             @ftcredit = @ftcredit + val["credit"].to_f
                           else
-                            @ftcredit = val["credit"].to_f
+                            @ftcredit = @ftcredit + val["credit"].to_f
                           end
                           @fgpacredit = @gpa/@ftcredit
 
@@ -241,7 +241,7 @@ end
                           if !['F', 'NC', 'CR', 'W', 'I'].include?  val["grade"]
                             @jtcredit = @jtcredit + val["credit"].to_f
                           else
-                            @jtcredit = val["credit"].to_f
+                            @jtcredit = @jtcredit + val["credit"].to_f
                           end
                           @jgpacredit = @gpa/@jtcredit
 
@@ -292,7 +292,7 @@ end
                           if !['F', 'NC', 'CR', 'W', 'I'].include?  val["grade"]
                             @stcredit = @stcredit + val["credit"].to_f
                           else
-                            @stcredit = val["credit"].to_f
+                            @stcredit = @stcredit + val["credit"].to_f
                           end
                           @sgpacredit = @gpa.to_f/@stcredit
 
@@ -340,7 +340,7 @@ end
                           if !['F', 'NC', 'CR', 'W', 'I'].include?  val["grade"]
                             @setcredit = @setcredit + val["credit"].to_f
                           else
-                            @setcredit = val["credit"].to_f
+                            @setcredit = @setcredit + val["credit"].to_f
                           end
                           @segpacredit = @gpa/@setcredit
 
