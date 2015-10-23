@@ -22,7 +22,7 @@ class StudentsController < ApplicationController
   respond_to do |format|
    format.html
    format.pdf do
-    @pdf = render_to_string pdf: "student" ,:template => 'students/show.html.erb', viewport_size: '1280x1024',
+    @pdf = render_to_string pdf: "student" ,:template => 'students/show.html.erb', 
     			# print_media_type: true ,
     			layout:''
     			send_data(@pdf, :filename => @student.first_name,  :type=>"application/pdf")

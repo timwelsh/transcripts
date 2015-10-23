@@ -66,7 +66,7 @@ $(document).ready(function(){
   }
   $(add_button).click(function(e){ //on add input button click
     e.preventDefault();
-    if (x >= 15) return;
+    // if (x >= 15) return;
 
     x++; 
     $(wrapper).append('<div id= edu_'+x+' class="education secondEdu">'+
