@@ -8,7 +8,6 @@
 	<% if !request.path.include? "admin"%>
 	<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
 	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-	<%= wicked_pdf_stylesheet_link_tag "pdf"%>
 	<%end%>
 	<%= csrf_meta_tags %>
 </head>
