@@ -103,7 +103,7 @@ end
                 <% if params[:format]=="pdf" %>
                 <%= wicked_pdf_image_tag '/img/logo_school.jpg' %>
                 <%else%>
-                <img src="/img/logo_school.jpg">
+                 <%= image_tag (@student.school.logo) %>
                 <%end%>                                
             </div>
         </div>
@@ -200,8 +200,8 @@ end
                     <table class="table table-bordered" border="0">
                         <thead>
                             <tr>                    
-                                <th width="315">&nbsp;Course Study - Freshman</th>
-                                <th width="103">&nbsp;Weighted</th>
+                                <th width="308">&nbsp;Course Study - Freshman</th>
+                                <th width="110">Weighted</th>
                                 <th width="73">&nbsp;Grade </th>
                                 <th width="73">&nbsp;Credits</th>                    
                             </tr>
@@ -212,7 +212,7 @@ end
                         <tbody>
                             <tr>                    
                                 <td>&nbsp;<%= val["subject"] %>: <%= val["course"] %></td>
-                                <td>&nbsp;<%= val["honor"]%></td>
+                                <td><%= val["honor"]%></td>
                                 <td>&nbsp;<%= val["grade"]%></td>
                                 <td>&nbsp;<%= val["credit"]%></td>
                                 <%
@@ -254,8 +254,8 @@ end
                     <table class="table table-bordered" border="0">
                         <thead>
                             <tr>                    
-                                <th width="315">&nbsp;Course Study - Junior</th>
-                                <th width="103">&nbsp;Weighted</th>
+                                <th width="308">&nbsp;Course Study - Junior</th>
+                                <th width="110">Weighted</th>
                                 <th width="73">&nbsp;Grade </th>
                                 <th width="73">&nbsp;Credits</th>                    
                             </tr>
@@ -266,7 +266,7 @@ end
                         <tbody>
                             <tr>                    
                                 <td>&nbsp;<%= val["subject"] %>: <%= val["course"] %></td>
-                                <td>&nbsp;<%= val["honor"]%></td>
+                                <td><%= val["honor"]%></td>
                                 <td>&nbsp;<%= val["grade"]%></td>
                                 <td>&nbsp;<%= val["credit"]%></td>
                                 <%
@@ -309,8 +309,8 @@ end
                     <table class="table table-bordered" border="0">
                         <thead>
                             <tr>                    
-                                <th width="315">&nbsp;Course Study - Sophomore</th>
-                                <th width="103">&nbsp;Weighted</th>
+                                <th width="308">&nbsp;Course Study - Sophomore</th>
+                                <th width="110">Weighted</th>
                                 <th width="73">&nbsp;Grade </th>
                                 <th width="73">&nbsp;Credits</th>                    
                             </tr>
@@ -321,7 +321,7 @@ end
                         <tbody>
                             <tr>                    
                                 <td>&nbsp;<%= val["subject"] %>: <%= val["course"] %></td>
-                                <td>&nbsp;<%= val["honor"]%></td>
+                                <td><%= val["honor"]%></td>
                                 <td>&nbsp;<%= val["grade"]%></td>
                                 <td>&nbsp;<%= val["credit"]%></td>
                                 <%
@@ -362,8 +362,8 @@ end
                     <table class="table table-bordered" border="0">
                         <thead>
                             <tr>                    
-                                <th width="315">&nbsp;Course Study - Senior</th>
-                                <th width="103">&nbsp;Weighted</th>
+                                <th width="308">&nbsp;Course Study - Senior</th>
+                                <th width="110">Weighted</th>
                                 <th width="73">&nbsp;Grade </th>
                                 <th width="73">&nbsp;Credits</th>                    
                             </tr>
@@ -374,7 +374,7 @@ end
                         <tbody>
                             <tr>                    
                                 <td>&nbsp;<%= val["subject"] %>: <%= val["course"] %></td>
-                                <td>&nbsp;<%= val["honor"]%></td>
+                                <td><%= val["honor"]%></td>
                                 <td>&nbsp;<%= val["grade"]%></td>
                                 <td>&nbsp;<%= val["credit"]%></td>
                                 <%

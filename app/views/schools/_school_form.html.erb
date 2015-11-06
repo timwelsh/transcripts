@@ -151,6 +151,12 @@
                 <%=@school.errors[:grading_scale].join(",") %> 
               </span>
             </div>
+           <h3>please choose logo</h3>
+               <%= f.radio_button :logo, 'logo1.jpg' %> <img alt="images" src="/assets/logo1.jpg" />
+               <%= f.radio_button :logo, 'index.png' %> <img alt="images" src="/assets/index.png" /><br />
+               <%= f.radio_button :logo, 'index1.png' %> <img alt="images" src="/assets/index1.png" />
+               <%= f.radio_button :logo, 'index2.png' %> <img alt="images" src="/assets/index2.png" />
+               <br />
             <div class="form-group last">
               <div class="col-sm-offset-3 col-sm-9">
                 <a>

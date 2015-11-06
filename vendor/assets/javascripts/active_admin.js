@@ -47,6 +47,13 @@ $(document).ready(function(){
      {
         x=$("#xval").val();
     }
+   logos = $("#school_logo_input").find('li')
+   $.each(logos,function(index,logo){
+     var img = $(logo).find('input').val();
+     $(logo).append("<img src='/assets/"+img+"'></img>");
+   });
+    //$("#school_logo_input").find('li').first().append("<p>sdsds</p>")
+
     // alert(xval);
     $(add_button).click(function(e){ //on add input button click
         e.preventDefault();
