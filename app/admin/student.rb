@@ -140,7 +140,7 @@ controller do
 
   def update
    
-      grade=[]
+    grade=[]
     credit=[]
     gpa_points=[]
     gpa_credit=[]

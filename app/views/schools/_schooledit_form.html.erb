@@ -152,12 +152,29 @@
           
           
         </div>
-               <h3>please choose logo</h3>
-               <%= f.radio_button :logo, 'logo1.jpg' %> <img alt="images" src="/assets/logo1.jpg" />&nbsp;&nbsp;
-               <%= f.radio_button :logo, 'index.png' %> <img alt="images" src="/assets/index.png" /><br />
-               <%= f.radio_button :logo, 'index1.png' %> <img alt="images" src="/assets/index1.png" />&nbsp;&nbsp;&nbsp;&nbsp;
-               <%= f.radio_button :logo, 'index2.png' %> <img alt="images" src="/assets/index2.png" />
-               <br />
+
+        <div class="chk-bx-mar">
+          <h3>please choose logo</h3>
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <%= f.radio_button :logo, 'logo1.jpg' %> <img alt="images" src="/assets/logo1.jpg" />
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <%= f.radio_button :logo, 'logo2.jpg' %> <img alt="images" src="/assets/logo2.jpg" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+               <%= f.radio_button :logo, 'logo3.jpg' %> <img alt="images" src="/assets/logo3.jpg" />
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+               <%= f.radio_button :logo, 'logo4.jpg' %> <img alt="images" src="/assets/logo4.jpg" />
+            </div>
+          </div>
+
+        </div>
+              
+              
           <div class="panel-footer rptrq2">
           <div class="col-lg-12 col-md-6 col-sm-12 col-xs-12 rptrq1">
               <%= f.submit "Update",:class=>"btn btn-success" %>

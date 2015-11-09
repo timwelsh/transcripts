@@ -48,12 +48,19 @@ $(document).ready(function(){
         x=$("#xval").val();
     }
    logos = $("#school_logo_input").find('li')
+   var save_logo = $("#school_logo").val();
    $.each(logos,function(index,logo){
      var img = $(logo).find('input').val();
-     $(logo).append("<img src='/assets/"+img+"'></img>");
-   });
-    //$("#school_logo_input").find('li').first().append("<p>sdsds</p>")
+     //$(logo).find('label').empty();
+     //$(logo).find('label').append("<input type='radio' name='school[logo]' value='"+img+"' isChecked='true'>");
+     $(logo).append("<img src='/assets/"+img+'.jpg'+"'></img>");
+     // if (save_logo == img){
+     //   $(logo).find('input').prop("checked",true)
+     // }
+     
 
+   });
+   
     // alert(xval);
     $(add_button).click(function(e){ //on add input button click
         e.preventDefault();

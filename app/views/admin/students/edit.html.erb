@@ -187,12 +187,7 @@
          <% x=x+1%>
          <%end%>
        </div>
-       <h3>please choose logo</h3>
-               <%= f.radio_button :logo, 'logo1.jpg' %> <img alt="images" src="/assets/logo1.jpg" />
-               <%= f.radio_button :logo, 'index.png' %> <img alt="images" src="/assets/index.png" /><br />
-               <%= f.radio_button :logo, 'index1.png' %> <img alt="images" src="/assets/index1.png" />
-               <%= f.radio_button :logo, 'index2.png' %> <img alt="images" src="/assets/index2.png" />
-               <br />
+       
        <input type= "hidden" value= "<%=x%>" id="xval">
        <fieldset class="actions">
         <ol>

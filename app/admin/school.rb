@@ -46,9 +46,14 @@ ActiveAdmin.register School do
       f.input :phone
       f.input :academic_term, :as => :select, :collection=> TERM, :prompt=>'Please Select Academic Term'
       f.input :grading_scale, :as => :select, :collection=> SCALE, :prompt=>'Please Select Grade'
+      f.input :logo, :label => "Please choose logo",:as => :radio, :collection=> ["logo1","logo2","logo3","logo4"]
+      #f.input :slogo, as: :hidden
+
     end
     f.actions
+
   end
+
 
   show :title => :school_name do
     @school_country = Carmen::Country.coded(resource[:country])
@@ -72,8 +77,9 @@ ActiveAdmin.register School do
       row :phone
       row :academic_term
       row :grading_scale
-      
+
     end
+
   end
   
   controller do
@@ -85,6 +91,14 @@ ActiveAdmin.register School do
         super
       end
     end
+    def update
+      @school = School.find(params[:id])
+       if @school.update(school_params)
+          redirect_to admin_schools_path
+      else
+       render 'edit'
+     end
+   end
 def create
 if !params[:school][:user_id].blank?
    @user = User.find(params[:school][:user_id])
@@ -106,7 +120,7 @@ else
       end
   end
   def school_params
-    params.require(:school).permit(:school_name ,:user_id, :admin_name, :address1,:address2 , :address3 , :country , :state , :city, :zip , :phone,:email, :academic_term, :grading_scale )
+    params.require(:school).permit(:school_name ,:user_id, :admin_name, :address1,:address2 , :address3 , :country , :state , :city, :zip , :phone,:email, :academic_term, :grading_scale,:logo )
   end
 end
 end
