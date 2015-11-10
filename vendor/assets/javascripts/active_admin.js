@@ -238,10 +238,11 @@ $(document).ready(function(){
         select_wrapper.load(url);
     }
     else{
+        
         school_state = $('#school_state').val();
-        $('#school_state_input').append('<div id="order_state_code_wrapper"></div>');
+        $('#school_state_input').append('<div id="order_state_code_wrappe"></div>');
         $('#school_state').remove();
-        select_wrapper = $('#order_state_code_wrapper');
+        select_wrapper = $('#order_state_code_wrappe');
         $('select', select_wrapper).attr('disabled', true);
         country_code = $('select#school_country').val();
         url = "/schools/subregion_options?parent_region="+country_code;
@@ -251,7 +252,7 @@ $(document).ready(function(){
     }
 
     $('select#school_country').change(function(){
-        select_wrapper = $('#order_state_code_wrapper');
+        select_wrapper = $('#order_state_code_wrappe');
         $('select', select_wrapper).attr('disabled', true);
         country_code = $(this).val();
         url = "/schools/subregion_options?parent_region="+country_code;
