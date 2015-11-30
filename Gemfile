@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.0'
 # Use sqlite3 as the database for Active Record
 gem 'pg'
+#gem 'mysql2', '~> 0.3.18'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -34,6 +35,7 @@ gem 'wkhtmltopdf-binary'
 
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
+gem "paperclip", "~> 4.3"
 
 gem 'activeadmin', '~> 1.0.0.pre1'
 gem 'carmen-rails'
@@ -51,7 +53,7 @@ gem 'bootstrap-validator-rails'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'rails_12factor', group: :production
 
-#gem 'puma'
+gem 'puma'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
