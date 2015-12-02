@@ -5,7 +5,7 @@ class TransactionsController < ApplicationController
     # Amount in cents
     @amount =params[:amount].to_i
     @sub = params[:subscription_period].to_i
-    begin
+    #begin
       customer_data = {email: params[:stripeEmail], card: params[:stripeToken]}
                         .merge((params[:plan_id].to_i==2)? {}: {plan: params[:plan_id]})
 
@@ -45,9 +45,9 @@ class TransactionsController < ApplicationController
         redirect_to dashboard_homes_path, :notice => "Your payment has been received"
       end
 
-    rescue Stripe::StripeError => e
-    	flash[:error] = e.message
-    	redirect_to plans_path
-    end
+    # rescue Stripe::StripeError => e
+    # 	flash[:error] = e.message
+    # 	redirect_to plans_path
+    # end
   end
 end
