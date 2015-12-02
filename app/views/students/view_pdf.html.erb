@@ -444,10 +444,10 @@ end
                             <tr>            
                                 <td><%=@student.total_credit[0]%></td>
                                 <td><%=@student.gpa_credit[0]%></td>
-                                <td><%=@student.gpa_points[0]%></td>
+                                <td><%= number_with_precision(@student.gpa_points[0], :precision=>2) %></td>
                                 <td><% @student.cumulative_gpa[0]=="NaN" ? @cum=0 : @cum=@student.cumulative_gpa[0] %>
-                                 <%=@cum%></td>                      
-                             </tr>          
+                                 <%=@cum%></td>   
+                           </tr>          
                          </tbody>
                      </table>
                  </div>
