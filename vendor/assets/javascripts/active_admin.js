@@ -53,7 +53,7 @@ $(document).ready(function(){
      var img = $(logo).find('input').val();
      //$(logo).find('label').empty();
      //$(logo).find('label').append("<input type='radio' name='school[logo]' value='"+img+"' isChecked='true'>");
-     $(logo).append("<img src='/assets/"+img+'.jpg'+"'></img>");
+     $(logo).append("<img src='/assets/"+img+'.png'+"'></img>");
      // if (save_logo == img){
      //   $(logo).find('input').prop("checked",true)
      // }
