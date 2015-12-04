@@ -20,6 +20,9 @@
     <% if flash[:notice] %>
     	<center><p class="alert alert-success"><%= flash[:notice] %></p></center>
     <% end %>
+    <% if flash[:error] %>
+    	<center><p class="alert alert-danger"><%= flash[:error] %></p></center>
+    <% end %>
 	<%if @plan.blank?%>
 	<h1>There is no Plan has been created yet!!</h1>
 	<%else%>
@@ -75,7 +78,7 @@
 				<div class="panel-heading">
 					<div class="rptrq4" id="stripe_<%=plan.id%>">
 						<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-						data-key="pk_test_jMUKzHL4kwf1KFpFhTVA8QFu"
+						data-key="pk_live_iFrgYQYo2ZQNISuc7RuLEbyD"
 						data-description="<%= plan.name%>"
 						data-label="Pay $<%= (plan.amount.to_i)/100%>"
 						data-amount="<%= plan.amount%>">
