@@ -78,7 +78,7 @@ end
 
             <div class="school_logo">
                 <% if params[:format]=="pdf" %>
-                <%= wicked_pdf_image_tag '/img/logo_school.jpg' %>
+                <%= wicked_pdf_image_tag (@student.school.logo) %>
                 <% else %>
                 <%= image_tag (@student.school.logo) %>
                 <% end %>                                
