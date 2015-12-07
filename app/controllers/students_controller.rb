@@ -130,7 +130,7 @@ class StudentsController < ApplicationController
     redirect_to school_students_path 
   end
   def view_pdf
-     @student = Student.find(params[:id])
+    @student = Student.find(params[:id])
     @school = School.find(@student.school_id)
 
     respond_to do |format|
